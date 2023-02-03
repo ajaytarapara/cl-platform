@@ -1,0 +1,414 @@
+{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #FAFAFA;
+        font-family: sans-serif;
+    }
+
+    .navbar {
+        height: 80px;
+        background-color: #fff;
+    }
+
+    .navbar .menu-bar {
+        position: absolute;
+        top: 30px;
+        left: 29px;
+    }
+
+    .navbar .header-logo {
+        position: absolute;
+        top: 25px;
+        left: 72px;
+    }
+
+    .navbar .search-icon {
+        position: absolute;
+        top: 35px;
+        left: 291px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .navbar .search {
+        position: absolute;
+        top: 35px;
+        left: 16.5vw;
+        font-size: 16px;
+    }
+
+    .navbar .notification-icon {
+        position: absolute;
+        top: 35px;
+        left: 80vw;
+    }
+
+    .navbar .profile {
+        position: absolute;
+        top: 25px;
+        left: 85vw;
+    }
+
+    .navbar .john {
+        position: absolute;
+        top: 35px;
+        left: 88vw;
+        font-size: 21px;
+    }
+
+    .navbar .download-arrow {
+        position: absolute;
+        top: 38px;
+        left: 95vw;
+    }
+
+    .sidebar {
+        height: 90vh;
+        width: 14vw;
+        background: #fff;
+    }
+
+    .dashboard,
+    .analysis,
+    .inbox,
+    .history,
+    .users,
+    .maintenance,
+    .setting {
+        position: absolute;
+        left: 2vw;
+        display: flex;
+        gap: 10px;
+        padding-left: 25px;
+        align-items: center;
+        width: 183px;
+        height: 43px;
+    }
+
+    .dashboard {
+        top: 12vh;
+        background: #FFF3F4;
+    }
+
+    .sidebar .dashboard img,
+    .analysis img,
+    .inbox img,
+    .history img,
+    .users img,
+    .maintenance img,
+    .setting img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .sidebar .dashboard p,
+    .analysis p,
+    .inbox p,
+    .history p,
+    .users p,
+    .maintenance p,
+    .setting p {
+        font-size: 18px;
+    }
+
+    .analysis {
+        top: 18vh;
+    }
+
+    .inbox {
+        top: 24vh;
+    }
+
+    .history {
+        top: 30vh;
+    }
+
+    .users {
+        top: 36vh;
+    }
+
+    .maintenance {
+        top: 42vh;
+    }
+
+    .setting {
+        top: 48vh;
+    }
+
+    .main-heading {
+        position: absolute;
+        top: 12vh;
+        left: 17vw;
+    }
+
+    form {
+        position: absolute;
+        top: 18vh;
+        left: 17vw;
+        height: 170vh;
+        width: 79vw;
+        background: #fff;
+    }
+
+    form .col-1 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    form .heading {
+        color: #3E3E3E;
+        font-size: 22px;
+    }
+
+    form .col-1 input,
+    form select,
+    form textarea,
+    form .col-2 .one input,
+    form .col-2 .two input {
+        padding: 12px;
+        border: 1px solid #ADADAD;
+        border-radius: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form .col-1 input,
+    form select,
+    form textarea {
+        width: 70vw;
+    }
+
+    form .col-2 .one input,
+    form .col-2 .two input,
+    form .col-2 .two select {
+        width: 30vw;
+    }
+
+    .form .columns {
+        display: flex;
+        margin-bottom: 30px;
+    }
+
+    form .col-1,
+    form .col-2,
+    form .col-3,
+    form .col-4,
+    .other {
+        margin: 20px;
+        margin-top: 35px;
+    }
+
+    form .col-2 .one,
+    form .col-2 .two {
+        display: flex;
+        gap: 10vw;
+        margin-top: 15px;
+    }
+
+    form .col-2 .one {
+        margin-bottom: 20px;
+    }
+
+    .col-3 fieldset legend,
+    .col-4 fieldset legend {
+        font-size: 12px;
+    }
+
+    .col-3 fieldset {
+        padding: 18px;
+        width: 22vw;
+        border: 1px solid #ADADAD;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+
+    form .col-3 .one {
+        display: flex;
+        gap: 2vw;
+    }
+
+    form .col-3 .one .disabled {
+        border: 1px dashed #ADADAD;
+    }
+
+    form .col-4 .one fieldset {
+        width: 16vw;
+        padding: 18px;
+        border: 1px solid #ADADAD;
+        border-radius: 5px;
+    }
+
+    form .col-4 .one {
+        display: flex;
+        gap: 2vw;
+    }
+
+    form .col-4 .one input,
+    .col-4 select {
+        width: 16vw;
+        border: 1px solid #ADADAD;
+        border-radius: 5px;
+        padding: 16px;
+    }
+
+    form .col-4 .one {
+        margin-top: 20px;
+    }
+
+    .other .sub-heading {
+        margin-top: 25px;
+        font-size: 18px;
+        color: #3E3E3E;
+    }
+
+    .other .upload button {
+        display: flex;
+        gap: 10px;
+        padding: 4px 18px 4px 18px;
+        border-radius: 15px;
+        border: 1px solid #C8242F;
+        background: #fff;
+        margin-top: 15px;
+    }
+
+    .other .upload button span {
+        padding-top: 2px;
+        font-size: 17px;
+        color: #C8242F;
+    }
+
+    .other .upload .upload-text {
+        position: absolute;
+        top: 97vh;
+        left: 10vw;
+        font-size: 12px;
+        color: #ADADAD;
+    }
+
+    .other .upload {
+        display: flex;
+        gap: 20px;
+    }
+
+    .other .radio-2,
+    .other .checkbox-2 {
+        margin-left: 30px;
+    }
+
+    .other .radio-2,
+    .other .radio-1,
+    .other .checkbox-2,
+    .other .checkbox-1 {
+        accent-color: #C8242F;
+    }
+
+    .other img {
+        width: 3vw;
+        height: 3vh;
+    }
+
+    .other .snack-1 p,
+    .other .snack-2 p {
+        border-radius: 5px;
+        width: 30vw;
+        padding: 3px;
+    }
+
+    .other .snack-1 p {
+        border: 1px solid #FF3535;
+    }
+
+    .other .snack-2 p {
+        border: 1px solid #00B9E1;
+    }
+
+    .other .snackbar-two .snack-1 p {
+        border: 1px solid #FFA800;
+    }
+
+    .other .snackbar-two .snack-2 p {
+        border: 1px solid #00AF27;
+    }
+
+    .other .snackbar-one .snack-1 span,
+    .other .snackbar-one .snack-2 span {
+        position: absolute;
+        top: 125vh;
+    }
+
+    .other .snackbar-two .snack-1 span,
+    .other .snackbar-two .snack-2 span {
+        position: absolute;
+        top: 132vh;
+    }
+
+    .other .snack-1 span {
+        color: #FF3535;
+    }
+
+    .other .snack-2 span {
+        color: #00B9E1;
+    }
+
+    .other .snackbar-two .snack-1 span {
+        color: #FFA800;
+    }
+
+    .other .snackbar-two .snack-2 span {
+        color: #00AF27;
+    }
+
+    .other .snackbar-one,
+    .other .snackbar-two {
+        display: flex;
+        gap: 10vw;
+    }
+
+    .other .snackbar-two {
+        margin-top: 27px;
+    }
+
+    .other .buttons .btn-1 {
+        font-size: 18px;
+        padding: 8px;
+        width: 6vw;
+        background-color: #C8242F;
+        color: #fff;
+        border-radius: 23px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .other .buttons .btn-2 {
+        font-size: 18px;
+        padding: 8px;
+        width: 6vw;
+        color: #C8242F;
+        border-radius: 23px;
+        border: 1px solid #C8242F;
+        background: #fff;
+        margin-left: 25px;
+        cursor: pointer;
+    }
+
+    .other .tabs {
+        display: flex;
+        gap: 3vw;
+        font-size: 15px;
+        color: #ADADAD;
+        border-bottom: 1px solid #ADADAD;
+    }
+
+    .other .tabs .tab-1 {
+        border-bottom: 3px solid #C8242F;
+        padding-bottom: 9px;
+    }
+
+    .other .dummy-text {
+        font-size: 15px;
+        color: #3E3E3E;
+    }

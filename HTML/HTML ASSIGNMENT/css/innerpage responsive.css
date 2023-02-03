@@ -1,0 +1,188 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+.container-fluid{
+    height: 100rem;
+}
+.mynav{
+    height: 4vw;
+    width: 97vw;
+}
+.mynavbar{
+}
+.rightmenu{
+    height: 3vw;
+    width: 66vw; : 2vw;
+    padding-top: 1vw;
+    justify-content: flex-end;
+}
+.rightmenu>img,span{
+    vertical-align: middle;
+    border-style: none;
+    margin-left: .8vw;
+    font-size: 2vw;
+}
+.leftmenu{
+    display: flex;
+}
+.search{
+    display: flex;
+}
+.mycol1{
+    height: 96rem;
+    top: 0rem;
+    display: flex;
+    flex-direction: column;
+}
+.mycol2{
+    height: 91rem;
+    top: 0rem;
+    background-color: rgb(221, 212, 212);
+}
+
+
+.content{
+    height: 94rem;
+    background:white;
+}
+.heading h3{
+    font: normal normal medium 2rem Roboto;
+letter-spacing: 0px;
+color: #3E3E3E;
+width:12rem;
+}
+.box{
+width:75vw;
+margin-bottom: 1.5rem;
+}
+
+.col2content{
+    display: flex;
+    justify-content: flex-start;
+    width: 171vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border: 1px solid;
+
+}
+.heading{
+    width: 67vh;
+}
+.box2 {
+    width: 37vw;
+    height: 9vh;
+    font-size: 2vh;
+    margin: 7px 0px;
+    margin-right: 0.5vw;
+    padding: 3vh;
+    border-radius: 1vh;
+}
+
+.column3div{
+    height: 9vh;
+    width: 76vw;
+}
+.column3{
+    margin: 0vw 2vw;
+    width: 23vw;
+    margin-left: 0;
+    padding: 2vh;}
+.col-4content{
+    display: flex;
+    width: 76vw;
+    height: 9vh;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.upload{
+    display: flex;
+    width: 61VW;
+    justify-content: space-between;
+    padding-left: 3vh;
+}
+.radio{
+    display: flex;
+    width: 40VW;
+    justify-content: space-between;
+}
+.checkbox{
+    display: flex;
+    width: 40VW;
+    justify-content: space-between;
+}
+.ode{
+    margin-top: 0.5vh;
+}
+.snackbar{
+    display: flex;
+    width: 78vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.snackbar > div{
+    width: 85vh;
+    height: 7vh;
+    flex-wrap: wrap;
+}
+.snackbar img{
+    width: 1.75vw;
+}
+.snackbar>SPAN{
+    font-size: 2VW;
+}
+.buttons{
+    display: flex;
+    width: 40VW;
+    justify-content: space-between;
+}
+.tabs{
+    display: flex;
+    WIDTH: 21VW;
+    JUSTIFY-CONTENT: SPACE-EVENLY;
+}
+.mycol1img{
+    height: 3vw;
+    width: 7vh;
+    display: flex;
+}
+.mycol1 > div{
+    display: flex;
+    padding-top: 2rem;
+    
+}
+.mycol1>stan{
+    height: 12vh;
+
+}
+.col4content {
+    display: flex;
+    justify-content: space-between;
+    width: 74vw;
+}
+.text {
+    width: 17vw;
+    padding: 2vh;
+}
+.dash>stan{
+    font: normal normal normal 16px/21px Roboto;
+    letter-spacing: 0px;
+    color: #C8242F;
+    opacity: 1;
+    padding: 6.5px 1vw;
+}
+@media (max-width:768px){
+    .mycol1{
+        display:none;
+    }
+}
+@media (max-width:850px){
+.column3{
+    margin: 0vw 2vw;
+    width: 22vw;
+    margin-left: 0;
+    padding: 2vh;
+}
+}
+@

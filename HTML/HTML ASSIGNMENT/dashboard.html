@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <header id="dashheader">
+        <div id="leftnav">
+            <img src="images/menu-bar.svg" alt="menu-bar" id="dashmenu" onclick="togglesidebar()">
+            <img src="images/logo.svg" alt="logo" id="companylogo">
+            <div id="searchdash">
+                <img src="images/search-icon.svg" alt="search-icon" id="dashsearchicon">
+                <span id="dashsearch">Search</span>
+            </div>
+        </div>
+        <div id="rightnav">
+            <img src="images/notification-icon.svg" alt="notification-icon" id="dashnotification">
+            <div id="profiledash">
+                <img src="images/profile.png" alt="profile" id="dashprofile">
+                <span id="dashprofilename">John Doe</span>
+                <img src="images/downward-arrow.svg" alt="downward-arrow" id="dashdownarraow">
+            </div>
+        </div>
+    </header>
+    <div class="dashcontainer">
+        <div id="dashsidebar">
+            <div id="sidemenu1" class="dashsidemenu dashmenuselect">
+                <img src="images/dashboard-active.svg" alt="dashboard-active" id="sidemenuimg1" class="dashsideimg">
+                <span id="sidecontent1" class="dashsidecontent">Dashboard</span>
+            </div>
+            <div id="sidemenu2" class="dashsidemenu">
+                <img src="images/graph-default.svg" alt="dashboard-default" id="sidemenuimg2" class="dashsideimg">
+                <span id="sidecontent2" class="dashsidecontent">Analysis</span>
+            </div>
+            <div id="sidemenu3" class="dashsidemenu">
+                <img src="images/inbox-default.svg" alt="dashboard-default" id="sidemenuimg3" class="dashsideimg">
+                <span id="sidecontent3" class="dashsidecontent">Inbox</span>
+            </div>
+            <div id="sidemenu4" class="dashsidemenu">
+                <img src="images/clock-default.svg" alt="dashboard-default" id="sidemenuimg4" class="dashsideimg">
+                <span id="sidecontent5" class="dashsidecontent">History</span>
+            </div>
+            <div id="sidemenu5" class="dashsidemenu">
+                <img src="images/user-default.svg" alt="dashboard-default" id="sidemenuimg5" class="dashsideimg">
+                <span id="sidecontent6" class="dashsidecontent">Users</span>
+            </div>
+            <div id="sidemenu6" class="dashsidemenu">
+                <img src="images/maintenance-default.svg" alt="dashboard-default" id="sidemenuimg6" class="dashsideimg">
+                <span id="sidecontent6" class="dashsidecontent">Maintenance</span>
+            </div>
+            <div id="sidemenu7" class="dashsidemenu">
+                <img src="images/setting-default.svg" alt="dashboard-default" id="sidemenuimg7" class="dashsideimg">
+                <span id="sidecontent7" class="dashsidecontent">Setting</span>
+            </div>
+        </div>
+        <div id="dashmaincontent">
+            <h1 id="dashmainheading">Dashboard</h1>
+            <div id="dashboarddigits">
+                <div class="dashboarddigitcontent" id="dashboarddigitcontent1">
+                    <img src="images/star.svg" alt="star" class="dashdigitimg">
+                    <div class="dashdigitcontent">
+                        <h2 class="digitheading">23,456</h2>
+                        <span class="digitsmallheading">New Products</span>
+                    </div>
+                </div>
+                <div class="dashboarddigitcontent" id="dashboarddigitcontent2">
+                    <img src="images/new-product.svg" alt="new-product" class="dashdigitimg">
+                    <div class="dashdigitcontent">
+                        <h2 class="digitheading">2345</h2>
+                        <span class="digitsmallheading">Added Products</span>
+                    </div>
+                </div>
+                <div class="dashboarddigitcontent" id="dashboarddigitcontent3">
+                    <img src="images/total-product.svg" alt="total-product" class="dashdigitimg">
+                    <div class="dashdigitcontent">
+                        <h2 class="digitheading">32,456</h2>
+                        <span class="digitsmallheading">Total Products</span>
+                    </div>
+                </div>
+                <div class="dashboarddigitcontent" id="dashboarddigitcontent4">
+                    <img src="images/dollar-filled.svg" alt="dollar-filled" class="dashdigitimg">
+                    <div class="dashdigitcontent">
+                        <h2 class="digitheading">5678</h2>
+                        <span class="digitsmallheading">Today’s Sale</span>
+                    </div>
+                </div>
+                <div class="dashboarddigitcontent" id="dashboarddigitcontent5">
+                    <img src="images/money-bag.svg" alt="money-bag" class="dashdigitimg">
+                    <div class="dashdigitcontent">
+                        <h2 class="digitheading">33,5342</h2>
+                        <span class="digitsmallheading">Total Sale</span>
+                    </div>
+                </div>
+            </div>
+            <div id="charts">
+                <div id="dashgraph">
+                    <div id="graphnav">
+                        <div class="graphnavs" id="leftgraphnav">
+                            <h3>Sale</h3>
+                        </div>
+                        <div class="graphnavs" id="rightgraphnav">
+                            <span class="graphrightnavs">Weekly</span>
+                            <span class="graphrightnavs">Monthly</span>
+                            <span class="graphrightnavs" id="graphselected">Yearly</span>
+                        </div>
+                    </div>
+                    <img src="images/data-graph.png" alt="data-graph" id="dashgraphimg">
+                </div>
+                <div id="piechart">
+                    <h3 id="piechartheading">Sales by Country</h3>
+                    <img src="images/pie-chart.svg" alt="pie-chart" id="piechartimg">
+                    <div id="piechartname">
+                        <div class="piechartitem" id="piechartitem1">
+                            <img src="images/radio-checked-icon.svg" alt="radio-checked-icon" id="pieradio1"
+                                class="pieradioimg">
+                            <span class="pienames" id="piename1">United States of America</span>
+                        </div>
+                        <div class="piechartitem" id="piechartitem2">
+                            <img src="images/radio-checked-icon.svg" alt="radio-checked-icon" id="pieradio2"
+                                class="pieradioimg">
+                            <span class="pienames" id="piename2">Canada</span>
+                        </div>
+                        <div class="piechartitem" id="piechartitem3">
+                            <img src="images/radio-checked-icon.svg" alt="radio-checked-icon" id="pieradio3"
+                                class="pieradioimg">
+                            <span class="pienames" id="piename3">Russia</span>
+                        </div>
+                        <div class="piechartitem" id="piechartitem4">
+                            <img src="images/radio-checked-icon.svg" alt="radio-checked-icon" id="pieradio4"
+                                class="pieradioimg">
+                            <span class="pienames" id="piename4">India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dashtable">
+                <div id="dashtableheading">
+                    <h2>Invoices</h2>
+                    <span id="tableview">ViewAll</span>
+                </div>
+                <table id="dashboardtable">
+                    <tr>
+                        <th>INVOICE</th>
+                        <th>COMPANY NAME</th>
+                        <th>EMAIL</th>
+                        <th>DUE DATE</th>
+                        <th id="dashstatus">STATUS</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                    <tr>
+                        <td>651535</td>
+                        <td>Public Adjusting Firm</td>
+                        <td>georgia.young@example.com</td>
+                        <td>24 May, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$47,800</td>
+                    </tr>
+                    <tr>
+                        <td>558612</td>
+                        <td>Other</td>
+                        <td>jessica.hanson@example.com</td>
+                        <td>24 May, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$98,000</td>
+                    </tr>
+                    <tr>
+                        <td>558612</td>
+                        <td>Vendor</td>
+                        <td>alma.lawson@example.com</td>
+                        <td>8 Sep, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$20,900</td>
+                    </tr>
+                    <tr>
+                        <td>558612</td>
+                        <td>Property Management Company</td>
+                        <td>kenzi.lawson@example.com</td>
+                        <td>22 Oct, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$10,570</td>
+                    </tr>
+                    <tr>
+                        <td>651535</td>
+                        <td>Subcontdactor Company</td>
+                        <td>jackson.graham@example.com</td>
+                        <td>1 Feb, 2020</td>
+                        <td>
+                            <div class="failed dashstatus">Failed</div>
+                        </td>
+                        <td>$10,200</td>
+                    </tr>
+                    <tr>
+                        <td>653518</td>
+                        <td>Mortgage Company</td>
+                        <td>felicia.reid@example.com</td>
+                        <td>22 Oct, 2020</td>
+                        <td>
+                            <div class="pending dashstatus">Pending</div>
+                        </td>
+                        <td>$12,600</td>
+                    </tr>
+                    <tr>
+                        <td>487441</td>
+                        <td>TPA</td>
+                        <td>dolores.chambers@example.com</td>
+                        <td>21 Sep, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$11,170</td>
+                    </tr>
+                    <tr>
+                        <td>267400</td>
+                        <td>Fire Department</td>
+                        <td>nevaeh.simmons@example.com</td>
+                        <td>17 Oct, 2020</td>
+                        <td>
+                            <div class="failed dashstatus">Failed</div>
+                        </td>
+                        <td>$28,000</td>
+                    </tr>
+                    <tr>
+                        <td>449003</td>
+                        <td>Insurance Carrier</td>
+                        <td>curtis.weaver@example.com</td>
+                        <td>21 Sep, 2020</td>
+                        <td>
+                            <div class="paid dashstatus">Paid</div>
+                        </td>
+                        <td>$10,000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
