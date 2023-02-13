@@ -1,45 +1,41 @@
+
+/*============login==========*/
+
+
 * {
     margin: 0px;
     padding: 0px;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 #left {
 
-    background-image: url("../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png");
+    background-image: url("../NewFolder/image/Grow-Trees-On-the-path-to-environment-sustainability-login.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
+    background-size: 100% 100%;
     opacity: 0.8;
     height: 100vh;
-    width: 100vw;
     justify-content: center;
     align-items: center;
 }
 
 .heading {
-    margin-top: 20vw;
-    font-size: 2rem;
+    margin-top: 24vw;
+    font-size: 38px;
     margin-left: 3vw;
     color: white;
-    width: 40%;
-
+    width: 74%;
 }
 
-.tagparagraph {
-    margin-top: 16vw;
-    font-size: 1rem;
-    margin-left: 3vw;
-    color: white;
-    width: 65%;
-}
 
-.tagpara p {
+
+
+.tagpara {
     color: white;
-    width: 92%;
+    width: 88%;
     margin-left: 3vw;
-    font-size: 3vh;
+    font-size: 2.5vh;
+    margin-top: 10px;
 
 }
 
@@ -56,13 +52,13 @@
     width: 100%;
     justify-content: center;
     margin-left: 8vw;
-    margin-top:4vw;
+    padding-top: 39px;
     
 }
 
 .form label {
     color: #414141;
-    width: 28vw;
+    width: 40vw;
 }
 
 .form input {
@@ -71,6 +67,7 @@
     border: 1px solid #D9D9D9;
     border-radius: 3px;
     width: 23vw;
+    height: 43px;
 }
 
 .form button {
@@ -79,6 +76,7 @@
     border-radius: 24px;
     width: 23vw;
     margin-top: 22px;
+    height: 43px;
 }
 
 .formfooter {
@@ -89,8 +87,8 @@
     padding-top: 2vw;
 }
 .footer{
-    padding-top: 8vw;
-    padding-bottom:4vw;
+    padding-top: 3vw;
+   
 } 
 @media (max-width:764px) {
     .form {
@@ -109,3 +107,14 @@
         width: 60vw;
     }
 }
+@media(max-width:378px){
+    
+.tagpara{font-size: 2vh;
+    
+}
+}
+
+
+/*  lost password   */
+
+

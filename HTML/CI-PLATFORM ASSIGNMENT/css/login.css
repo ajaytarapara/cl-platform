@@ -1,3 +1,7 @@
+
+/*============login==========*/
+
+
 * {
     margin: 0px;
     padding: 0px;
@@ -86,7 +90,7 @@
     padding-top: 2vw;
 }
 .footer{
-    padding-top: 8vw;
+    padding-top: 3vw;
    
 } 
 @media (max-width:764px) {
@@ -112,3 +116,8 @@
     
 }
 }
+
+
+/*  lost password   */
+
+

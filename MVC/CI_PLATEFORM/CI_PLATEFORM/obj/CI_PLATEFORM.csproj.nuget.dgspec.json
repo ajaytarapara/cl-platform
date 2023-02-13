@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj": {}
+    "D:\\cl platform\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj": {}
   },
   "projects": {
-    "D:\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj": {
+    "D:\\cl platform\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj",
+        "projectUniqueName": "D:\\cl platform\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj",
         "projectName": "CI_PLATEFORM",
-        "projectPath": "D:\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj",
+        "projectPath": "D:\\cl platform\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\CI_PLATEFORM.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\obj\\",
+        "outputPath": "D:\\cl platform\\MVC\\CI_PLATEFORM\\CI_PLATEFORM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

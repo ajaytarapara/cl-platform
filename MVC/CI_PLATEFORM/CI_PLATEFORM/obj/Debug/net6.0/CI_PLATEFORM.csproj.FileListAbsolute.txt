@@ -1,26 +1,26 @@
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\appsettings.Development.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\appsettings.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.staticwebassets.runtime.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.exe
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.deps.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.runtimeconfig.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.dll
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\ref\CI_PLATEFORM.dll
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.pdb
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.csproj.AssemblyReference.cache
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.GeneratedMSBuildEditorConfig.editorconfig
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.AssemblyInfoInputs.cache
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.AssemblyInfo.cs
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.csproj.CoreCompileInputs.cache
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.MvcApplicationPartsAssemblyInfo.cache
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.RazorAssemblyInfo.cache
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.RazorAssemblyInfo.cs
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\staticwebassets.build.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\staticwebassets.development.json
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\bundle\CI_PLATEFORM.styles.css
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\projectbundle\CI_PLATEFORM.bundle.scp.css
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.dll
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\ref\CI_PLATEFORM.dll
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.pdb
-D:\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.genruntimeconfig.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\appsettings.Development.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\appsettings.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.staticwebassets.runtime.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.exe
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.deps.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.runtimeconfig.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.dll
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\ref\CI_PLATEFORM.dll
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\bin\Debug\net6.0\CI_PLATEFORM.pdb
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.csproj.AssemblyReference.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.GeneratedMSBuildEditorConfig.editorconfig
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.AssemblyInfoInputs.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.AssemblyInfo.cs
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.csproj.CoreCompileInputs.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.MvcApplicationPartsAssemblyInfo.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.RazorAssemblyInfo.cache
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.RazorAssemblyInfo.cs
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\staticwebassets.build.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\staticwebassets.development.json
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\bundle\CI_PLATEFORM.styles.css
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\scopedcss\projectbundle\CI_PLATEFORM.bundle.scp.css
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.dll
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\ref\CI_PLATEFORM.dll
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.pdb
+D:\cl platform\MVC\CI_PLATEFORM\CI_PLATEFORM\obj\Debug\net6.0\CI_PLATEFORM.genruntimeconfig.cache

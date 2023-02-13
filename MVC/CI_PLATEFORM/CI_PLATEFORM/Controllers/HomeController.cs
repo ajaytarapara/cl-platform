@@ -13,16 +13,23 @@ namespace CI_PLATEFORM.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult login()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult registration()
         {
             return View();
         }
-
+        public IActionResult resetpassword()
+        {
+            return View();
+        }
+        public IActionResult lostpassword()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
