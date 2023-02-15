@@ -1,0 +1,206 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-fluid > .row {
+    height: 100vh;
+    width: 100vw;
+}
+
+#imagecontent {
+    margin: 0px;
+    padding: 0px;
+}
+
+    #imagecontent img {
+        height: 100vh;
+    }
+
+.imgcontent {
+    text-align: left;
+    left: 14%;
+    bottom: 4rem;
+    display: block !important;
+}
+
+    .imgcontent h1 {
+        font-weight: normal;
+        line-height: 5vh;
+        width: 61%;
+    }
+
+    .imgcontent p {
+        width: 83%;
+    }
+
+.logincontent {
+    height: 100vh;
+}
+
+.logincontent {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh;
+    justify-content: center;
+}
+
+    .logincontent > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 74vh;
+        justify-content: center;
+    }
+
+        .logincontent > form > * {
+            width: 100%;
+            color: #414141;
+            margin-bottom: 1vh;
+            padding: 1vh;
+            font-size: 2vh;
+        }
+
+        .logincontent > form > a {
+            width: auto;
+            width: auto;
+            text-decoration: none;
+            font-size: 1.5vh;
+        }
+
+        .logincontent > form > input {
+            box-shadow: 0.97px 0.26px 3px #0000000D;
+            border: 1px solid #D9D9D9;
+            border-radius: 1vh;
+        }
+
+        .logincontent > form > p > a {
+            color: #2B64B1;
+            text-decoration: none;
+        }
+
+        .logincontent > form > p {
+            width: auto;
+            font-size: 1.5vh;
+        }
+
+        .logincontent > form > input[type=submit] {
+            background: #F8863400 0% 0% no-repeat padding-box;
+            border: 2px solid #F88634;
+            color: #F88634;
+            margin-top: 1vh;
+            border-radius: 2.4vh;
+        }
+
+#loginpolicy > p {
+    text-align: center;
+}
+
+@media screen and (max-width:1200px) {
+    .logincontent > form > * {
+        font-size: 1.5vh;
+    }
+
+    .logincontent {
+        padding: 1vh;
+    }
+}
+
+@media screen and (max-width:767px) {
+    #imagecontent {
+        height: 45vh;
+    }
+
+        #imagecontent img {
+            height: 45vh;
+        }
+
+    .logincontent {
+        height: 55vh;
+    }
+
+    .imgcontent {
+        bottom: 0;
+        display: block !important;
+    }
+
+        .imgcontent p {
+            font-size: 1.5vh;
+            line-height: 2vh;
+            width: 100%;
+        }
+
+        .imgcontent h1 {
+            font-weight: normal;
+            line-height: 3vh;
+            width: 100%;
+        }
+
+    .logincontent > form > * {
+        font-size: 1.9vh;
+    }
+
+    .logincontent {
+        padding: 4vh;
+    }
+}
+/* =========================================================================================================== */
+/* register */
+/* =========================================================================================================== */
+#registerform {
+    height: 84vh;
+}
+
+    #registerform > * {
+        margin-bottom: 0.2vh;
+    }
+/* responsive register */
+@media only screen and (max-width:767px) {
+    #registercontent > #loginpolicy {
+        font-size: 1vh;
+    }
+
+    #registerform {
+        padding-top: 2vh;
+    }
+
+        #registerform > * {
+            margin-bottom: 0;
+            font-size: 1.3vh;
+            padding-bottom: 0.2vh;
+        }
+}
+/* =========================================================================================================== */
+/* forgot password */
+/* =========================================================================================================== */
+#forgotheading {
+    text-align: center;
+    color: #414141;
+    font-size: 2vh;
+    margin-bottom: 0;
+}
+
+#forgotinfo {
+    text-align: center;
+    color: #414141;
+    font-size: 1.5vh;
+    padding-top: 0;
+    padding: 0vh 2vw;
+}
+/* =========================================================================================================== */
+/* newpassword.html */
+/* =========================================================================================================== */
+#newpassheading {
+    text-align: center;
+    color: #414141;
+    font-size: 2vh;
+    margin-bottom: 0;
+}
+
+#newpassinfo {
+    text-align: center;
+    color: #414141;
+    font-size: 1.5vh;
+    padding-top: 0;
+    padding: 0vh 2vw;
+}

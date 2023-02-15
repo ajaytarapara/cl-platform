@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+        <div class="row">
+            @Html.Partial("_AccountCarousel")
+            <div id="registercontent" class="col-md-4 col-sm-12 logincontent">
+                <form action="#" id="registerform">
+                    <label for="registerfname">First Name</label>
+                    <input type="text" name="registerfname" id="registerfname" placeholder="Umang">
+                    <label for="registerlname">Last Name</label>
+                    <input type="text" name="registerlname" id="registerlname" placeholder="Gohel">
+                    <label for="registerphone">Phone Number</label>
+                    <input type="text" name="registerphone" id="registerphone" placeholder="1234567890">
+                    <label for="registeremail">Email Address</label>
+                    <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
+                    <label for="registerpass">Password</label>
+                    <input type="password" name="registerpass" id="registerpass" placeholder="**********">
+                    <label for="registercpass">Confirm Password</label>
+                    <input type="password" name="registercpass" id="registercpass" placeholder="**********">
+                    <input type="submit" value="Register">
+                    <a asp-action="ForgotPassword">Lost your password?</a>
+                    <p>Already registered?<a asp-action="Login">Login now</a></p>
+                </form>
+                <div id="loginpolicy">
+                    <p>Privacy Policy</p>
+                </div>
+            </div>
+        </div>
+    </div>
