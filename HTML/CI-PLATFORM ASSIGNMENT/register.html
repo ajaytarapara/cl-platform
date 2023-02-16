@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -51,15 +51,23 @@
                     </button>
                   </div>
             </div>
-            <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
-                <form action="#">
-                    <label for="loginemail">Email Address</label>
+            <div id="registercontent" class="col-md-4 col-sm-12 logincontent">
+                <form action="#" id="registerform">
+                    <label for="registerfname">First Name</label>
+                    <input type="text" name="registerfname" id="registerfname" placeholder="Umang">
+                    <label for="registerlname">Last Name</label>
+                    <input type="text" name="registerlname" id="registerlname" placeholder="Gohel">
+                    <label for="registerphone">Phone Number</label>
+                    <input type="text" name="registerphone" id="registerphone" placeholder="1234567890">
+                    <label for="registeremail">Email Address</label>
                     <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
-                    <label for="loginpassword">Password</label>
-                    <input type="password" name="loginpass" id="loginpass" placeholder="**********">
-                    <input type="submit" value="Login">
+                    <label for="registerpass">Password</label>
+                    <input type="password" name="registerpass" id="registerpass" placeholder="**********">
+                    <label for="registercpass">Confirm Password</label>
+                    <input type="password" name="registercpass" id="registercpass" placeholder="**********">
+                    <input type="submit" value="Register">
                     <a href="lostpass">Lost your password?</a>
-                    <p>Don’t have an account?<a href="#"> Create an account</a></p>
+                    <p>Already registered?<a href="#">Login now</a></p>
                 </form>
                 <div id="loginpolicy">
                     <p>Privacy Policy</p>

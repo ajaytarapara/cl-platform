@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -53,17 +53,16 @@
             </div>
             <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
                 <form action="#">
-                    <label for="loginemail">Email Address</label>
-                    <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
-                    <label for="loginpassword">Password</label>
-                    <input type="password" name="loginpass" id="loginpass" placeholder="**********">
-                    <input type="submit" value="Login">
-                    <a href="lostpass">Lost your password?</a>
-                    <p>Don’t have an account?<a href="#"> Create an account</a></p>
+                    <p id="forgotheading">Forgot Password</p>
+                    <p id="forgotinfo">Enter your email address you've using for your account below and we will send you a password reset link</p>
+                    <label for="forgotemail">Email Address</label>
+                    <input type="email" name="forgotemail" id="forgotemail" placeholder="Enter your email address...">
+                    <input type="submit" value="Reset my Password">                
+                    <a href="lostpass">Login</a>
                 </form>
                 <div id="loginpolicy">
                     <p>Privacy Policy</p>
-                </div>
+                </div>  
             </div>
         </div>
     </div>
