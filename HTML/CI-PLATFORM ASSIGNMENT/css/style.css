@@ -175,3 +175,31 @@ margin-bottom: 0.2vh;
     padding-top: 0;
     padding: 0vh 2vw;
 }
+
+/* =========================================================================================================== */
+/* Home.html */
+/* =========================================================================================================== */
+
+.leftnav{
+    border:1px solid black;
+
+    display: flex;
+    height: 2.5rem;
+    justify-content: right;
+    height: 50px;
+    align-items: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.rightnav{
+    height: 50px;
+    border:1px solid red;
+}
+.leftheader{
+    display: flex;
+    border:1px solid green;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}

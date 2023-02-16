@@ -1,0 +1,33 @@
+.leftnav{
+    border: 1px solid black;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.rightnav{
+    border:1px solid red;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: auto;
+}
+.leftheader{
+    border: 1px solid black;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    justify-content:flex-start;
+}
+.rightheader{
+    border:1px solid red;
+    height: 40px;
+    justify-content:flex-start;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.leftheader>input{
+    margin-left: 15px;
+}
