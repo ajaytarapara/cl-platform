@@ -1,33 +1,62 @@
-.leftnav{
+.leftnav {
     border: 1px solid black;
     height: 40px;
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
 }
-.rightnav{
-    border:1px solid red;
+
+.rightnav {
+    border: 1px solid red;
     height: 40px;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.leftheader {
+    border: 1px solid black;
+    height: 50px;
     justify-content: center;
     align-items: center;
     justify-content: flex-start;
-    margin-left: auto;
 }
-.leftheader{
-    border: 1px solid black;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    justify-content:flex-start;
-}
-.rightheader{
-    border:1px solid red;
-    height: 40px;
-    justify-content:flex-start;
+
+.rightheader {
+    border: 1px solid red;
+    height: 50px;
+    justify-content: flex-start;
     align-items: center;
     justify-content: center;
     justify-content: space-between;
 }
-.leftheader>input{
+
+.leftheader>input {
     margin-left: 15px;
+}
+
+.checked {
+    color: orange;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: orange;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }
