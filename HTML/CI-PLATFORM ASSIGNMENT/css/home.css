@@ -1,5 +1,7 @@
+
+
 .leftnav {
-    border: 1px solid black;
+   
     height: 40px;
     justify-content: center;
     align-items: center;
@@ -7,7 +9,6 @@
 }
 
 .rightnav {
-    border: 1px solid red;
     height: 40px;
     justify-content: center;
     align-items: center;
@@ -16,7 +17,7 @@
 }
 
 .leftheader {
-    border: 1px solid black;
+   
     height: 50px;
     justify-content: center;
     align-items: center;
@@ -24,15 +25,15 @@
 }
 
 .rightheader {
-    border: 1px solid red;
+
     height: 50px;
     justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .leftheader>input {
+    width: 70%;
     margin-left: 15px;
 }
 
@@ -59,4 +60,18 @@
 
 .pagination a:hover:not(.active) {
     background-color: #ddd;
+}
+
+.img-content{
+    flex-direction: column;
+}
+
+
+
+
+@media(max-width:746px){
+    .rightheader{
+        border-top:1px solid black;
+       
+    }
 }
