@@ -1,11 +1,10 @@
-
-
 .leftnav {
-   
+
     height: 40px;
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
+    display: flex;
 }
 
 .rightnav {
@@ -17,7 +16,7 @@
 }
 
 .leftheader {
-   
+
     height: 50px;
     justify-content: center;
     align-items: center;
@@ -62,16 +61,124 @@
     background-color: #ddd;
 }
 
-.img-content{
+.img-content {
     flex-direction: column;
 }
 
+.card-img-top {
+    position: relative;
 
 
+}
 
-@media(max-width:746px){
-    .rightheader{
-        border-top:1px solid black;
-       
+.list-image-part {
+    width: 100%;
+}
+
+.list-content-part {
+    width: 70%;
+}
+
+.list-img {
+    height: 250px;
+    width: 100%;
+}
+
+.list-card-theme-title {
+    position: absolute;
+    top: 220px;
+    left: 33%;
+    font-weight: lighter;
+}
+
+#grid-card-image-content {
+    top: 0px;
+    right: 0px;
+    justify-content: space-between;
+}
+
+.list-img-content {
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+    max-width: max-content;
+
+
+}
+#list-card-image-content{
+    top: 0px;
+    right:0px;
+
+}
+#list-img{
+    height: 250px;
+    width: 100%;
+}
+
+#menubar {
+    position: absolute;
+    border: 1px solid black;
+    flex-direction: column;
+    height: 100vh;
+    z-index: 1;
+    background: white;
+    display: none;
+
+}
+
+.menuitem {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+#filterbutton {
+    display: none;
+}
+
+#filterbar {
+    position: absolute;
+    border: 1px solid black;
+    flex-direction: column;
+    height: 100vh;
+    background: white;
+    display: none;
+    z-index: 1;
+}
+
+@media(max-width:2500px) {
+    #menubarimg {
+        display: none;
     }
+
+
+}
+
+@media(max-width:766px) {
+    .rightheader {
+        border-top: 1px solid black;
+
+    }
+
+    #menubarimg {
+        display: flex;
+    }
+
+    .leftnav {
+        display: none !important;
+    }
+
+    #rightheader {
+        display: none !important;
+    }
+
+    #filterbutton {
+        display: flex;
+    }
+
+    .leftheader {
+        justify-content: space-between;
+    }
+
 }
