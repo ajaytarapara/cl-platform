@@ -108,9 +108,9 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class=" d-flex d-md-none">
-                <button style="position: absolute;top: 10px;" onclick="menubartoggle()"><img src="images/list.png"
-                        alt="" id="menubarimg"></button>
+            <div id="menubarimg"class="d-md-none">
+                <button  onclick="menubartoggle()"><img src="images/list.png"
+                        alt=""></button>
             </div>
             <div class="col-6  leftnav">
 
@@ -128,13 +128,14 @@
             <div class="col-6 d-flex px-5 rightnav">
                 <img src="images/user-img.png" alt="" class="src"
                     style="border-radius: 50%;height: 100%; padding: 4px;">
-                <span>John Due</span>
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    John Due
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <input type="checkbox" class="form-check-input" disabled>
-                    <label class="form-check-label">Option 3</label>
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
 
 
@@ -235,7 +236,7 @@
                     <li><button class="dropdown-item" type="button">Another action</button></li>
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
-                <button style="border-radius: 40px" onclick=""><img  src="images/grid.png" alt="">
+                <button style="border-radius: 40px" onclick=""><img src="images/grid.png" alt="">
                     <link rel="" href="">
                 </button>
                 <button style="border-radius: 20px" onclick="listview()"><img src="images/list.png" alt=""></button>
@@ -247,7 +248,7 @@
 
     <div class="container mt-3">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission" >
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
                 <div class="card mt-2 shadow">
                     <div class="list-image-part position-relative">
                         <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-3.png" class="list-img"
@@ -384,7 +385,7 @@
 
 
             <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
-                <div class="card mt-2 shadow" >
+                <div class="card mt-2 shadow">
                     <div class="list-image-part position-relative">
                         <img src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" class="list-img"
                             alt="" />
@@ -585,10 +586,10 @@
                         </div>
                     </div>
                 </div>
-                 
+
 
                 <div class="card mt-2 shadow">
-                    <div class="list-image-part position-relative"id="list-image">
+                    <div class="list-image-part position-relative" id="list-image">
                         <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-3.png" class="list-img"
                             alt="" />
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
@@ -643,7 +644,7 @@
 
                         <hr>
 
-                        <div style="justify-content: center;" class="d-flex pt-2">
+                        <div style="justify-content: center;margin: top 0.3vw;;" class="d-flex">
                             <button
                                 style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a
                                     style="color: #F88634; text-decoration: none;" href="http://">Apply</a><img
@@ -651,6 +652,7 @@
                         </div>
                     </div>
                 </div>
+                
 
 
 
@@ -677,7 +679,7 @@
 
     </div>
     <hr style="margin: top 10px;">
-    <div  class="container mt-3">
+    <div class="container mt-3">
         <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
     </div>
     <hr style="margin-top:10px;">

@@ -1,6 +1,6 @@
 .leftnav {
 
-    height: 40px;
+    height: 60px;
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
@@ -8,7 +8,7 @@
 }
 
 .rightnav {
-    height: 40px;
+    height: 60px;
     justify-content: center;
     align-items: center;
     justify-content: flex-end;
@@ -105,14 +105,23 @@
 
 
 }
-#list-card-image-content{
+
+#list-card-image-content {
     top: 0px;
-    right:0px;
+    right: 0px;
 
 }
-#list-img{
-    height: 250px;
+
+#list-img {
+    height: 290px;
     width: 100%;
+}
+
+#list-card-theme-title {
+    position: absolute;
+    top: 250px;
+    left: 30%;
+    font-weight: lighter;
 }
 
 #menubar {
@@ -120,14 +129,20 @@
     border: 1px solid black;
     flex-direction: column;
     height: 100vh;
-    z-index: 1;
     background: white;
     display: none;
 
 }
 
+#menubarimg {
+    position: absolute;
+    top: 10px;
+    left: 13%;
+    width: 40px;
+}
+
 .menuitem {
-    display: flex;
+    display: inline-block;
     justify-content: center;
     flex-direction: column;
     padding-top: 20px;
@@ -147,11 +162,28 @@
     z-index: 1;
 }
 
+.list-image-part-2 {
+    width: 30%;
+}
+
+.card-title {
+    width: 65%;
+}
+
 @media(max-width:2500px) {
     #menubarimg {
         display: none;
     }
 
+
+}
+
+@media(max-width:962px) {
+    #list-card-theme-title {
+
+        left: 22%;
+
+    }
 
 }
 
@@ -161,8 +193,12 @@
 
     }
 
+    .rightnav {
+        display: block;
+    }
+
     #menubarimg {
-        display: flex;
+        display: inline-block;
     }
 
     .leftnav {
@@ -181,4 +217,124 @@
         justify-content: space-between;
     }
 
+    #list-card-theme-title {
+
+        left: 10%;
+
+    }
+
+}
+
+@media(max-width:572px) {
+    #menubarimg {
+        left: 0%;
+    }
+
+    .list-image-part-2 {
+        width: 100%;
+    }
+
+    #list-card-theme-title {
+
+        left: 29%;
+
+    }
+
+    .card-title {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 25px;
+    }
+}
+
+
+/* =========================================================================================================== */
+/*volunteering mission.css */
+/* =========================================================================================================== */
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 40px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+#carouselExampleControls {
+    height: 120px;
+}
+
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
+
+}
+
+ .tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    background-color: white;
+}
+
+ .tab button:hover {
+    border-bottom: 2px solid black;
+
+}
+
+ .tab button.active {
+    border-bottom: 2px solid black;
+}
+
+ .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    overflow-y: scroll;
+    height: 730px;
+}
+
+.tabcontent h3 {
+    font-weight: normal;
+}
+
+.tabcontent::-webkit-scrollbar {
+    display: none;
 }
