@@ -131,6 +131,7 @@
     height: 100vh;
     background: white;
     display: none;
+    z-index: 1;
 
 }
 
@@ -267,8 +268,8 @@
 
 .rating>label {
     position: relative;
-    width: 1em;
-    font-size: 40px;
+    width: 6rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #FFD600;
     cursor: pointer
@@ -304,7 +305,7 @@
 
 }
 
- .tab button {
+.tab button {
     float: left;
     border: none;
     outline: none;
@@ -314,16 +315,16 @@
     background-color: white;
 }
 
- .tab button:hover {
+.tab button:hover {
     border-bottom: 2px solid black;
 
 }
 
- .tab button.active {
+.tab button.active {
     border-bottom: 2px solid black;
 }
 
- .tabcontent {
+.tabcontent {
     display: none;
     padding: 6px 12px;
     border-top: none;
@@ -337,4 +338,82 @@
 
 .tabcontent::-webkit-scrollbar {
     display: none;
+}
+
+.information-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-wrap: wrap;
+}
+
+/*vol -pagination*/
+
+
+.hidden {
+    display: none;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    b
+}
+
+.pagination-number,
+.pagination-button {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+    background: #fff;
+}
+
+.pagination-number.active {
+    color: #fff;
+    background: orange;
+}
+
+#paginated-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer {
+    text-align: center;
+    background-color: #FFDFB9;
+}
+
+.volunteer-list-img {
+    border: 1px solid;
+    border-radius: 70%;
+    height: 100px;
+    width: 100px;
+}
+
+
+/* =========================================================================================================== */
+/*story-listing.css */
+/* =========================================================================================================== */
+
+#story-list-top-img {
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
+    height: 250px;
+    background-size: 100vw 615px;
+    background-repeat: no-repeat;
+    background-position: 0px -180px;
 }
