@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color:  #f9f9f9;opacity:0.85">
@@ -106,9 +109,9 @@
 
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div id="menubarimg"class=" d-flex d-md-none">
+            <div id="menubarimg"class="d-md-none">
                 <button  onclick="menubartoggle()"><img src="images/list.png"
                         alt=""></button>
             </div>
@@ -128,13 +131,14 @@
             <div class="col-6 d-flex px-5 rightnav">
                 <img src="images/user-img.png" alt="" class="src"
                     style="border-radius: 50%;height: 100%; padding: 4px;">
-                <span>John Due</span>
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    John Due
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <input type="checkbox" class="form-check-input" disabled>
-                    <label class="form-check-label">Option 3</label>
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
 
 
@@ -144,7 +148,7 @@
 
     </div>
 
-    <div class="container mt-2">
+    <div class="container-fluid mt-2">
         <div style="border-color: #414141; border:1px solid" class="row">
             <div class="col-md-6 d-flex leftheader">
                 <img src="images/search.png" alt="">
@@ -223,11 +227,11 @@
     <div class="container mt-3">
         <div class="row d-flex">
             <div class="col-6 d-flex">
-                <h2>Explore 72 Mission</h2>
+                <h1  style="font-weight: bolder;">Explore 72 Mission</h1>
             </div>
-            <div style="justify-content:space-evenly;" class="col-6 d-flex">
+            <div style="justify-content:flex-end;" class="col-6 d-flex">
                 <button class="dropdown-toggle bg-light" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                    aria-expanded="false"style="margin: 10px;">
                     Sort by
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -235,17 +239,15 @@
                     <li><button class="dropdown-item" type="button">Another action</button></li>
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
-                <button style="border-radius: 40px" onclick=""><img src="images/grid.png" alt="">
-                    <link rel="" href="">
+                <button style="border-radius:10px;margin: 10px" onclick=""><img src="images/grid.png" alt="">
+                    <link rel="" href="" >
                 </button>
-                <button onclick="listview()"><img src="images/list.png" alt=""></button>
+                <button style="border-radius:10px ;margin: 10px" onclick="listview()"><img src="images/list.png" alt=""></button>
 
             </div>
 
         </div>
     </div>
-
-
 
 
 
@@ -274,8 +276,8 @@
                 </div>
             </div>
 
-            <div  class="card-title mt-1">
-                <h3>Grow-Trees-On-the-path-to-environment-sustainability</h3>
+            <div  class="card-title-list mt-1">
+                <h3 class="card-title-list-text">Grow-Trees-On-the-path-to-environment-sustainability</h3>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore...</p>
                 <div class="card-content mt-5" style="display: flex; flex-direction: row;justify-content: space-between;">
@@ -355,8 +357,8 @@
                 </div>
             </div>
 
-            <div  class="card-title mt-1">
-                <h3>Grow-Trees-On-the-path-to-environment-sustainability</h3>
+            <div  class="card-title-list mt-1">
+                <h3 class="card-title-list-text">Grow-Trees-On-the-path-to-environment-sustainability</h3>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore...</p>
                 <div class="card-content mt-5" style="display: flex; flex-direction: row;justify-content: space-between;">
@@ -436,8 +438,8 @@
                 </div>
             </div>
 
-            <div  class="card-title mt-1">
-                <h3>Grow-Trees-On-the-path-to-environment-sustainability</h3>
+            <div  class="card-title-list mt-1">
+                <h3 class="card-title-list-text">Grow-Trees-On-the-path-to-environment-sustainability</h3>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore...</p>
                 <div class="card-content mt-5" style="display: flex; flex-direction: row;justify-content: space-between;">

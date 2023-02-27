@@ -1,0 +1,17 @@
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Repositry.deps.json
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Repositry.runtimeconfig.json
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Repositry.dll
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\ref\CI-Platform.Repositry.dll
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Repositry.pdb
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Entities.dll
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\bin\Debug\net6.0\CI-Platform.Entities.pdb
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.csproj.AssemblyReference.cache
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.GeneratedMSBuildEditorConfig.editorconfig
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.AssemblyInfoInputs.cache
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.AssemblyInfo.cs
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.csproj.CoreCompileInputs.cache
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.csproj.CopyComplete
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.dll
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\ref\CI-Platform.Repositry.dll
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.pdb
+D:\cl platform\MVC\CIPlatform\CI-Platform.Repositry\obj\Debug\net6.0\CI-Platform.Repositry.genruntimeconfig.cache

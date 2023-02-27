@@ -1,25 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model CIPlatform.Models.RegisterModel
 }
 <div class="container-fluid">
         <div class="row">
             @Html.Partial("_AccountCarousel")
             <div id="registercontent" class="col-md-4 col-sm-12 logincontent">
-                <form action="#" id="registerform">
-                    <label for="registerfname">First Name</label>
-                    <input type="text" name="registerfname" id="registerfname" placeholder="Umang">
-                    <label for="registerlname">Last Name</label>
-                    <input type="text" name="registerlname" id="registerlname" placeholder="Gohel">
-                    <label for="registerphone">Phone Number</label>
-                    <input type="text" name="registerphone" id="registerphone" placeholder="1234567890">
-                    <label for="registeremail">Email Address</label>
-                    <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
-                    <label for="registerpass">Password</label>
-                    <input type="password" name="registerpass" id="registerpass" placeholder="**********">
-                    <label for="registercpass">Confirm Password</label>
-                    <input type="password" name="registercpass" id="registercpass" placeholder="**********">
+                <form asp-action="Register" id="registerform">
+                    <label asp-for="Fname">First Name</label>
+                    <input type="text" asp-for="Fname" id="registerfname" placeholder="ajay">
+                     <span asp-validation-for="Fname" class="text-danger"></span>
+
+
+                    <label asp-for="Lname">Last Name</label>
+                    <input type="text" asp-for="Lname" id="registerlname" placeholder="tarapara">
+                     <span asp-validation-for="Lname" class="text-danger"></span>
+
+
+                    <label asp-for="Phonenumber">Phone Number</label>
+                    <input type="text" asp-for="Phonenumber" id="registerphone" placeholder="1234567890">
+                     <span asp-validation-for="Phonenumber" class="text-danger"></span>
+
+                    <label asp-for="EmailId">Email Address</label>
+                    <input type="email" asp-for="EmailId" id="loginemail" placeholder="shichan@nohara.com">
+                     <span asp-validation-for="EmailId" class="text-danger"></span>
+
+
+                    <label asp-for="Password">Password</label>
+                    <input type="password" asp-for="Password"id="registerpass" placeholder="**********">
+                     <span asp-validation-for="Password" class="text-danger"></span>
+
+
+                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                    <input type="password" asp-for="ConfirmPassword" id="registercpass" placeholder="**********">
+                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+
                     <input type="submit" value="Register">
                     <a asp-action="ForgotPassword">Lost your password?</a>
                     <p>Already registered?<a asp-action="Login">Login now</a></p>

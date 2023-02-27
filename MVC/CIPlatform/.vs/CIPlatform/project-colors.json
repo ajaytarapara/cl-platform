@@ -5,7 +5,22 @@
       "ProjectGuid": "6e8e2976-3958-4055-aada-f8745b559524",
       "DisplayName": "CIPlatform",
       "ColorIndex": 0
+    },
+    "9e9e480b-48a0-4a5a-9325-5ccb74251701": {
+      "ProjectGuid": "9e9e480b-48a0-4a5a-9325-5ccb74251701",
+      "DisplayName": "CI-Platform.Entities",
+      "ColorIndex": 1
+    },
+    "71085ba4-f4b0-44a8-97fd-4899e9ad1ba3": {
+      "ProjectGuid": "71085ba4-f4b0-44a8-97fd-4899e9ad1ba3",
+      "DisplayName": "CI-Platform.Repositry",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }

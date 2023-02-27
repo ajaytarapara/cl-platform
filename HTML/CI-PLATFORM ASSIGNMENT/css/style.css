@@ -1,8 +1,10 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
 }
-.container-fluid>.row{
+.maincarouselpart>.row{
     height: 100vh;
     width: 100vw;
 }
@@ -19,7 +21,7 @@
     bottom: 4rem;
     display: block !important;
 }
-.imgcontent h1{
+.imgcontent h2{
     font-weight: normal;
     line-height: 5vh;
     width: 61%;
@@ -83,7 +85,7 @@
 
 @media screen and (max-width:1200px){
     .logincontent>form>*{
-        font-size: 3vh;
+        font-size: 1vh;
     }    
     .logincontent{
         padding:1vh;
@@ -107,7 +109,7 @@
         font-size: 1.5vh;
         width: 100%;
     }
-    .imgcontent h1 {
+    .imgcontent h2 {
         font-weight: normal;
         line-height: 3vh;
         width: 100%;
@@ -123,7 +125,7 @@
 /* register */
 /* =========================================================================================================== */
 #registerform{
-    height: 84vh;
+    height: 80vh;
 }
 #registerform>*{
 margin-bottom: 0.2vh;
