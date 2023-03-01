@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.5.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.1.23111.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CI-Platform.Entities\CI-Platform.Entities.csproj" />
-    <ProjectReference Include="..\CI-Platform.Repositry\CI-Platform.Repositry.csproj" />
+    <ProjectReference Include="..\CIPlatform.Entities\CIPlatform.Entities.csproj" />
+    <ProjectReference Include="..\CIPlatform.Repository\CIPlatform.Repository.csproj" />
   </ItemGroup>
 
 </Project>

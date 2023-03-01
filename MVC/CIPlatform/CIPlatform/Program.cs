@@ -1,18 +1,18 @@
-using CI_Platform.Entities.DataModels;
-using CI_Platform.Repositry.Repository;
-using CI_Platform.Repositry.Repository.Interface;
-
+using CIPlatform.Entities.DataModels;
+using CIPlatform.Repository.Repository;
+using CIPlatform.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<CiDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+builder.Services.AddDbContext<CIPlatformDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("CIPlatform")
+   )); 
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

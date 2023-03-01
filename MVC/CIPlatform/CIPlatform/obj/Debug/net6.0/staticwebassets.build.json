@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mPrzY26506LfigBG7QyZgFUfkQMHLlu34xIWqAUq/hQ=",
+  "Hash": "/dUZ941Vh+NbtqhPI5iOi1iPSxlHnddobIGC/yUfWtg=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
-    },
-    {
-      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\home.css",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "css/home.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\site.css",
@@ -1955,23 +1938,6 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
-      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\ci.js",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "js/ci.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\ci.js"
-    },
-    {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -1987,6 +1953,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer_mission.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/volunteer_mission.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\volunteer_mission.js"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

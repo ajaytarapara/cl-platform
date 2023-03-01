@@ -19,10 +19,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Account/Home.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxIb21lLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -35,16 +31,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Account/volunteeringmissionpage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFx2b2x1bnRlZXJpbmdtaXNzaW9ucGFnZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Mission/Mission_Volunteer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxNaXNzaW9uX1ZvbHVudGVlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/cl platform/MVC/CIPlatform/CIPlatform/Views/Shared/Error.cshtml]

@@ -6,14 +6,14 @@
       "DisplayName": "CIPlatform",
       "ColorIndex": 0
     },
-    "9e9e480b-48a0-4a5a-9325-5ccb74251701": {
-      "ProjectGuid": "9e9e480b-48a0-4a5a-9325-5ccb74251701",
-      "DisplayName": "CI-Platform.Entities",
+    "61865e08-c6c8-403f-b3c4-069bf6c14254": {
+      "ProjectGuid": "61865e08-c6c8-403f-b3c4-069bf6c14254",
+      "DisplayName": "CIPlatform.Entities",
       "ColorIndex": 1
     },
-    "71085ba4-f4b0-44a8-97fd-4899e9ad1ba3": {
-      "ProjectGuid": "71085ba4-f4b0-44a8-97fd-4899e9ad1ba3",
-      "DisplayName": "CI-Platform.Repositry",
+    "2b15f143-5bce-4ce2-915e-04753256f347": {
+      "ProjectGuid": "2b15f143-5bce-4ce2-915e-04753256f347",
+      "DisplayName": "CIPlatform.Repository",
       "ColorIndex": 2
     },
     "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {

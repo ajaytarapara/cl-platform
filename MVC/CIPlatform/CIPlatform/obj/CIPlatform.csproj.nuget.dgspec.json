@@ -4,14 +4,14 @@
     "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj": {}
   },
   "projects": {
-    "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj": {
+    "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj",
-        "projectName": "CI-Platform.Entities",
-        "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj",
+        "projectUniqueName": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "projectName": "CIPlatform.Entities",
+        "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\obj\\",
+        "outputPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -81,14 +85,14 @@
         }
       }
     },
-    "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\CI-Platform.Repositry.csproj": {
+    "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\CI-Platform.Repositry.csproj",
-        "projectName": "CI-Platform.Repositry",
-        "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\CI-Platform.Repositry.csproj",
+        "projectUniqueName": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
+        "projectName": "CIPlatform.Repository",
+        "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
         "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
-        "outputPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\obj\\",
+        "outputPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -110,8 +114,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj": {
-                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj"
+              "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               }
             }
           }
@@ -126,6 +130,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -191,11 +199,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj": {
-                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Entities\\CI-Platform.Entities.csproj"
+              "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               },
-              "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\CI-Platform.Repositry.csproj": {
-                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CI-Platform.Repositry\\CI-Platform.Repositry.csproj"
+              "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
+                "projectPath": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj"
               }
             }
           }
@@ -210,6 +218,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
