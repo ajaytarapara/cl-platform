@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="maincarousel">
         <div class="row">
              @Html.Partial("_AccountCarousel")  
             <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
@@ -16,8 +16,7 @@
                     <label asp-for="Password">Password</label>
                     <input asp-for="Password" type="Password" id="loginpass" placeholder="**********">
                     <span asp-validation-for="Password" class="text-danger"></span>
-
-
+                    
                     <input type="submit" value="Login">
                     <a asp-action="ForgotPassword">Lost your password?</a>
                     <p>Don’t have an account?<a asp-action="Register"> Create an account</a></p>

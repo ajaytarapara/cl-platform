@@ -15,8 +15,6 @@ public partial class CIPlatformDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Admin> Admins { get; set; }
-
     public virtual DbSet<Banner> Banners { get; set; }
 
     public virtual DbSet<City> Cities { get; set; }
@@ -57,11 +55,11 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<StoryMedium> StoryMedia { get; set; }
 
+    public virtual DbSet<TableName> TableNames { get; set; }
+
     public virtual DbSet<Timesheet> Timesheets { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
-    public virtual DbSet<User1> User1s { get; set; }
 
     public virtual DbSet<UserSkill> UserSkills { get; set; }
 
@@ -70,36 +68,6 @@ public partial class CIPlatformDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Admin>(entity =>
-        {
-            entity.HasKey(e => e.AdminId).HasName("PK_admin_id");
-
-            entity.ToTable("admin");
-
-            entity.Property(e => e.AdminId).HasColumnName("admin_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnName("created_at");
-            entity.Property(e => e.DeletedAt).HasColumnName("deleted_at");
-            entity.Property(e => e.Email)
-                .HasMaxLength(128)
-                .IsUnicode(false)
-                .HasColumnName("email");
-            entity.Property(e => e.FirstName)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("first_name");
-            entity.Property(e => e.LastName)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("last_name");
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("password");
-            entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
-        });
-
         modelBuilder.Entity<Banner>(entity =>
         {
             entity.HasKey(e => e.BannerId).HasName("PK_banner_id");
@@ -148,7 +116,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<CmsPage>(entity =>
         {
-            entity.HasKey(e => e.CmsPageId).HasName("PK__cms_page__B46D5B52915410E3");
+            entity.HasKey(e => e.CmsPageId).HasName("PK__cms_page__B46D5B52739216CC");
 
             entity.ToTable("cms_page");
 
@@ -181,7 +149,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.CommentId).HasName("PK__comment__E795768798B56953");
+            entity.HasKey(e => e.CommentId).HasName("PK__comment__E7957687552E87EC");
 
             entity.ToTable("comment");
 
@@ -207,12 +175,12 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__comment__mission__339FAB6E");
+                .HasConstraintName("FK__comment__mission__1DB06A4F");
 
             entity.HasOne(d => d.User).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__comment__user_id__32AB8735");
+                .HasConstraintName("FK__comment__user_id__1CBC4616");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -239,7 +207,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<FavouriteMission>(entity =>
         {
-            entity.HasKey(e => e.FavouriteMissionId).HasName("PK__favourit__94E4D8CA0D24B3DF");
+            entity.HasKey(e => e.FavouriteMissionId).HasName("PK__favourit__94E4D8CA2CCAB392");
 
             entity.ToTable("favourite_mission");
 
@@ -260,17 +228,17 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.FavouriteMissions)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__favourite__missi__2B0A656D");
+                .HasConstraintName("FK__favourite__missi__151B244E");
 
             entity.HasOne(d => d.User).WithMany(p => p.FavouriteMissions)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__favourite__user___2A164134");
+                .HasConstraintName("FK__favourite__user___14270015");
         });
 
         modelBuilder.Entity<GoalMission>(entity =>
         {
-            entity.HasKey(e => e.GoalMissionId).HasName("PK__goal_mis__358E02C720648886");
+            entity.HasKey(e => e.GoalMissionId).HasName("PK__goal_mis__358E02C775C220B1");
 
             entity.ToTable("goal_mission");
 
@@ -295,12 +263,12 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.GoalMissions)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__goal_miss__missi__2645B050");
+                .HasConstraintName("FK__goal_miss__missi__10566F31");
         });
 
         modelBuilder.Entity<Mission>(entity =>
         {
-            entity.HasKey(e => e.MissionId).HasName("PK__mission__B5419AB24F99A370");
+            entity.HasKey(e => e.MissionId).HasName("PK__mission__B5419AB2908BB4E3");
 
             entity.ToTable("mission");
 
@@ -354,22 +322,22 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.City).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__city_id__797309D9");
+                .HasConstraintName("FK__mission__city_id__6383C8BA");
 
             entity.HasOne(d => d.Country).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__country__7A672E12");
+                .HasConstraintName("FK__mission__country__6477ECF3");
 
             entity.HasOne(d => d.Theme).WithMany(p => p.Missions)
                 .HasForeignKey(d => d.ThemeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission__theme_i__787EE5A0");
+                .HasConstraintName("FK__mission__theme_i__628FA481");
         });
 
         modelBuilder.Entity<MissionApplication>(entity =>
         {
-            entity.HasKey(e => e.MissionApplicationId).HasName("PK__mission___DF92838AC3605071");
+            entity.HasKey(e => e.MissionApplicationId).HasName("PK__mission___DF92838AF663A624");
 
             entity.ToTable("mission_application");
 
@@ -405,7 +373,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<MissionDocument>(entity =>
         {
-            entity.HasKey(e => e.MissionDocumentId).HasName("PK__mission___E80E0CC85790E75D");
+            entity.HasKey(e => e.MissionDocumentId).HasName("PK__mission___E80E0CC885CB51FE");
 
             entity.ToTable("mission_document");
 
@@ -437,12 +405,12 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionDocuments)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_d__missi__1DB06A4F");
+                .HasConstraintName("FK__mission_d__missi__07C12930");
         });
 
         modelBuilder.Entity<MissionInvite>(entity =>
         {
-            entity.HasKey(e => e.MissionInviteId).HasName("PK__mission___A97ED1589E3079C1");
+            entity.HasKey(e => e.MissionInviteId).HasName("PK__mission___A97ED158795EBF41");
 
             entity.ToTable("mission_invite");
 
@@ -459,22 +427,22 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.FromUser).WithMany(p => p.MissionInviteFromUsers)
                 .HasForeignKey(d => d.FromUserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_i__from___18EBB532");
+                .HasConstraintName("FK__mission_i__from___02FC7413");
 
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionInvites)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_i__missi__17F790F9");
+                .HasConstraintName("FK__mission_i__missi__02084FDA");
 
             entity.HasOne(d => d.ToUser).WithMany(p => p.MissionInviteToUsers)
                 .HasForeignKey(d => d.ToUserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_i__to_us__19DFD96B");
+                .HasConstraintName("FK__mission_i__to_us__03F0984C");
         });
 
         modelBuilder.Entity<MissionMedium>(entity =>
         {
-            entity.HasKey(e => e.MissionMediaId).HasName("PK__mission___848A78E865C995A7");
+            entity.HasKey(e => e.MissionMediaId).HasName("PK__mission___848A78E8213490DA");
 
             entity.ToTable("mission_media");
 
@@ -509,12 +477,12 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionMedia)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_m__missi__1332DBDC");
+                .HasConstraintName("FK__mission_m__missi__7D439ABD");
         });
 
         modelBuilder.Entity<MissionRating>(entity =>
         {
-            entity.HasKey(e => e.MissionRatingId).HasName("PK__mission___320E51728F33EFBC");
+            entity.HasKey(e => e.MissionRatingId).HasName("PK__mission___320E5172ECFCC9A4");
 
             entity.ToTable("mission_rating");
 
@@ -536,17 +504,17 @@ public partial class CIPlatformDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionRatings)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_r__missi__0E6E26BF");
+                .HasConstraintName("FK__mission_r__missi__787EE5A0");
 
             entity.HasOne(d => d.User).WithMany(p => p.MissionRatings)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_r__user___0D7A0286");
+                .HasConstraintName("FK__mission_r__user___778AC167");
         });
 
         modelBuilder.Entity<MissionSkill>(entity =>
         {
-            entity.HasKey(e => e.MissionSkillId).HasName("PK__mission___8271200853663F75");
+            entity.HasKey(e => e.MissionSkillId).HasName("PK__mission___82712008ADB6DB00");
 
             entity.ToTable("mission_skill");
 
@@ -561,12 +529,12 @@ public partial class CIPlatformDbContext : DbContext
 
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionSkills)
                 .HasForeignKey(d => d.MissionId)
-                .HasConstraintName("FK__mission_s__missi__0A9D95DB");
+                .HasConstraintName("FK__mission_s__missi__74AE54BC");
 
             entity.HasOne(d => d.Skill).WithMany(p => p.MissionSkills)
                 .HasForeignKey(d => d.SkillId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mission_s__skill__09A971A2");
+                .HasConstraintName("FK__mission_s__skill__73BA3083");
         });
 
         modelBuilder.Entity<MissionTheme>(entity =>
@@ -581,7 +549,6 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnName("created_at");
             entity.Property(e => e.DeletedAt).HasColumnName("deleted_at");
             entity.Property(e => e.Status)
-                .IsRequired()
                 .HasDefaultValueSql("((1))")
                 .HasColumnName("status");
             entity.Property(e => e.Title)
@@ -593,17 +560,17 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<PasswordReset>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("password_reset");
+            entity.HasKey(e => e.Email);
 
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnName("created_at");
+            entity.ToTable("password_reset");
+
             entity.Property(e => e.Email)
                 .HasMaxLength(191)
                 .IsUnicode(false)
                 .HasColumnName("email");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
             entity.Property(e => e.Token)
                 .HasMaxLength(191)
                 .IsUnicode(false)
@@ -633,7 +600,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<Story>(entity =>
         {
-            entity.HasKey(e => e.StoryId).HasName("PK__story__66339C56B9727D6D");
+            entity.HasKey(e => e.StoryId).HasName("PK__story__66339C561C040EDB");
 
             entity.ToTable("story");
 
@@ -692,11 +659,16 @@ public partial class CIPlatformDbContext : DbContext
             entity.Property(e => e.StoryId).HasColumnName("story_id");
             entity.Property(e => e.ToUserId).HasColumnName("to_user_id");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+
+            entity.HasOne(d => d.Story).WithMany(p => p.StoryInvites)
+                .HasForeignKey(d => d.StoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_story_invite_story_id");
         });
 
         modelBuilder.Entity<StoryMedium>(entity =>
         {
-            entity.HasKey(e => e.StoryMediaId).HasName("PK__story_me__29BD053C1B61F0A4");
+            entity.HasKey(e => e.StoryMediaId).HasName("PK__story_me__29BD053C46BBF144");
 
             entity.ToTable("story_media");
 
@@ -726,9 +698,39 @@ public partial class CIPlatformDbContext : DbContext
                 .HasConstraintName("fk_story_story_media");
         });
 
+        modelBuilder.Entity<TableName>(entity =>
+        {
+            entity.HasKey(e => e.AdminId).HasName("PK_admin_id");
+
+            entity.ToTable("table_name");
+
+            entity.Property(e => e.AdminId).HasColumnName("admin_id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.DeletedAt).HasColumnName("deleted_at");
+            entity.Property(e => e.Email)
+                .HasMaxLength(128)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(16)
+                .IsUnicode(false)
+                .HasColumnName("first_name");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(16)
+                .IsUnicode(false)
+                .HasColumnName("last_name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+        });
+
         modelBuilder.Entity<Timesheet>(entity =>
         {
-            entity.HasKey(e => e.TimesheetId).HasName("PK__timeshee__7BBF5068AC433503");
+            entity.HasKey(e => e.TimesheetId).HasName("PK__timeshee__7BBF5068DFFC889E");
 
             entity.ToTable("timesheet");
 
@@ -771,7 +773,7 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__user__B9BE370F2EFD4437");
+            entity.HasKey(e => e.UserId).HasName("PK__user__B9BE370FE012813E");
 
             entity.ToTable("user");
 
@@ -839,71 +841,9 @@ public partial class CIPlatformDbContext : DbContext
                 .HasConstraintName("FK_user_country_id");
         });
 
-        modelBuilder.Entity<User1>(entity =>
-        {
-            entity.HasKey(e => e.UserId).HasName("PK__user1__B9BE370FF3D9A6C9");
-
-            entity.ToTable("user1");
-
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.Avatar)
-                .HasMaxLength(2048)
-                .IsUnicode(false)
-                .HasColumnName("avatar");
-            entity.Property(e => e.CityId).HasColumnName("city_id");
-            entity.Property(e => e.CountryId).HasColumnName("country_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnName("created_at");
-            entity.Property(e => e.DeletedAt).HasColumnName("deleted_at");
-            entity.Property(e => e.Department)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("department");
-            entity.Property(e => e.Email)
-                .HasMaxLength(128)
-                .IsUnicode(false)
-                .HasColumnName("email");
-            entity.Property(e => e.EmployeeId)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("employee_id");
-            entity.Property(e => e.FirstName)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("first_name");
-            entity.Property(e => e.LastName)
-                .HasMaxLength(16)
-                .IsUnicode(false)
-                .HasColumnName("last_name");
-            entity.Property(e => e.LinkedInUrl)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("linked_in_url");
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("password");
-            entity.Property(e => e.PhoneNumber).HasColumnName("phone_number");
-            entity.Property(e => e.ProfileText)
-                .HasColumnType("text")
-                .HasColumnName("profile_text");
-            entity.Property(e => e.Status)
-                .HasDefaultValueSql("((1))")
-                .HasColumnName("status");
-            entity.Property(e => e.Title)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("title");
-            entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
-            entity.Property(e => e.WhyIVolunteer)
-                .HasColumnType("text")
-                .HasColumnName("why_i_volunteer");
-        });
-
         modelBuilder.Entity<UserSkill>(entity =>
         {
-            entity.HasKey(e => e.UserSkillId).HasName("PK__user_ski__FD3B576BE1401299");
+            entity.HasKey(e => e.UserSkillId).HasName("PK__user_ski__FD3B576BB3E71AD5");
 
             entity.ToTable("user_skill");
 

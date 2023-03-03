@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-using CIPlatform.Entities.DataModels;
+﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Repository.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -23,8 +17,24 @@ namespace CIPlatform.Repository.Repository
         }
         public IEnumerable<User> getUsers()
         {
-            var Users= _ciPlatformDbContext.Users;
+            var Users = _ciPlatformDbContext.Users;
             return Users;
+        }
+
+
+        void IUserRepository.addResetPasswordToken(PasswordReset passwordResetObj)
+        {
+            bool isAlreadyGenerated = _ciPlatformDbContext.PasswordResets.Any(u => u.Email.Equals(passwordResetObj.Email));
+            if (isAlreadyGenerated)
+            {
+                _ciPlatformDbContext.Update(passwordResetObj);
+
+            }
+            else
+            {
+                _ciPlatformDbContext.Add(passwordResetObj);
+            }
+            _ciPlatformDbContext.SaveChanges();
         }
 
         void IUserRepository.addUser(User user)
@@ -39,8 +49,23 @@ namespace CIPlatform.Repository.Repository
         }
         User IUserRepository.findUser(int? id)
         {
-            return _ciPlatformDbContext.Users.Where(u=> u.UserId == id).First();
+            return _ciPlatformDbContext.Users.Where(u => u.UserId == id).First();
         }
+
+        PasswordReset IUserRepository.findUserByToken(string token)
+        {
+            return _ciPlatformDbContext.PasswordResets.Where(u => u.Token == token).First();
+        }
+
+
+
+        void IUserRepository.RemoveResetPasswordToken(PasswordReset obj)
+        {
+            _ciPlatformDbContext.Remove(obj);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+
 
         void IUserRepository.updatePassword(User user)
         {
@@ -55,10 +80,15 @@ namespace CIPlatform.Repository.Repository
 
         bool IUserRepository.validateUser(string email, string password)
         {
-            return _ciPlatformDbContext.Users.Any(u => u.Password == password && u.Email== email);
+            return _ciPlatformDbContext.Users.Any(u => u.Password == password && u.Email == email);
         }
 
-        
+        void IUserRepository.removeResetPasswordToken(PasswordReset obj)
+        {
+            _ciPlatformDbContext.Remove(obj);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
 
     }
 }

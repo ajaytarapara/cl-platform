@@ -11,6 +11,8 @@ builder.Services.AddDbContext<CIPlatformDbContext>(options => options.UseSqlServ
     builder.Configuration.GetConnectionString("CIPlatform")
    )); 
 builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IHomeRepository, HomeRepository>();
+builder.Services.AddScoped<IMissionRepository,MissionRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/dUZ941Vh+NbtqhPI5iOi1iPSxlHnddobIGC/yUfWtg=",
+  "Hash": "AWiK/0fGIrNsU5WJ5q4Qp4+ST1oVLKs6j6/4eK9aKVQ=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1938,6 +1938,23 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
+      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\ci.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/ci.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ci.js"
+    },
+    {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -1953,23 +1970,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
-    },
-    {
-      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer_mission.js",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "js/volunteer_mission.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\volunteer_mission.js"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

@@ -1,25 +1,27 @@
-﻿
-using CIPlatform.Repository.Repository.Interface;
+﻿using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Entities.DataModels;
 using MailKit.Net.Smtp;
 using MimeKit;
 using CIPlatform.Helpers;
+using System.Collections;
+using Microsoft.Extensions.Logging;
 
 namespace CIPlatform.Controllers
 {
     public class AccountController : Controller
     {
-        private int? tempId;
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
-        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
+        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
+           )
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
+
         }
         public IActionResult Login()
         {
@@ -31,7 +33,7 @@ namespace CIPlatform.Controllers
         {
             string emailId = obj.EmailId;
             string password = obj.Password;
-            Boolean isValidEmail=_userRepository.validateEmail(emailId);
+            Boolean isValidEmail = _userRepository.validateEmail(emailId);
             if (!isValidEmail)
             {
                 ModelState.AddModelError("EmailId", "Email not found");
@@ -43,11 +45,10 @@ namespace CIPlatform.Controllers
                 {
                     ModelState.AddModelError("Password", "Password does not match");
                 }
-
             }
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Mission_Volunteer", "Mission");
+                return RedirectToAction("Index", "Home");
             }
             return Login();
         }
@@ -60,37 +61,30 @@ namespace CIPlatform.Controllers
 
         public IActionResult ForgotPassword(ForgotPasswordModel obj)
         {
-            if(!_userRepository.validateEmail(obj.EmailId))
+            if (!_userRepository.validateEmail(obj.EmailId))
             {
-                ModelState.AddModelError("EmailId","Email not found");
+                ModelState.AddModelError("EmailId", "Email not found");
             }
             if (ModelState.IsValid)
             {
-                var userObj=_userRepository.findUser(obj.EmailId);
+
+                string uuid = Guid.NewGuid().ToString();
+                PasswordReset resetPasswordObj = new PasswordReset();
+                resetPasswordObj.Email = obj.EmailId;
+                resetPasswordObj.Token = uuid;
+                resetPasswordObj.CreatedAt = DateTime.Now;
+
+                _userRepository.addResetPasswordToken(resetPasswordObj);
+
+                var userObj = _userRepository.findUser(obj.EmailId);
                 int UserID = (int)userObj.UserId;
                 string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. </br>";
-                string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword/" + UserID.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
+                string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword?token=" + uuid + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                 MailHelper mailHelper = new MailHelper(configuration);
                 ViewBag.sendMail = mailHelper.Send(obj.EmailId, welcomeMessage + path);
-                
 
-                //var message = new MimeMessage();
-                //message.From.Add(new MailboxAddress("Ajay", "ajaytarapara77@gmail.com"));
-                //message.To.Add(new MailboxAddress("Ajay", "ajaytarapara77@gmail.com"));
-                //message.Subject = "CI platform test message";
-                //message.Body = new TextPart("plain")
-                //{
-                //    Text = "ajju"
-                //};
-                //using (var client=new SmtpClient())
-                //{
-                //    client.Connect("smtp.gmail.com",587,false);
-                //    client.Authenticate("ajaytarapara77@gmail.com.com", "ajay@1011");
-                //    client.Send(message);
-                //    client.Disconnect(true);
-                //}
 
-                return RedirectToAction("NewPassword",new {id=userObj.UserId});
+                return View();
             }
             return View();
         }
@@ -109,7 +103,7 @@ namespace CIPlatform.Controllers
             else
             {
                 if (!obj.Password.Equals(obj.ConfirmPassword))
-                { 
+                {
                     ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
                 }
             }
@@ -121,27 +115,41 @@ namespace CIPlatform.Controllers
                 user.PhoneNumber = long.Parse(obj.PhoneNo);
                 user.Email = obj.EmailId;
                 user.Password = obj.Password;
-                _userRepository.addUser(user);                
+                _userRepository.addUser(user);
                 return RedirectToAction("Login");
             }
             return View();
         }
 
-        public IActionResult NewPassword(int? id)
+        public IActionResult NewPassword(string? token)
         {
-            tempId = id;
-            return View();
+
+            var resetObj = _userRepository.findUserByToken(token);
+            TimeSpan remainingTime = DateTime.Now - resetObj.CreatedAt;
+
+            int hour = remainingTime.Hours;
+
+            if (hour >= 4)
+            {
+                _userRepository.removeResetPasswordToken(resetObj);
+                return RedirectToAction("Login");
+            }
+            NewPasswordModel newPasswordModel = new NewPasswordModel();
+            newPasswordModel.token = token;
+            return View(newPasswordModel);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult NewPassword(NewPasswordModel obj,int? id)
+        public IActionResult NewPassword(NewPasswordModel obj)
         {
-            if (id != null)
+            string token = obj.token;
+            if (token != null)
             {
                 if (obj.NewPassword.Equals(obj.ConfirmPassword))
                 {
-                    var userObj = _userRepository.findUser(id);
+
+                    var resetObj = _userRepository.findUserByToken(token);
+                    var userObj = _userRepository.findUser(resetObj.Email);
                     if (!obj.NewPassword.Equals(userObj.Password))
                     {
                         userObj.Password = obj.NewPassword;
@@ -160,6 +168,8 @@ namespace CIPlatform.Controllers
             }
             return View();
         }
+
+        
 
 
 

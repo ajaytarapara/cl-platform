@@ -198,3 +198,5 @@ previewImage.src=carouselImages[i].src;
 }
 console.log(carouselImages);
 console.log(preview-image);
+
+//chips//
