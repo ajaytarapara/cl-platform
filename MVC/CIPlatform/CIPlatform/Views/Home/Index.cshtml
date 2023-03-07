@@ -140,7 +140,7 @@
                     style="border-radius: 50%;height: 100%; padding: 4px;">
                     <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                    @Model.username
+                    username
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li><button class="dropdown-item" type="button">Action</button></li>
@@ -174,23 +174,30 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Country
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="countryDropDownList">
+                  @* @{
+                       @foreach (var country in Model.countryList)
+                  {
+                      <li class="p-1">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                          @country.Name
+                          </a>
+                      </li>
+                  }  } *@ 
                 </ul>
                 <button style="border: none; background: white;background: white;
                 height: 100%;
                
                 border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    City
+                 city
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
-                </ul>
+
+                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="cityDropDownList">
+                                     
+                    
+                 </ul>
+                
                 <button style="border: none; background: white;background: white;
                 height: 100%;
                 
@@ -198,10 +205,8 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Theme
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="themeDropDownList">
+            
                 </ul>
                 <button style="border: none; background: white; background: white;
                 height: 100%;
@@ -210,7 +215,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Skills
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="skillDropDownList">
                     <li><button class="dropdown-item" type="button">Action</button></li>
                     <li><button class="dropdown-item" type="button">Another action</button></li>
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
@@ -226,9 +231,12 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-12" style="height: 30px; border:1px solid black;" id="filterlist">
-
+      <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
+      <div class="chips d-flex flex-wrap mr-2">
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <div class="container mt-3">
@@ -280,9 +288,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Grow-Trees On the path to environment sustainability</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmodtempor incididunt ut labore...</p>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
                         <div style="justify-content:space-between;" class="d-flex ">
                             <span>
                                 Tree Canada
@@ -346,7 +353,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Grow-Trees On the path to environment sustainability</h5>
+                        <h5 class="card-title">Grow more Tress and plantation</h5>
+
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmodtempor incididunt ut labore...</p>
                         <div style="justify-content:space-between;" class="d-flex ">

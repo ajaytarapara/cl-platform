@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AWiK/0fGIrNsU5WJ5q4Qp4+ST1oVLKs6j6/4eK9aKVQ=",
+  "Hash": "QN3109cJuYQdY9z1wEHhnjnhdPpxfe8bOAI9R8m7Y8k=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1953,6 +1953,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\ci.js"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\custom.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/custom.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\custom.js"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",

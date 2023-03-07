@@ -48,6 +48,7 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
+             
                 return RedirectToAction("Index", "Home");
             }
             return Login();
