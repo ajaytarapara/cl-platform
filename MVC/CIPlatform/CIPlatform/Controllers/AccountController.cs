@@ -7,6 +7,7 @@ using MimeKit;
 using CIPlatform.Helpers;
 using System.Collections;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace CIPlatform.Controllers
 {
@@ -15,6 +16,7 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
+
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
            )
         {
@@ -48,7 +50,8 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
-             
+                HttpContext.Session.SetString("useremail",emailId);
+
                 return RedirectToAction("Index", "Home");
             }
             return Login();

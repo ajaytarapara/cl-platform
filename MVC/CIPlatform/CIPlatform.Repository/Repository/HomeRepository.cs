@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CIPlatform.Repository.Repository
@@ -41,7 +43,8 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Mission> IHomeRepository.GetMissions()
         {
-            return _ciPlatformDbContext.Missions.Include(mission => mission.City).Include(city => city.Country).Include(mission => mission.Theme);
+
+            return _ciPlatformDbContext.Missions.Include(mission => mission.City).Include(city => city.Country).Include(theme=>theme.Theme).Include(media=>media.MissionMedia);
 
         }
         IEnumerable<string> IHomeRepository.Getimgmissionurl()
@@ -73,6 +76,7 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x =>x.EndDate).ToList();
         }
-        
+
+ 
     }
 }

@@ -40,6 +40,8 @@ using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CIPlatform.Controllers
 {
@@ -47,6 +49,9 @@ namespace CIPlatform.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IHomeRepository _homeRepository;
+
+      
+
         public HomeController(IUserRepository userRepository, IHomeRepository homeRepository)
         {
             _userRepository = userRepository;
@@ -54,18 +59,20 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Index()
         {
-          //  string userSessionEmailId = HttpContext.Session.GetString("useremail");
-          //  if (userSessionEmailId == null)
-          //{
-          //     return RedirectToAction("Login", "Account");
-          // }
+
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+    
+            if (userSessionEmailId == null)
+              {
+                  return RedirectToAction("Login", "Account");
+              }
 
             var missions = _homeRepository.GetMissions();
 
             HomeModel HomeModel = new HomeModel();
       
-            //User userObj = _userRepository.findUser(userSessionEmailId);
-            //HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            HomeModel.username = userObj.FirstName + " " + userObj.LastName;
 
             IEnumerable<Country> countries = _homeRepository.getCountries();
             HomeModel.countryList = countries;
@@ -85,6 +92,9 @@ namespace CIPlatform.Controllers
 
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
+
+            
+            
 
             return View(HomeModel);
           
@@ -124,5 +134,23 @@ namespace CIPlatform.Controllers
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             return Json(new { data = missiondiscription });
         }
+       public IActionResult GetMission()
+        {
+            IEnumerable<Mission> mission = _homeRepository.GetMissions();
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+            string gridview = System.Text.Json.JsonSerializer.Serialize(mission, options);
+            return Json(new { data = gridview });
+
+        }
+        public IActionResult GetGridView()
+        {
+            return Json(_dataBaseForCiPlatformContext.FromSqlInterpolated($"exec SP_GETDATAFORVIEW"));
+        }
+
+
     }
 }

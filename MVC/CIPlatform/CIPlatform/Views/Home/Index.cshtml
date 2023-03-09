@@ -1,28 +1,11 @@
 ﻿@model CIPlatform.Entities.ViewModels.HomeModel
-
+@inject IHttpContextAccessor httpcontextaccessor
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<!DOCTYPE html>
-<html lang="en">
+*@{}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-</head>
 
-<body style="background-color:  #f9f9f9;opacity:0.85">
+
 <div class="col-4  d-md-none"
         style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
         id="menubar">
@@ -140,7 +123,7 @@
                     style="border-radius: 50%;height: 100%; padding: 4px;">
                     <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                    username
+                    @Model.username
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li><button class="dropdown-item" type="button">Action</button></li>
@@ -265,7 +248,7 @@
     </div>
 
     <div class="container mt-3">
-        <div class="row">
+        <div class="row" id="grid">
             <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
                 <div class="card mt-2 shadow">
                     <div class="list-image-part position-relative">
@@ -274,15 +257,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 Torrento
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -316,7 +299,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -326,7 +309,7 @@
                             <button
                                 style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a
                                     style="color: #F88634; text-decoration: none;" href="http://">Apply</a><img
-                                    src="images/right-arrow.png" alt=""></button>
+                                    src="~/images/right-arrow.png" alt=""></button>
                         </div>
                     </div>
                 </div>
@@ -339,15 +322,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 Torrento
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -383,7 +366,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -397,9 +380,7 @@
                         </div>
                     </div>
                 </div>
-
-
-            </div>
+             </div>
 
 
             <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
@@ -410,15 +391,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">childern</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 Melbourn
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -453,7 +434,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -476,15 +457,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 Torrento
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -519,7 +500,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -547,15 +528,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">nutrition</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 barcelona
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -590,7 +571,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -613,15 +594,15 @@
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
                             <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                                <img src="images/pin.png" alt="">
+                                <img src="~/images/pin.png" alt="">
                                 Torrento
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                 <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/heart.png" alt="">
+                                    <img src="~/images/heart.png" alt="">
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                                    <img src="images/user.png" alt="">
+                                    <img src="~/images/user.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -656,7 +637,7 @@
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="images/hours.png" alt=""><span>09/01/2019 <br>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
                                     Deadline</span> </div>
                         </div>
 
@@ -701,9 +682,3 @@
     </div>
     <hr style="margin-top:10px;">
 
-
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/ci.js"></script>
-</body>
-
-</html>

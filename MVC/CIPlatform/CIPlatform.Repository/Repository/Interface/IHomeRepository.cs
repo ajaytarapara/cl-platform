@@ -27,5 +27,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<string> GetMissionstartdate();
 
         public IEnumerable<string> GetMissionenddate();
+
     }
 }
