@@ -19,21 +19,22 @@ namespace CIPlatform.Entities.ViewModels
 
         public IEnumerable<string> missiondiscription { get; set; }
 
-        public IEnumerable<string>  Missionid { get; set; }
+        public int  Missionid { get; set; }
         public IEnumerable<string> MissionTheme { get; set; }
-        public IEnumerable<string> MissionTitle { get; set; }
-        public IEnumerable<string> CityName{ get; set; }
-        public IEnumerable<string> MissionShortDescription { get; set; }
-        public IEnumerable<string> OrganizationName { get; set; }
-        public IEnumerable<string> Imagepath { get; set; }
-        public IEnumerable<string> StartDate { get; set; }
-        public IEnumerable<string> EndDate { get; set; }
-        public IEnumerable<string> Avaliblity { get; set; }
-        public IEnumerable<string> Rating { get; set; }
+        public string MissionTitle { get; set; }
+        public string CityName{ get; set; }
+        public string MissionShortDescription { get; set; }
+        public string OrganizationName { get; set; }
+        public string mediapath { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string Avaliblity { get; set; }
+        public string Rating { get; set; }
+        public string Medianame { get; set; }
+        public string Mediatype { get; set; }
+        public string themetitle { get; set; }
 
-        public static object? FromSqlInterpolated(string v)
-        {
-            throw new NotImplementedException();
-        }
+
+
     }
 }

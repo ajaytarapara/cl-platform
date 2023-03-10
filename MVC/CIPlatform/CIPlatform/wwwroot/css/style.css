@@ -555,6 +555,7 @@
     font-weight: bolder;
 }
 
+
 @media(max-width:2500px) {
     #menubarimg {
         display: none;

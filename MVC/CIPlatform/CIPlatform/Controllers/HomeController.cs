@@ -94,10 +94,11 @@ namespace CIPlatform.Controllers
             HomeModel.missiondiscription = missiondiscription;
 
             
-            
 
             return View(HomeModel);
-          
+
+
+
         }
         public IActionResult Mission_Volunteer()
         {
@@ -146,11 +147,11 @@ namespace CIPlatform.Controllers
             return Json(new { data = gridview });
 
         }
-        public IActionResult GetGridView()
+        public IActionResult getMissionFromSp()
         {
-            return Json(_dataBaseForCiPlatformContext.FromSqlInterpolated($"exec SP_GETDATAFORVIEW"));
+            var data = _homeRepository.Getgridview();
+            return PartialView("_grid",data);
         }
-
 
     }
 }

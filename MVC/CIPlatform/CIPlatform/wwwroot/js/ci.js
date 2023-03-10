@@ -4,18 +4,12 @@ var cardbody = document.getElementsByClassName("card-body")
 
 // Declare a loop variable
 var i;
-function listview() {
-    for (i = 0; i < elements.length; i++) {
-        elements[i].style.width = "100%";
 
-    }
-}
 function gridView() {
     for (i = 0; i < elements.length; i++) {
         elements[i].style.width = "32%";
     }
 }
-
 let flag = 0;
 function menubartoggle() {
     let p = document.getElementById("menubarimg");

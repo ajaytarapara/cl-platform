@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<string> GetMissionstartdate();
 
         public IEnumerable<string> GetMissionenddate();
+        public IEnumerable<GridModel> Getgridview();
 
     }
 }

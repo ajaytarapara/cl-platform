@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CIPlatform.Entities.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace CIPlatform.Entities.DataModels;
@@ -62,6 +63,7 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserSkill> UserSkills { get; set; }
+    public virtual DbSet<GridModel> gridview { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");

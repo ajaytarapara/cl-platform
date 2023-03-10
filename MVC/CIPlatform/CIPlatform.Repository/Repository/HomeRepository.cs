@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -76,7 +77,10 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x =>x.EndDate).ToList();
         }
-
+        IEnumerable<GridModel>IHomeRepository.Getgridview()
+        {
+            return _ciPlatformDbContext.gridview.FromSqlInterpolated($"exec sp_get_gridview_data");
+        }
  
     }
 }
