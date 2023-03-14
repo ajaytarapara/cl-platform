@@ -138,7 +138,7 @@
     <div class="container-fluid mt-2">
         <div style="border-color: #414141; border:1px solid" class="row">
             <div class="col-md-6 d-flex leftheader">
-                <button id="searchbar"><img src="~/images/search.png"  alt=""></button>
+               <img src="~/images/search.png"  alt="">
                 <input type="text" name="searchtext" id="search-input" placeholder="Search Mission">
                 <div>
                     <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
@@ -231,14 +231,14 @@
                     Sort by
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    <li><button class="dropdown-item" type="checkbox">SortByDate</button></li>
+                    <li><button class="dropdown-item" type="checkbox">Another action</button></li>
+                    <li><button class="dropdown-item" type="checkbox">Something else here</button></li>
                 </ul>
-                <button style="border-radius:10px;margin: 10px" onclick=""><img src="~/images/grid.png" alt="">
+                <button id="gridbtn" style="border-radius:10px;margin: 10px" ><img src="~/images/grid.png" alt="">
                     <link rel="" href="" >
                 </button>
-                <button style="border-radius:10px ;margin: 10px" onclick="listview()"><img src="~/images/list.png" alt=""></button>
+                <button id="listbtn" style="border-radius:10px ;margin: 10px"><img src="~/images/list.png" alt=""></button>
 
             </div>
 

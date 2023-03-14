@@ -3,7 +3,7 @@
 @foreach(var Item in Model)
 {
 @*    Views_Shared__grid view of mision card*@
-             <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission"id="gridtogglecard" >
+              <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
                 <div class="card mt-2 shadow" >
                     <div class="list-image-part position-relative">
                         <img src="~/@Item.MediaPath/@Item.MediaName.@Item.MediaType" class="list-img"
@@ -55,26 +55,27 @@
                             <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> seats left</span></div>
 
                             <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
-                                    Deadline</span> </div>
+             tope</span> </div>
                         </div>
 
                         <hr>
 
                         <div style="justify-content: center;" class="d-flex pt-2">
-                            <button
-                                style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a
+                            <button 
+                                style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a 
                                     style="color: #F88634; text-decoration: none;" href="http://">Apply</a><img
                                     src="~/images/right-arrow.png" alt=""></button>
                         </div>
                     </div>
                 </div>
-             </div>
+             </div> 
+            
           
                    
 
 @*listview of mission card*@
 <div class="listviewmissioncard" style="display:none;">
-        <div style="flex-direction:row;justify-content: space-between;flex-wrap: wrap;" class="card shadow d-flex">
+        <div style="flex-direction:row;justify-content: space-between;flex-wrap: wrap;" class="card shadow d-flex mt-3">
 
             <div  class="list-image-part-2 position-relative">
                 <img src="/@Item.MediaPath/@Item.MediaName.@Item.MediaType" id="list-img" alt="" />

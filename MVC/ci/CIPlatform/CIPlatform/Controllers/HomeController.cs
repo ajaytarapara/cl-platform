@@ -102,8 +102,9 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Mission_Volunteer()
         {
-            return View();
+            return RedirectToAction("Mission_Volunteer", "Mission");
         }
+
         public IActionResult GetCountries()
         {
             IEnumerable<Country> countries = _homeRepository.getCountries();
@@ -147,11 +148,12 @@ namespace CIPlatform.Controllers
             return Json(new { data = gridview });
 
         }
-        public IActionResult getMissionFromSp(string country, string city, string theme, string skill)
+        public IActionResult getMissionFromSp(string country, string city, string theme, string skill, string searchText)
         {
-            var data = _homeRepository.Getgridview(country,city,theme,skill);
+            var data = _homeRepository.Getgridview(country,city,theme,skill,searchText);
             return PartialView("_grid",data);
         }
+
 
     }
 }

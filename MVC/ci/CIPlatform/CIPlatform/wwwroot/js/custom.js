@@ -127,11 +127,12 @@ var selectedCountries = "";
 var selectedCities = "";
 var selectedThemes = "";
 var selectedSkills = "";
+var searchText = "";
 function loadgetgrid() {
     $.ajax({
         type: "POST",
         url: "/Home/getMissionFromSp",
-        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills },
+        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText },
        success: function (data)
         {
             var html = "";
@@ -140,6 +141,7 @@ function loadgetgrid() {
 
             griddata.html("");
            griddata.html(data);
+
         },
         failure: function (response) {
             alert("failure");
@@ -163,7 +165,13 @@ function intializeChips() {
         $(".close-chips").show();
         $(".no-filter-text").hide();
         $(".close-chips").show();
-
+        $(".close-chips").click(function () {
+            $(".chip").each(function () {
+                $(this).hide();
+                $(".no-filter-text").show();
+                $(".close-chips").hide();
+            });
+        });
         /*filter*/
         //country filters
         selectedCountries = "";
@@ -189,16 +197,53 @@ function intializeChips() {
         $.each($("#skillDropDownList li a input:checkbox:checked"), function () {
             selectedSkills += $(this).val() + ",";
         });
+
         loadgetgrid();
+
       
     });
+
+
 }
 
 
-/*search*/
-$("button:#searchbar").click(function () {
+/*searchbar using text*/
 
-    var f=$('input:search-input').val("");
-    console.log(f);
-
+$("#search-input").on("keyup", function (e) {
+    searchText = $("#search-input").val();
+    if (searchText.length > 2) {
+        loadgetgrid();
+    }
+    else {
+        searchText = "";
+        loadgetgrid();
+    }
+    console.log(searchText);
 });
+
+
+
+/*listview using button*/
+
+$("#listbtn").click(function () {
+    $(".listviewmissioncard").each(function () {
+        $(this).show();
+        $(".mission").each(function () {
+            $(this).hide();
+        });
+
+    });
+});
+
+/*grid view using button*/
+
+$("#gridbtn").click(function () {
+    $(".listviewmissioncard").each(function () {
+        $(this).hide();
+        $(".mission").each(function () {
+            $(this).show();
+        });
+
+    });
+});
+

@@ -10,13 +10,18 @@ namespace CIPlatform.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMissionRepository _missionRepository;
+        private readonly IHomeRepository _homeRepository;
 
-        public MissionController(IUserRepository userRepository, IMissionRepository missionRepository)
+        public MissionController(IUserRepository userRepository, IMissionRepository missionRepository,IHomeRepository homeRepository)
         {
             _missionRepository = missionRepository;
             _userRepository = userRepository;
+            _homeRepository = homeRepository;
+        }
+        public IActionResult Mission_Volunteer()
+        {
+            return View();
         }
 
-       
     }
 }

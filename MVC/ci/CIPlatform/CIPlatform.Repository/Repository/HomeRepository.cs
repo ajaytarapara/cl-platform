@@ -77,10 +77,9 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x =>x.EndDate).ToList();
         }
-        IEnumerable<GridModel>IHomeRepository.Getgridview(string country, string city, string theme, string skill)
+        IEnumerable<GridModel>IHomeRepository.Getgridview(string country, string city, string theme, string skill,string searchText)
         {
-            return _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill}");
-
+            return _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill},@searchtext={searchText}");
 
 
         }
