@@ -589,7 +589,9 @@
     color: #333333;
     font-size: 1.1rem;
 }
-
+#heartbtn{
+    background:none;
+}
 @media(max-width:2500px) {
     #menubarimg {
         display: none;

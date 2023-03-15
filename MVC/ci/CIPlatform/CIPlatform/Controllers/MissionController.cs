@@ -18,10 +18,16 @@ namespace CIPlatform.Controllers
             _userRepository = userRepository;
             _homeRepository = homeRepository;
         }
-        public IActionResult Mission_Volunteer()
-        {
-            return View();
-        }
+        //public IActionResult Mission_Volunteer()
+        //{
+          
+        //    MissionModel model = _missionRepository.getMISSION(MissionModel Obj);
+        //    model.MediaPath = Obj.MediaPath;
+        //    model.MediaName = Obj.MediaName;
+        //    model.MediaType = Obj.MediaType;
+        //    return View(model);
+           
 
+        //}
     }
 }

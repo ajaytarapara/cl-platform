@@ -100,10 +100,6 @@ namespace CIPlatform.Controllers
 
 
         }
-        public IActionResult Mission_Volunteer()
-        {
-            return RedirectToAction("Mission_Volunteer", "Mission");
-        }
 
         public IActionResult GetCountries()
         {
@@ -148,9 +144,9 @@ namespace CIPlatform.Controllers
             return Json(new { data = gridview });
 
         }
-        public IActionResult getMissionFromSp(string country, string city, string theme, string skill, string searchText)
+        public IActionResult getMissionFromSp(string country, string city, string theme, string skill, string searchText,string sorting)
         {
-            var data = _homeRepository.Getgridview(country,city,theme,skill,searchText);
+            var data = _homeRepository.Getgridview(country,city,theme,skill,searchText, sorting);
             return PartialView("_grid",data);
         }
 

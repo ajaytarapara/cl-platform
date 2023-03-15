@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Entities.ViewModels
 {
-    public class GridModel
+    public class MissionModel
     {
         [Key]
         public long MissionId { get; set; }
@@ -20,9 +20,5 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaType { get; set; }
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
-        public string CityName { get; set; }
-         public int seats { get; set; }
-
     }
 }
-

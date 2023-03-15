@@ -173,9 +173,6 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        
-
-
 
     }
 }

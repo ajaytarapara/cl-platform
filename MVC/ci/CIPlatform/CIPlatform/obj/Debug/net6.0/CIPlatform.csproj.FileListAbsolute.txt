@@ -1076,7 +1076,6 @@ D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.Generate
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfoInputs.cache
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.AssemblyInfo.cs
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.CoreCompileInputs.cache
-D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cache
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cache
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.RazorAssemblyInfo.cs
@@ -1090,3 +1089,4 @@ D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
+D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs

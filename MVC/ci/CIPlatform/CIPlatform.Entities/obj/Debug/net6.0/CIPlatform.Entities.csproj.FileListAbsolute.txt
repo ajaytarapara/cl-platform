@@ -66,3 +66,4 @@ D:\cl platform\MVC\ci\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
+D:\cl platform\MVC\ci\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache
