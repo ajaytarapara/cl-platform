@@ -1,9 +1,11 @@
 ﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -77,12 +79,17 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x =>x.EndDate).ToList();
         }
-        IEnumerable<GridModel>IHomeRepository.Getgridview(string country, string city, string theme, string skill,string searchText,string sorting)
+        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber)
         {
-            return _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill},@searchtext={searchText},@sorting={sorting}");
-
-
+            // make explicit SQL Parameter
+            var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
+            PaginationMission pagination = new PaginationMission();
+            List<GridModel> test = _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill},@searchtext={searchText},@sorting={sorting}, @pageNumber = {pageNumber}, @TotalCount = {output} out").ToList();
+            pagination.missions = test;
+            pagination.pageSize = 3;
+            pagination.pageCount = long.Parse(output.Value.ToString());
+            pagination.activePage = pageNumber;
+            return pagination;
         }
-
     }
 }

@@ -28,7 +28,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<string> GetMissionstartdate();
 
         public IEnumerable<string> GetMissionenddate();
-        public IEnumerable<GridModel> Getgridview(string country,string city,string theme,string skill,string searchText,string sorting);
-
+        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber);
     }
 }

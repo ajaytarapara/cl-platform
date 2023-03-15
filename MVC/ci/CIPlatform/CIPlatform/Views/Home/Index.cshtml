@@ -97,7 +97,7 @@
     </div>
 
     <div class="container">
-        <div class="row">
+          <div class="row">
             <div id="menubarimg"class="d-md-none">
                 <button  onclick="menubartoggle()"><img src="~/images/list.png"
                         alt=""></button>
@@ -137,9 +137,9 @@
 
     <div class="container-fluid mt-2">
         <div style="border-color: #414141; border:1px solid" class="row">
-            <div class="col-md-6 d-flex leftheader">
+            <div class="col-md-6 d-flex leftheader" style="padding-left:9vw;">
                <img src="~/images/search.png"  alt="">
-                <input type="text" name="searchtext" id="search-input" placeholder="Search Mission">
+                <input type="text" name="searchtext" id="search-input" placeholder="Search Mission" style="width:67%;">
                 <div>
                     <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
                 </div>
@@ -246,10 +246,10 @@
                         <a class="dropdown-item"  name="lowestseats" id="" />Oldest</a>
                       </li>
                 </ul>
-                <button id="gridbtn" style="border-radius:10px;margin: 10px" ><img src="~/images/grid.png" alt="">
+                <button id="grid-view-btn" style="border-radius:10px;margin: 10px" ><img src="~/images/grid.png" alt="">
                     <link rel="" href="" >
                 </button>
-                <button id="listbtn" style="border-radius:10px ;margin: 10px"><img src="~/images/list.png" alt=""></button>
+                <button id="list-view-btn" style="border-radius:10px ;margin: 10px"><img src="~/images/list.png" alt=""></button>
 
             </div>
 
@@ -259,7 +259,7 @@
     <div class="container mt-3">
 
 
-        <div class="row" id="grid">
+        <div class="" id="grid">
                
         </div>
     </div>
@@ -271,16 +271,7 @@
 
 
     <div style="justify-content:center;" class="container d-flex pt-3">
-        <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#" class="active">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        </div>
+       
 
     </div>
     <hr style="margin: top 10px;">

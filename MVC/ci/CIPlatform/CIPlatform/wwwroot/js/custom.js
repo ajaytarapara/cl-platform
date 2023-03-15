@@ -6,7 +6,7 @@
 $(document).ready(function() {
 
 /*    loadgetgridview();*/
- loadgetgrid();
+    loadgetgrid();
 });
     var a=$.ajax({
         type: "GET",
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 str += '<li class="p-1"><a class="dropdown-item" href = "#"> <input type="checkbox" name="country" value="'+ data["data"][j].name +'"/> '+ data["data"][j].name+'</a></li>';
             }
             countryDropDown.append(str);
-       
+
         },
         failure: function (response) {
             alert("failure");
@@ -91,7 +91,7 @@ var c =$.ajax({
         }
 
   });
-$.when(a, b, c, d).done(function () {
+$.when(a, b, c, d, toggleGrid).done(function () {
     intializeChips();
   
 });
@@ -129,12 +129,14 @@ var selectedThemes = "";
 var selectedSkills = "";
 var searchText = "";
 var sorting = "";
-function loadgetgrid() {
+function loadgetgrid(paging) {
+    if (!paging)
+        paging = 1;
     console.log(sorting);
     $.ajax({
         type: "POST",
-        url: "/Home/getMissionFromSp",
-        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText, sorting:sorting },
+        url: "/Home/gridSP",
+        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText, sorting: sorting, pageNumber: paging },
        success: function (data)
         {
             var html = "";
@@ -143,7 +145,8 @@ function loadgetgrid() {
 
             griddata.html("");
            griddata.html(data);
-
+           toggleListGrid();
+           loadPagination();
         },
         failure: function (response) {
             alert("failure");
@@ -154,7 +157,16 @@ function loadgetgrid() {
 
     });
 }
-
+function loadPagination() {
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        console.log("in page");
+        e.preventDefault();
+        paging = $(this).text();
+        console.log(paging);
+        loadgetgrid(paging);
+    })
+}
 
 /*chips*/
 function intializeChips() {
@@ -227,35 +239,76 @@ $("#search-input").on("keyup", function (e) {
         searchText = "";
         loadgetgrid();
     }
-    console.log(searchText);
 });
 
 
 //==========================================================================================================================================================================================
 ///*listview using button*/
 //==========================================================================================================================================================================================
-$("#listbtn").click(function () {
-    $(".listviewmissioncard").each(function () {
-        $(this).show();
-        $(".mission").each(function () {
-            $(this).hide();
-        });
+//$("#listbtn").click(function () {
+//    $(".listviewmissioncard").each(function () {
+//        $(this).show();
+//        $(".mission").each(function () {
+//            $(this).hide();
+//        });
 
+//    });
+//});
+
+var toggleGrid = true;
+function toggleListGrid() {
+    //console.log("toggle");
+    const missionListView = document.getElementById("mission-list");
+    //console.log(missionListView);
+    const missionGridView = document.getElementById("mission-grid");
+    const gridViewBtn = document.getElementById("grid-view-btn");
+    const listViewBtn = document.getElementById("list-view-btn");
+
+    listViewBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleGrid = false;
+
+        toggleListGrid();
     });
-});
+    gridViewBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleGrid = true;
+        toggleListGrid();
+    });
+    if (!(toggleGrid == true)) {
+
+        missionListView.setAttribute("style", "display:block !important;");
+        missionGridView.setAttribute("style", "display:none !important;");
+    }
+    else {
+
+        missionListView.setAttribute("style", "display:none !important;");
+        missionGridView.setAttribute("style", "display:flex !important;");
+    }
+   
+
+
+}
+
+
+
+
+
+
+
 
 //==========================================================================================================================================================================================
 ///*grid view using button*/
 //==========================================================================================================================================================================================
-$("#gridbtn").click(function () {
-    $(".listviewmissioncard").each(function () {
-        $(this).hide();
-        $(".mission").each(function () {
-            $(this).show();
-        });
+//$("#gridbtn").click(function () {
+//    $(".listviewmissioncard").each(function () {
+//        $(this).hide();
+//        $(".mission").each(function () {
+//            $(this).show();
+//        });
 
-    });
-});
+//    });
+//});
 
 
 //==========================================================================================================================================================================================

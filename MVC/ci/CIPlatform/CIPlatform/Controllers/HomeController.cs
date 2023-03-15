@@ -144,12 +144,15 @@ namespace CIPlatform.Controllers
             return Json(new { data = gridview });
 
         }
-        public IActionResult getMissionFromSp(string country, string city, string theme, string skill, string searchText,string sorting)
-        {
-            var data = _homeRepository.Getgridview(country,city,theme,skill,searchText, sorting);
-            return PartialView("_grid",data);
-        }
 
+        [HttpPost]
+        public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber)
+        {
+            // make explicit SQL Parameter
+            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber);
+
+            return PartialView("_grid", pagination);
+        }
 
     }
 }
