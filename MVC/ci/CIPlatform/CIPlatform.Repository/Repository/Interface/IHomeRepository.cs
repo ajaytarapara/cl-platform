@@ -28,6 +28,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<string> GetMissionstartdate();
 
         public IEnumerable<string> GetMissionenddate();
-        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber);
+        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber,int uid);
+        public void addToFavourites(long missionid, long userid, int fav);
+        public User getuser(string email);
     }
 }

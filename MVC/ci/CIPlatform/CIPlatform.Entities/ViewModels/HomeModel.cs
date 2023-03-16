@@ -11,6 +11,7 @@ namespace CIPlatform.Entities.ViewModels
     {
         public string username{ get; set; }
 
+        public long id { get; set; }
         public IEnumerable<Country> countryList { get; set; }
         public IEnumerable<City> cityList { get; set; }
         public IEnumerable<MissionTheme> themeList { get; set; }
@@ -33,7 +34,6 @@ namespace CIPlatform.Entities.ViewModels
         public string Medianame { get; set; }
         public string Mediatype { get; set; }
         public string themetitle { get; set; }
-
 
 
     }

@@ -481,6 +481,7 @@
     color: white;
     opacity: 0.6;
     max-width: max-content;
+    border-radius: 30px;
 }
 
 .card-title {
@@ -592,6 +593,7 @@
 #heartbtn{
     background:none;
 }
+
 @media(max-width:2500px) {
     #menubarimg {
         display: none;

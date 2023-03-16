@@ -73,6 +73,8 @@ namespace CIPlatform.Controllers
       
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModel.id = userObj.UserId;
+
 
             IEnumerable<Country> countries = _homeRepository.getCountries();
             HomeModel.countryList = countries;
@@ -149,9 +151,22 @@ namespace CIPlatform.Controllers
         public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber)
         {
             // make explicit SQL Parameter
-            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber);
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int uid = Convert.ToInt32(userObj.UserId);
+            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber,uid);
 
             return PartialView("_grid", pagination);
+        }
+
+        [HttpPost]
+        public IActionResult addToFavourites(String missionid, int fav)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            long misid = Int64.Parse(missionid);
+            _homeRepository.addToFavourites(misid, userObj.UserId, fav);
+            return RedirectToAction("Index");
         }
 
     }

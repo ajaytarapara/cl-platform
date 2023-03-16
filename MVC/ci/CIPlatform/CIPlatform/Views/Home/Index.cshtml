@@ -1,8 +1,6 @@
 ﻿@model CIPlatform.Entities.ViewModels.HomeModel
 @inject IHttpContextAccessor httpcontextaccessor
 
-
-
 <div class="col-4  d-md-none"
         style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
         id="menubar">
@@ -118,7 +116,7 @@
             <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
                 <img src="~/images/user-img.png" alt="" class="src"
                     style="border-radius: 50%;height: 100%; padding: 4px;">
-                    <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    <button value="@Model.id" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     @Model.username
                 </button>
@@ -217,13 +215,13 @@
     </div>
         </div>
     </div>
-    </div>
+    </iv>
     </div>
 
     <div class="container mt-3">
         <div class="row d-flex">
             <div class="col-6 d-flex">
-                <h1  style="font-weight: bolder;">Explore 72 Mission</h1>
+                <h1  style="font-weight: bolder;">Explore Mission</h1>
             </div>
             <div style="justify-content:flex-end;" class="col-6 d-flex">
                 <button class="dropdown-toggle bg-light" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"

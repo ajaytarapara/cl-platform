@@ -20,5 +20,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaType { get; set; }
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
+        
+        public long ThemeId { get; set; }
     }
 }

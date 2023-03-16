@@ -18,10 +18,10 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext = cIPlatformDbContext;
         }
+        //MissionModel IMissionRepository.Getmission(MissionModel obj,string missionid)
+        //{
+        //    return (MissionModel)_ciPlatformDbContext.MissionModel.FromSqlInterpolated($"exec sp_get_Mission_data @missionid = {missionid}");
+        //}
 
-        MissionModel IMissionRepository.GetMission(MissionModel obj)
-        {
-            return (MissionModel)_ciPlatformDbContext.MissionModel.FromSqlInterpolated($"exec sp_get_Mission_data");
-        }
     }
 }

@@ -18,16 +18,19 @@ namespace CIPlatform.Controllers
             _userRepository = userRepository;
             _homeRepository = homeRepository;
         }
-        //public IActionResult Mission_Volunteer()
-        //{
-          
-        //    MissionModel model = _missionRepository.getMISSION(MissionModel Obj);
-        //    model.MediaPath = Obj.MediaPath;
-        //    model.MediaName = Obj.MediaName;
-        //    model.MediaType = Obj.MediaType;
-        //    return View(model);
-           
+        public IActionResult Mission_Volunteer(/*MissionModel obj*/)
+        {
+            // Mission mission = new Mission();
+            //string missionid = null;
+            //var missiondata=_missionRepository.Getmission(obj, missionid);
+            //mission.MissionId = obj.MissionId;
+            //mission.ThemeId = obj.ThemeId;
+            //MissionMedium missionMedium = new MissionMedium();  
+            //missionMedium.MediaName = obj.MediaName;
+            //missionMedium.MediaPath = obj.MediaPath;
+            //missionMedium.MediaType = obj.MediaType;
 
-        //}
+            return View(/*missiondata*/);
+        }
     }
 }

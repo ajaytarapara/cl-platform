@@ -9,6 +9,6 @@ namespace CIPlatform.Repository.Repository.Interface
 {
     public interface IMissionRepository
     {
-        public MissionModel GetMission(MissionModel Obj);
+        //public MissionModel  Getmission(MissionModel obj,string missionid);
     }
 }

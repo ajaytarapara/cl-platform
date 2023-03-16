@@ -1,4 +1,9 @@
 ﻿@model CIPlatform.Entities.ViewModels.PaginationMission
+@*<h1>@Model.missions.Count()</h1>*@
+
+<h1 id="missioncount">@Model.missionCount</h1>
+
+
 <div  id="mission-grid" class="row">
 @foreach(var Item in Model.missions)
 {
@@ -16,7 +21,16 @@
                             </div>
                             <div class="d-flex flex-column align-items-end">
                                <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
-                                    <button id ="heartbtn"><img src="~/images/heart.png" alt=""></button>
+                         @*           <button id ="heartbtn"><img src="~/images/heart.png" alt=""></button>*@
+                                  @if (@Item.favourite == 1)
+                                 {
+<button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none" class="Icon mx-auto" alt="" /></button>
+}
+else
+{
+<button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
+
+                                 }
                                 </div>
                                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
                                     <img src="~/images/user.png" alt="">
@@ -60,10 +74,8 @@
 
                         <hr>
 
-                        <div style="justify-content: center;" class="d-flex pt-2">
-                            <button 
-                                style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a asp-controller="Mission" asp-action="Mission_Volunteer"
-                                   style="color: #F88634; text-decoration: none;">Apply</a><img
+                        <div style="justify-content: center;" class="d-flex pt-2" id="apply">
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; text-decoration: none;"><a value="@Item.MissionId">Apply</a><img
                                     src="~/images/right-arrow.png" alt=""></button>
                         </div>
                     </div>
@@ -91,7 +103,7 @@
                         @Item.CityName
                     </div>
                     <div class="d-flex flex-column align-items-end">
-                        <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
+                        <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1 heart-btn">
                             <img src="~/images/heart.png" alt="">
                         </div>
                         <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
@@ -120,9 +132,7 @@
                         </div>
                         <div>
                             <div style="justify-content:flex-start;" class="d-flex pt-3">
-                                <button
-                                    style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;"><a
-                                        style="color: #F88634; text-decoration: none;" href="http://">Apply</a><img
+                                <button  style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; text-decoration: none;"><a value="@Item.MissionId" href="http://">Apply</a><img
                                         src="~/images/right-arrow.png" alt=""></button>
                             </div>
                         </div>
