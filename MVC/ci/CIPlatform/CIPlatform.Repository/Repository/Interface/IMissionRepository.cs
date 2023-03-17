@@ -10,5 +10,7 @@ namespace CIPlatform.Repository.Repository.Interface
     public interface IMissionRepository
     {
         public MissionModel Getmission(string missionid);
+
+        //public List<ReleatedMissionModel> GetReleatedMission(string missiontitle);
     }
 }

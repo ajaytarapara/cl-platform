@@ -11,7 +11,10 @@
               <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
                   <div class="card mt-2 shadow" >
                     <div class="list-image-part position-relative">
-                        <img src="~/@Item.MediaPath/@Item.MediaName.@Item.MediaType" class="list-img"
+                        @{
+                            string[] mediaNames=@Item.MediaName.ToString().Split(",");
+                        }
+                        <img src="~/@Item.MediaPath/@mediaNames[0].@Item.MediaType" class="list-img"
                             alt="" />
                         <h5 class="list-card-theme-title bg-white rounded-5 p-2 "style="border:2px ">@Item.ThemeTitle</h5>
                         <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
@@ -92,9 +95,11 @@ else
 {
 <div class="listviewmissioncard">
         <div style="flex-direction:row;justify-content: space-between;flex-wrap: wrap;" class="card shadow d-flex mt-3">
-
+                        @{
+                            string[] mediaNames=@Item.MediaName.ToString().Split(",");
+                        }
             <div  class="list-image-part-2 position-relative">
-                <img src="/@Item.MediaPath/@Item.MediaName.@Item.MediaType" id="list-img" alt="" />
+                <img src="/@Item.MediaPath/@mediaNames[0].@Item.MediaType" id="list-img" alt="" />
                 <h5 class="bg-white rounded-5 p-2" id="list-card-theme-title">@Item.ThemeTitle</h5>
                 <div id="list-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2 ">
                     <div id="list-location-image" class="list-img-content p-2 rounded-5">

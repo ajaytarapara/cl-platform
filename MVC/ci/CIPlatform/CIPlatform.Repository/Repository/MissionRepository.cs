@@ -22,8 +22,15 @@ namespace CIPlatform.Repository.Repository
         {
             //mission = _ciPlatformDbContext.MissionModel.FromSqlInterpolated($"exec sp_get_Mission_data @missionid = {missionid}");
             MissionModel mission = _ciPlatformDbContext.MissionModels.FromSqlInterpolated($"exec sp_get_Mission_data @missionid={missionid}").AsEnumerable().FirstOrDefault();
+         
             return mission;
-        }
 
+            
+        }
+        //List<ReleatedMissionModel> IMissionRepository.GetReleatedMission(string missiontitle)
+        //{
+        //    List<ReleatedMissionModel> mission1= _ciPlatformDbContext.ReleatedMissionModels.FromSqlInterpolated($"exec sp_get_reletedMission_data ").ToList();
+        //    return mission1;
+        //}
     }
 }
