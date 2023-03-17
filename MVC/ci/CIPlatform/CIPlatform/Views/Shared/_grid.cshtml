@@ -60,7 +60,7 @@ else
                             </div>
                             <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
                                 class="d-flex">From @Item.StartDate untill @Item.EndDate</div>
-                            <div style="width:15%">
+                     <div style="width:15%">
                                 <hr>
                             </div>
 
@@ -68,14 +68,13 @@ else
                         <div style="justify-content:space-between;" class="d-flex pt-1 ">
                             <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
-             tope</span> </div>
+                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>Deadline</span> </div>
                         </div>
 
                         <hr>
 
                         <div style="justify-content: center;" class="d-flex pt-2" id="apply">
-                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; text-decoration: none;"><a value="@Item.MissionId">Apply</a><img
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;">  <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img
                                     src="~/images/right-arrow.png" alt=""></button>
                         </div>
                     </div>
@@ -104,7 +103,15 @@ else
                     </div>
                     <div class="d-flex flex-column align-items-end">
                         <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1 heart-btn">
-                            <img src="~/images/heart.png" alt="">
+                                  @if (@Item.favourite == 1)
+                                 {
+<button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;border-radius:5px;" class="Icon mx-auto" alt="" /></button>
+}
+else
+{
+<button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
+
+                                 }
                         </div>
                         <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
                             <img src="~/images/user.png" alt="">
@@ -132,20 +139,20 @@ else
                         </div>
                         <div>
                             <div style="justify-content:flex-start;" class="d-flex pt-3">
-                                <button  style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; text-decoration: none;"><a value="@Item.MissionId" href="http://">Apply</a><img
-                                        src="~/images/right-arrow.png" alt=""></button>
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;">  <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img
+                                    src="~/images/right-arrow.png" alt=""></button>
                             </div>
                         </div>
 
 
 
                     </div>
-content           <div style="justify-content:flex-end;display: flex;flex-direction: column;width: 60%;">
+         <div style="justify-content:flex-end;display: flex;flex-direction: column;width: 60%;">
                         <div>
                             <div CLASS="d-flex missiondate">
                                 <div style="width:15%">
                                     <hr>
-color  </div>
+  </div>
                                 <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
                                     class="d-flex">From @Item.StartDate untill @Item.EndDate</div>
                                 <div style="width:15%">
@@ -157,9 +164,7 @@ color  </div>
                         <div style="width:80% ;top: 10px;">
                             <div style="justify-content:space-between;" class="d-flex pt-2 ">
                                 <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> 10 seats left</span></div>
-
-                                <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>
-                                        Deadline</span> </div>
+                                <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br> Deadline</span> </div>
                             </div>
                         </div>
 

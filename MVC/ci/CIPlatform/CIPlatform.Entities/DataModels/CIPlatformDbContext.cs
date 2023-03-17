@@ -65,7 +65,7 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<UserSkill> UserSkills { get; set; }
     public virtual DbSet<GridModel> GridModel { get; set; }
 
-    public virtual DbSet<MissionModel> MissionModel { get; set; }
+    public virtual DbSet<MissionModel> MissionModels { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");
 

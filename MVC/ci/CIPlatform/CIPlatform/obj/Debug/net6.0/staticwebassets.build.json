@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Naqkpixi832eFNOiCzPzpGQVf13y0ZzX+fygWMuwZbw=",
+  "Hash": "+RcCwmgtpC2aszYqGgChIKh1YEWvIrCDFEhayilu2Gc=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1970,23 +1970,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\custom.js"
-    },
-    {
-      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\js\\mission.js",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "js/mission.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\mission.js"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",

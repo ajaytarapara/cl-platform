@@ -9,6 +9,8 @@ namespace CIPlatform.Entities.ViewModels
 {
     public class MissionModel
     {
+        public string username;
+
         [Key]
         public long MissionId { get; set; }
         public string? Title { get; set; }
@@ -20,7 +22,14 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaType { get; set; }
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
-        
-        public long ThemeId { get; set; }
+        public string? CityName { get; set; }    
+        public int? seats { get; set; }
+        public string? longdiscription { get; set; } 
+
+        public string? skill { get; set; }
+
+        public string organizationdetail { get; set; }
+
+
     }
 }

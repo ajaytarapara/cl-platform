@@ -834,155 +834,46 @@ footer {
 /* =========================================================== */
 /* volunteering_mission_page */
 /* =========================================================== */
-.volunteer-content::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
 }
 
-.volunteer-content::-webkit-scrollbar {
-    display: none;
-}
+    .rating > input {
+        display: none
+    }
 
-#volunteer-info-tabs::-webkit-scrollbar {
-    display: none;
-}
+    .rating > label {
+        position: relative;
+        width: 6rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #FFD600;
+        cursor: pointer
+    }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.volunteer-content {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
+        .rating > label::before {
+            content: "\2605";
+            position: absolute;
+            opacity: 0
+        }
 
-.volunteer-main-image {
-    height: 625px;
-}
+        .rating > label:hover:before,
+        .rating > label:hover ~ label:before {
+            opacity: 1 !important
+        }
+
+    .rating > input:checked ~ label:before {
+        opacity: 1
+    }
+
+    .rating:hover > input:checked ~ label:before {
+        opacity: 0.4
+    }
 
 #carouselExampleControls {
     height: 120px;
-}
-
-#volunteer-mission-title {
-    color: #414141;
-    font-weight: lighter;
-    width: 90%;
-}
-
-#volunteer-mission-description {
-    color: #414141;
-    font-weight: lighter;
-    width: 90%;
-}
-
-#volunteer-mission-tagline-div {
-    z-index: 1;
-    position: relative;
-}
-
-#volunteer-mission-tagline-title {
-    width: fit-content;
-    font-weight: lighter;
-}
-
-#volunteer-seats-info-card {
-    top: -18px;
-    z-index: 0;
-}
-
-#vounteer-seats-left-image {
-    height: 25px;
-    width: 25px;
-}
-
-#vounteer-seats-left-text {
-    color: #757575;
-    min-width: max-content;
-}
-
-#vounteer-achieved-image {
-    height: 25px;
-    width: 25px;
-}
-
-#vounteer-achieved-text {
-    color: #757575;
-}
-
-.progress-bar {
-    background-color: #F88634;
-}
-
-.progress {
-    width: 130px;
-    height: 12px;
-}
-
-#mission-favourite-recomend-div span {
-    color: #757575 !important;
-}
-
-#mission-favourite-recomend-div button {
-    border-color: #757575;
-}
-
-#mission-related-information-div .caption-badge {
-    display: none;
-}
-
-#mission-related-information-div .krajee-icon-clear {
-    display: none;
-}
-
-.rating-stars {
-    background-color: white;
-}
-
-.mission-related-info {
-    width: 153px;
-    height: 130px;
-}
-
-.mission-related-item {
-    top: -17px;
-}
-
-.mission-related-info-title {
-    color: #757575;
-    font-size: 12px;
-}
-
-.mission-related-info-desc {
-    color: #757575;
-    font-size: 16px;
-}
-
-.volunteer-button-apply {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#volunteer-apply-btn {
-    color: #F88634;
-    border-color: #F88634;
-}
-/* volunteer information */
-#volunteer-information {
-    height: 830px;
-}
-
-#volunteer-info-tabs {
-    width: 58%;
-}
-
-#volunteer-recent-info {
-    width: 38%;
-}
-
-#volunteer-basic-info-div {
-    height: 35%;
-}
-
-#recent-volunteer-info-div {
-    height: 65%;
 }
 
 .tab {
@@ -991,7 +882,6 @@ footer {
     background-color: white;
 }
 
-    /* Style the buttons that are used to open the tab content */
     .tab button {
         float: left;
         border: none;
@@ -1002,17 +892,14 @@ footer {
         background-color: white;
     }
 
-        /* Change background color of buttons on hover */
         .tab button:hover {
             border-bottom: 2px solid black;
         }
 
-        /* Create an active/current tablink class */
         .tab button.active {
             border-bottom: 2px solid black;
         }
 
-/* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -1029,213 +916,76 @@ footer {
         display: none;
     }
 
-#comment {
-    resize: none;
+.information-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-wrap: wrap;
 }
 
-.avtar {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+/*vol -pagination*/
+
+
+.hidden {
+    display: none;
 }
 
-#volunteer-comments-div {
-    background-color: #E8E8E8;
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    b
 }
 
-#volunteer-information-span {
-    text-decoration: underline;
-    text-underline-offset: 7px;
+.pagination-number,
+.pagination-button {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: .2rem;
 }
 
-#volunteer-recent-info {
-    color: #414141;
-}
-
-.volunteer-info-div-items {
-    height: 33%;
-}
-
-#volunteer-recent-volunteer-span {
-    text-decoration: underline;
-    text-underline-offset: 7px;
-}
-
-.volunteer-images-div {
-    width: 33%;
-}
-
-.volunteer-images {
-    width: 70px;
-    height: 70px;
-}
-
-.volunteer-names {
-    color: #414141;
-}
-
-.volunteer-scroll-bar-btn {
-    width: 10%;
-    height: 100%;
-}
-
-.volunteer-scroll-bar-span {
-    width: 80%;
-}
-
-/* Related missions */
-#related-mission-heading {
-    color: #414141;
-    font-weight: lighter;
-}
-
-#related-mission-grid {
-    max-width: 1420px;
-}
-
-.related-grid-item {
-    height: 140px;
-}
-
-.related-card-img {
-    height: 300px !important;
-}
-
-.related-card-theme-title {
-    position: absolute;
-    top: 280px;
-    left: 34%;
-    font-weight: lighter;
-}
-
-#card-image-content {
-    height: 300px;
-}
-
-#card-time-duration-title {
-    width: fit-content;
-    font-weight: lighter;
-}
-
-#related-card-image-content {
-    position: absolute;
-    right: 0px;
-}
-
-.related-img-content {
-    background-color: black;
-    color: white;
-    opacity: 0.6;
-    max-width: max-content;
-}
-/* ============================================== */
-/* media query for volunteer */
-/* ============================================== */
-@media screen and (max-width:767px) {
-    #volunteer-image-part {
-        width: 60% !important;
+    .pagination-number:hover,
+    .pagination-button:not(.disabled):hover {
+        background: #fff;
     }
 
-    #volunteer-content-part {
-        width: 40% !important;
+    .pagination-number.active {
+        color: #fff;
+        background: orange;
     }
 
-    #volunteer-mission-title {
-        width: 100%;
-        font-size: 25px !important;
-    }
+#paginated-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
-    #volunteer-mission-description {
-        width: 100%;
-        font-size: 12px !important;
-    }
+footer {
+    text-align: center;
+    background-color: #FFDFB9;
+}
 
-    .volunteer-favourite-button {
-        width: 100% !important;
-    }
+.volunteer-list-img {
+    border: 1px solid;
+    border-radius: 70%;
+    height: 100px;
+    width: 100px;
+}
 
-    .mission-related-info {
-        height: 100px;
-        width: 104px;
-        margin: 1px;
-    }
-
-    #volunteer-info-tabs {
-        width: 100%;
-        height: 50%;
-    }
-
-    #volunteer-recent-info {
-        width: 100%;
-        height: 50%;
-    }
-
-    .tabcontent {
-        height: calc(100% - 74px);
-    }
-
-    #volunteer-basic-info-div {
-        height: max-content;
-        width: 35%;
-    }
-
-    #recent-volunteer-info-div {
-        height: max-content;
-        width: 65%;
-    }
-
-    .volunteer-names {
-        font-size: 13px !important;
-    }
-
-    .volunteer-images {
-        width: 50px;
-        height: 55px;
+@media(max-width:766px) {
+    #vol-right-info {
+        margin-top: 20px;
     }
 }
 
-@media screen and (max-width:576px) {
-    #volunteer-image-part {
-        width: 100% !important;
-    }
-
-    #volunteer-content-part {
-        width: 100% !important;
-    }
-
-    #volunteer-seats-info-card {
-        flex-direction: row !important;
-    }
-
-    #volunteer-basic-info-div {
-        width: 100%;
-    }
-
-    #recent-volunteer-info-div {
-        width: 100%;
-    }
-
-    #volunteer-recent-info {
-        width: 100%;
-        height: 55% !important;
-    }
-
-    #volunteer-info-tabs {
-        width: 100%;
-        height: 45%;
-    }
-
-    #volunteer-information {
-        height: 1420px;
-    }
-}
-
-@media screen and (max-width:360px) {
-
-    #volunteer-remain-seats-cards {
-        width: 40% !important;
-    }
-}
 /* ================================================================================= */
 /* story listing page */
 /* ================================================================================= */
