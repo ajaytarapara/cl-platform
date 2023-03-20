@@ -29,12 +29,30 @@ namespace CIPlatform.Controllers
             else
             {
                 User userObj = _userRepository.findUser(userSessionEmailId);
-                MissionModel missionModel = _missionRepository.Getmission(missionid);
+
+                MissionModel missionModel = _missionRepository.Getmission(missionid,userObj.UserId);
                 missionModel.username = userObj.FirstName + " " + userObj.LastName;
+             
+
                 return View(missionModel);
             }
         }
 
-
+        public IActionResult GetReleatedMission(string missiontitle, string city, string country)
+        {
+            MissionModel missionModel = new MissionModel();
+            missionModel.Title = missiontitle;
+            List<ReleatedMissionModel> releatedMissions =_missionRepository.GetReleatedMission(missiontitle,city,country);
+            return PartialView("_ReleatedMission",releatedMissions);
+        }
+        [HttpPost]
+        public IActionResult addToFavourites(String missionid, int fav)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            long misid = Int64.Parse(missionid);
+            _missionRepository.addToFavourites(misid, userObj.UserId, fav);
+            return RedirectToAction("Index");
+        }
     }
 }

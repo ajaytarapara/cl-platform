@@ -9,8 +9,10 @@ namespace CIPlatform.Repository.Repository.Interface
 {
     public interface IMissionRepository
     {
-        public MissionModel Getmission(string missionid);
+        public MissionModel Getmission(string missionid,long userid);
 
-        //public List<ReleatedMissionModel> GetReleatedMission(string missiontitle);
+        public List<ReleatedMissionModel> GetReleatedMission(string missiontitle,string city,string country);
+
+        public void addToFavourites(long misid, long UserId,int  fav);
     }
 }

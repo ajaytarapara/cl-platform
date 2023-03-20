@@ -7,11 +7,11 @@ public partial class MissionDocument
 {
     public long MissionDocumentId { get; set; }
 
-    public long MissionId { get; set; }
+    public long? MissionId { get; set; }
 
-    public string DocumentName { get; set; } = null!;
+    public string? DocumentName { get; set; } = null!;
 
-    public string DocumentType { get; set; } = null!;
+    public string?DocumentType { get; set; } = null!;
 
     public string? DocumentPath { get; set; }
 

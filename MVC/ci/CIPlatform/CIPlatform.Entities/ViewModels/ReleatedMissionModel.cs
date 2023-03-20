@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Entities.ViewModels
 {
-    public class MissionModel
+    public  class ReleatedMissionModel
     {
-        public string username;
-
         [Key]
         public long MissionId { get; set; }
         public string? Title { get; set; }
@@ -22,19 +20,8 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaType { get; set; }
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
-        public string? CityName { get; set; }    
-        public int? seats { get; set; }
-        public string? longdiscription { get; set; } 
-
-        public string? skill { get; set; }
-
-        public int favourite { get; set; }
-        public string? organizationdetail { get; set; }
-
-        public string? documentname { get; set; }
-        public string? documenttype { get; set; }    
-        public string?documentpath { get; set; }    
-
-
+        public string CityName { get; set; }
+        public int seats { get; set; }
+   
     }
 }

@@ -7,6 +7,7 @@ $(document).ready(function() {
 
 /*    loadgetgridview();*/
     loadgetgrid();
+
 });
     var a=$.ajax({
         type: "GET",
@@ -335,3 +336,5 @@ function addtofavi(abc, flag) {
         }
     })
 };
+
+
