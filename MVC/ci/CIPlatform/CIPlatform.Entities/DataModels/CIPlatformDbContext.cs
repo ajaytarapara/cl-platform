@@ -65,7 +65,7 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<UserSkill> UserSkills { get; set; }
     public virtual DbSet<GridModel> GridModel { get; set; }
     public virtual DbSet<MissionModel> MissionModels { get; set; }
-    public virtual DbSet<ReleatedMissionModel> ReleatedMissions{ get; set; }
+    public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");
 
@@ -162,6 +162,10 @@ public partial class CIPlatformDbContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValueSql("('PENDING')")
                 .HasColumnName("approval_status");
+            entity.Property(e => e.Comment1)
+                .HasMaxLength(1000)
+                .IsUnicode(false)
+                .HasColumnName("comment");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
@@ -177,12 +181,10 @@ public partial class CIPlatformDbContext : DbContext
 
             entity.HasOne(d => d.Mission).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.MissionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__comment__mission__1DB06A4F");
 
             entity.HasOne(d => d.User).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__comment__user_id__1CBC4616");
         });
 
@@ -404,7 +406,6 @@ public partial class CIPlatformDbContext : DbContext
 
             entity.HasOne(d => d.Mission).WithMany(p => p.MissionDocuments)
                 .HasForeignKey(d => d.MissionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__mission_d__missi__07C12930");
         });
 

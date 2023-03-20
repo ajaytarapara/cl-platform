@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.ViewModels;
+﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<ReleatedMissionModel> GetReleatedMission(string missiontitle,string city,string country);
 
         public void addToFavourites(long misid, long UserId,int  fav);
+ 
+        public void addcomment(Comment comment);
     }
 }

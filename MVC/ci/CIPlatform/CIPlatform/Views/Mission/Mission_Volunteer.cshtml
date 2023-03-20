@@ -284,10 +284,15 @@ else
                         </p>
                         <h3>Documents</h3>
                         <div class="">
-                       @{
-                            string[] documentname=@Model.documentname.ToString().Split(",");
+                        @if (@Model.documentname == null)
+                        {
+                            <h1>no doc found</h1>
                         }
-                        @foreach (var item in documentname)
+                        else
+                        {
+                            string[] documentname=@Model.documentname.ToString().Split(",");
+                            
+                        foreach (var item in documentname)
                         {
 
                             if (documentname.Length==0)
@@ -296,10 +301,11 @@ else
                             }
                             else
                             {
-                            <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2>
-                                <img src="~/images/doc.png" class="px-2"> <a href="~/@Model.documentpath/@documentname[0]@Model.documenttype" target="_blank">@documentname[0]@Model.documenttype</a>
+                            <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                                <img src="~/images/doc.png" class="px-2"> <a href="/@Model.documentpath/@documentname[0]@Model.documenttype" target="_blank">@documentname[0]@Model.documenttype</a>
                             </button>
                             }
+                           }
                            }
                             <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
                                 <img src="~/images/doc.png" class="px-2" alt="">at_vero_eos_accusamus.doc
@@ -319,15 +325,19 @@ else
 
                     <div id="Comments" class="tabcontent">
                         <h5>Comments</h5>
-                        <div>
-                            <input style="height: 100px; width: 100%;" type="text" name="Comments" id=""
-                                placeholder="Enter your comments..">
-                        </div>
-                        <div>
-                            <button
-                                style="border:1px solid orange;color:orange;background: none;border-radius: 10px;margin-top: 20px; padding:10px">Post
-                                Comment</button>
-                        </div>
+                           <form>
+                                <div>
+                         
+                                    <input asp-for="comment" style="height: 100px; width: 100%;" type="text" name="Comments" id=""
+                                        placeholder="Enter your comments..">
+                            
+                                </div>
+                                <div>
+                                    <button asp-action="addcomment" type="submit"
+                                        style="border:1px solid orange;color:orange;background: none;border-radius: 10px;margin-top: 20px;padding:10px">Post
+                                        Comment</button>
+                                </div>
+                          </form>
                         <div class="container d-flex bg-light flex-column">
                             <div class="card shadow m-3 row">
                                 <div class="d-flex flex-row"

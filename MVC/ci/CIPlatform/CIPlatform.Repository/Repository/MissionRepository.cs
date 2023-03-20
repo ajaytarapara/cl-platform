@@ -24,8 +24,7 @@ namespace CIPlatform.Repository.Repository
             MissionModel mission = _ciPlatformDbContext.MissionModels.FromSqlInterpolated($"exec sp_get_Mission_data @missionid={missionid},@UserId={userid}").AsEnumerable().FirstOrDefault();
          
             return mission;
-
-            
+         
         }
 
         public void addToFavourites(long missionid, long userid, int fav)
@@ -52,6 +51,11 @@ namespace CIPlatform.Repository.Repository
         {
             List<ReleatedMissionModel> mission1 = _ciPlatformDbContext.ReleatedMissions.FromSqlInterpolated($"exec sp_get_reletedMission_data @missionreleated={missiontitle}, @cityreleated={city}, @countryreleated ={country}").ToList();
             return mission1;
+        }
+        void IMissionRepository.addcomment(Comment comment)
+        {
+            _ciPlatformDbContext.Comments.Add(comment);
+            _ciPlatformDbContext.SaveChanges();
         }
     }
 }

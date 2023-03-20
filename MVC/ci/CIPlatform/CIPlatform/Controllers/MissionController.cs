@@ -54,5 +54,16 @@ namespace CIPlatform.Controllers
             _missionRepository.addToFavourites(misid, userObj.UserId, fav);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+         public IActionResult addcomment(CommentModel obj)
+        {
+            Comment comment = new Comment();
+            comment.UserId = obj.UserId;
+            comment.MissionId=obj.MissionId;
+            
+            _missionRepository.addcomment(comment);
+            return View();
+        }
     }
 }

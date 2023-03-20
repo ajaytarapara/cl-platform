@@ -35,6 +35,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? documenttype { get; set; }    
         public string?documentpath { get; set; }    
 
+        public string? comment { get; set; } 
 
     }
 }
