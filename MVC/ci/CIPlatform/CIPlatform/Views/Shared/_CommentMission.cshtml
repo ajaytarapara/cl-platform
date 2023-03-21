@@ -1,0 +1,22 @@
+﻿ @using CIPlatform.Entities.DataModels
+@model List<Comment>
+@foreach (var item in Model)
+{
+    <div class="card shadow m-3 row">
+        <div class="d-flex flex-row"
+         style="flex-direction: row;display: flex;flex-direction: column;flex-wrap: wrap;">
+            <div>
+                <img style="border:1px solid gray;border-radius:50px;"
+                 src="~/images/volunteer1.png" alt="">
+
+            </div>
+            <div style="padding:8px;font: size 1rem;;">
+                @item.User.FirstName @item.User.LastName <br>
+                <div style="display:flex; flex-wrap:wrap;">@item.CreatedAt</div>
+            </div>
+        </div>
+        <div>
+            @item.Comment1
+        </div>
+    </div>
+}

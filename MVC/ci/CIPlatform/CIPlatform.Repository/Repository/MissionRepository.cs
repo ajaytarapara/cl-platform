@@ -52,10 +52,15 @@ namespace CIPlatform.Repository.Repository
             List<ReleatedMissionModel> mission1 = _ciPlatformDbContext.ReleatedMissions.FromSqlInterpolated($"exec sp_get_reletedMission_data @missionreleated={missiontitle}, @cityreleated={city}, @countryreleated ={country}").ToList();
             return mission1;
         }
-        void IMissionRepository.addcomment(Comment comment)
+       public void addcomment(long missionid, long userid ,string Commenttext)
         {
+            Comment comment = new Comment();
+            comment.MissionId = missionid;
+            comment.UserId = userid;
+            comment.CreatedAt = DateTime.Now;
+            comment.Comment1 = Commenttext;
             _ciPlatformDbContext.Comments.Add(comment);
-            _ciPlatformDbContext.SaveChanges();
+            _ciPlatformDbContext.SaveChangesAsync();
         }
     }
 }

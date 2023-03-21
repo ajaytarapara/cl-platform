@@ -13,6 +13,6 @@ namespace CIPlatform.Entities.ViewModels
         public long UserId { get; set; }
 
         public long MissionId { get; set; }
-        public string comment { get; set; } 
+        public string commentext { get; set; }  
     }
 }

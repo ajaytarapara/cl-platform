@@ -1,5 +1,42 @@
 ﻿@model CIPlatform.Entities.ViewModels.MissionModel
+@*  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open modal
+  </button>*@
 
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Recommanded to your Co-worker</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+            <form action="recommendedtocoworker" method="Post">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control"  aria-describedby="emailHelp" id="receipient-email">
+                 <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"         >
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+               <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.MissionId">Send Email</button>
+            </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div style="display:none"id="missionid">@Model.MissionId</div>
     <div class="col-4  d-md-none"
         style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
         id="menubar">
@@ -65,6 +102,7 @@
     <div class="container">
         <div class="row pt-5">
             <div class="col-md-5">
+                
                 <div> @{
                     string[] mediaNames=@Model.MediaName.ToString().Split(",");
                     int mediaLength = mediaNames.Length;
@@ -171,17 +209,16 @@
                     <div style="display:flex;justify-content: space-evenly;">
                                                           @if (Model.favourite == 1)
                                  {
-<button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;" class="Icon mx-auto" alt="" />Add To Favourite</button>
+<button style="    border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;" class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;" class="Icon mx-auto" alt="" />Add To Favourite</button>
 }
 else
 {
-<button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" />Add To Favourite</button>
+<button style="    border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" />Add To Favourite</button>
 
                                  }
-                        <button
+                        <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
                             style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"><img
-                                style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a
-                            Co-worker</Co-worker></button>
+                                style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
                     </div>
                     <div style="display: flex;flex-direction: row;align-items: center;">
                         <hr style="width:30%">
@@ -297,22 +334,16 @@ else
 
                             if (documentname.Length==0)
                             {
-                                <p>no doc found</p>
+                                <h5>no doc found</h5>
                             }
                             else
                             {
                             <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                <img src="~/images/doc.png" class="px-2"> <a href="/@Model.documentpath/@documentname[0]@Model.documenttype" target="_blank">@documentname[0]@Model.documenttype</a>
+                                <img src="~/images/doc.png" class="px-2"> <a download href="/@Model.documentpath/@documentname[0]@Model.documenttype" target="_blank">@documentname[0]@Model.documenttype</a>
                             </button>
                             }
                            }
                            }
-                            <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                <img src="~/images/doc.png" class="px-2" alt="">at_vero_eos_accusamus.doc
-                            </button>
-                            <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                <img src="~/images/doc.png" class="px-2" alt="">important_doc.xls
-                            </button>
                         </div>
                     </div>
                     <div id="Organization" class="tabcontent">
@@ -328,65 +359,16 @@ else
                            <form>
                                 <div>
                          
-                                    <input asp-for="comment" style="height: 100px; width: 100%;" type="text" name="Comments" id=""
+                                    <input style="height: 100px; width: 100%;" type="text"  id="commentText"
                                         placeholder="Enter your comments..">
                             
                                 </div>
                                 <div>
-                                    <button asp-action="addcomment" type="submit"
-                                        style="border:1px solid orange;color:orange;background: none;border-radius: 10px;margin-top: 20px;padding:10px">Post
-                                        Comment</button>
+                                    <button asp-action="addcomment" type="submit" id="post-comment-btn"
+                                        style="border:1px solid orange;color:orange;background: none;border-radius: 10px;margin-top:                                                             20px;padding:10px" value="@Model.MissionId">PostComment</button>
                                 </div>
                           </form>
-                        <div class="container d-flex bg-light flex-column">
-                            <div class="card shadow m-3 row">
-                                <div class="d-flex flex-row"
-                                    style="flex-direction: row;display: flex;flex-direction: column;flex-wrap: wrap;">
-                                    <div>
-                                        <img style="border:1px solid gray;border-radius:50px;"
-                                            src="~/images/volunteer1.png" alt="">
-
-                                    </div>
-                                    <div style="padding:8px;font: size 1rem;;">Anroid Hubler <br>
-                                        <div style="display:flex; flex-wrap:wrap;">Monday,june10,2019,10:30PM</div>
-                                    </div>
-                                </div>
-                                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quasi cum at
-                                    provident?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum,
-                                    perferendis?</div>
-                            </div>
-                            <div class=" card shadow m-3 row">
-                                <div class="d-flex flex-row"
-                                    style="flex-direction: row;display: flex;flex-direction: column;flex-wrap: wrap;">
-                                    <div>
-                                        <img style="border:1px solid gray;border-radius:50px;"
-                                            src="~/images/volunteer1.png" alt="">
-
-                                    </div>
-                                    <div style="padding:8px;font: size 1rem;;">Anroid Hubler <br>
-                                        <div style="display:flex; flex-wrap:wrap;">Monday,june10,2019,10:30PM</div>
-                                    </div>
-                                </div>
-                                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quasi cum at
-                                    provident?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum,
-                                    perferendis?</div>
-                            </div>
-                            <div class=" card shadow m-3 row">
-                                <div class="d-flex flex-row"
-                                    style="flex-direction: row;display: flex;flex-direction: column;flex-wrap: wrap;">
-                                    <div>
-                                        <img style="border:1px solid gray;border-radius:50px;"
-                                            src="~/images/volunteer1.png" alt="">
-
-                                    </div>
-                                    <div style="padding:8px;font: size 1rem;;">Anroid Hubler <br>
-                                        <div style="display:flex; flex-wrap:wrap;">Monday,june10,2019,10:30PM</div>
-                                    </div>
-                                </div>
-                                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quasi cum at
-                                    provident?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum,
-                                    perferendis?</div>
-                            </div>
+                        <div class="container d-flex bg-light flex-column" id="CommentsList">
 
                             <div class="d-flex mx-auto"> <button style="background: none;border: none;">Read More
                                     Comments..</button> </div>

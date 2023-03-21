@@ -16,6 +16,6 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public void addToFavourites(long misid, long UserId,int  fav);
  
-        public void addcomment(Comment comment);
+        public void addcomment(long userid,long missionid,string Commenttext);
     }
 }
