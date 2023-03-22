@@ -74,6 +74,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
             HomeModel.id = userObj.UserId;
+            HomeModel.avatar = userObj.Avatar.ToString();  
 
 
             IEnumerable<Country> countries = _homeRepository.getCountries();
@@ -168,6 +169,9 @@ namespace CIPlatform.Controllers
             _homeRepository.addToFavourites(misid, userObj.UserId, fav);
             return RedirectToAction("Index");
         }
+
+
+
 
     }
 }

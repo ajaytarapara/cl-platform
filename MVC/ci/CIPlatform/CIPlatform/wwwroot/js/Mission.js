@@ -128,3 +128,45 @@ $("#btn-recommend").on("click", function (e) {
     })
 
 });
+
+var missionid = $("#applymission").val();
+$("#applybtn").on("click", function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: '/Mission/ApplyApplication',
+        dataType: "html",
+        data: { Missionid: missionid},
+        success: function (data) {
+
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
+
+});
+
+$("#rating .rating").click(function () {
+    alert("Hello Rating");
+    //var rating = $(".user-rating").val();
+    var rating = $("#add-rating").serialize();
+    //var rating = rating1.rate.val();
+
+    const rateValue = rating.substring(rating.length, rating.lastIndexOf("=") + 1)
+    $.ajax({
+        url: '/Mission/MissionUserRating',
+        type: 'POST',
+        data: { ratingCount: rateValue, missionid: missionid },
+        success: function (CountryResult) {
+            alert('Rating submitted.');
+        },
+        error: function () {
+            alert('Rating Failed!');
+        }
+    });
+});
+
+
+/*ratings*/

@@ -71,9 +71,8 @@
 
                 <div style="justify-content: center;" class="d-flex pt-2">
                     
-                    <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;">                    
-                        <a style="color: #F88634; text-decoration: none;" href="" @Url.Action("Mission_Volunteer", "Mission", new { missionId = @item.MissionId })"">Apply</a><img src="~/images/right-arrow.png" alt="">
-                    </button>
+<button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;">  <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @item.MissionId})">Apply</a><img
+                                    src="~/images/right-arrow.png" alt=""></button>
                         
                 </div>
             </div>

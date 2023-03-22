@@ -96,5 +96,42 @@ namespace CIPlatform.Controllers
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path);
 
         }
+
+        [HttpPost]
+        public void ApplyApplication(long missionid)
+      {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            _missionRepository.ApplyApplication(missionid,userObj.UserId);
+        }
+
+        public IActionResult MissionUserRating(float ratingCount, long? missionid)
+        {
+           string userSession = HttpContext.Session.GetString("useremail");
+            User user = _homeRepository.getuser(userSession);
+
+            var findUserRating = _ciPlatformDbContext.MissionRatings.Where(x => x.UserId == user.UserId && x.MissionId == missionid).FirstOrDefault();
+
+            if (findUserRating != null)
+            {
+                findUserRating.UserId = user.UserId;
+                findUserRating.MissionId = (long)missionid;
+                findUserRating.Rating = (byte)ratingCount;
+                findUserRating.UpdatedAt = DateTime.Now;
+                _ciPlatformDbContext.MissionRatings.Update(findUserRating);
+                _ciPlatformDbContext.SaveChanges();
+            }
+            else
+            {
+                MissionRating missionRating = new MissionRating();
+                missionRating.UserId = user.UserId;
+                missionRating.MissionId = (long)missionid;
+                missionRating.Rating = (byte)ratingCount;
+                var entry = _ciPlatformDbContext.MissionRatings.Add(missionRating);
+                _ciPlatformDbContext.SaveChanges();
+
+            }
+            return Ok();
+        }
     }
 }

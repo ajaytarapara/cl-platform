@@ -49,13 +49,40 @@ else
                             <span>
                                @Item.OrganizationName
                             </span>
-                            <div style="color: orange; ">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
+                            <svg style="display:none;">
+<defs>
+<symbol id="fivestars">
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(24)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(48)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(72)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(96)" />
+</symbol>
+</defs>
+</svg>
+<div class="mission-rating">
+<!-- <div class="rating-bg" style="width: 90%;"></div> -->
+@if (Item.Rating == null)
+{
+<progress class="rating-bg" value="0" max="5"></progress>
+<svg>
+<use xlink:href="#fivestars" />
+</svg>
+}
+else
+{
+<progress class="rating-bg" value="@Item.Rating" max="5"></progress>
+<svg>
+<use xlink:href="#fivestars" />
+</svg>
+}
+
+</div>
                         </div>
                         <div CLASS="mt-3 mb-3 d-flex missiondate">
                             <div style="width:15%">
@@ -77,7 +104,7 @@ else
                         <hr>
 
                         <div style="justify-content: center;" class="d-flex pt-2" id="apply">
-                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;">  <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;" id="">  <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img
                                     src="~/images/right-arrow.png" alt=""></button>
                         </div>
                     </div>
@@ -134,12 +161,9 @@ else
                             <span>
                                @Item.OrganizationName
                             </span>
-                            <div style="color: orange; ">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                <div id="stars-rating" class="d-flex justify-content-center align-items-center position-relative z-1">
+                                    <input id="star-input-id" type="text" class="rating text-center d-none" data-size="sm" />
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -179,7 +203,6 @@ else
             </div>
 
       </div>
- </div>  
 
 
 }

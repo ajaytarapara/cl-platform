@@ -30,10 +30,12 @@ namespace CIPlatform.Entities.ViewModels
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string Avaliblity { get; set; }
-        public string Rating { get; set; }
+        public decimal Rating { get; set; }
         public string Medianame { get; set; }
         public string Mediatype { get; set; }
         public string themetitle { get; set; }
+
+        public string avatar { get; set; }  
 
 
     }

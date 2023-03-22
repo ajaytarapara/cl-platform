@@ -2,7 +2,6 @@
 @*  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
   </button>*@
-
 <!-- The Modal -->
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -181,7 +180,7 @@
                             <img style="padding: 10px" src="~/images/Seats-left.png" alt="">
                         </div>
                         <div style="display: flex;flex-direction: column; margin-left: 10px;">
-                            <span>@Model.seats</span>
+                            <stopseats</span>
                             <span>Seats left</span>
                         </div>
                     </div>
@@ -206,7 +205,7 @@
 
                 <div>
                     <hr>
-                    <div style="display:flex;justify-content: space-evenly;">
+                    <div style="display:flex;justify-content: space-evenly;margin-top:10px;">
                                                           @if (Model.favourite == 1)
                                  {
 <button style="    border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;" class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;" class="Icon mx-auto" alt="" />Add To Favourite</button>
@@ -217,23 +216,27 @@ else
 
                                  }
                         <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
-                            style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"><img
+                            style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;margin-top:10px"><img
                                 style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
                     </div>
                     <div style="display: flex;flex-direction: row;align-items: center;">
                         <hr style="width:30%">
-                        <div style="width:30%" class="rating"> <input type="radio" name="rating" value="5" id="5"><label
-                                for="5">☆</label>
-                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input
-                                type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio"
-                                name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio"
-                                name="rating" value="1" id="1"><label for="1">☆</label>
-                        </div>
+                                       <form id="add-rating" style="width:auto;">
+                                                <div id="rating" class="skills">
+                                                    <div class="rating">
+                                                        <input class="user-rating" type="radio" name="rate" value="5" />
+                                                        <input class="user-rating" type="radio" name="rate" value="4" />
+                                                        <input class="user-rating" type="radio" name="rate" value="3" />
+                                                        <input class="user-rating" type="radio" name="rate" value="2" />
+                                                        <input class="user-rating" type="radio" name="rate" value="1" />
+                                                    </div>
+                                                </div>
+                                       </form>
                         <hr style="width:30%">
                     </div>
 
                 </div>
-                <div style="display: flex;flex-wrap: wrap;">
+                <div style="display: flex;flex-wrap: wrap;margin-top:10px">
                     <div
                         style="display:flex;flex-direction: row;justify-content: space-between;width: 100%;flex-wrap: wrap;">
                         <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -248,7 +251,7 @@ else
                             <img src="~/images/web.png" alt="">
                             <div><span>Theme</span><br><div id="missiontheme">@Model.ThemeTitle</div></div>
                         </div>
-                        <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;s
+                        <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
                         border: 1px solid #E8E8E8;
                         border-radius: 3px;width: 20%;">
                             <img src="~/images/calender.png" alt="">
@@ -262,14 +265,22 @@ else
                         </div>
                     </div>
                 </div>
-
-                <div style="display: flex;justify-content: center;">
-                    <button style="background: none;border: 2px solid #F88634;
-                    border-radius: 30px;color: #F88634;width: 40%;padding: 10px;">Apply<img
-                            src="~/images/right-arrow.png" alt=""></button>
+                <div style="display: flex;justify-content: center;margin-top:10px">
+                    <form>
+                   <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">apply<img
+                                    src="~/images/right-arrow.png" alt=""></a>
+                     </button></form>
                 </div>
 
-
+@*                style="border: 2px solid orange;
+border-radius: 20px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    height: 38px;
+    align-items: center;
+    color: orange;"*@
 
 
 
@@ -388,19 +399,53 @@ else
                     </div>
                     <hr>
                     <div style="padding:20px">
-                        <div class="information-title">Skills <div>@Model.skill</div>
+                        @if(@Model.skill==null){
+                            <div class="information-title">Skills <div>No skill Required</div>
                         </div>
+                        }
+                        else{
+                        <div class="information-title">Skills <div>@Model.skill</div>
+                        </div>}
                         <hr>
                         <div class="information-title">Days <div>Weekend only</div>
                         </div>
                         <hr>
-                        <div class="information-title">Rating <div style="width:40%" class="rating"> <input type="radio"
-                                    name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input
-                                    type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input
-                                    type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input
-                                    type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                            </div>(by 125 volunteers)
+                        <div class="information-title">Rating 
+                            <svg style="display:none;">
+<defs>
+<symbol id="fivestars">
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(24)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(48)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(72)" />
+<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+fill="white" fill-rule="evenodd" transform="translate(96)" />
+</symbol>
+</defs>
+</svg>
+<div class="mission-rating">
+<!-- <div class="rating-bg" style="width: 90%;"></div> -->
+@if (Model.Rating == null)
+{
+<progress class="rating-bg" value="0" max="5"></progress>
+<svg>
+<use xlink:href="#fivestars" />
+</svg>
+}
+else
+{
+<progress class="rating-bg" value="@Model.Rating" max="5"></progress>
+<svg>
+<use xlink:href="#fivestars" />
+</svg>
+}
+
+</div>
+<span class="gray2">(by @Model.TotalUser volunteers)</span>
                         </div>
 
                     </div>

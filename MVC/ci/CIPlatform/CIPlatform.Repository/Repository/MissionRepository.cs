@@ -62,5 +62,55 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Comments.Add(comment);
             _ciPlatformDbContext.SaveChangesAsync();
         }
+
+        public void ApplyApplication(long missionid, long UserId)
+        {
+            MissionApplication application = new MissionApplication();
+            application.UserId = UserId;
+            application.MissionId = missionid;
+            application.AppliedAt = DateTime.Now;
+            application.ApprovalStatus = "Pending";
+
+            bool isalreadyapplied = _ciPlatformDbContext.MissionApplications.Any(a => a.UserId == application.UserId);
+
+            if (isalreadyapplied)
+            {
+                MissionApplication missionApplication=_ciPlatformDbContext.MissionApplications.Where(a => a.UserId == UserId).First();
+                missionApplication.UserId = UserId;
+                missionApplication.MissionId = missionid;
+                missionApplication.AppliedAt = DateTime.Now;
+                missionApplication.ApprovalStatus = "Pending";
+                _ciPlatformDbContext.Update(missionApplication);
+
+            }
+            else
+            {
+                _ciPlatformDbContext.Add(application);
+            }
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IMissionRepository.addRatingStars(int userId, int missionId, int ratingStars)
+        {
+            MissionRating missionRating = new MissionRating();
+            missionRating.UserId = userId;
+            missionRating.MissionId = missionId;
+            missionRating.Rating = (byte)ratingStars;
+            bool hasAlreadyRating = _ciPlatformDbContext.MissionRatings.Any(u => u.UserId == userId && u.MissionId == missionId);
+            if (hasAlreadyRating)
+            {
+                MissionRating missionRatingObj = _ciPlatformDbContext.MissionRatings.Where(r => r.UserId == userId && r.MissionId == missionId).First();
+                missionRatingObj.Rating = (byte)ratingStars;
+                _ciPlatformDbContext.MissionRatings.Update(missionRatingObj);
+                _ciPlatformDbContext.SaveChanges();
+
+
+            }
+            else
+            {
+                _ciPlatformDbContext.MissionRatings.Add(missionRating);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
     }
 }
