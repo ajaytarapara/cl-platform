@@ -46,11 +46,11 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills = _homeRepository.getSkills();
             return Json(new { data = missionSkills });
         }
-        public IActionResult Storydata()
-        {
-            Story story=_storyRepository.Storydata();   
-            return PartialView("_grid", story);
-        }
+        //public IActionResult Storydata()
+        //{
+        //    Story story=_storyRepository.Storydata();   
+        //    return PartialView("_grid", story);
+        //}
 
     }
 }

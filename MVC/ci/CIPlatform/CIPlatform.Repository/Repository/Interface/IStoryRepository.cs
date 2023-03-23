@@ -13,6 +13,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<City> getCities();
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
-        public List<Story> Storydata();
+        //public Story Storydata();
     }
 }

@@ -43,10 +43,10 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.MissionThemes;
         }
-         Story Storydata()
-        {
-           List <Story> storydata= _ciPlatformDbContext.Stories.FromSqlInterpolated($"exec sp_get_gridview_data").ToList();
-            return (Storydata);
-        }
+        // Story Storydata()
+        //{
+        //   List <Story> storydata= _ciPlatformDbContext.Stories.FromSqlInterpolated($"exec sp_get_gridview_data").ToList();
+        //    return (Storydata);
+        //}
     }
 }
