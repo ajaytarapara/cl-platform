@@ -112,5 +112,9 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.SaveChanges();
             }
         }
+        //public void GetRecentVolunteer(long missionid)
+        //{
+        //    _ciPlatformDbContext.MissionApplications.Include(A => A.User).Where(m => m.UserId.Equals(m.UserId && m.ApprovalStatus="applied"));
+        //}
     }
 }

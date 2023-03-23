@@ -180,7 +180,7 @@
                             <img style="padding: 10px" src="~/images/Seats-left.png" alt="">
                         </div>
                         <div style="display: flex;flex-direction: column; margin-left: 10px;">
-                            <stopseats</span>
+                            <span>@Model.seats</span>
                             <span>Seats left</span>
                         </div>
                     </div>
@@ -188,18 +188,20 @@
                         <div>
                             <img src="~/images/mission.png" alt="">
                         </div>
+                    @if (Model.mission_type == "time")
+                    {
+                        <P>type is time</P>
+                    }
+                    else{
                         <div style="display:flex;flex-direction: column;width: 100%;margin-left: 10px;">
                             <div class="progress" style="width: 100%;">
                                 <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                 </div>
-
-
                             </div>
                             <span style="padding-top: 4px;">8000 achieved</span>
-
                         </div>
-
+                        }
                     </div>
                 </div>
 
@@ -458,7 +460,7 @@ else
                         <hr style="margin-top: 4px;">
                         <ul id="paginated-list" data-current-page="1" aria-live="polite"
                             style="   margin: 0px 0px; padding-left: 0px; justify-content: space-evenly;margin-top: 4px;">
-                            <li>
+                            <li id="recentvolunteer">
                                 <div
                                     style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
                                     <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">

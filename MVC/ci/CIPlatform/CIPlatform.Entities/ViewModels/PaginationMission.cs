@@ -14,6 +14,7 @@ namespace CIPlatform.Entities.ViewModels
         public long? missionCount { get; set; }
         public List<GridModel> missions { get; set; }
 
+        
 
     }
 }

@@ -24,6 +24,13 @@ namespace CIPlatform.Entities.ViewModels
          public int seats { get; set; }
          public int favourite { get; set; }
         public decimal? Rating { get; set; }
+        public string? MissionType { get; set; }
+
+        public string? MissionGoal { get; set; }
+
+        public int? AchievedValue { get; set; }
+
+        public int? totalAction { get; set; }
 
     }
 }

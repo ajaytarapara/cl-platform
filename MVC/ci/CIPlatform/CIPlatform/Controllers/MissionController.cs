@@ -133,5 +133,10 @@ namespace CIPlatform.Controllers
             }
             return Ok();
         }
+
+        //public void GetRecentVolunteer(long missionid)
+        //{
+        //    _missionRepository.GetRecentVolunteer(missionid);
+        //}
     }
 }

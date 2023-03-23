@@ -138,7 +138,7 @@ $("#applybtn").on("click", function (e) {
         dataType: "html",
         data: { Missionid: missionid},
         success: function (data) {
-
+            alert('you have applied mission.')
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -147,6 +147,9 @@ $("#applybtn").on("click", function (e) {
     })
 
 });
+
+
+/*ratings*/
 
 $("#rating .rating").click(function () {
     alert("Hello Rating");
@@ -169,4 +172,24 @@ $("#rating .rating").click(function () {
 });
 
 
-/*ratings*/
+
+function RecentVolunteer(missionid) {
+    $.ajax({
+        type: "GET",
+        url: '/Mission/GetRecentVolunteer',
+        dataType: "html",
+        data: { missionid: missionid},
+        success: function (data) {
+
+            $('#CommentsList').html("");
+            $('#CommentsList').html(data);
+
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
+};
+
+

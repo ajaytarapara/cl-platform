@@ -21,5 +21,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void ApplyApplication(long UserId, long missionid);
 
         public void addRatingStars(int userId, int missionId, int ratingStars);
+
+        //public void GetRecentVolunteer(long missionid);
     }
 }
