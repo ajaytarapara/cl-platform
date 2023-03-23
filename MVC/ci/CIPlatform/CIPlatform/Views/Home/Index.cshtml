@@ -9,7 +9,7 @@
                     src="~/images/cancel1.png" alt=""></button>
         </div>
         <div class="menuitem">
-            <button style="border: none; background: white;">Stories</button>
+            <a style="border: none; background: white;" href="@Url.Action("StoryListing", "Story")">Stories</a>
             <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                 id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                 Policy
@@ -73,7 +73,7 @@
             <button style="border: none; background: white; background: white;
             height: 100%;
     
-            border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+            border-right: -moz-text-decoration-colorolid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Skills
             </button>
@@ -102,7 +102,7 @@
             </div>
             <div class="col-6  leftnav">
 
-                <button style="border: none; background: white;">Stories</button>
+                <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     Policy
@@ -214,7 +214,7 @@
     </div>
         </div>
     </div>
-    </iv>
+    </div>
     </div>
 
     <div class="container mt-3">
@@ -278,7 +278,7 @@
     <hr style="margin-top:10px;">
   @section Javascript{
     <script src="~/js/custom.js" asp-append-version="true"></script>
-
+     <script src="~/js/ci.js" asp-append-version="true"></script>
   }
     
   

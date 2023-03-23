@@ -172,7 +172,8 @@ $("#rating .rating").click(function () {
 });
 
 
-
+/*recent volunteer*/
+var missionid = $("#applymission").val();
 function RecentVolunteer(missionid) {
     $.ajax({
         type: "GET",
@@ -181,8 +182,8 @@ function RecentVolunteer(missionid) {
         data: { missionid: missionid},
         success: function (data) {
 
-            $('#CommentsList').html("");
-            $('#CommentsList').html(data);
+            $('#Recentvol').html("");
+            $('#Recentvol').html(data);
 
         },
         error: function (xhr, status, error) {

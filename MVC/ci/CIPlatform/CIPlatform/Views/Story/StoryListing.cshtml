@@ -1,0 +1,356 @@
+﻿
+<div class="col-4  d-md-none"
+     style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
+     id="menubar">
+    <div style="display: flex; justify-content:flex-end;">
+        <button style="background: none;border: none;" onclick="closemenu()" id="closingimg">
+            <img src="~/images/cancel1.png" alt="">
+        </button>
+    </div>
+    <div class="menuitem">
+        <button style="border: none; background: white;">Stories</button>
+        <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+            Policy
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+
+
+    </div>
+
+
+
+</div>
+
+
+<div class="col-4  d-md-none" id="filterbar">
+    <div style="display: flex; justify-content:flex-end;">
+        <button style="background: none;border: none;" onclick="closefilter()" id="closingimg">
+            <img src="~/images/cancel1.png" alt="">
+        </button>
+    </div>
+    <div class="d-flex filteritem" style="justify-content: center; flex-direction: column;">
+        <button style="border: none; background: white;background: white;
+            height: 100%;
+            border-left: 1px solid;
+            border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Country
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white;background: white;
+            height: 100%;
+
+            border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            City
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white;background: white;
+            height: 100%;
+
+            border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Theme
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white; background: white;
+            height: 100%;
+
+            border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Skills
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div id="menubarimg" class="d-md-none">
+            <button onclick="menubartoggle()">
+                <img src="~/images/list.png"
+                     alt="">
+            </button>
+        </div>
+        <div class="col-6  leftnav">
+
+            <button style="border: none; background: white;">Stories</button>
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                Policy
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+        </div>
+        <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
+            <img src="" style="border-radius: 50%;height: 100%; padding: 4px;">
+            <button value="" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                username
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid mt-2">
+    <div style="border-color: #414141; border:1px solid" class="row">
+        <div class="col-md-6 d-flex leftheader" style="padding-left:9vw;">
+            <img src="~/images/search.png" alt="">
+            <input type="text" name="searchtext" id="search-input" placeholder="Search Mission" style="width:67%;">
+            <div>
+                <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
+            </div>
+
+
+        </div>
+        <div class="col-md-6 d-flex rightheader" id="rightheader">
+            <button style="border: none; background: white;background: white;
+                height: 100%;
+                border-left: 1px solid;
+                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Country
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="countryDropDownList">
+                @* @{
+                    @foreach (var country in Model.countryList)
+                    {
+                    <li class="p-1">
+                    <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                    @country.Name
+                    </a>
+                    </li>
+                    }  } *@
+            </ul>
+            <button style="border: none; background: white;background: white;
+                height: 100%;
+
+                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                city
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="cityDropDownList">
+            </ul>
+
+            <button style="border: none; background: white;background: white;
+                height: 100%;
+
+                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Theme
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="themeDropDownList">
+            </ul>
+            <button style="border: none; background: white; background: white;
+                height: 100%;
+
+                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Skills
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="skillDropDownList">
+            </ul>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
+            <div class="chips d-flex flex-wrap mr-2">
+            </div>
+            <p class="no-filter-text">No filters applied</p>
+            <a class="close-chips" style="display:none;" href="#">Clear All</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt-2">
+    <div class=row>
+        <div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white storymainbgimg"
+             style="background-image: url(/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png); padding: 0 !important;">
+            <div class="storytext">
+                <p class="storyp">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                    labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum
+                    neque maiores dolorem unde? Aut dolorum quod excepturi fugit.
+                </p>
+                <button id="storybutton">
+                    <span style="color:white">Shere your story &nbsp;<i class="bi bi-arrow-right"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="justify-content: space-between;">
+        <div class="card mb-5" style="width: 25rem;">
+
+            <div class="howerimg">
+                <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-2.png" alt="Avatar"
+                     class="howermainimage" style="width: 106%; margin-left: -11px;">
+                <div class="overlay overlayforhower">
+                    <div class="howertext">
+                        <button id="btnhower">
+                            <span style="color: white;">View Details</span>&nbsp;<span>
+                                <i class="bi bi-arrow-right" style="color:white"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="storytheme">
+                    <spam class="storyth">Environment</spam>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title" style="margin-top: 5%;">
+                    Grow Tress - On The Path To Environment Sustanability
+                </h5>
+                <p style="color:#6c757d">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+            </div>
+            <div class="card-body">
+                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
+                    Suraj Parmar
+                </span>
+            </div>
+
+        </div>
+        <div class="card mb-5" style="width: 25rem;">
+
+            <div class="howerimg">
+                <img src="~/images/Plantation-and-Afforestation-programme-1.png" alt="Avatar"
+                     class="howermainimage" style="width: 106%; margin-left: -11px;">
+                <div class="overlay overlayforhower">
+                    <div class="howertext">
+                        <button id="btnhower">
+                            <span style="color: white;">View Details</span>&nbsp;<span>
+                                <i class="bi bi-arrow-right" style="color:white"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="storytheme">
+                    <spam class="storyth">Environment</spam>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title" style="margin-top: 5%;">
+                    Grow Tress - On The Path To Environment Sustanability
+                </h5>
+                <p style="color:#6c757d">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+            </div>
+            <div class="card-body">
+                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
+                    Suraj Parmar
+                </span>
+            </div>
+
+        </div>
+        <div class="card mb-5" style="width: 25rem;">
+
+            <div class="howerimg">
+                <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Avatar"
+                     class="howermainimage" style="width: 106%; margin-left: -11px;">
+                <div class="overlay overlayforhower">
+                    <div class="howertext">
+                        <button id="btnhower">
+                            <span style="color: white;">View Details</span>&nbsp;<span>
+                                <i class="bi bi-arrow-right" style="color:white"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="storytheme">
+                    <spam class="storyth">Environment</spam>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title" style="margin-top: 5%;">
+                    Grow Tress - On The Path To Environment Sustanability
+                </h5>
+                <p style="color:#6c757d">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+            </div>
+            <div class="card-body">
+                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
+                    Suraj Parmar
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+    <hr style="margin: top 10px;">
+    <div class="container mt-3">
+        <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
+    </div>
+    <hr style="margin-top:10px;">
+
+
+
+     @section Javascript{
+
+ <script src="~/js/Story.js" asp-append-version="true"></script>
+  }
+    

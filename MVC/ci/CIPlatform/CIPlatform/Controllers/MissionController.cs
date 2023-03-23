@@ -39,7 +39,6 @@ namespace CIPlatform.Controllers
 
                 MissionModel missionModel = _missionRepository.Getmission(missionid, userObj.UserId);
                 missionModel.username = userObj.FirstName + " " + userObj.LastName;
-
                 return View(missionModel);
             }
         }
@@ -134,9 +133,12 @@ namespace CIPlatform.Controllers
             return Ok();
         }
 
-        //public void GetRecentVolunteer(long missionid)
-        //{
-        //    _missionRepository.GetRecentVolunteer(missionid);
-        //}
+        public IActionResult GetRecentVolunteer(long missionid)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            _missionRepository.GetRecentVolunteer(missionid,userObj.UserId);
+            return PartialView("_RecentVolunteer");
+        }
     }
 }

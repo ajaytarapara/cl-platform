@@ -104,15 +104,15 @@
                         <div style="width:15%">
                             <hr>
                         </div>
+                    </div>
+                    <div style="justify-content:space-between;" class="d-flex pt-1 ">
+                        <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
 
+                        <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>Deadline</span> </div>
                     </div>
                     @if (Item.MissionType == "time")
                     {
-                        <div style="justify-content:space-between;" class="d-flex pt-1 ">
-                            <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
 
-                            <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>Deadline</span> </div>
-                        </div>
                     }
                     else
                     {
@@ -126,9 +126,18 @@
                     <hr>
 
                     <div style="justify-content: center;" class="d-flex pt-2" id="apply">
-                        <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;" id="">
-                            <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
-                        </button>
+                        @if (@Item.EndDate < DateTime.Now)
+                        {
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color:   #F88634; width:30%;height:30px;" id="">
+                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">View Details</a><img src="~/images/right-arrow.png" alt="">
+                            </button>
+                        }
+                        else
+                        {
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;" id="">
+                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

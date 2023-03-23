@@ -1,0 +1,28 @@
+﻿ @using CIPlatform.Entities.DataModels
+@model List<MissionApplication>
+@foreach (var item in Model)
+{
+    
+<li id="recentvolunteer">
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
+        <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
+            <div class="d-flex" style="flex-direction: column;">
+                <img src="~/images/volunteer1.png" alt="" class="volunteer-list-img">
+                <div>Estella Fowles</div>
+            </div>
+        </div>
+        <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
+            <div class="d-flex" style="flex-direction: column;">
+                <img src="~/images/volunteer4.png" alt="" class="volunteer-list-img">
+                <div>Estella Fowles</div>
+            </div>
+        </div>
+        <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
+            <div class="d-flex" style="flex-direction: column;">
+                <img src="~/images/volunteer7.png" alt="" class="volunteer-list-img">
+                <div>Travis Steen</div>
+            </div>
+        </div>
+    </div>
+</li>
+}

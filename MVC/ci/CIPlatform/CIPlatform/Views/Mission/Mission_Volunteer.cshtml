@@ -1,4 +1,5 @@
 ﻿@model CIPlatform.Entities.ViewModels.MissionModel
+
 @*  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
   </button>*@
@@ -68,7 +69,7 @@
             </div>
             <div class="col-6  leftnav">
 
-                <button style="border: none; background: white;">Stories</button>
+                <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     Policy
@@ -80,7 +81,7 @@
                 </ul>
             </div>
             <div class="col-6 d-flex px-5 rightnav">
-                <img src="~/images/user-img.png" alt="" class="src"
+                <img src="~/images/user.png" alt="" class="src"
                     style="border-radius: 50%;height: 100%; padding: 4px;">
                 <span>@Model.username</span>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
@@ -223,7 +224,7 @@ else
                     </div>
                     <div style="display: flex;flex-direction: row;align-items: center;">
                         <hr style="width:30%">
-                                       <form id="add-rating" style="width:auto;">
+                                       <form id="add-rating"-moz-border-radius"width:auto;">
                                                 <div id="rating" class="skills">
                                                     <div class="rating">
                                                         <input class="user-rating" type="radio" name="rate" value="5" />
@@ -269,10 +270,17 @@ else
                 </div>
                 <div style="display: flex;justify-content: center;margin-top:10px">
                     <form>
-                   <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
-                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">apply<img
+                        @if(Model.EndDate<DateTime.Now)
+                        {
+                     <p style="text-decoration:none;color: #F88634;border:1px solid orange;border-radius:4px;display:flex;justify-content:center;align-items:center;height:35px;">View details<img
+                                    src="~/images/right-arrow.png" alt=""></p>
+                     }
+                                  
+                     else{     <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Apply<img
                                     src="~/images/right-arrow.png" alt=""></a>
-                     </button></form>
+                     </button>} 
+                     </form>
                 </div>
 
 @*                style="border: 2px solid orange;
@@ -459,30 +467,8 @@ else
                         <h2 style="margin-top: 4px;padding: 10px;font-weight: bolder;">Recent volunteers</h2>
                         <hr style="margin-top: 4px;">
                         <ul id="paginated-list" data-current-page="1" aria-live="polite"
-                            style="   margin: 0px 0px; padding-left: 0px; justify-content: space-evenly;margin-top: 4px;">
-                            <li id="recentvolunteer">
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer1.png" alt="" class="volunteer-list-img">
-                                            <div>Andrew johnson</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer4.png" alt="" class="volunteer-list-img">
-                                            <div>Estella Fowles</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer7.png" alt="" class="volunteer-list-img">
-                                            <div>Travis Steen</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            style="   margin: 0px 0px; padding-left: 0px; justify-content: space-evenly;margin-top: 4px;" id="Recentvol">
+
 
 
 

@@ -1072,53 +1072,141 @@ footer {
 /* ================================================================================= */
 /* story listing page */
 /* ================================================================================= */
-#story-content {
-    height: calc(100vh - var(--header-height));
-}
-
-#story-list-div {
-    background-color: #FFFFFF00;
-}
-
-#story-content::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
-
-#story-top-image-div {
-    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
-    height: 250px;
-    background-size: 100vw 615px;
+.storymainbgimg {
     background-repeat: no-repeat;
-    background-position: 0px -180px;
+    background-size: 100vw 36vh;
 }
 
-.user-story-image {
-    height: 250px;
+.storytext {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+@media(max-width:720px) {
+    .storytext {
+        padding-top: 30px;
+        padding-bottom: 100px;
+    }
+}
+
+@media(max-width:720px) {
+    .storytext {
+        padding-bottom: 80px;
+    }
+}
+
+#storybutton {
+    width: 14vw;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 20vw;
+}
+
+@media(max-width:1100px) {
+
+    #storybutton {
+        width: 26vw;
+    }
+}
+
+.storyp {
+    width: 50%;
+    margin-left: 26%
+}
+
+@media(max-width:720px) {
+    .storyp {
+        width: 80%;
+        margin-left: 11%;
+        font-size: 14px;
+    }
+}
+
+.storytheme {
+    position: absolute;
+    background-color: #f9fafb;
+    width: 35%;
+    height: 16%;
+    border-radius: 5vw;
+    margin-left: 30%;
+    margin-top: -4%;
+}
+
+.storyth {
+    position: absolute;
+    color: gray;
+    font-size: 13px;
+    margin-left: 21%;
+    margin-top: 4%;
+}
+
+.storycardimg {
+    border-radius: 50%;
+    width: 15%;
+}
+
+.storycardimgtext {
+    position: absolute;
+    color: gray;
+    font-size: 13px;
+    margin-left: 21%;
+    margin-top: 4%;
+}
+
+
+.howerimg {
+    position: relative;
     width: 100%;
 }
 
-.story-image-heading {
-    top: 234px;
+.howermainimage {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
-.user-story-description, .story-user-name {
-    color: #757575;
+.overlayforhower {
+    position: absolute;
+    bottom: 0;
+    left: -3%;
+    right: 0;
+    background-color: black;
+    opacity: 0.4;
+    overflow: hidden;
+    width: 106%;
+    height: 100%;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
 }
 
-.user-story-profile-img {
-    height: 50px;
-    width: 50px;
+.howerimg:hover .overlayforhower {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
 }
 
-/* media query */
-@media screen and (max-width:768px) {
-    #story-top-image-div > div {
-        width: 80% !important;
-    }
+.howertext {
+    color: white;
+    font-size: 20px;
+    opacity: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-@media screen and (max-width:360px) {
-    #story-top-image-div > div {
-        font-size: 12px !important;
-    }
+#btnhower {
+    width: 100%;
+    border-radius: 10vw;
+    height: 4vh;
+    border: 1px solid white;
+    border-color: white;
+    background-color: transparent;
 }
