@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<City> getCities();
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
-        //public Story Storydata();
+        public PaginationMission Storydata(int pageNumber);
     }
 }

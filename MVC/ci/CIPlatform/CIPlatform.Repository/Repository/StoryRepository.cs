@@ -28,7 +28,7 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.Cities;
         }
 
-        IEnumerable<Country> IStoryRepository.getCountries()
+       IEnumerable<Country> IStoryRepository.getCountries()
         {
             return _ciPlatformDbContext.Countries;
 
@@ -37,16 +37,25 @@ namespace CIPlatform.Repository.Repository
         IEnumerable<Skill> IStoryRepository.getSkills()
         {
             return _ciPlatformDbContext.Skills;
-        }
+       }
 
         IEnumerable<MissionTheme> IStoryRepository.getThemes()
         {
             return _ciPlatformDbContext.MissionThemes;
         }
-        // Story Storydata()
-        //{
-        //   List <Story> storydata= _ciPlatformDbContext.Stories.FromSqlInterpolated($"exec sp_get_gridview_data").ToList();
-        //    return (Storydata);
-        //}
+
+        public PaginationMission Storydata(int pageNumber)
+        {
+            var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
+            var output1 = new SqlParameter("@missionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
+             PaginationMission pagination = new PaginationMission();
+            List<StoryModel> storydatalist = _ciPlatformDbContext.Storylist.FromSqlInterpolated($"exec sp_get_story_data @pageNumber = {pageNumber},@TotalCount = {output} out,@missionCount={output1} out").ToList();
+            pagination.Stories = storydatalist;
+            pagination.pageSize = 2;
+            pagination.pageCount = long.Parse(output.Value.ToString());
+            pagination.missionCount = long.Parse(output1.Value.ToString());
+            pagination.activePage = pageNumber;
+            return pagination;
+        }
     }
 }

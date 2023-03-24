@@ -10,6 +10,7 @@ namespace CIPlatform.Entities.ViewModels
     public class MissionModel
     {
         public string username;
+        public string avatar;
 
         [Key]
         public long MissionId { get; set; }

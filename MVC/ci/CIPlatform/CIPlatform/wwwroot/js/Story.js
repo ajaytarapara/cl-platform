@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     /*    loadgetgridview();*/
     console.log("hello");
+    storylist();
 
 });
 
@@ -157,4 +158,42 @@ function intializeChips() {
 
 }
 
+/*pagination*/
 
+function storylist(paging) {
+    if (!paging)
+       paging = 1;
+    $.ajax({
+        type: "Get",
+        url: "/Story/Storydata",
+        data: { pageNumber: paging},
+        success: function (data) {
+            var html = "";
+            //console.log(data);
+            var griddata = $("#storylist");
+
+            griddata.html("");
+            griddata.html(data);
+            loadPagination();
+       
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+
+
+function loadPagination() {
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        console.log("in page");
+        e.preventDefault();
+        paging = $(this).text();
+        storylist(paging);
+    })
+}

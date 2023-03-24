@@ -1,4 +1,4 @@
-﻿
+﻿@model CIPlatform.Entities.ViewModels.HomeModel
 <div class="col-4  d-md-none"
      style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
      id="menubar">
@@ -116,10 +116,10 @@
             </ul>
         </div>
         <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
-            <img src="" style="border-radius: 50%;height: 100%; padding: 4px;">
+            <img src="@Model.avatar" style="border-radius: 50%;height: 100%; padding: 4px;">
             <button value="" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                username
+                @Model.username
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><button class="dropdown-item" type="button">Action</button></li>
@@ -231,110 +231,7 @@
     </div>
 </div>
 <div class="container">
-    <div class="row" style="justify-content: space-between;">
-        <div class="card mb-5" style="width: 25rem;">
-
-            <div class="howerimg">
-                <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-2.png" alt="Avatar"
-                     class="howermainimage" style="width: 106%; margin-left: -11px;">
-                <div class="overlay overlayforhower">
-                    <div class="howertext">
-                        <button id="btnhower">
-                            <span style="color: white;">View Details</span>&nbsp;<span>
-                                <i class="bi bi-arrow-right" style="color:white"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="storytheme">
-                    <spam class="storyth">Environment</spam>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <h5 class="card-title" style="margin-top: 5%;">
-                    Grow Tress - On The Path To Environment Sustanability
-                </h5>
-                <p style="color:#6c757d">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
-                </p>
-            </div>
-            <div class="card-body">
-                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
-                    Suraj Parmar
-                </span>
-            </div>
-
-        </div>
-        <div class="card mb-5" style="width: 25rem;">
-
-            <div class="howerimg">
-                <img src="~/images/Plantation-and-Afforestation-programme-1.png" alt="Avatar"
-                     class="howermainimage" style="width: 106%; margin-left: -11px;">
-                <div class="overlay overlayforhower">
-                    <div class="howertext">
-                        <button id="btnhower">
-                            <span style="color: white;">View Details</span>&nbsp;<span>
-                                <i class="bi bi-arrow-right" style="color:white"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="storytheme">
-                    <spam class="storyth">Environment</spam>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <h5 class="card-title" style="margin-top: 5%;">
-                    Grow Tress - On The Path To Environment Sustanability
-                </h5>
-                <p style="color:#6c757d">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
-                </p>
-            </div>
-            <div class="card-body">
-                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
-                    Suraj Parmar
-                </span>
-            </div>
-
-        </div>
-        <div class="card mb-5" style="width: 25rem;">
-
-            <div class="howerimg">
-                <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Avatar"
-                     class="howermainimage" style="width: 106%; margin-left: -11px;">
-                <div class="overlay overlayforhower">
-                    <div class="howertext">
-                        <button id="btnhower">
-                            <span style="color: white;">View Details</span>&nbsp;<span>
-                                <i class="bi bi-arrow-right" style="color:white"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="storytheme">
-                    <spam class="storyth">Environment</spam>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <h5 class="card-title" style="margin-top: 5%;">
-                    Grow Tress - On The Path To Environment Sustanability
-                </h5>
-                <p style="color:#6c757d">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
-                </p>
-            </div>
-            <div class="card-body">
-                <img src="~/images/volunteer7.png" class="storycardimg" />&nbsp;<span id="storycardimgtext">
-                    Suraj Parmar
-                </span>
-            </div>
+    <div class="row" style="justify-content: space-evenly;" id="storylist">
 
         </div>
     </div>
