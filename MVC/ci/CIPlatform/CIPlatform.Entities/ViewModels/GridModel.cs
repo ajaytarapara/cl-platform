@@ -27,9 +27,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? MissionType { get; set; }
 
         public string? MissionGoal { get; set; }
-
-        public int? AchievedValue { get; set; }
-
         public int? totalAction { get; set; }
 
     }
