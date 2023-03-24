@@ -138,11 +138,9 @@ namespace CIPlatform.Controllers
         }
 
         public IActionResult GetRecentVolunteer(long missionid)
-        {
-            string userSession = HttpContext.Session.GetString("useremail");
-            User userObj = _homeRepository.getuser(userSession);
-            _missionRepository.GetRecentVolunteer(missionid,userObj.UserId);
-            return PartialView("_RecentVolunteer");
+        {   
+            List<MissionApplication> recentvol=_missionRepository.GetRecentVolunteer(missionid);
+            return PartialView("_RecentVolunteer", recentvol);
         }
     }
 }

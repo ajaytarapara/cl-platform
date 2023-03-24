@@ -5,6 +5,7 @@ $(document).ready(function () {
     addtofavi(val, flag);
     var missionId = $("#post-comment-btn").val();
     listComment(missionId);
+    RecentVolunteer(missionid);
     //addtofavi(abc, flag);
 });
 
@@ -182,8 +183,8 @@ function RecentVolunteer(missionid) {
         data: { missionid: missionid},
         success: function (data) {
 
-            $('#Recentvol').html("");
-            $('#Recentvol').html(data);
+            $('#paginated-list').html("");
+            $('#paginated-list').html(data);
 
         },
         error: function (xhr, status, error) {
