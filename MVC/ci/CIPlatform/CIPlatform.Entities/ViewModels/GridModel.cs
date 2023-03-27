@@ -20,14 +20,14 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaType { get; set; }
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
-        public string CityName { get; set; }
-         public int seats { get; set; }
+        public string? CityName { get; set; }
+         public int? seats { get; set; }
          public int favourite { get; set; }
         public decimal? Rating { get; set; }
         public string? MissionType { get; set; }
 
         public string? MissionGoal { get; set; }
-        public int? totalAction { get; set; }
+        public String? totalAction { get; set; }
 
     }
 }

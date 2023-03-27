@@ -9,10 +9,14 @@ namespace CIPlatform.Controllers
     {
         private readonly IStoryRepository _storyRepository;
         private readonly IHomeRepository _homeRepository;
-        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository)
+        private readonly IUserRepository _userRepository;
+        private readonly string userSessionEmailId;
+
+        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository,IUserRepository userRepository)
         {
             _homeRepository = homeRepository;
             _storyRepository = storyRepository;
+            _userRepository = userRepository;
         }
         public IActionResult StoryListing()
         {
@@ -22,14 +26,12 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            HomeModel homeModel = new HomeModel();  
-            string userSession = HttpContext.Session.GetString("useremail");
-            User userObj = _homeRepository.getuser(userSession);
-            homeModel.username = userObj.FirstName + " " + userObj.LastName;
-            homeModel.id = userObj.UserId;
-            homeModel.avatar = userObj.Avatar.ToString();
-
-            return View(homeModel);
+            HomeModel HomeModel = new HomeModel();
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModel.id = userObj.UserId;
+            HomeModel.avatar = userObj.Avatar.ToString();
+            return View(HomeModel);
         }
         public IActionResult GetCountries()
         {
@@ -57,6 +59,39 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             PaginationMission story =_storyRepository.Storydata(pageNumber);   
             return PartialView("_Storylist", story);
+        }
+
+        public IActionResult Share_story()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var missions = _homeRepository.GetMissions();
+
+            HomeModel HomeModel = new HomeModel();
+
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModel.id = userObj.UserId;
+            HomeModel.avatar = userObj.Avatar.ToString();
+            ShareStoryModel ShareStoryModel = new ShareStoryModel();
+            ShareStoryModel.userid = HomeModel.id;
+            ShareStoryModel.username = HomeModel.username;
+            ShareStoryModel.avatar = HomeModel.avatar;
+            long UserId = ShareStoryModel.userid;
+            ShareStoryModel.getmission = _storyRepository.Getstorymission(UserId);
+            return View(ShareStoryModel);
+        }
+
+        [HttpPost]
+        public void Savestory(ShareStoryModel storymodel)
+        {
+          _storyRepository.Savestory(storymodel);   
+
         }
 
     }

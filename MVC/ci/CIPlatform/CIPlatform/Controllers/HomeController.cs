@@ -96,7 +96,7 @@ namespace CIPlatform.Controllers
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
 
-            
+
 
             return View(HomeModel);
 
@@ -155,7 +155,7 @@ namespace CIPlatform.Controllers
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             int uid = Convert.ToInt32(userObj.UserId);
-            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber,uid);
+            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber, uid);
 
             return PartialView("_grid", pagination);
         }

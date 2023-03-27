@@ -11,15 +11,15 @@ namespace CIPlatform.Entities.ViewModels
     {
         [Key]
         public long? storyid { get; set; }    
-        public string storydescription { get; set; }
-        public string storytitle { get; set;}
-        public string userfirstname { get; set; }
-        public string userlastname { get; set; }
-        public string useravtar { get; set; }   
-        public string storymediapath { get; set; }
+        public string? storydescription { get; set; }
+        public string? storytitle { get; set;}
+        public string? userfirstname { get; set; }
+        public string? userlastname { get; set; }
+        public string? useravtar { get; set; }   
+        public string? storymediapath { get; set; }
 
-        public string storymediatype { get; set; }  
+        public string? storymediatype { get; set; }  
 
-        public string themetitle { get; set; }  
+        public string? themetitle { get; set; }  
     }
 }

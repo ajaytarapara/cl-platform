@@ -57,5 +57,23 @@ namespace CIPlatform.Repository.Repository
             pagination.activePage = pageNumber;
             return pagination;
         }
+        List<MissionApplication> IStoryRepository.Getstorymission(long UserId)
+        {
+            List<MissionApplication> storymission= _ciPlatformDbContext.MissionApplications.Include(u => u.Mission).Where(u => u.UserId == UserId && u.ApprovalStatus == "approved").ToList();
+            return storymission;
+        }
+
+       void IStoryRepository.Savestory(ShareStoryModel storymodel)
+        {
+            Story story = new Story();
+            story.Title = storymodel.Title;
+            story.Description = storymodel.Description;
+            story.PublishedAt = storymodel.PublishedAt;
+            story.UserId = storymodel.userid;
+            story.MissionId = (long)storymodel.MissionId;
+            _ciPlatformDbContext.Add(story);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
     }
 }

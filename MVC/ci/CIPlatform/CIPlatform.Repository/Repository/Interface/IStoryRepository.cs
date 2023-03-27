@@ -15,5 +15,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
         public PaginationMission Storydata(int pageNumber);
+
+        public List<MissionApplication> Getstorymission(long UserId);
+        public void Savestory(ShareStoryModel storymodel);
     }
 }
