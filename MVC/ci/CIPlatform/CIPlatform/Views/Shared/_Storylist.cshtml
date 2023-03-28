@@ -5,8 +5,12 @@
     <div class="card mb-5" style="width: 25rem;">
 
         <div class="howerimg">
-            <img src="@Item.storymediapath.@Item.storymediatype" alt="Avatar"
-             class="howermainimage" style="width: 106%; margin-left: -11px;">
+             @{
+                    string[]mediapath=@Item.storymediapath.ToString().Split(",");
+                    
+                }
+            <img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">
+            @*<img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">*@
             <div class="overlay overlayforhower">
                 <div class="howertext">
                     <button id="btnhower">
@@ -65,3 +69,6 @@
         </ul>
     </nav>
 </div>
+
+
+

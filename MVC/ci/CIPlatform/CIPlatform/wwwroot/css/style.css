@@ -1246,3 +1246,15 @@ footer {
     color: orange;
     width: 100px;
 }
+#dropSection {
+    height: 200px;
+    border: 1px dashed gray;
+}
+
+#btnUpload {
+    display: none;
+}
+
+.active {
+    background-color: skyblue !important;
+}
