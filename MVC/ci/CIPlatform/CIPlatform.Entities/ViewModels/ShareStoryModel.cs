@@ -15,7 +15,7 @@ namespace CIPlatform.Entities.ViewModels
         public DateTime? PublishedAt { get; set; }
 
         public string username { get; set; }
-        public string avatar { get; set; }
+        public string? avatar { get; set; }
         public long userid { get; set; }
 
         public string StoryMedia { get; set; }

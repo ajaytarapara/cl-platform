@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div class="col-6 d-flex px-5 rightnav">
-                <a type="hidden" id="userid">@Model.userid</a>
+                <a type="hidden" style="display:none" id="userid">@Model.userid</a>
                 <img src="@Model.avatar" alt="" class="src"
                     style="border-radius: 50%;height: 100%; padding: 4px;">
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
@@ -59,7 +59,7 @@
                 Select Mission
                 <select class="form-select" aria-label="Default select example" id="storydropdown">
                     
-                    <option selected>Open this select menu</option>
+                    <option  selected>Open this select menu</option>
                     @foreach (var item in Model.getmission)
                     {                                   
                     <option value="@item.Mission.MissionId">@item.Mission.Title</option>
@@ -68,19 +68,20 @@
             </div>
             <div class="col-md-4 storydropdown">
                 My Story Title
-                <input class="form-control" type="text" placeholder="Enter story title"
-                    aria-label="default input example" asp-for="Title">
+                <input  class="form-control" type="text" placeholder="Enter story title"
+                    aria-label="default input example"  id="title">
             </div>
             <div class="col-md-4 storydropdown">
                 Date
-                <input class="form-control" type="date" placeholder="Select date" aria-label="default input example"asp-for="PublishedAt">
+                <input id="PublishedAt" class="form-control" type="date" placeholder="Select date" aria-label="default input example">
             </div>
 
         </div>
         <div class="row mt-3">
-            <div class="storydropdown">
+            <div class="storydropdown" id="description">
                 My Story
-                <textarea id="myTextarea" style="height: 150px;"asp-for="Description"></textarea>
+                 <input  class="form-control" type="text" placeholder="Enter story description"
+                    aria-label="default input example"  id="myTextarea" style="height: 150px;">
             </div>
         </div>
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Entities.ViewModels
 {
-    public  class StoryModel
+    public class StoryModel
     {
         [Key]
         public long? storyid { get; set; }    
@@ -20,6 +20,7 @@ namespace CIPlatform.Entities.ViewModels
 
         public string? storymediatype { get; set; }  
 
-        public string? themetitle { get; set; }  
+        public string? themetitle { get; set; }
+   
     }
 }

@@ -37,12 +37,9 @@ namespace CIPlatform.Controllers
             {
                 HomeModel homeModel = new HomeModel();
                 User userObj = _userRepository.findUser(userSessionEmailId);
-
                 MissionModel missionModel = _missionRepository.Getmission(missionid, userObj.UserId);
                 missionModel.username = userObj.FirstName + " " + userObj.LastName;
                 homeModel.id = userObj.UserId;
-                homeModel.avatar = userObj.Avatar.ToString();
-                missionModel.avatar=userObj.Avatar.ToString();
                 return View(missionModel);
             }
         }

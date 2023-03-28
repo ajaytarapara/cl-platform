@@ -46,6 +46,7 @@ namespace CIPlatform.Repository.Repository
 
         public PaginationMission Storydata(int pageNumber)
         {
+
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             var output1 = new SqlParameter("@missionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
              PaginationMission pagination = new PaginationMission();
@@ -63,14 +64,14 @@ namespace CIPlatform.Repository.Repository
             return storymission;
         }
 
-       void IStoryRepository.Savestory(ShareStoryModel storymodel)
+       void IStoryRepository.Savestory(Story story)
         {
-            Story story = new Story();
-            story.Title = storymodel.Title;
-            story.Description = storymodel.Description;
-            story.PublishedAt = storymodel.PublishedAt;
-            story.UserId = storymodel.userid;
-            story.MissionId = (long)storymodel.MissionId;
+            //Story story = new Story();
+            //story.Title = storymodel.Title;
+            //story.Description = storymodel.Description;
+            //story.PublishedAt = storymodel.PublishedAt;
+            //story.UserId = storymodel.userid;
+            //story.MissionId = (long)storymodel.MissionId;
             _ciPlatformDbContext.Add(story);
             _ciPlatformDbContext.SaveChanges();
         }

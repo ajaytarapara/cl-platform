@@ -30,7 +30,6 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
             HomeModel.id = userObj.UserId;
-            HomeModel.avatar = userObj.Avatar.ToString();
             return View(HomeModel);
         }
         public IActionResult GetCountries()
@@ -77,7 +76,6 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
             HomeModel.id = userObj.UserId;
-            HomeModel.avatar = userObj.Avatar.ToString();
             ShareStoryModel ShareStoryModel = new ShareStoryModel();
             ShareStoryModel.userid = HomeModel.id;
             ShareStoryModel.username = HomeModel.username;
@@ -90,7 +88,13 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public void Savestory(ShareStoryModel storymodel)
         {
-          _storyRepository.Savestory(storymodel);   
+            Story story = new Story();
+            story.UserId = storymodel.userid;
+            story.MissionId =(long) storymodel.MissionId;
+            story.Title = storymodel.Title;
+            story.Description = storymodel.Description;
+            story.PublishedAt = storymodel.PublishedAt;
+          _storyRepository.Savestory(story);
 
         }
 
