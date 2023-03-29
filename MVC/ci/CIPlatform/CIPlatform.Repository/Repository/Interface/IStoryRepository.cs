@@ -18,5 +18,8 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public List<MissionApplication> Getstorymission(long UserId);
         public void Savestory(Story story,StoryMedium storymedia);
+
+        public Story  Getdetailstory(Story story, long storyid);
+
     }
 }

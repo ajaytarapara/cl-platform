@@ -1,5 +1,6 @@
 ﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
+using CIPlatform.Helpers;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +13,16 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly string userSessionEmailId;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
-        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository,IUserRepository userRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
+        private readonly IConfiguration configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository,IUserRepository userRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IConfiguration _configuration, IHttpContextAccessor httpContextAccessor)
         {
             _homeRepository = homeRepository;
             _storyRepository = storyRepository;
             _userRepository = userRepository;
             _hostingEnvironment = hostingEnvironment;
+            _httpContextAccessor = httpContextAccessor;
+            configuration = _configuration;
         }
         public IActionResult StoryListing()
         {
@@ -123,9 +128,22 @@ namespace CIPlatform.Controllers
             return Content("Success");
         }
 
-        public IActionResult viewstory()
+        public IActionResult View_Story(long storyid,Story story)
         {
-            return View();  
+           Story story1= _storyRepository.Getdetailstory(story, storyid);
+            return View(story1);
+        }
+
+        [HttpPost]
+        public void recommendedtocoworker(string cow_email, int Missionid)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            string welcomeMessage = "Welcome to CI platform, <br/> You can participate in mission using below link. </br>";
+            string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + Missionid.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Apply to Mission </a>";
+            MailHelper mailHelper = new MailHelper(configuration);
+            ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path);
+
         }
 
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NYoxeUmzQzqnTlLe0wXA9eg2Q5IziuGOoTK18WpCLXo=",
+  "Hash": "e6lbMBA8iHMrcgfm1DyrJrwrRAoDxmURiWctDWKDln4=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1700,12 +1700,12 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\Animal-welfare-_-save-birds-campaign-1.png"
     },
     {
-      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
-      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1714,15 +1714,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
-      "RelativePath": "images/uploads/Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1731,7 +1731,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability.png"
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
@@ -1751,12 +1785,12 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\img2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
-      "RelativePath": "images/uploads/Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "RelativePath": "images/uploads/img2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1765,7 +1799,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\img2.png"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\img22.png",

@@ -6,7 +6,7 @@
 
         <div class="howerimg">
              @{
-                    string[]mediapath=@Item.storymediapath.ToString().Split(",");
+                    string[] mediapath=@Item.storymediapath.ToString().Split(",");
                     
                 }
             <img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">
@@ -14,9 +14,8 @@
             <div class="overlay overlayforhower">
                 <div class="howertext">
                     <button id="btnhower">
-                        <span style="color: white;">View Details</span>&nbsp;<span>
+                         <a href="@Url.Action("View_Story", "Story", new { storyid = @Item.storyid })" style="color:white;text-decoration:none;">View details</a> 
                             <i class="bi bi-arrow-right" style="color:white"></i>
-                        </span>
                     </button>
                 </div>
             </div>
@@ -30,7 +29,14 @@
                 @Item.storytitle
             </h5>
             <p style="color:#6c757d">
-                @Item.storydescription
+                  @{ 
+                     string description = @Item.storydescription.ToString().Replace("<p>", "");
+                        description=description.Replace("</p>","");
+                        description=description.Replace("<strong>","");
+                        description=description.Replace("</strong>","");
+                    }
+                @description
+                                 
             </p>
         </div>
         <div class="card-body">

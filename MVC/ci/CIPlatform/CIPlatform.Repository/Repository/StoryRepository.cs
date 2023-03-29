@@ -142,6 +142,11 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
+        Story IStoryRepository.Getdetailstory(Story story,long storyid)
+        {
+           Story storydetail= _ciPlatformDbContext.Stories.Include(u => u.StoryMedia).Include(u =>u.User).Where(u => u.StoryId == storyid).FirstOrDefault();
+            return storydetail;
+        }
 
     }
 }

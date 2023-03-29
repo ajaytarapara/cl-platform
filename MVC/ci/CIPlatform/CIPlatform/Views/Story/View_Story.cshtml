@@ -1,0 +1,226 @@
+﻿@using CIPlatform.Entities.DataModels
+@model Story
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Recommanded to your Co-worker</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+            <form action="recommendedtocoworker" method="Post">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control"  aria-describedby="emailHelp" id="receipient-email">
+                 <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"         >
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+               <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.MissionId">Send Email</button>
+            </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<div id="main-container" class="w-100">
+    <header class="w-100 bg-white position-sticky z-2 border-bottom">
+        <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+            <div id="leftNavbar" class="d-flex align-items-center">
+                <div id="menuimg"
+                     class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                    <img src="~/images/list.png" alt="" />
+                </div>
+                <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                    <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Policy
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            </li>
+                            <li>
+                                color       <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rightNavbar" class="d-flex align-items-center">
+                <a href="">
+                    <img id="user-profile-img" src="~/images/user-img.png"
+                         class="rounded-circle object-fit-cover" alt="" />
+                </a>
+                <div class="dropdown d-sm-block d-none">
+                    <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        ajay tarapara
+                        <img src="~/images/drop-down.png" alt="" />
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div id="mission-content" class="container overflow-y-scroll p-0 volunteer-content">
+    <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
+        <div id="volunteer-image-part" class="w-50">
+            @{
+                   string[] mediaNames=@Model.StoryMedia.ElementAt(0).Path.ToString().Split(",");
+                    int mediaLength = mediaNames.Length;
+
+            }
+            <img style="height:550px;"id="preview-image" src="~/images/uploads/@mediaNames[0]"
+                 class="w-100 volunteer-main-image" alt="" />
+            <!-- carousel -->
+             <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100 w-100">
+                            <div class="carousel-item active h-100 w-100">
+                                <div class="d-flex h-100 w-100">
+                                    @for(int i=0;i<mediaLength;i++)
+                                     {
+                                        <div class="h-100 w-25">
+                                        <img src="~/images/uploads/@mediaNames[i]"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                        </div>
+                                            @if ((i+1)%4==0 && i!=0 && (i+1)!=mediaLength)
+                                            {
+                                                        @:</div>
+                                                        @:</div>
+                                                    @:<div class="carousel-item h-100 w-100">
+                                                @:<div class="d-flex h-100 w-100">
+                                            }
+                                     }
+                                   
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <button class="carousel-control-prev bg-black" type="button"
+                            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next bg-black" type="button"
+                            data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+        </div>
+        <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column">
+            <div id="story-top-infp" class=" d-flex justify-content-between px-md-5">
+                <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+                    <img src="@Model.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;">
+                    <span>@Model.User.FirstName @Model.User.LastName</span>
+                </div>
+                <div class="d-flex justify-content-end align-items-end">
+                    <button class="rounded-5 p-1 px-2 bg-white" style="    border: 1px solid black;
+                         border-radius: 20px;">
+                        <img src="~/images/eye.png" alt="">
+                        <span>12000</span>
+                        <span>Views</span>
+                    </button>
+                </div>
+            </div>
+            <div class="story-middle-info p-1 py-md-5 px-md-5">
+                @Model.User.WhyIVolunteer
+            </div>
+            <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
+                                        <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
+                            style="border: 2px solid #757575;border-radius: 25px;width: 51%;background: none;padding: 4px;margin-top: 10px;padding: 10px;">
+                            <img style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
+                <button class="rounded-5 orange-btn bg-white d-flex align-items-center" style="border: 2px solid orange;border-radius: 25px;width:24%;background: none;padding: 4px;margin-top:10px;color:orange;height:47px;color:orange;">
+                    <a style="color:orange;text-decoration:none" class="px-md-2" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Model.MissionId })">Open Mission</a>
+                    <img src="~/images/right-arrow.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="story-details-info" class="py-3">
+        <h4>@Model.Title</h4>
+        <hr>
+        <div>
+              @Html.Raw(Model.Description)
+        </div>
+    </div>
+    <br>
+</div>
+<hr style="margin: top 10px;">
+<div class="container mt-3">
+    <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
+</div>
+<hr style="margin-top:10px;">
+    @section Javascript{
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $('#recommand').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+
+
+//================================================================================================
+//RECOMMANDED TO CO WORKER
+//=================================================================================================
+$("#btn-recommend").on("click", function (e) {
+    e.preventDefault();
+
+    var missionid = $(this).val();
+    var co_email = document.getElementById("receipient-email").value;
+    var val = missionid;
+    $.ajax({
+        type: "POST",
+        url: '/Story/recommendedtocoworker',
+        dataType: "html",
+        data: { Missionid: val, cow_email: co_email.toString() },
+        success: function (data) {
+            alert("email send successfully");
+          $("#receipient-email").val('');
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
+
+});
+</script>
+    }
