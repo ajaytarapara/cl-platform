@@ -1,5 +1,4 @@
-﻿@using CIPlatform.Entities.DataModels
-@model Story
+﻿@model CIPlatform.Entities.ViewModels.StoryDetailModel
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -14,13 +13,31 @@
       <!-- Modal body -->
       <div class="modal-body">
             <form action="recommendedtocoworker" method="Post">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input name="email" type="email" class="form-control"  aria-describedby="emailHelp" id="receipient-email">
-                 <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"         >
+              <div class="mb-3">                              
+                  <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                 <select class="form-select" aria-label="Default select example" id="receipient-email">
+                     @foreach (var item in Model.usersemails)
+                     {                     
+                        <option value="@item.Email">@item.Email</option>
+                     }
+                </select>
+
+                <div style="width:100%;margin-top:10px;">
+                     <label>Search Email address</label>
+                     
+                        <input list="cars" style="width: 100%;border: 1px solid gray;height: 35px;">
+                        <datalist id="cars">
+                            @foreach (var item in Model.usersemails)
+                            {
+                            <option value="@item.Email" />
+                            <span>@item.FirstName @item.LastName</span>
+                            }
+                        </datalist>
+                </div>
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
-               <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.MissionId">Send Email</button>
+               <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.story.MissionId">Send Email</button>
             </form>
       </div>
 
@@ -36,66 +53,53 @@
 
 
 
-
-
-<div id="main-container" class="w-100">
-    <header class="w-100 bg-white position-sticky z-2 border-bottom">
-        <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
-            <div id="leftNavbar" class="d-flex align-items-center">
-                <div id="menuimg"
-                     class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
-                    <img src="~/images/list.png" alt="" />
-                </div>
-                <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
-                    <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
-                    <div class="dropdown">
-                        <button class="dropdown-toggle border-0 bg-white m-1" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            Policy
-                            <img src="~/images/drop-down.png" alt="" />
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </li>
-                            <li>
-                                color       <a class="dropdown-item" href="#">Something else here</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="container">
+          <div class="row">
+            <div id="menubarimg"class="d-md-none">
+                <button  onclick="menubartoggle()"><img src="~/images/list.png"
+                        alt=""></button>
             </div>
+            <div class="col-6  leftnav">
 
-            <div id="rightNavbar" class="d-flex align-items-center">
-                <a href="">
-                    <img id="user-profile-img" src="~/images/user-img.png"
-                         class="rounded-circle object-fit-cover" alt="" />
-                </a>
-                <div class="dropdown d-sm-block d-none">
-                    <button class="dropdown-toggle border-0 bg-white m-1" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        ajay tarapara
-                        <img src="~/images/drop-down.png" alt="" />
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </div>
+                <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
+                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Policy
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+            <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
+                <img src="@Model.navavatar"style="border-radius: 50%;height: 100%; padding: 4px;">
+                    <button value="@Model.story.UserId" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    @Model.navusername
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+
+
+
             </div>
         </div>
-    </header>
-</div>
+
+    </div>
+
+    <hr>
+
+
 
 <div id="mission-content" class="container overflow-y-scroll p-0 volunteer-content">
     <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
         <div id="volunteer-image-part" class="w-50">
             @{
-                   string[] mediaNames=@Model.StoryMedia.ElementAt(0).Path.ToString().Split(",");
+                   string[] mediaNames=@Model.story.StoryMedia.ElementAt(0).Path.ToString().Split(",");
                     int mediaLength = mediaNames.Length;
 
             }
@@ -141,8 +145,8 @@
         <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column">
             <div id="story-top-infp" class=" d-flex justify-content-between px-md-5">
                 <div class="d-flex flex-column justify-content-center align-items-center mt-3">
-                    <img src="@Model.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;">
-                    <span>@Model.User.FirstName @Model.User.LastName</span>
+                    <img src="@Model.story.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;">
+                    <span>@Model.story.User.FirstName @Model.story.User.LastName</span>
                 </div>
                 <div class="d-flex justify-content-end align-items-end">
                     <button class="rounded-5 p-1 px-2 bg-white" style="    border: 1px solid black;
@@ -154,14 +158,14 @@
                 </div>
             </div>
             <div class="story-middle-info p-1 py-md-5 px-md-5">
-                @Model.User.WhyIVolunteer
+                @Model.story.User.WhyIVolunteer
             </div>
             <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
                                         <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
                             style="border: 2px solid #757575;border-radius: 25px;width: 51%;background: none;padding: 4px;margin-top: 10px;padding: 10px;">
                             <img style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
                 <button class="rounded-5 orange-btn bg-white d-flex align-items-center" style="border: 2px solid orange;border-radius: 25px;width:24%;background: none;padding: 4px;margin-top:10px;color:orange;height:47px;color:orange;">
-                    <a style="color:orange;text-decoration:none" class="px-md-2" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Model.MissionId })">Open Mission</a>
+                    <a style="color:orange;text-decoration:none" class="px-md-2" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Model.story.MissionId })">Open Mission</a>
                     <img src="~/images/right-arrow.png" alt="">
                 </button>
             </div>
@@ -169,10 +173,10 @@
     </div>
 
     <div id="story-details-info" class="py-3">
-        <h4>@Model.Title</h4>
+        <h4>@Model.story.Title</h4>
         <hr>
         <div>
-              @Html.Raw(Model.Description)
+              @Html.Raw(Model.story.Description)
         </div>
     </div>
     <br>
@@ -204,7 +208,7 @@ $("#btn-recommend").on("click", function (e) {
     e.preventDefault();
 
     var missionid = $(this).val();
-    var co_email = document.getElementById("receipient-email").value;
+    var co_email = $("#receipient-email").val();
     var val = missionid;
     $.ajax({
         type: "POST",
@@ -213,7 +217,7 @@ $("#btn-recommend").on("click", function (e) {
         data: { Missionid: val, cow_email: co_email.toString() },
         success: function (data) {
             alert("email send successfully");
-          $("#receipient-email").val('');
+          $("#receipient-email").val();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -222,5 +226,6 @@ $("#btn-recommend").on("click", function (e) {
     })
 
 });
+
 </script>
     }

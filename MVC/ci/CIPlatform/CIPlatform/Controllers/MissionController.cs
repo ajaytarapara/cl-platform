@@ -40,6 +40,8 @@ namespace CIPlatform.Controllers
                 MissionModel missionModel = _missionRepository.Getmission(missionid, userObj.UserId);
                 missionModel.username = userObj.FirstName + " " + userObj.LastName;
                 homeModel.id = userObj.UserId;
+                homeModel.avatar= userObj.Avatar;
+                missionModel.avatar = homeModel.avatar;
                 return View(missionModel);
             }
         }
@@ -135,7 +137,7 @@ namespace CIPlatform.Controllers
         }
 
         public IActionResult GetRecentVolunteer(long missionid)
-        {   
+        {
             List<MissionApplication> recentvol=_missionRepository.GetRecentVolunteer(missionid);
             return PartialView("_RecentVolunteer", recentvol);
         }

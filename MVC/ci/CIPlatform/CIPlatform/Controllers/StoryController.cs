@@ -36,6 +36,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
             HomeModel.id = userObj.UserId;
+            HomeModel.avatar=userObj.Avatar;
             return View(HomeModel);
         }
         public IActionResult GetCountries()
@@ -77,15 +78,16 @@ namespace CIPlatform.Controllers
 
             var missions = _homeRepository.GetMissions();
 
-            HomeModel HomeModel = new HomeModel();
+            HomeModel HomeModels = new HomeModel();
 
             User userObj = _userRepository.findUser(userSessionEmailId);
-            HomeModel.username = userObj.FirstName + " " + userObj.LastName;
-            HomeModel.id = userObj.UserId;
+            HomeModels.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModels.id = userObj.UserId;
+            HomeModels.avatar=userObj.Avatar;   
             ShareStoryModel ShareStoryModel = new ShareStoryModel();
-            ShareStoryModel.userid = HomeModel.id;
-            ShareStoryModel.username = HomeModel.username;
-            ShareStoryModel.avatar = HomeModel.avatar;
+            ShareStoryModel.userid = HomeModels.id;
+            ShareStoryModel.username = HomeModels.username;
+            ShareStoryModel.avatar = HomeModels.avatar;
             long UserId = ShareStoryModel.userid;
             ShareStoryModel.getmission = _storyRepository.Getstorymission(UserId);
             return View(ShareStoryModel);
@@ -130,8 +132,25 @@ namespace CIPlatform.Controllers
 
         public IActionResult View_Story(long storyid,Story story)
         {
-           Story story1= _storyRepository.Getdetailstory(story, storyid);
-            return View(story1);
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            HomeModel HomeModel = new HomeModel();
+
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModel.id = userObj.UserId;
+            HomeModel.avatar = userObj.Avatar;
+            StoryDetailModel model = new StoryDetailModel();
+            model.navusername = HomeModel.username;
+            model.navavatar = HomeModel.avatar;
+            model.story= _storyRepository.Getdetailstory(story, storyid);
+            model.usersemails = _storyRepository.Getusersemail();
+            return View(model);
         }
 
         [HttpPost]
@@ -145,6 +164,8 @@ namespace CIPlatform.Controllers
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path);
 
         }
+
+
 
     }
 }

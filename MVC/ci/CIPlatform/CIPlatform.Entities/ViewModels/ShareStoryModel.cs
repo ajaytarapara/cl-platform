@@ -19,5 +19,7 @@ namespace CIPlatform.Entities.ViewModels
         public long userid { get; set; }
         public IEnumerable<MissionApplication> getmission { get; set; }
         public string? StoryMedia { get; set; }
+
+       public Story story { get; set; } 
     }
 }

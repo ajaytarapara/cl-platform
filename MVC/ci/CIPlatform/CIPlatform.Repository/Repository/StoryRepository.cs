@@ -148,5 +148,10 @@ namespace CIPlatform.Repository.Repository
             return storydetail;
         }
 
+        List<User> IStoryRepository.Getusersemail()
+        {
+           List<User> emails=_ciPlatformDbContext.Users.ToList();
+            return emails;
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model CIPlatform.Entities.ViewModels.HomeModel
+
+    <div class="container">
+          <div class="row">
+            <div id="menubarimg"class="d-md-none">
+                <button  onclick="menubartoggle()"><img src="~/images/list.png"
+                        alt=""></button>
+            </div>
+            <div class="col-6  leftnav">
+
+                <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
+                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Policy
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+            <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
+                <img src="@Model.avatar"style="border-radius: 50%;height: 100%; padding: 4px;">
+                    <button value="@Model.id" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    @Model.username
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+
+
+
+            </div>
+        </div>
+
+    </div>

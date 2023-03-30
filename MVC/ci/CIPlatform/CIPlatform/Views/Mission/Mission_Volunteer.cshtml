@@ -62,16 +62,17 @@
 
 
     </div>
-    <div class="container-fluid" style="border-top: 1px solid gray;border-bottom: 1px solid gray;">
-        <div class="row">
-            <div id="menubarimg" class=" d-flex d-md-none">
-                <button onclick="menubartoggle()"><img src="~/images/list.png" alt=""></button>
+    <div class="container">
+          <div class="row">
+            <div id="menubarimg"class="d-md-none">
+                <button  onclick="menubartoggle()"><img src="~/images/list.png"
+                        alt=""></button>
             </div>
             <div class="col-6  leftnav">
 
                 <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Policy
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -80,24 +81,25 @@
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
             </div>
-            <div class="col-6 d-flex px-5 rightnav">
-                <img src="@Model.avatar" alt="" class="src"
-                    style="border-radius: 50%;height: 100%; padding: 4px;">
-                <span>@Model.username</span>
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
+                <img src="@Model.avatar"style="border-radius: 50%;height: 100%; padding: 4px;">
+                    <button value="" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    @Model.username
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <input type="checkbox" class="form-check-input" disabled>
-                    <label class="form-check-label">Option 3</label>
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
 
 
 
             </div>
-        </div>
-
     </div>
+   </div>
+    <hr />
+ 
 
     <div class="container">
         <div class="row pt-5">
@@ -468,204 +470,6 @@ else
                         <hr style="margin-top: 4px;">
                         <ul id="paginated-list" data-current-page="1" aria-live="polite"
                             style="   margin: 0px 0px; padding-left: 0px; justify-content: space-evenly;margin-top: 4px;">
-
-
-
-@*
-                            <li>*@
-@*                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer2.png" alt="" class="volunteer-list-img">
-                                            <div>Charles Vigue</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer5.png" alt="" class="volunteer-list-img">
-                                            <div>Rose Lewis</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer8.png" alt="" class="volunteer-list-img">
-                                            <div>Sarah Santillan</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-
-                            <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer3.png" alt="" class="volunteer-list-img">
-                                            <div>Kathryn Roberts</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer6.png" alt="" class="volunteer-list-img">
-                                            <div>Raymond Pabon</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer9.png" alt="" class="volunteer-list-img">
-                                            <div>Linda Richards</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer3.png" alt="" class="volunteer-list-img">
-                                            <div>Kathryn Roberts</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer6.png" alt="" class="volunteer-list-img">
-                                            <div>Raymond Pabon</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer9.png" alt="" class="volunteer-list-img">
-                                            <div>Linda Richards</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-
-@*                            <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer3.png" alt="" class="volunteer-list-img">
-                                            <div>Kathryn Roberts</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer6.png" alt="" class="volunteer-list-img">
-                                            <div>Raymond Pabon</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer9.png" alt="" class="volunteer-list-img">
-                                            <div>Linda Richards</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-@*
-                            <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer3.png" alt="" class="volunteer-list-img">
-                                            <div>Kathryn Roberts</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer6.png" alt="" class="volunteer-list-img">
-                                            <div>Raymond Pabon</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer9.png" alt="" class="volunteer-list-img">
-                                            <div>Linda Richards</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-
-@*                            <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer2.png" alt="" class="volunteer-list-img">
-                                            <div>Charles Vigue</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer5.png" alt="" class="volunteer-list-img">
-                                            <div>Rose Lewis</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer8.png" alt="" class="volunteer-list-img">
-                                            <div>Sarah Santillan</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-
-  @*                          <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer2.png" alt="" class="volunteer-list-img">
-                                            <div>Charles Vigue</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer5.png" alt="" class="volunteer-list-img">
-                                            <div>Rose Lewis</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer8.png" alt="" class="volunteer-list-img">
-                                            <div>Sarah Santillan</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-
-  @*                          <li>
-                                <div
-                                    style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer2.png" alt="" class="volunteer-list-img">
-                                            <div>Charles Vigue</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer5.png" alt="" class="volunteer-list-img">
-                                            <div>Rose Lewis</div>
-                                        </div>
-                                    </div>
-                                    <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-                                        <div class="d-flex" style="flex-direction: column;"><img
-                                                src="~/images/volunteer8.png" alt="" class="volunteer-list-img">
-                                            <div>Sarah Santillan</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>*@
-
-
                         </ul>
 
                     </main>

@@ -94,45 +94,7 @@
 
 </div>
 
-<div class="container">
-    <div class="row">
-        <div id="menubarimg" class="d-md-none">
-            <button onclick="menubartoggle()">
-                <img src="~/images/list.png"
-                     alt="">
-            </button>
-        </div>
-        <div class="col-6  leftnav">
-
-            <button style="border: none; background: white;">Stories</button>
-            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                Policy
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-        </div>
-        <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
-            <img src="@Model.avatar" style="border-radius: 50%;height: 100%; padding: 4px;">
-            <button value="" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                @Model.username
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-
-
-
-        </div>
-    </div>
-
-</div>
+@Html.Partial("_NavbarUser");
 
 <div class="container-fluid mt-2">
     <div style="border-color: #414141; border:1px solid" class="row">

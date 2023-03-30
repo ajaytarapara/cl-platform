@@ -73,6 +73,7 @@ namespace CIPlatform.Controllers
       
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
+            HomeModel.avatar=userObj.Avatar;
             HomeModel.id = userObj.UserId;
 
 

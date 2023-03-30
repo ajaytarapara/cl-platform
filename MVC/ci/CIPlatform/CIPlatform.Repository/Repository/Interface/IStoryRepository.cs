@@ -21,5 +21,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public Story  Getdetailstory(Story story, long storyid);
 
+        public List<User> Getusersemail();
+
     }
 }
