@@ -28,7 +28,6 @@ namespace CIPlatform.Controllers
         public IActionResult Mission_Volunteer(string missionid)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-
             if (userSessionEmailId == null)
             {
                 return RedirectToAction("Login", "Account");

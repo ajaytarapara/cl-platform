@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CIPlatform.Entities.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -39,6 +40,5 @@ namespace CIPlatform.Entities.ViewModels
         public int? TotalUser { get; set; }  
 
         public string mission_type { get; set; }
-
     }
 }

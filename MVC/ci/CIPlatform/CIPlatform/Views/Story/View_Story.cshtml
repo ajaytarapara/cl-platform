@@ -12,8 +12,9 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-            <form action="recommendedtocoworker" method="Post">
-              <div class="mb-3">                              
+            
+              <div class="mb-3">
+                  <form action="recommendedtocoworker" method="Post">
                   <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
                  <select class="form-select" aria-label="Default select example" id="receipient-email">
@@ -22,11 +23,12 @@
                         <option value="@item.Email">@item.Email</option>
                      }
                 </select>
-
+                <button type="submit" class="btn btn-primary mt-2" id="btn-recommend" value="@Model.story.MissionId">Send Email</button>
                 <div style="width:100%;margin-top:10px;">
+                     </form>                     
                      <label>Search Email address</label>
-                     
-                        <input list="cars" style="width: 100%;border: 1px solid gray;height: 35px;">
+                     <form action="recommendedtocoworker" method="Post">
+                        <input list="cars" style="width: 100%;border: 1px solid gray;height: 35px;" id="searchemail">
                         <datalist id="cars">
                             @foreach (var item in Model.usersemails)
                             {
@@ -34,11 +36,13 @@
                             <span>@item.FirstName @item.LastName</span>
                             }
                         </datalist>
+                         <button type="submit" class="btn btn-primary mt-2" id="btn-recommend-search"                value="@Model.story.MissionId">Send Email</button>
+                     </form>
                 </div>
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
-               <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.story.MissionId">Send Email</button>
-            </form>
+              
+                  
       </div>
 
       <!-- Modal footer -->
@@ -218,6 +222,29 @@ $("#btn-recommend").on("click", function (e) {
         success: function (data) {
             alert("email send successfully");
           $("#receipient-email").val();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
+
+});
+
+
+$("#btn-recommend-search").on("click", function (e) {
+    e.preventDefault();
+    var missionid = $(this).val();
+    var co_email = $("#searchemail").val();
+    var val = missionid;
+    $.ajax({
+        type: "POST",
+        url: '/Story/recommendedtocoworker',
+        dataType: "html",
+        data: { Missionid: val, cow_email: co_email.toString() },
+        success: function (data) {
+            alert("email send successfully");
+          $("#cars").val();
         },
         error: function (xhr, status, error) {
             // Handle error

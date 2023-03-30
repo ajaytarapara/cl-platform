@@ -1,13 +1,18 @@
 ﻿$(document).ready(function () {
 });
 
+
+/*submit story*/
 selectedmissionid = "";
 Description = "";
 PublishedAt = "";
 Title = "";
 console.log(selectedmissionid);
+
+
 $("#submitbtnsharestory").on("click", function (e) {
     e.preventDefault();
+    console.log("call");
     $.each($("#storydropdown option:checked"), function () {
         selectedmissionid = $(this).val();
          UserId = $('#userid').text();
@@ -34,6 +39,7 @@ $("#submitbtnsharestory").on("click", function (e) {
 }
 );
 
+/*save story*/
 
 $("#savebtnsharestory").on("click", function (e) {
     e.preventDefault();
@@ -49,8 +55,11 @@ $("#savebtnsharestory").on("click", function (e) {
         type: "Post",
         url: "/Story/Savestory",
         data: { userid: UserId, MissionId: selectedmissionid, Title: Title, PublishedAt: PublishedAt, Description: Description, StoryMedia: storyFileNames },
-        success: function () {
+        success: function (data) {
             alert("story updated succesfully");
+            var storyId = data["storyId"];
+            console.log(storyId);
+            $("#Previewbtnsharestory").attr('href', '/Story/View_Story?storyId=' + storyId)
         },
         failure: function (response) {
             alert("failure");
@@ -62,6 +71,16 @@ $("#savebtnsharestory").on("click", function (e) {
     });
 }
 );
+
+
+
+
+
+/*preview story*/
+
+
+
+
 
 
 /*upload images*/

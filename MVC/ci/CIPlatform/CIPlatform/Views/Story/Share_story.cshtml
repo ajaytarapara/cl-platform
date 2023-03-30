@@ -49,8 +49,7 @@
 
 <hr />
  <a type="hidden" style="display:none" id="userid">@Model.userid</a>
-<form asp-action="Savestory" method="post">
-
+<form>
     <div class="container mt-3">
   <div class="row">
             <h2>Share your story</h2>
@@ -116,9 +115,11 @@
         <div class="row mt-3">
             <div style="display: flex; justify-content: space-between;" class="storydropdown">
                 <div style=" display: inline-block; ">
-                    <button class="canclebutton" id="cancelbtnsharestory"><a asp-action="StoryListing" style="text-decoration:none; color:black;">cancle</a></button>
+                    <button class="canclebutton" id="cancelbtnsharestory"><a asp-action="StoryListing" style="text-decoration:none;    color:black;">cancle</a></button>
                 </div>
                 <div style=" display: inline-block;">
+                    <button id="pbtn" style="border: 1px solid orange;border-radius: 7px;background: transparent;padding: 10px;color: orange;width: 100px;"><a id="Previewbtnsharestory">Preview</a></button>
+                    
                     <button class="savebutton" id="savebtnsharestory" type="submit">save</button>
                     <button class="savebutton" id="submitbtnsharestory">submit</button>
                 </div>
@@ -126,6 +127,12 @@
         </div>
     </div>
 </form>
+
+    <hr>
+    <div class="container mt-3">
+        <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
+    </div>
+    <hr>
 @section Javascript{
 
 <!-- TinyMCE -->
@@ -141,93 +148,7 @@
     });
 </script>
 <script>
-        const inputDiv = document.querySelector(".input-div")
-        const input = document.querySelector("input")
-        const output = document.querySelector("output")
-        let imagesArray = []
-        input.addEventListener("change", () => {
-
-        })
-        input.addEventListener("change", () => {
-            const files = input.files
-        })
-        input.addEventListener("change", () => {
-            const files = input.files
-            for (let i = 0; i < files.length; i++) {
-                imagesArray.push(files[i])
-            }
-        })
-        input.addEventListener("change", () => {
-            const files = input.files
-            for (let i = 0; i < files.length; i++) {
-                imagesArray.push(files[i])
-            }
-            displayImages()
-        })
-        inputDiv.addEventListener("drop", (e) => {
-
-        })
-        inputDiv.addEventListener("drop", (e) => {
-            e.preventDefault()
-            const files = e.dataTransfer.files
-        })
-        inputDiv.addEventListener("drop", () => {
-            e.preventDefault()
-            const files = e.dataTransfer.files
-            for (let i = 0; i < files.length; i++) {
-                if (!files[i].type.match("image")) continue
-            }
-        })
-        inputDiv.addEventListener("drop", () => {
-            e.preventDefault()
-            const files = e.dataTransfer.files
-            for (let i = 0; i < files.length; i++) {
-                if (!files[i].type.match("image")) continue
-
-                if (imagesArray.every(image => image.name !== files[i].name))
-                    imagesArray.push(files[i])
-            }
-        })
-        inputDiv.addEventListener("drop", () => {
-            e.preventDefault()
-            const files = e.dataTransfer.files
-            for (let i = 0; i < files.length; i++) {
-                if (!files[i].type.match("image")) continue;
-
-                if (imagesArray.every(image => image.name !== files[i].name))
-                    imagesArray.push(files[i])
-            }
-            displayImages()
-        })
-        function displayImages() {
-            let images = ""
-        }
-        function displayImages() {
-            let images = ""
-            imagesArray.forEach((image, index) => {
-                images += `<div class="image">
-    <img src="${URL.createObjectURL(image)}" alt="image">
-    <span onclick="deleteImage(${index})">&times;</span>
-    </div>`
-            })
-        }
-        function displayImages() {
-            let images = ""
-            imagesArray.forEach((image, index) => {
-                images += `<div class="image">
-    <img src="${URL.createObjectURL(image)}" alt="image">
-    <span onclick="deleteImage(${index})">&times;</span>
-    </div>`
-            })
-            output.innerHTML = images
-        }
-        function deleteImage(index) {
-            imagesArray.splice(index, 1)
-            displayImages()
-        }
-
-
-
+      
 
         // // upload images
 

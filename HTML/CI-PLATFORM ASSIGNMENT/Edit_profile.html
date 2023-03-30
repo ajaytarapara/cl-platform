@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>home</title>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    </head>
+
+<body>
+    <div class="col-4  d-md-none"
+        style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
+        id="menubar">
+        <div style="display: flex; justify-content:flex-end;">
+            <button style="background: none;border: none;" onclick="closemenu()" id="closingimg"><img
+                    src="images/cancel1.png" alt=""></button>
+        </div>
+        <div class="menuitem">
+            <button style="border: none; background: white;">Stories</button>
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                Policy
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div id="menubarimg" class="d-md-none">
+                <button onclick="menubartoggle()"><img src="images/list.png" alt=""></button>
+            </div>
+            <div class="col-6  leftnav">
+
+                <button style="border: none; background: white;">Stories</button>
+                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    Policy
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+            <div class="col-6 d-flex px-5 rightnav">
+                <img src="images/user-img.png" alt="" class="src"
+                    style="border-radius: 50%;height: 100%; padding: 4px;">
+                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+                    John Due
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="card">
+                    <div>
+                        <div class="d-flex" style="justify-content: center;">
+                        <img src="images/user-img-large.png" alt="John"
+                            style="width:50%;border-radius: 50%;margin-top: 20px;">
+                        </div>
+                        <div>
+                                    <h3>John Doe</h3>
+                                    <div style="margin-top: 5px;">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <div>
+                                            <a>Change Password</a>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div><label for="cars">Language</label></div>
+                        <select name="" id="cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
+
+                    <p>Harvard University</p>
+
+                    <p><button>Contact</button></p>
+                </div>
+            </div>
+            <div class="col-md-9 ">
+
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

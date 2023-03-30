@@ -52,7 +52,7 @@ namespace CIPlatform.Repository.Repository
              PaginationMission pagination = new PaginationMission();
             List<StoryModel> storydatalist = _ciPlatformDbContext.Storylist.FromSqlInterpolated($"exec sp_get_story_data @pageNumber = {pageNumber},@TotalCount = {output} out,@missionCount={output1} out").ToList();
             pagination.Stories = storydatalist;
-            pagination.pageSize = 2;
+            pagination.pageSize = 3;
             pagination.pageCount = long.Parse(output.Value.ToString());
             pagination.missionCount = long.Parse(output1.Value.ToString());
             pagination.activePage = pageNumber;
@@ -64,7 +64,7 @@ namespace CIPlatform.Repository.Repository
             return storymission;
         }
 
-       void IStoryRepository.Savestory(Story storymodel,StoryMedium storymedia)
+       int IStoryRepository.Savestory(Story storymodel,StoryMedium storymedia)
         {
             Story story = new Story();
             story.Title = storymodel.Title;
@@ -106,6 +106,8 @@ namespace CIPlatform.Repository.Repository
                     _ciPlatformDbContext.SaveChanges();
 
                 }
+                return (int)storyobj.StoryId;
+
             }
             else
             {
@@ -139,6 +141,8 @@ namespace CIPlatform.Repository.Repository
                     _ciPlatformDbContext.SaveChanges();
 
                 }
+                return (int)story1.StoryId;
+
             }
         }
 
@@ -153,5 +157,6 @@ namespace CIPlatform.Repository.Repository
            List<User> emails=_ciPlatformDbContext.Users.ToList();
             return emails;
         }
+
     }
 }

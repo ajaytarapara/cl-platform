@@ -94,7 +94,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public void Savestory(ShareStoryModel storymodel)
+        public IActionResult Savestory(ShareStoryModel storymodel)
         {
             Story story = new Story();
             story.UserId = storymodel.userid;
@@ -104,7 +104,8 @@ namespace CIPlatform.Controllers
             story.PublishedAt = storymodel.PublishedAt;
              StoryMedium storymedia = new StoryMedium();
             storymedia.Path = storymodel.StoryMedia;
-            _storyRepository.Savestory(story,storymedia);
+            int storyId = _storyRepository.Savestory(story, storymedia); 
+            return Json(new { storyId = storyId });
         }
 
         public IActionResult Upload(List<IFormFile> postedFiles)
@@ -164,6 +165,7 @@ namespace CIPlatform.Controllers
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path);
 
         }
+
 
 
 

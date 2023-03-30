@@ -17,7 +17,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public PaginationMission Storydata(int pageNumber);
 
         public List<MissionApplication> Getstorymission(long UserId);
-        public void Savestory(Story story,StoryMedium storymedia);
+        public int Savestory(Story story,StoryMedium storymedia);
 
         public Story  Getdetailstory(Story story, long storyid);
 

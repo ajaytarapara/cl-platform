@@ -1254,3 +1254,12 @@ footer {
 #btnUpload {
     display: none;
 }
+
+# pbtn {
+    border: 1px solid orange;
+    border-radius: 7px;
+    background: transparent;
+    padding: 10px;
+    color: orange;
+    width: 100px;
+}

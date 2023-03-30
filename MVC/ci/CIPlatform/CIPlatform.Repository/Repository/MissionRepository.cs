@@ -41,8 +41,8 @@ namespace CIPlatform.Repository.Repository
             }
             else
             {
-                FavouriteMission favouriteMission = _ciPlatformDbContext.FavouriteMissions.FirstOrDefault(x => x.MissionId == missionid && x.UserId == userid);
-                _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMission);
+                FavouriteMission favouriteMissions = _ciPlatformDbContext.FavouriteMissions.FirstOrDefault(x => x.MissionId == missionid && x.UserId == userid);
+                _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMissions);
                 _ciPlatformDbContext.SaveChangesAsync();
             }
         }
@@ -116,6 +116,8 @@ namespace CIPlatform.Repository.Repository
         {
             List<MissionApplication>recentvol= _ciPlatformDbContext.MissionApplications.Where(m => m.MissionId==missionid).Include(A => A.User).ToList();
             return recentvol;
-        } 
+        }
+
+
     }
 }
