@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,11 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(obj);
             _ciPlatformDbContext.SaveChanges();
         }
-
+        void IUserRepository.edituserprofile(User userObj)
+        {
+            _ciPlatformDbContext.Users.Update(userObj);
+            _ciPlatformDbContext.SaveChanges();
+        }
 
     }
 }

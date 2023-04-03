@@ -16,14 +16,15 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
+        private readonly IHomeRepository _homeRepository;
 
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
-           )
+, IHomeRepository homeRepository)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
-
+            _homeRepository = homeRepository;
         }
         public IActionResult Login()
         {
@@ -50,7 +51,7 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
-                HttpContext.Session.SetString("useremail",emailId);
+                HttpContext.Session.SetString("useremail", emailId);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -173,6 +174,42 @@ namespace CIPlatform.Controllers
             }
             return View();
         }
+
+        public IActionResult EditProfile()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            EditProfileModel editProfile = new EditProfileModel();
+
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            editProfile.firstname= userObj.FirstName;
+            editProfile.lastname= userObj.LastName;
+            editProfile.avatar = userObj.Avatar;
+            editProfile.userid = userObj.UserId;
+            return View(editProfile);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(EditProfileModel user)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            userObj.FirstName = user.firstname;
+            userObj.LastName = user.lastname;
+            userObj.Avatar = user.avatar;
+            userObj.Department = user.department;
+            userObj.ProfileText = user.profiletext;
+            userObj.WhyIVolunteer = user.whyivol;
+            _userRepository.edituserprofile(userObj);
+            return View(user);
+
+        }
+
 
 
     }

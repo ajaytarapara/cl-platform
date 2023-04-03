@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 
 namespace CIPlatform.Repository.Repository.Interface
 {
@@ -17,8 +18,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addResetPasswordToken(PasswordReset obj);
         public void RemoveResetPasswordToken(PasswordReset obj);
         void removeResetPasswordToken(PasswordReset obj);
-
-    
-       
+        public void edituserprofile(User userObj);
     }
 }

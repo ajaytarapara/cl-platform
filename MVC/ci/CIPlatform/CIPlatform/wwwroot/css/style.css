@@ -1255,11 +1255,67 @@ footer {
     display: none;
 }
 
-# pbtn {
+#pbtn {
     border: 1px solid orange;
     border-radius: 7px;
     background: transparent;
     padding: 10px;
     color: orange;
     width: 100px;
+}
+/*====================================================================*/
+/*USER EDIT PROFILE*/
+/*======================================================================*/
+
+.userimgdiv {
+    top: 123px;
+    left: 243px;
+    width: 230px;
+    height: 215px;
+    border: 1px solid #D9D9D9;
+}
+
+#uimg {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    margin-left: 20%;
+    margin-top: 7%;
+}
+
+.formargin {
+    margin-top: 20px;
+}
+
+#skillbutton {
+    width: 135px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #757575;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.right-button {
+    float: right;
+    width: 135px;
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #F88634;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+@media (max-width: 1000px) {
+    .colclass {
+        / Change to col-md-12 / flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
+#footertext {
+    color: black;
+    text-align: start;
+    margin-left: 20%;
 }
