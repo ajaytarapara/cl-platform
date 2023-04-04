@@ -89,10 +89,27 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(obj);
             _ciPlatformDbContext.SaveChanges();
         }
-        void IUserRepository.edituserprofile(User userObj)
+        void IUserRepository.edituserprofile(User userObj, UserSkill userSkill)
         {
             _ciPlatformDbContext.Users.Update(userObj);
             _ciPlatformDbContext.SaveChanges();
+            _ciPlatformDbContext.UserSkills.Update(userSkill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        IEnumerable<City> IUserRepository.getCities()
+        {
+            return _ciPlatformDbContext.Cities;
+        }
+
+        IEnumerable<Country> IUserRepository.getCountries()
+        {
+            return _ciPlatformDbContext.Countries;
+
+        }
+        IEnumerable<Skill> IUserRepository.getSkill()
+        {
+            return _ciPlatformDbContext.Skills;
         }
 
     }

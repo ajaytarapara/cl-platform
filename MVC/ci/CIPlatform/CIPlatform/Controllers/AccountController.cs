@@ -205,11 +205,33 @@ namespace CIPlatform.Controllers
             userObj.Department = user.department;
             userObj.ProfileText = user.profiletext;
             userObj.WhyIVolunteer = user.whyivol;
-            _userRepository.edituserprofile(userObj);
+            userObj.CityId = user.cityofuser;
+            userObj.CountryId = user.countrofuser;
+            userObj.LinkedInUrl=user.linkedinurl;
+            UserSkill userSkill = new UserSkill();
+            userSkill.UserId = userObj.UserId;
+            userSkill.SkillId =user.userskills;
+            _userRepository.edituserprofile(userObj, userSkill);
             return View(user);
 
         }
 
+        public IActionResult GetCountries()
+        {
+            IEnumerable<Country> countries = _userRepository.getCountries();
+            return Json(new { data = countries });
+        }
+        public IActionResult GetCities()
+        {
+            IEnumerable<City> cities = _userRepository.getCities();
+            return Json(new { data = cities });
+        }
+
+        public IActionResult GetSkills()
+        {
+            IEnumerable<Skill> skill = _userRepository.getSkill();
+            return Json(new { data = skill });
+        }
 
 
     }

@@ -18,6 +18,11 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addResetPasswordToken(PasswordReset obj);
         public void RemoveResetPasswordToken(PasswordReset obj);
         void removeResetPasswordToken(PasswordReset obj);
-        public void edituserprofile(User userObj);
+        public void edituserprofile(User userObj, UserSkill userSkill);
+
+        public IEnumerable<City> getCities();
+        public IEnumerable<Country> getCountries();
+
+        public IEnumerable<Skill> getSkill();
     }
 }

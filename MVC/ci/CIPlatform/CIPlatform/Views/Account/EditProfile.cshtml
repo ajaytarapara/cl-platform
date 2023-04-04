@@ -2,15 +2,17 @@
 <form method="post" asp-action="EditProfile">
     <div class="container">
         <div class="row">
-            <div id="menubarimg"class="d-md-none">
-                <button  onclick="menubartoggle()"><img src="images/list.png"
-                        alt=""></button>
+            <div id="menubarimg" class="d-md-none">
+                <button onclick="menubartoggle()">
+                    <img src="images/list.png"
+                         alt="">
+                </button>
             </div>
             <div class="col-6  leftnav">
 
                 <button style="border: none; background: white;">Stories</button>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                        id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     Policy
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -21,9 +23,9 @@
             </div>
             <div class="col-6 d-flex px-5 rightnav">
                 <img src="@Model.avatar" alt=""
-                    style="border-radius: 50%;height: 100%; padding: 4px;">
-                    <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                     style="border-radius: 50%;height: 100%; padding: 4px;">
+                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                        id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     @Model.firstname @Model.lastname
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -40,209 +42,256 @@
     </div>
 
 
-<hr />
+    <hr />
 
 
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-md-3 userimgdiv">
-            <img id="uimg" src="@Model.avatar" alt="">
-            <p style="text-align: center;">@Model.firstname @Model.lastname</p>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 19%; font-size: 12px;">Change Password</button>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3 userimgdiv">
+                <img id="uimg" src="@Model.avatar" alt="">
+                <p style="text-align: center;">@Model.firstname @Model.lastname</p>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 19%; font-size: 12px;">Change Password</button>
 
 
 
-        </div>
-
-        <div class="col-md-9 colclass card mx-2">
-            <div class="row">
-                <h5>
-                    <strong>Basic Information</strong>
-                </h5>
-                <hr>
             </div>
-            <div class="row formargin">
-                <div class="col-md-6">
-                    <label for="">Name*</label>
-                    <input asp-for="firstname"class="form-control " placeholder="Enter your name" type="text">
+
+            <div class="col-md-9 colclass card mx-2">
+                <div class="row">
+                    <h5>
+                        <strong>Basic Information</strong>
+                    </h5>
+                    <hr>
                 </div>
-                <div class="col-md-6">
-                    <label for="">Surname*</label>
-                    <input asp-for="lastname"class="form-control " placeholder="Enter your surname" type="text">
-                </div>
-            </div>
-            <div class="row formargin">
-                <div class="col-md-6">
-                    <label for="">Employee ID</label>
-                    <input class="form-control " placeholder="Enter your employee id" type="text">
-                </div>
-                <div class="col-md-6">
-                    <label for="">Manager</label>
-                    <input class="form-control " placeholder="Enter your manager details" type="text">
-                </div>
-            </div>
-            <div class="row formargin">
-                <div class="col-md-6">
-                    <label for="">Title</label>
-                    <input class="form-control" placeholder="Enter your employee id" type="text">
-                </div>
-                <div class="col-md-6">
-                    <label for="">Department</label>
-                    <input asp-for="department"class="form-control" placeholder="Enter your manager details" type="text">
-                </div>
-            </div>
-            <div class="row formargin">
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">My Profile*</label>
-<textarea asp-for="profiletext" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-            <div class="row formargin">
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Why I Volunteer?</label>
-<textarea asp-for="whyivol" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 50px;">
-                <h5>
-                    Address Information
-                </h5>
-                <hr>
-            </div>
-            <div class="row formargin">
-                <div class="col-md-6">
-                    <label for="">City</label>
-                    <select class="form-select dropcity" aria-label="Default select example">
-                        <option selected>Select your City</option>
-
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="">Country*</label>
-                    <select class="form-select dropcountry" aria-label="Default select example">
-                        <option selected>Select your country</option>
-
-                    </select>
-                </div>
-
-            </div>
-            <div class="row" style="margin-top: 50px;">
-                <h5>
-                    Professional Information
-                </h5>
-                <hr>
-            </div>
-            <div class="row formargin">
-                <div class="col-md-6">
-                    <label for="">Availablity</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Select your availablity</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="">LinkedIn</label>
-                    <input class="form-control" placeholder="Enter linkedIn URL" type="text">
-                </div>
-
-
-            </div>
-            <div class="row" style="margin-top: 50px;">
-                <h5>
-                    My Skills
-                </h5>
-                <hr>
-            </div>
-            <div class="row formargin">
-                <div class="mb-3">
-
-<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-            </div>
-            <div class="row">
-                <div>
-                    <button id="skillbutton">Add Skills</button>
-                </div>
-                <div>
-                    <button class="right-button" style="margin-bottom: 50px;">Save</button>
-                </div>
-
-
-            </div>
-
-
-        </div>
-    </div>
-
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Enter Old Password">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Enter New Password">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Enter confirm Password">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="ContactusModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
+                <div class="row formargin">
+                    <div class="col-md-6">
                         <label for="">Name*</label>
-                        <input class="form-control " disabled placeholder="Smith Doh" type="text">
+                        <input asp-for="firstname" class="form-control " placeholder="Enter your name" type="text">
                     </div>
+                    <div class="col-md-6">
+                        <label for="">Surname*</label>
+                        <input asp-for="lastname" class="form-control " placeholder="Enter your surname" type="text">
+                    </div>
+                </div>
+                <div class="row formargin">
+                    <div class="col-md-6">
+                        <label for="">Employee ID</label>
+                        <input class="form-control " placeholder="Enter your employee id" type="text">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Manager</label>
+                        <input class="form-control " placeholder="Enter your manager details" type="text">
+                    </div>
+                </div>
+                <div class="row formargin">
+                    <div class="col-md-6">
+                        <label for="">Title</label>
+                        <input class="form-control" placeholder="Enter your employee id" type="text">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Department</label>
+                        <input asp-for="department" class="form-control" placeholder="Enter your manager details" type="text">
+                    </div>
+                </div>
+                <div class="row formargin">
                     <div class="mb-3">
-                        <label for="">Email Address*</label>
-                        <input class="form-control " disabled placeholder="Smith doh1234@gmail.com" type="text">
+                        <label for="exampleFormControlTextarea1" class="form-label">My Profile*</label>
+<textarea asp-for="profiletext" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
+                </div>
+                <div class="row formargin">
                     <div class="mb-3">
-                        <label for="">Subject*</label>
-                        <input class="form-control " placeholder="Enter your Subject" type="text">
+                        <label for="exampleFormControlTextarea1" class="form-label">Why I Volunteer?</label>
+<textarea asp-for="whyivol" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message" rows="3"></textarea>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <h5>
+                        Address Information
+                    </h5>
+                    <hr>
+                </div>
+                <div class="row formargin">
+                    <div class="col-md-6">
+                        <label for="">City</label>
+                        <select class="form-select dropcity" aria-label="Default select example" id="citydropdown" asp-for="cityofuser">
+                        </select>
                     </div>
-                </form>
+                    <div class="col-md-6">
+                        <label for="">Country*</label>
+                        <select class="form-select dropcity" aria-label="Default select example" id="countrydropdown" asp-for="countrofuser"></select>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <h5>
+                        Professional Information
+                    </h5>
+                    <hr>
+                </div>
+                <div class="row formargin">
+                    <div class="col-md-6">
+                        <label for="">Availablity</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="1">weekly</option>
+                            <option value="2">daily</option>
+                            <option value="3">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">LinkedIn</label>
+                        <input asp-for="linkedinurl" class="form-control" placeholder="Enter linkedIn URL" type="text">
+                    </div>
+
+
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <h5>
+                        My Skills
+                    </h5>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div>
+                        <div class="row formargin d-flex" style="border: 1px solid #d9d9d9;justify-content: center;height: 146px;margin-left: 3px;margin-right: 2px;">
+                            <div class="row user-edit-selected-skill-div p-2 mx-2">
+                                <ul type="text" class="navbar-nav user-edit-selected-skill" id="skilltext">
+                                </ul>
+                            </div>
+                        </div><br /><br />
+                        <div class="row">
+                            <div>
+                                <button id="BtnforAddSkills" class="user-edit-add-skill-btn"><span style="color:#757575;">Add Skills                                 </span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="right-button" style="margin-bottom: 50px;">Save</button>
+                    </div>
+
+
+
+                </div>
+
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary" >Save</button>
+        </div>
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter Old Password">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter New Password">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Enter confirm Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<hr />
-<div class="container footerforgrid">
-    <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact Us</button>
-</div>
-<hr />
+    <div class="modal fade" id="ContactusModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="">Name*</label>
+                            <input class="form-control " disabled placeholder="Smith Doh" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Email Address*</label>
+                            <input class="form-control " disabled placeholder="Smith doh1234@gmail.com" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Subject*</label>
+                            <input class="form-control " placeholder="Enter your Subject" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
+<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="container footerforgrid">
+        <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact Us</button>
+    </div>
+    <hr />
+
+
+    @*----Pop-Up For AddSkills---*@
+    <div class="popup-container ">
+        <div class="popup-content d-flex flex-column">
+            <div class="d-flex justify-content-between">
+                <h5>Add your Skills</h5>
+                <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="available-skills">
+                    <ul class="skill-list" id="skilllistinmodal">
+                        <li data-skill="skill1">Environment Science </li>
+                        <li data-skill="skill2">Helth</li>
+                        <li data-skill="skill3">Computer</li>
+                        <li data-skill="skill4">Leadership</li>
+                        <li data-skill="skill1">Environment Science </li>
+                        <li data-skill="skill2">Helth</li>
+                        <li data-skill="skill3">Computer</li>
+                        <li data-skill="skill4">Leadership</li>
+
+                    </ul>
+                </div>
+                <div class="d-flex flex-column justify-content-center" style="margin-right:8px;gap:5px;">
+                    <button class="add-skill"><i class="bi bi-chevron-right"></i></button>
+                    <button class="remove-skill"><i class="bi bi-chevron-left"></i></button>
+                </div>
+                <div class="selected-skills">
+                    <ul class="skill-list">
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="d-flex flex-row mt-3" style="gap:10px;">
+                    <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills" style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;"><span style="color:black;">Cancel</span></button>
+                    <button class="user-edit-save-btn" id="btnsaveforaddskills" style="border: 1px solid orange;
+ background: transparent;padding: 8px;border-radius: 12px;">
+                        <span style="color:#F88634;">Save</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>
+
+
+@section Javascript{
+<script src="/js/editprofile.js" asp-append-version="true"></script>
+  }
