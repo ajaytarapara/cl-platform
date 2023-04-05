@@ -12,6 +12,7 @@ namespace CIPlatform.Entities.ViewModels
     {
         [Key]
         public long userid { get; set; }
+        public string? useremail { get; set; }
         public string? firstname { get; set; }
         public string? lastname { get; set; }
         public string? avatar { get; set; }
@@ -29,11 +30,15 @@ namespace CIPlatform.Entities.ViewModels
         public long? countrofuser { get; set; } 
         public string? linkedinurl { get; set; }
 
-        public int userskills { get; set; }
+        public string? userskills { get; set; }
 
         public EditPasswordModel password { get; set; }
-
         public string? email { get; set; }
+
+        [Required]
+        public string?subject { get; set; }
+        [Required]
+        public string? message { get; set; }
 
     }
 }

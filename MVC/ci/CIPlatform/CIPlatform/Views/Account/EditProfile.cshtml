@@ -1,5 +1,5 @@
 ﻿@model CIPlatform.Entities.ViewModels.EditProfileModel
-<form method="post" asp-action="EditProfile">
+<form enctype="multipart/form-data" method="post" asp-action="EditProfile">
     <div class="container">
         <div class="row">
             <div id="menubarimg" class="d-md-none">
@@ -25,7 +25,7 @@
                 <img src="@Model.avatar" alt=""
                      style="border-radius: 50%;height: 100%; padding: 4px;">
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                        id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                        id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     @Model.firstname @Model.lastname
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -48,15 +48,20 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-3 userimgdiv">
-                <img id="uimg" src="@Model.avatar" alt="" class="">
-                <p style="text-align: center;">@Model.firstname @Model.lastname</p>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 19%; font-size: 12px;">Change Password</button>
-
-
-
+                <div class="card justify-content-center align-align-items-center d-flex">
+                    <input id="avataruploadbtn"type="file" name="filename"/>
+                    <img id="uimg"  src="@Model.avatar" alt="" class="mx-auto d-flex mt-3">
+                    <p style="text-align: center;" class="mt-2">@Model.firstname @Model.lastname</p>
+                    <div style="display:flex;margin:auto" class="mt-2">
+                       <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
+                       <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
+                       <a href="" class="socialmedia"target="_blank"><img src="~/images/linkedin.png" /></a>
+                    </div>
+                    <button type="button" class="btn d-flex mx-auto mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
+                </div>
             </div>
 
-            <div class="col-md-9 colclass card mx-2">
+            <div class="col-md-9 colclass card">
                 <div class="row">
                     <h5>
                         <strong>Basic Information</strong>
@@ -178,41 +183,7 @@
         </div>
 
     </div>
-
-    <div class="modal fade" id="ContactusModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="">Name*</label>
-                            <input class="form-control " disabled placeholder="Smith Doh" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Email Address*</label>
-                            <input class="form-control " disabled placeholder="Smith doh1234@gmail.com" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="">Subject*</label>
-                            <input class="form-control " placeholder="Enter your Subject" type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</form>
     <hr />
     <div class="container footerforgrid">
         <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
@@ -263,40 +234,83 @@
         </div>
     </div>
 
-</form>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-             <form method="post" asp-action="EditPassword">
+
+    @*change password modal*@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="EditPassword">
                 <div class="modal-body">
 
-                        <div class="mb-3">
-                            <input asp-for="password.Oldpassword" type="text" class="form-control" placeholder="Enter Old Password">
-                            <span asp-validation-for="password.Oldpassword"class="text-danger"></span>
+                    <div class="mb-3">
+                        <input asp-for="password.Oldpassword" type="text" class="form-control" placeholder="Enter Old Password">
+                        <span asp-validation-for="password.Oldpassword" class="text-danger"></span>
 
-                        </div>
-                        <div class="mb-3">
-                            <input asp-for="password.Newpassword" type="text" class="form-control" placeholder="Enter New Password">
-                            <span asp-validation-for="password.Newpassword"class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <input asp-for="password.ConfirmPassword" type="text" class="form-control" placeholder="Enter confirm   Password">
-                            <span asp-validation-for="password.ConfirmPassword" class="text-danger"></span>
-                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input asp-for="password.Newpassword" type="text" class="form-control" placeholder="Enter New Password">
+                        <span asp-validation-for="password.Newpassword" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <input asp-for="password.ConfirmPassword" type="text" class="form-control" placeholder="Enter confirm   Password">
+                        <span asp-validation-for="password.ConfirmPassword" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="changepassbtn">Send message</button>
+                    <button type="submit" class="btn btn-danger" id="changepassbtn">Change Password</button>
                 </div>
-             </form>
+            </form>
 
-            </div>
         </div>
     </div>
+</div>
+
+    @*contact us modal*@
+<div class="modal fade" id="ContactusModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form method="post" asp-action="contactus">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="">Name*</label>
+                        <input class="form-control " disabled placeholder="@Model.firstname @Model.lastname" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Email Address*</label>
+                        <input class="form-control " disabled placeholder="@Model.useremail" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label>Subject*</label>
+                        <input asp-for="subject" class="form-control " placeholder="Enter your Subject" type="text">
+                        <span asp-validation-for="subject" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
+                        <textarea asp-for="message" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message" rows="3"></textarea>
+                        <span asp-validation-for="message" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 @section Javascript{
 <script src="/js/editprofile.js" asp-append-version="true"></script>

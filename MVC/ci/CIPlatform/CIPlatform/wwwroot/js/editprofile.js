@@ -2,6 +2,10 @@
     getcountry();
     getcity();
     getskill();
+    $("#avataruploadbtn").click(function (event) {
+        event.preventDefault();
+        $(this).show();
+    });
 });
 
 function getcountry() {
@@ -115,7 +119,6 @@ function getskill() {
 //    })
 
 //});
-
 
 
 

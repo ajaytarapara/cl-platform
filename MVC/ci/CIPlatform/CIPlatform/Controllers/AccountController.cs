@@ -18,14 +18,15 @@ namespace CIPlatform.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
         private readonly IHomeRepository _homeRepository;
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
-, IHomeRepository homeRepository)
+, IHomeRepository homeRepository,IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
             _homeRepository = homeRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Login()
         {
@@ -192,26 +193,45 @@ namespace CIPlatform.Controllers
             editProfile.lastname= userObj.LastName;
             editProfile.avatar = userObj.Avatar;
             editProfile.userid = userObj.UserId;
+            editProfile.useremail = userObj.Email;
             return View(editProfile);
         }
 
         [HttpPost]
-        public IActionResult EditProfile(EditProfileModel user)
+        public IActionResult EditProfile(EditProfileModel user,IFormFile? filename)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User userObj = _userRepository.findUser(userSessionEmailId);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (filename != null)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(wwwRootPath, @"images\avatars");
+                var extension = Path.GetExtension(filename.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    filename.CopyTo(fileStreams);
+                }
+                userObj.Avatar = @"\images\avatars\" + fileName + extension;
+            }
             userObj.FirstName = user.firstname;
             userObj.LastName = user.lastname;
-            userObj.Avatar = user.avatar;
             userObj.Department = user.department;
             userObj.ProfileText = user.profiletext;
             userObj.WhyIVolunteer = user.whyivol;
             userObj.CityId = user.cityofuser;
             userObj.CountryId = user.countrofuser;
             userObj.LinkedInUrl=user.linkedinurl;
-            UserSkill userSkill = new UserSkill();
-            userSkill.UserId = userObj.UserId;
-            userSkill.SkillId =user.userskills;
+            List<UserSkill> userSkill = new List<UserSkill>();
+            string[] skills = user.userskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
+            foreach(var skill in skills)
+            {
+                UserSkill skill1= new UserSkill();
+                skill1.SkillId=_userRepository.getskillid(skill);
+                skill1.UserId= userObj.UserId;
+                userSkill.Add(skill1);
+            }
+            
             _userRepository.edituserprofile(userObj, userSkill);
             return View(user);
 
@@ -269,6 +289,24 @@ namespace CIPlatform.Controllers
             return RedirectToAction("EditProfile");
         }
 
+        [HttpPost]
+        public IActionResult contactus(EditProfileModel profileModel)
+        {
+            var adminemail = "ajaytarapara77@gmail.com";
+            string welcomeMessage = "Welcome to CI platform, <br/>Volunteer want to contact /n </br>";
+            var message =profileModel.message;
+            var subject=profileModel.subject;
+            MailHelper mailHelper = new MailHelper(configuration);
+            ViewBag.sendMail = mailHelper.Send(adminemail,welcomeMessage + message ,subject);
+            return RedirectToAction("EditProfile");
 
+        }
+
+        public IActionResult logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

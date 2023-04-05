@@ -12,8 +12,10 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string Oldpassword { get; set; }
         [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
         public string Newpassword { get; set; }
         [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
         public string ConfirmPassword { get; set; }
 
         [Required]
