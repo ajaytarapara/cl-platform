@@ -24,5 +24,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Country> getCountries();
 
         public IEnumerable<Skill> getSkill();
+
+        public void editPassword(User userObj);
     }
 }

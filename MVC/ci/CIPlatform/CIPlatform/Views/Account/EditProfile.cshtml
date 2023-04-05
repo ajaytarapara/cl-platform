@@ -4,7 +4,7 @@
         <div class="row">
             <div id="menubarimg" class="d-md-none">
                 <button onclick="menubartoggle()">
-                    <img src="images/list.png"
+                    <img src="~/images/list.png"
                          alt="">
                 </button>
             </div>
@@ -48,7 +48,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-3 userimgdiv">
-                <img id="uimg" src="@Model.avatar" alt="">
+                <img id="uimg" src="@Model.avatar" alt="" class="">
                 <p style="text-align: center;">@Model.firstname @Model.lastname</p>
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 19%; font-size: 12px;">Change Password</button>
 
@@ -155,8 +155,8 @@
                     <div>
                         <div class="row formargin d-flex" style="border: 1px solid #d9d9d9;justify-content: center;height: 146px;margin-left: 3px;margin-right: 2px;">
                             <div class="row user-edit-selected-skill-div p-2 mx-2">
-                                <ul type="text" class="navbar-nav user-edit-selected-skill" id="skilltext">
-                                </ul>
+                                <textarea asp-for="userskills" class="navbar-nav user-edit-selected-skill" id="skilltext">
+                                </textarea>
                             </div>
                         </div><br /><br />
                         <div class="row">
@@ -178,33 +178,7 @@
         </div>
 
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Enter Old Password">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Enter New Password">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Enter confirm Password">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="modal fade" id="ContactusModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -290,7 +264,39 @@
     </div>
 
 </form>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+             <form method="post" asp-action="EditPassword">
+                <div class="modal-body">
 
+                        <div class="mb-3">
+                            <input asp-for="password.Oldpassword" type="text" class="form-control" placeholder="Enter Old Password">
+                            <span asp-validation-for="password.Oldpassword"class="text-danger"></span>
+
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="password.Newpassword" type="text" class="form-control" placeholder="Enter New Password">
+                            <span asp-validation-for="password.Newpassword"class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="password.ConfirmPassword" type="text" class="form-control" placeholder="Enter confirm   Password">
+                            <span asp-validation-for="password.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="changepassbtn">Send message</button>
+                </div>
+             </form>
+
+            </div>
+        </div>
+    </div>
 
 @section Javascript{
 <script src="/js/editprofile.js" asp-append-version="true"></script>

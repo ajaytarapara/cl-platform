@@ -111,6 +111,11 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Skills;
         }
+        void IUserRepository.editPassword(User userObj)
+        {
+            _ciPlatformDbContext.Update(userObj);
+            _ciPlatformDbContext.SaveChanges();
+        }
 
     }
 }

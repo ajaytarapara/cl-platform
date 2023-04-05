@@ -8,6 +8,7 @@ using CIPlatform.Helpers;
 using System.Collections;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CIPlatform.Controllers
 {
@@ -231,6 +232,41 @@ namespace CIPlatform.Controllers
         {
             IEnumerable<Skill> skill = _userRepository.getSkill();
             return Json(new { data = skill });
+        }
+
+        [HttpPost]
+        public IActionResult EditPassword(EditProfileModel editPassword)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            editPassword.email=userObj.Email;
+            if(editPassword.password.Oldpassword.Equals(userObj.Password))
+            {
+                if (editPassword.password.Newpassword.Equals(editPassword.password.ConfirmPassword))
+                {
+                    if (editPassword.password.Newpassword.Equals(userObj.Password))
+                    {
+                        ModelState.AddModelError("oldpassword", "you can not set new pass equal old pass");
+                    }
+                    else
+                    {
+                        userObj.Password = editPassword.password.Newpassword;
+                        _userRepository.editPassword(userObj);
+
+                    }
+
+                }
+                else
+                {
+                   ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
+                }
+            }
+            else
+            {
+                ViewBag.SuccessMessage = TempData["old password is does not match "];
+                ModelState.AddModelError("oldpassword", "old password is does not match ");
+            }
+            return RedirectToAction("EditProfile");
         }
 
 

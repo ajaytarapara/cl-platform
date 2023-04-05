@@ -2,7 +2,6 @@
     getcountry();
     getcity();
     getskill();
-   
 });
 
 function getcountry() {
@@ -92,6 +91,33 @@ function getskill() {
 
 
 
+//$("#changepassbtn").on("click", function (e) {
+//    e.preventDefault();
+
+//    var missionid = $(this).val()
+//    var comments = document.getElementById("commentText").value;
+//    var val = missionid;
+//    $.ajax({
+//        type: "POST",
+//        url: '/Account/EditPassword',
+//        dataType: "html",
+//        data: { MissionID: val, comment: comments.toString() },
+//        success: function (data) {
+
+//            //$('#CommentsList').html("");
+//            //$('#CommentsList').html(data);
+//            listComment(missionid);
+//        },
+//        error: function (xhr, status, error) {
+//            // Handle error
+//            console.log(error);
+//        }
+//    })
+
+//});
+
+
+
 
 $(document).ready(function () {
     $(".popup-container").hide();
@@ -130,33 +156,15 @@ $(document).ready(function () {
     });
 
    
-
+    var names = "";
     $(".user-edit-save-btn").on("click", function () {
         $(".user-edit-selected-skill").empty();
         $(".selected-skills .skill-list li").each(function () {
             var skillName = $(this).text().trim();
-            $("<li>").text(skillName).appendTo($(".user-edit-selected-skill"));
+            names += skillName+"\n";
+            /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
+            $("#skilltext").text(names);
         });
         $(".popup-container").hide();
     });
   });
-
-
-        $(document).ready(function() {
-            $('#user-avatar').click(function () {
-                var input = document.createElement('input');
-                input.type = 'file';
-
-                input.onchange = function () {
-                    var file = this.files[0];
-                    var reader = new FileReader();
-
-                    reader.onload = function (event) {
-                        $('#user-avatar').attr('src', event.target.result);
-                    };
-
-                    reader.readAsDataURL(file);
-                };
-                input.click();
-            });
-    });

@@ -31,5 +31,9 @@ namespace CIPlatform.Entities.ViewModels
 
         public int userskills { get; set; }
 
+        public EditPasswordModel password { get; set; }
+
+        public string? email { get; set; }
+
     }
 }
