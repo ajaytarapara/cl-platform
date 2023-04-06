@@ -161,8 +161,9 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             string welcomeMessage = "Welcome to CI platform, <br/> You can participate in mission using below link. </br>";
             string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + Missionid.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Apply to Mission </a>";
+            string subject = "Your Friend recommanded for volunteering";
             MailHelper mailHelper = new MailHelper(configuration);
-            ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path);
+            ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path,subject);
 
         }
 

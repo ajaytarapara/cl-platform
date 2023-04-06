@@ -283,7 +283,6 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                ViewBag.SuccessMessage = TempData["old password is does not match "];
                 ModelState.AddModelError("oldpassword", "old password is does not match ");
             }
             return RedirectToAction("EditProfile");

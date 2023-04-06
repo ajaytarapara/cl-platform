@@ -1410,12 +1410,13 @@ footer {
     margin: 10px;
     border-radius: 23px;
 }
-#avataruploadbtn {
+.avatarbtn {
     HEIGHT: 100PX;
     POSITION: ABSOLUTE;
     WIDTH: 108PX;
     MARGIN-TOP: -124px;
     MARGIN-LEFT: 34%;
+    display:none;
 }
 
 @media (min-width: 768px) {

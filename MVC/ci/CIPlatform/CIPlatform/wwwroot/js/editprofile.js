@@ -4,7 +4,6 @@
     getskill();
     $("#avataruploadbtn").click(function (event) {
         event.preventDefault();
-        $(this).show();
     });
 });
 
@@ -93,32 +92,20 @@ function getskill() {
     });
 }
 
+$("#uimg").on("click", function (e) {
+    $('.avatarbtn').trigger('click');
+});
 
-
-//$("#changepassbtn").on("click", function (e) {
-//    e.preventDefault();
-
-//    var missionid = $(this).val()
-//    var comments = document.getElementById("commentText").value;
-//    var val = missionid;
-//    $.ajax({
-//        type: "POST",
-//        url: '/Account/EditPassword',
-//        dataType: "html",
-//        data: { MissionID: val, comment: comments.toString() },
-//        success: function (data) {
-
-//            //$('#CommentsList').html("");
-//            //$('#CommentsList').html(data);
-//            listComment(missionid);
-//        },
-//        error: function (xhr, status, error) {
-//            // Handle error
-//            console.log(error);
-//        }
-//    })
-
-//});
+$(document).ready(function () {
+    $('.avatarbtn').on("change", function () {
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            $('#uimg').attr('src', event.target.result);
+        };
+        reader.readAsDataURL(file);
+    });    
+});
 
 
 

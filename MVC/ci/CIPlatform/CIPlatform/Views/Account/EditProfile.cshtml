@@ -44,13 +44,12 @@
 
     <hr />
 
-
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-3 userimgdiv">
                 <div class="card justify-content-center align-align-items-center d-flex">
-                    <input id="avataruploadbtn"type="file" name="filename"/>
-                    <img id="uimg"  src="@Model.avatar" alt="" class="mx-auto d-flex mt-3">
+                    <input type="file" name="filename" class="avatarbtn"/>
+                    <img id="uimg"  src="@Model.avatar" alt="" class="mx-auto d-flex mt-3"id="imgavatar">
                     <p style="text-align: center;" class="mt-2">@Model.firstname @Model.lastname</p>
                     <div style="display:flex;margin:auto" class="mt-2">
                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
@@ -63,7 +62,7 @@
 
             <div class="col-md-9 colclass card">
                 <div class="row">
-                    <h5>
+                    <h5 class="p-2">
                         <strong>Basic Information</strong>
                     </h5>
                     <hr>
@@ -185,6 +184,10 @@
     </div>
 </form>
     <hr />
+  
+
+  <p> @TempData["Message"] </p>
+
     <div class="container footerforgrid">
         <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact Us</button>
@@ -314,4 +317,5 @@
 
 @section Javascript{
 <script src="/js/editprofile.js" asp-append-version="true"></script>
+
   }
