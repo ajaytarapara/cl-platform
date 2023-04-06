@@ -33,9 +33,10 @@ function getcountry() {
 
     });
 }
+
 function getcity() {
     $.ajax({
-        type: "GET",
+        type: "get",
         url: "/Account/GetCities",
         data: "{}",
         success: function (data) {
@@ -43,7 +44,7 @@ function getcity() {
             //console.log(data);
             var releatedmission = $("#citydropdown");
             for (i = 0; i < data["data"].length; i++) {
-             
+
                 str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
             }
 
@@ -58,6 +59,38 @@ function getcity() {
 
     });
 }
+
+
+$("#countrydropdown").on("change", function () {
+    var countryid = $("#countrydropdown").val();
+    console.log(countryid);
+    $.ajax({
+        type: "Post",
+        url: "/Account/GetCities",
+        data: { countryid: countryid },
+        success: function (data) {
+            var str = "";
+            //console.log(data);
+            var releatedmission = $("#citydropdown");
+            for (i = 0; i < data["data"].length; i++) {
+
+                str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+            }
+            $("#citydropdown").text("");
+            releatedmission.append(str);
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+});
+
+
+
 
 
 function getskill() {

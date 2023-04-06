@@ -1,5 +1,4 @@
 ﻿@model CIPlatform.Entities.ViewModels.EditProfileModel
-<form enctype="multipart/form-data" method="post" asp-action="EditProfile">
     <div class="container">
         <div class="row">
             <div id="menubarimg" class="d-md-none">
@@ -43,7 +42,7 @@
 
 
     <hr />
-
+   <form enctype="multipart/form-data" method="post" asp-action="EditProfile">
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-3 userimgdiv">
@@ -71,30 +70,36 @@
                     <div class="col-md-6">
                         <label for="">Name*</label>
                         <input asp-for="firstname" class="form-control " placeholder="Enter your name" type="text">
+                        <span asp-validation-for="firstname" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="">Surname*</label>
                         <input asp-for="lastname" class="form-control " placeholder="Enter your surname" type="text">
+                        <span asp-validation-for="lastname" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row formargin">
                     <div class="col-md-6">
                         <label for="">Employee ID</label>
-                        <input class="form-control " placeholder="Enter your employee id" type="text">
+                        <input asp-for="employeeid" class="form-control " placeholder="Enter your employee id" type="text">
+                        <span asp-validation-for="employeeid" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="">Manager</label>
                         <input class="form-control " placeholder="Enter your manager details" type="text">
+                        
                     </div>
                 </div>
                 <div class="row formargin">
                     <div class="col-md-6">
                         <label for="">Title</label>
-                        <input class="form-control" placeholder="Enter your employee id" type="text">
+                        <input asp-for="title" class="form-control" placeholder="Enter your employee id" type="text">
+                        <span asp-validation-for="title" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="">Department</label>
                         <input asp-for="department" class="form-control" placeholder="Enter your manager details" type="text">
+                        <span asp-validation-for="department" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row formargin">
@@ -102,11 +107,13 @@
                         <label for="exampleFormControlTextarea1" class="form-label">My Profile*</label>
 <textarea asp-for="profiletext" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
+                    <span asp-validation-for="profiletext" class="text-danger"></span>
                 </div>
                 <div class="row formargin">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Why I Volunteer?</label>
 <textarea asp-for="whyivol" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+ <span asp-validation-for="whyivol" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
@@ -120,10 +127,12 @@
                         <label for="">City</label>
                         <select class="form-select dropcity" aria-label="Default select example" id="citydropdown" asp-for="cityofuser">
                         </select>
+                        <span asp-validation-for="cityofuser" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label for="">Country*</label>
                         <select class="form-select dropcity" aria-label="Default select example" id="countrydropdown" asp-for="countrofuser"></select>
+                         <span asp-validation-for="countrofuser" class="text-danger"></span>
                     </div>
 
                 </div>
@@ -157,10 +166,11 @@
                 </div>
                 <div class="row">
                     <div>
-                        <div class="row formargin d-flex" style="border: 1px solid #d9d9d9;justify-content: center;height: 146px;margin-left: 3px;margin-right: 2px;">
+                        <div class="row formargin d-flex" style="justify-content: center;height: 146px;">
                             <div class="row user-edit-selected-skill-div p-2 mx-2">
                                 <textarea asp-for="userskills" class="navbar-nav user-edit-selected-skill" id="skilltext">
                                 </textarea>
+                                <span asp-validation-for="userskills" class="text-danger"></span>
                             </div>
                         </div><br /><br />
                         <div class="row">
@@ -184,9 +194,6 @@
     </div>
 </form>
     <hr />
-  
-
-  <p> @TempData["Message"] </p>
 
     <div class="container footerforgrid">
         <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>

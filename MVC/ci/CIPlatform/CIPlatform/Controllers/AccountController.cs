@@ -194,6 +194,7 @@ namespace CIPlatform.Controllers
             editProfile.avatar = userObj.Avatar;
             editProfile.userid = userObj.UserId;
             editProfile.useremail = userObj.Email;
+            editProfile.countrofuser = userObj.CountryId;
             return View(editProfile);
         }
 
@@ -222,6 +223,10 @@ namespace CIPlatform.Controllers
             userObj.CityId = user.cityofuser;
             userObj.CountryId = user.countrofuser;
             userObj.LinkedInUrl=user.linkedinurl;
+            userObj.EmployeeId = user.employeeid;
+            userObj.ProfileText=user.profiletext;
+            userObj.Title= user.title;
+            userObj.UpdatedAt = DateTime.Now;
             List<UserSkill> userSkill = new List<UserSkill>();
             string[] skills = user.userskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
             foreach(var skill in skills)
@@ -245,6 +250,12 @@ namespace CIPlatform.Controllers
         public IActionResult GetCities()
         {
             IEnumerable<City> cities = _userRepository.getCities();
+            return Json(new { data = cities });
+        }
+        [HttpPost]
+        public IActionResult GetCities(long countryid)
+        {
+            IEnumerable<City> cities = _userRepository.getCities(countryid);
             return Json(new { data = cities });
         }
 

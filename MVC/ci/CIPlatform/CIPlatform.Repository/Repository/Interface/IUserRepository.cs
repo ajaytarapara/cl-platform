@@ -20,6 +20,7 @@ namespace CIPlatform.Repository.Repository.Interface
         void removeResetPasswordToken(PasswordReset obj);
         public void edituserprofile(User userObj,List<UserSkill> userSkill);
 
+        public IEnumerable<City> getCities(long countryid);
         public IEnumerable<City> getCities();
         public IEnumerable<Country> getCountries();
 

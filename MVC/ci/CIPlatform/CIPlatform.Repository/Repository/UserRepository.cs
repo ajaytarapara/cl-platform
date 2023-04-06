@@ -107,10 +107,24 @@ namespace CIPlatform.Repository.Repository
             return skillid;
         }
 
+        IEnumerable<City> IUserRepository.getCities(long countryid)
+        {
+            if (countryid == 0)
+            {
+                return _ciPlatformDbContext.Cities;
+            }
+            else
+            {
+                return _ciPlatformDbContext.Cities.Where(x => x.CountryId == countryid);
+            }
+        }
         IEnumerable<City> IUserRepository.getCities()
         {
+
             return _ciPlatformDbContext.Cities;
         }
+
+
 
         IEnumerable<Country> IUserRepository.getCountries()
         {
