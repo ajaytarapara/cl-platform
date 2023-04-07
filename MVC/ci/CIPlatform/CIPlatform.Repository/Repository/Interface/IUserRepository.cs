@@ -32,5 +32,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Timesheet> getTimesheets(long UserId);
 
         public IEnumerable<Mission>getmissiontitle(long UserId);
+
+        public void addtimesheet(Timesheet timesheet);
     }
 }

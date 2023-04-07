@@ -335,5 +335,19 @@ namespace CIPlatform.Controllers
             timesheetModel.missiontitle = _userRepository.getmissiontitle(UserId);
             return View(timesheetModel);
         }
+
+        [HttpPost]
+        public void addtimesheet(long MissionId,string DateVolunteered, string Notes,string hours,string minutes)
+        {
+            Timesheet timesheet = new Timesheet();  
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            timesheet.UserId= userObj.UserId;
+            timesheet.MissionId= MissionId;
+            timesheet.Notes= Notes;
+            timesheet.DateVolunteered =DateTime.Parse( DateVolunteered);
+            _userRepository.addtimesheet(timesheet);
+        }
+
     }
 }

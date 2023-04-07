@@ -152,6 +152,10 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<Mission> titlesmission =_ciPlatformDbContext.MissionApplications.Where(u=>u.UserId==UserId && u.ApprovalStatus=="approved").Select(u=>u.Mission);
             return titlesmission;
         }
-
+        void IUserRepository.addtimesheet(Timesheet timesheet)
+        {
+            _ciPlatformDbContext.Add(timesheet);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }
