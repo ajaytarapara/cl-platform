@@ -1,59 +1,59 @@
 ﻿@model CIPlatform.Entities.ViewModels.EditProfileModel
-    <div class="container">
-        <div class="row">
-            <div id="menubarimg" class="d-md-none">
-                <button onclick="menubartoggle()">
-                    <img src="~/images/list.png"
-                         alt="">
-                </button>
-            </div>
-            <div class="col-6  leftnav">
-
-                <button style="border: none; background: white;">Stories</button>
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                        id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Policy
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
-                </ul>
-            </div>
-            <div class="col-6 d-flex px-5 rightnav">
-                <img src="@Model.avatar" alt=""
-                     style="border-radius: 50%;height: 100%; padding: 4px;">
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                        id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    @Model.firstname @Model.lastname
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
-                </ul>
-
-
-
-            </div>
+<div class="container">
+    <div class="row">
+        <div id="menubarimg" class="d-md-none">
+            <button onclick="menubartoggle()">
+                <img src="~/images/list.png"
+                     alt="">
+            </button>
         </div>
+        <div class="col-6  leftnav">
 
+            <button style="border: none; background: white;">Stories</button>
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Policy
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+        </div>
+        <div class="col-6 d-flex px-5 rightnav">
+            <img src="@Model.avatar" alt=""
+                 style="border-radius: 50%;height: 100%; padding: 4px;">
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                @Model.firstname @Model.lastname
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">Logout</a>VolunteeringTimesheet</button></li>
+            </ul>
+
+
+
+        </div>
     </div>
 
+</div>
 
-    <hr />
-   <form enctype="multipart/form-data" method="post" asp-action="EditProfile">
+
+<hr />
+<form enctype="multipart/form-data" method="post" asp-action="EditProfile">
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-3 userimgdiv">
                 <div class="card justify-content-center align-align-items-center d-flex">
-                    <input type="file" name="filename" class="avatarbtn"/>
-                    <img id="uimg"  src="@Model.avatar" alt="" class="mx-auto d-flex mt-3"id="imgavatar">
+                    <input type="file" name="filename" class="avatarbtn" />
+                    <img id="uimg" src="@Model.avatar" alt="" class="mx-auto d-flex mt-3" id="imgavatar">
                     <p style="text-align: center;" class="mt-2">@Model.firstname @Model.lastname</p>
                     <div style="display:flex;margin:auto" class="mt-2">
-                       <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
-                       <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
-                       <a href="" class="socialmedia"target="_blank"><img src="~/images/linkedin.png" /></a>
+                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
+                        <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
+                        <a href="" class="socialmedia" target="_blank"><img src="~/images/linkedin.png" /></a>
                     </div>
                     <button type="button" class="btn d-flex mx-auto mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
                 </div>
@@ -87,7 +87,7 @@
                     <div class="col-md-6">
                         <label for="">Manager</label>
                         <input class="form-control " placeholder="Enter your manager details" type="text">
-                        
+
                     </div>
                 </div>
                 <div class="row formargin">
@@ -113,7 +113,7 @@
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Why I Volunteer?</label>
 <textarea asp-for="whyivol" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
- <span asp-validation-for="whyivol" class="text-danger"></span>
+                        <span asp-validation-for="whyivol" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
@@ -132,7 +132,7 @@
                     <div class="col-md-6">
                         <label for="">Country*</label>
                         <select class="form-select dropcity" aria-label="Default select example" id="countrydropdown" asp-for="countrofuser"></select>
-                         <span asp-validation-for="countrofuser" class="text-danger"></span>
+                        <span asp-validation-for="countrofuser" class="text-danger"></span>
                     </div>
 
                 </div>
@@ -193,56 +193,56 @@
 
     </div>
 </form>
-    <hr />
+<hr />
 
-    <div class="container footerforgrid">
-        <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact Us</button>
-    </div>
-    <hr />
+<div class="container footerforgrid">
+    <button type="button" class="btn" id="footertextforuser">Privacy Policy</button>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact Us</button>
+</div>
+<hr />
 
 
     @*----Pop-Up For AddSkills---*@
-    <div class="popup-container ">
-        <div class="popup-content d-flex flex-column">
-            <div class="d-flex justify-content-between">
-                <h5>Add your Skills</h5>
-                <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>
-            </div>
-            <div class="d-flex flex-row">
-                <div class="available-skills">
-                    <ul class="skill-list" id="skilllistinmodal">
-                        <li data-skill="skill1">Environment Science </li>
-                        <li data-skill="skill2">Helth</li>
-                        <li data-skill="skill3">Computer</li>
-                        <li data-skill="skill4">Leadership</li>
-                        <li data-skill="skill1">Environment Science </li>
-                        <li data-skill="skill2">Helth</li>
-                        <li data-skill="skill3">Computer</li>
-                        <li data-skill="skill4">Leadership</li>
+<div class="popup-container ">
+    <div class="popup-content d-flex flex-column">
+        <div class="d-flex justify-content-between">
+            <h5>Add your Skills</h5>
+            <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="available-skills">
+                <ul class="skill-list" id="skilllistinmodal">
+                    <li data-skill="skill1">Environment Science </li>
+                    <li data-skill="skill2">Helth</li>
+                    <li data-skill="skill3">Computer</li>
+                    <li data-skill="skill4">Leadership</li>
+                    <li data-skill="skill1">Environment Science </li>
+                    <li data-skill="skill2">Helth</li>
+                    <li data-skill="skill3">Computer</li>
+                    <li data-skill="skill4">Leadership</li>
 
-                    </ul>
-                </div>
-                <div class="d-flex flex-column justify-content-center" style="margin-right:8px;gap:5px;">
-                    <button class="add-skill"><i class="bi bi-chevron-right"></i></button>
-                    <button class="remove-skill"><i class="bi bi-chevron-left"></i></button>
-                </div>
-                <div class="selected-skills">
-                    <ul class="skill-list">
-                    </ul>
-                </div>
+                </ul>
             </div>
-            <div>
-                <div class="d-flex flex-row mt-3" style="gap:10px;">
-                    <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills" style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;"><span style="color:black;">Cancel</span></button>
-                    <button class="user-edit-save-btn" id="btnsaveforaddskills" style="border: 1px solid orange;
+            <div class="d-flex flex-column justify-content-center" style="margin-right:8px;gap:5px;">
+                <button class="add-skill"><i class="bi bi-chevron-right"></i></button>
+                <button class="remove-skill"><i class="bi bi-chevron-left"></i></button>
+            </div>
+            <div class="selected-skills">
+                <ul class="skill-list">
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-row mt-3" style="gap:10px;">
+                <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills" style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;"><span style="color:black;">Cancel</span></button>
+                <button class="user-edit-save-btn" id="btnsaveforaddskills" style="border: 1px solid orange;
  background: transparent;padding: 8px;border-radius: 12px;">
-                        <span style="color:#F88634;">Save</span>
-                    </button>
-                </div>
+                    <span style="color:#F88634;">Save</span>
+                </button>
             </div>
         </div>
     </div>
+</div>
 
 
     @*change password modal*@

@@ -11,7 +11,6 @@ namespace CIPlatform.Controllers
         private readonly IStoryRepository _storyRepository;
         private readonly IHomeRepository _homeRepository;
         private readonly IUserRepository _userRepository;
-        private readonly string userSessionEmailId;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly IConfiguration configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -63,7 +62,8 @@ namespace CIPlatform.Controllers
         {
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
-            PaginationMission story =_storyRepository.Storydata(pageNumber);   
+            PaginationMission story = _storyRepository.Storydata(pageNumber);
+
             return PartialView("_Storylist", story);
         }
 
@@ -75,9 +75,6 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-
-            var missions = _homeRepository.GetMissions();
-
             HomeModel HomeModels = new HomeModel();
 
             User userObj = _userRepository.findUser(userSessionEmailId);

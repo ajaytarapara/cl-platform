@@ -23,10 +23,10 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string? profiletext { get; set; }
         [Required]
-        public string ?whyivol { get; set; }
+        public string? whyivol { get; set; }
 
-        public IEnumerable<City> ?cities { get; set; }
-        
+        public IEnumerable<City>? cities { get; set; }
+
         public IEnumerable<Country>? country { get; set; }
         [Required]
         public long? cityofuser { get; set; }
@@ -41,7 +41,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? email { get; set; }
 
         [Required]
-        public string?subject { get; set; }
+        public string? subject { get; set; }
         [Required]
         public string? message { get; set; }
 

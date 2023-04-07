@@ -21,6 +21,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? storymediatype { get; set; }  
 
         public string? themetitle { get; set; }
-   
+
     }
 }

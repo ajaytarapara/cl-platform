@@ -35,6 +35,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/VolunteeringTimesheet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWb2x1bnRlZXJpbmdUaW1lc2hlZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +81,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Storylist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdG9yeWxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_TimesheetModals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UaW1lc2hlZXRNb2RhbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_ValidationScriptsPartial.cshtml]

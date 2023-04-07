@@ -18,13 +18,13 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext = cIPlatformDbContext;
         }
-          MissionModel IMissionRepository.Getmission(string missionid,long userid)
+        MissionModel IMissionRepository.Getmission(string missionid, long userid)
         {
             //mission = _ciPlatformDbContext.MissionModel.FromSqlInterpolated($"exec sp_get_Mission_data @missionid = {missionid}");
             MissionModel mission = _ciPlatformDbContext.MissionModels.FromSqlInterpolated($"exec sp_get_Mission_data @missionid={missionid},@UserId={userid}").AsEnumerable().FirstOrDefault();
-         
+
             return mission;
-         
+
         }
 
         public void addToFavourites(long missionid, long userid, int fav)
@@ -60,7 +60,7 @@ namespace CIPlatform.Repository.Repository
             comment.CreatedAt = DateTime.Now;
             comment.Comment1 = Commenttext;
             _ciPlatformDbContext.Comments.Add(comment);
-            _ciPlatformDbContext.SaveChangesAsync();
+            _ciPlatformDbContext.SaveChanges();
         }
 
         public void ApplyApplication(long missionid, long UserId)

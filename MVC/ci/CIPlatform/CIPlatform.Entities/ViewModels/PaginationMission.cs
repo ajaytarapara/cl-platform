@@ -12,8 +12,8 @@ namespace CIPlatform.Entities.ViewModels
         public long? activePage { get; set; }
         public long? pageSize { get; set; }
         public long? missionCount { get; set; }
-        public List<GridModel> missions { get; set; }
-        public List<StoryModel> Stories { get; set; }
+        public List<GridModel>? missions { get; set; }
+        public List<StoryModel>? Stories { get; set; }
 
     }
 }

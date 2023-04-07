@@ -774,7 +774,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    b
 }
 
 .pagination-number,
@@ -1398,8 +1397,8 @@ footer {
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
-.socialmedia 
-{
+
+.socialmedia {
     width: 40px;
     height: 39px;
     border: 2px solid blue;
@@ -1410,13 +1409,19 @@ footer {
     margin: 10px;
     border-radius: 23px;
 }
+
+.dropdownnavbarlinks :hover {
+    background-color: #ffd78e;
+}
+
+
 .avatarbtn {
     HEIGHT: 100PX;
     POSITION: ABSOLUTE;
     WIDTH: 108PX;
     MARGIN-TOP: -124px;
     MARGIN-LEFT: 34%;
-    display:none;
+    display: none;
 }
 
 @media (min-width: 768px) {
@@ -1475,5 +1480,40 @@ footer {
             transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
             color: #999;
         }
+}
 
 
+/*=======================================*/
+/*volunteering time sheet*/
+/*=====================================*/
+#Volunteeringhours {
+    width: 48%;
+}
+#VolunteeringGoals {
+    width: 48%;
+}
+
+.btnsubmit-timesheet {
+    background: none;
+    border: 1px solid orange;
+    color: orange;
+    border-radius: 20px;
+    margin: 9px 10px 6px 48px;
+}
+.btncancel-timesheet {
+    background: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 9px 10px 6px 48px;
+}
+
+@media (max-width: 767px) {
+    #Volunteeringhours {
+        width:100%;
+    }
+    #VolunteeringGoals {
+        width: 100%;
+        margin-top:10px;
+    }
+}

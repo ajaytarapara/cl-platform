@@ -37,7 +37,7 @@ namespace CIPlatform.Repository.Repository
         IEnumerable<Skill> IStoryRepository.getSkills()
         {
             return _ciPlatformDbContext.Skills;
-       }
+        }
 
         IEnumerable<MissionTheme> IStoryRepository.getThemes()
         {
@@ -49,7 +49,7 @@ namespace CIPlatform.Repository.Repository
 
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             var output1 = new SqlParameter("@missionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
-             PaginationMission pagination = new PaginationMission();
+            PaginationMission pagination = new PaginationMission();
             List<StoryModel> storydatalist = _ciPlatformDbContext.Storylist.FromSqlInterpolated($"exec sp_get_story_data @pageNumber = {pageNumber},@TotalCount = {output} out,@missionCount={output1} out").ToList();
             pagination.Stories = storydatalist;
             pagination.pageSize = 3;
@@ -87,14 +87,14 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.SaveChanges();
                 storymedium1.StoryId = storyobj.StoryId;
 
-                StoryMedium storymidea=_ciPlatformDbContext.StoryMedia.Where(u => u.StoryId == storymedium1.StoryId).FirstOrDefault();
-                if (storymidea != null) 
+                StoryMedium storymidea = _ciPlatformDbContext.StoryMedia.Where(u => u.StoryId == storymedium1.StoryId).FirstOrDefault();
+                if (storymidea != null)
                 {
-                storymidea.Path = storymedium1.Path;
-                storymidea.Type = ".png";
-                storymidea.StoryId = storymedium1.StoryId;
-                _ciPlatformDbContext.StoryMedia.Update(storymidea);
-                _ciPlatformDbContext.SaveChanges();
+                    storymidea.Path = storymedium1.Path;
+                    storymidea.Type = ".png";
+                    storymidea.StoryId = storymedium1.StoryId;
+                    _ciPlatformDbContext.StoryMedia.Update(storymidea);
+                    _ciPlatformDbContext.SaveChanges();
                 }
                 else
                 {

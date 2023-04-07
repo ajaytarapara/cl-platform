@@ -199,7 +199,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProfile(EditProfileModel user,IFormFile? filename)
+        public IActionResult EditProfile(EditProfileModel user, IFormFile? filename)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -222,21 +222,21 @@ namespace CIPlatform.Controllers
             userObj.WhyIVolunteer = user.whyivol;
             userObj.CityId = user.cityofuser;
             userObj.CountryId = user.countrofuser;
-            userObj.LinkedInUrl=user.linkedinurl;
+            userObj.LinkedInUrl = user.linkedinurl;
             userObj.EmployeeId = user.employeeid;
-            userObj.ProfileText=user.profiletext;
-            userObj.Title= user.title;
+            userObj.ProfileText = user.profiletext;
+            userObj.Title = user.title;
             userObj.UpdatedAt = DateTime.Now;
             List<UserSkill> userSkill = new List<UserSkill>();
             string[] skills = user.userskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
-            foreach(var skill in skills)
+            foreach (var skill in skills)
             {
-                UserSkill skill1= new UserSkill();
-                skill1.SkillId=_userRepository.getskillid(skill);
-                skill1.UserId= userObj.UserId;
+                UserSkill skill1 = new UserSkill();
+                skill1.SkillId = _userRepository.getskillid(skill);
+                skill1.UserId = userObj.UserId;
                 userSkill.Add(skill1);
             }
-            
+
             _userRepository.edituserprofile(userObj, userSkill);
             return View(user);
 
@@ -317,6 +317,23 @@ namespace CIPlatform.Controllers
             HttpContext.Session.Remove("useremail");
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
+        }
+
+        public IActionResult VolunteeringTimesheet()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            VolunteeringTimesheetModel timesheetModel=new VolunteeringTimesheetModel();
+            timesheetModel.username = userObj.FirstName + " " + userObj.LastName;
+            timesheetModel.avatar = userObj.Avatar;
+            long UserId = userObj.UserId;
+            timesheetModel.timesheet = _userRepository.getTimesheets(UserId);
+            timesheetModel.missiontitle = _userRepository.getmissiontitle(UserId);
+            return View(timesheetModel);
         }
     }
 }

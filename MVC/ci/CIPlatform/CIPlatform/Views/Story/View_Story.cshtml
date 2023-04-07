@@ -82,10 +82,11 @@
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     @Model.navusername
                 </button>
+                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">Logout</a>VolunteeringTimesheet</button></li>
                 </ul>
 
 

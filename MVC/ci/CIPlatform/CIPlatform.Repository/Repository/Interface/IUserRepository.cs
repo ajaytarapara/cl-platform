@@ -27,7 +27,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Skill> getSkill();
 
         public void editPassword(User userObj);
-
         public int getskillid(string skill);
+
+        public IEnumerable<Timesheet> getTimesheets(long UserId);
+
+        public IEnumerable<Mission>getmissiontitle(long UserId);
     }
 }

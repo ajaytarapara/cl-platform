@@ -34,9 +34,9 @@
                     @Model.username
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">Logout</a>VolunteeringTimesheet</button></li>
                 </ul>
 
 
@@ -60,7 +60,7 @@
                 <select class="form-select" aria-label="Default select example" id="storydropdown">
                     @foreach (var item in Model.getmission)
                     {
-                        <option value="@item.Mission.MissionId">@item.Mission.Title</option>
+                            <option value="@item.Mission.MissionId">@item.Mission.Title</option>
                     }
                 </select>
             </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div style=" display: inline-block;">
                     <button id="pbtn" style="border: 1px solid orange;border-radius: 7px;background: transparent;padding: 10px;color: orange;width: 100px;"><a id="Previewbtnsharestory">Preview</a></button>
-                    
+
                     <button class="savebutton" id="savebtnsharestory" type="submit">save</button>
                     <button class="savebutton" id="submitbtnsharestory">submit</button>
                 </div>
@@ -148,7 +148,7 @@
     });
 </script>
 <script>
-      
+
 
         // // upload images
 

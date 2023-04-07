@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Repository.Repository.Interface
 {
-    public  interface IStoryRepository
+    public interface IStoryRepository
     {
         public IEnumerable<Country> getCountries();
         public IEnumerable<City> getCities();

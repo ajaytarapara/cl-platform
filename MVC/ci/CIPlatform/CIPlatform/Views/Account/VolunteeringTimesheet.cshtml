@@ -1,0 +1,199 @@
+﻿@model CIPlatform.Entities.ViewModels.VolunteeringTimesheetModel
+<div class="container">
+    <div class="row">
+        <div id="menubarimg" class="d-md-none">
+            <button onclick="menubartoggle()">
+                <img src="~/images/list.png"
+                     alt="">
+            </button>
+        </div>
+        <div class="col-6  leftnav">
+
+            <button style="border: none; background: white;">Stories</button>
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Policy
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+        </div>
+        <div class="col-6 d-flex px-5 rightnav">
+            <img src="@Model.avatar" alt=""
+                 style="border-radius: 50%;height: 100%; padding: 4px;">
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                @Model.username
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<hr />
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <h1>
+                Volunteering Timesheet
+            </h1>
+        </div>
+    </div>
+    <div class="row d-flex mt-3" style="justify-content: space-between;overflow-x:auto;">
+        <div class="card" id="Volunteeringhours">
+            <div class="row pt-3 d-flex">
+                <h3 style="width:70%">
+                    Volunteering Hours
+                </h3>
+                <button id="addtimemissionbtn" style="width:25%;width: 20%;
+                    background: none;
+                    color: orange;
+                    border: 1px solid orange;
+                    border-radius: 30px;" data-bs-toggle="modal" data-bs-target="#ADDTIMEMISSIONSHEET">
+                    + add
+                </button>
+            </div>
+            <hr>
+
+            <div class="row p-2 table-responsive mt-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><strong>Mission</strong></th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Minutes</th>
+                            <th scope="col">edit</th>
+                            <th scope="col">delete</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.timesheet)
+
+
+                    {
+                        @if (item.Mission.MissionType == "time")
+                        {
+                            <tbody>
+                                <tr>
+                                    @if (Model.timesheet is null)
+                                    {
+                                        <td>no data</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Mission.Title</td>
+                                        <td>@item.DateVolunteered.ToString().Substring(0,10)</td>
+                                        <td>@item.Time.ToString().Substring(0,2)</td>
+                                        <td>@item.Time.ToString().Substring(3,2)</td>
+                                        <td>
+
+                                            <button style="background: none;padding: 0px;border:none">
+                                                <img style="width:20px;height: 20px;"
+                                         class="img-fluid" src="~/images/Voted-Missions.png">
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button style="background: none;padding: 0px;border:none">
+                                                <img style="width:20px;height: 20px;"
+                                         class="img-fluid" src="~/images/bin.png">
+                                            </button>
+                                        </td>
+                                    }
+                                </tr>
+                            </tbody>
+                        } }
+                </table>
+            </div>
+
+        </div>
+
+        <div class="card" id="VolunteeringGoals">
+            <div class="row pt-3 d-flex">
+                <h3 style="width:70%">
+                    Volunteering Goals
+                </h3>
+                <button style="width:25%;width: 20%;
+                    background: none;
+                    color: orange;
+                    border: 1px solid orange;
+                    border-radius: 30px;" data-bs-toggle="modal" data-bs-target="#ADDGOALMISSIONSHEET">
+                    + add
+                </button>
+            </div>
+            <hr>
+
+            <div class="row p-2 table-responsive mt-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mission</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">edit</th>
+                            <th scope="col">delete</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.timesheet)
+                    {
+
+                        @if (item.Mission.MissionType == "goal")
+                        {
+                            <tbody>
+                                <tr>
+                                    @if (Model.timesheet is null)
+                                    {
+                                        <td>no data</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Mission.Title</td>
+                                        <td>@item.DateVolunteered.ToString().Substring(0,10)</td>
+                                        <td>@item.Action</td>
+                                        <td>
+                                            <button style="background: none;padding: 0px;border:none">
+                                                <img style="width:20px;height: 20px;"
+                                         class="img-fluid" src="~/images/Voted-Missions.png">
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button style="background: none;padding: 0px;border:none">
+                                                <img style="width:20px;height: 20px;"
+                                         class="img-fluid" src="~/images/bin.png">
+                                            </button>
+                                        </td>
+                                    }
+                                </tr>
+                            </tbody>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+@*====================================================
+    modals*@
+@*modal for add missiontimesheet*@
+
+
+
+@*===============================================*@
+
+@*modal for add missiongoalsheet*@
+
+@Html.Partial("_TimesheetModals")
+

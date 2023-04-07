@@ -1,6 +1,7 @@
 ﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Repository.Repository
 {
-    public class UserRepository:IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly CIPlatformDbContext _ciPlatformDbContext;
         public UserRepository(CIPlatformDbContext cIPlatformDbContext)
@@ -139,6 +140,17 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext.Update(userObj);
             _ciPlatformDbContext.SaveChanges();
+        }
+
+        IEnumerable<Timesheet> IUserRepository.getTimesheets(long UserId)
+        {
+            IEnumerable<Timesheet>timesheet= _ciPlatformDbContext.Timesheets.Include(x => x.Mission).Where(u=>u.UserId== UserId && u.Status=="approved");
+            return timesheet;
+        }
+        IEnumerable<Mission> IUserRepository.getmissiontitle(long UserId)
+        {
+            IEnumerable<Mission> titlesmission =_ciPlatformDbContext.MissionApplications.Where(u=>u.UserId==UserId && u.ApprovalStatus=="approved").Select(u=>u.Mission);
+            return titlesmission;
         }
 
     }
