@@ -34,5 +34,11 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Mission>getmissiontitle(long UserId);
 
         public void addtimesheet(Timesheet timesheet);
+
+        public void deletetimesheet(Timesheet timesheet);
+
+        public void edittimesheet(long timesheetid,string hours, string minutes,long MissionId,string Notes, DateTime DateVolunteered);
+
+        public void edittimesheetgoal(long timesheetid, long MissionId, string Notes,long Action,DateTime DateVolunteered);
     }
 }

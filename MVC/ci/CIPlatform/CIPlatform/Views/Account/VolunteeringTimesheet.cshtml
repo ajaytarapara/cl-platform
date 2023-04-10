@@ -100,13 +100,14 @@
                                         <td>@item.Time.ToString().Substring(3,2)</td>
                                         <td>
 
-                                            <button style="background: none;padding: 0px;border:none">
+                                            <button style="background: none;padding: 0px;border:none" data-bs-toggle="modal" data-bs-target="#editTIMEMISSIONSHEET" id="@item.TimesheetId" class="editmodalopentime"> 
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/Voted-Missions.png">
                                             </button>
                                         </td>
                                         <td>
-                                            <button style="background: none;padding: 0px;border:none">
+                                            <button id="@item.TimesheetId" class="timesheetdeletebtn" style="background: none;padding: 0px;border:none">
+                                                <input type="hidden" value="@item.TimesheetId" class="timesheetidget" />
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/bin.png">
                                             </button>
@@ -163,13 +164,14 @@
                                         <td>@item.DateVolunteered.ToString().Substring(0,10)</td>
                                         <td>@item.Action</td>
                                         <td>
-                                            <button style="background: none;padding: 0px;border:none">
+                                            <button style="background: none;padding: 0px;border:none"data-bs-toggle="modal" data-bs-target="#editGOALMISSIONSHEET" id="@item.TimesheetId" class="editmodalopengoal">
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/Voted-Missions.png">
                                             </button>
                                         </td>
                                         <td>
-                                            <button style="background: none;padding: 0px;border:none">
+                                            <button class="timesheetdeletebtngoal" style="background: none;padding: 0px;border:none"id="@item.TimesheetId">
+                                                <input type="hidden" value="@item.TimesheetId" id="timesheetidgetgoal" />
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/bin.png">
                                             </button>
@@ -197,8 +199,7 @@
 
 @Html.Partial("_TimesheetModals")
 
- @section Javascript{
+@section Javascript{
 
- <script src="~/js/timesheet.js" asp-append-version="true"></script>
+<script src="~/js/timesheet.js" asp-append-version="true"></script>
   }
-    

@@ -20,7 +20,7 @@ namespace CIPlatform.Controllers
         private readonly IHomeRepository _homeRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
-, IHomeRepository homeRepository,IWebHostEnvironment webHostEnvironment)
+, IHomeRepository homeRepository, IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
@@ -189,8 +189,8 @@ namespace CIPlatform.Controllers
             EditProfileModel editProfile = new EditProfileModel();
 
             User userObj = _userRepository.findUser(userSessionEmailId);
-            editProfile.firstname= userObj.FirstName;
-            editProfile.lastname= userObj.LastName;
+            editProfile.firstname = userObj.FirstName;
+            editProfile.lastname = userObj.LastName;
             editProfile.avatar = userObj.Avatar;
             editProfile.userid = userObj.UserId;
             editProfile.useremail = userObj.Email;
@@ -270,8 +270,8 @@ namespace CIPlatform.Controllers
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User userObj = _userRepository.findUser(userSessionEmailId);
-            editPassword.email=userObj.Email;
-            if(editPassword.password.Oldpassword.Equals(userObj.Password))
+            editPassword.email = userObj.Email;
+            if (editPassword.password.Oldpassword.Equals(userObj.Password))
             {
                 if (editPassword.password.Newpassword.Equals(editPassword.password.ConfirmPassword))
                 {
@@ -289,7 +289,7 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                   ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
+                    ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
                 }
             }
             else
@@ -304,10 +304,10 @@ namespace CIPlatform.Controllers
         {
             var adminemail = "ajaytarapara77@gmail.com";
             string welcomeMessage = "Welcome to CI platform, <br/>Volunteer want to contact /n </br>";
-            var message =profileModel.message;
-            var subject=profileModel.subject;
+            var message = profileModel.message;
+            var subject = profileModel.subject;
             MailHelper mailHelper = new MailHelper(configuration);
-            ViewBag.sendMail = mailHelper.Send(adminemail,welcomeMessage + message ,subject);
+            ViewBag.sendMail = mailHelper.Send(adminemail, welcomeMessage + message, subject);
             return RedirectToAction("EditProfile");
 
         }
@@ -327,7 +327,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Login", "Account");
             }
             User userObj = _userRepository.findUser(userSessionEmailId);
-            VolunteeringTimesheetModel timesheetModel=new VolunteeringTimesheetModel();
+            VolunteeringTimesheetModel timesheetModel = new VolunteeringTimesheetModel();
             timesheetModel.username = userObj.FirstName + " " + userObj.LastName;
             timesheetModel.avatar = userObj.Avatar;
             long UserId = userObj.UserId;
@@ -337,17 +337,98 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public void addtimesheet(long MissionId,string DateVolunteered, string Notes,string hours,string minutes)
+        public IActionResult addtimesheet(long MissionId, string DateVolunteered, string Notes, string hours, string minutes)
         {
-            Timesheet timesheet = new Timesheet();  
+            Timesheet timesheet = new Timesheet();
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User userObj = _userRepository.findUser(userSessionEmailId);
-            timesheet.UserId= userObj.UserId;
-            timesheet.MissionId= MissionId;
-            timesheet.Notes= Notes;
-            timesheet.DateVolunteered =DateTime.Parse( DateVolunteered);
-            _userRepository.addtimesheet(timesheet);
+            timesheet.UserId = userObj.UserId;
+            timesheet.MissionId = MissionId;
+            timesheet.Notes = Notes;
+            if (hours != null && minutes != null && DateVolunteered != null)
+            {
+                timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
+                timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
+                timesheet.Status = "approved";
+                _userRepository.addtimesheet(timesheet);
+                return Json(new { status = 1 });
+            }
+            else
+            {
+                ModelState.AddModelError("time", "time is required");
+                return Json(new { status = 0 });
+            }
+
+
         }
 
+        [HttpPost]
+        public IActionResult addtimesheetgoal(long MissionId, string DateVolunteered, string Notes, string Action)
+        {
+            Timesheet timesheet = new Timesheet();
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            timesheet.UserId = userObj.UserId;
+            timesheet.MissionId = MissionId;
+            timesheet.Notes = Notes;
+            if (Action != null && DateVolunteered != null)
+            {
+                timesheet.Action = int.Parse(Action);
+                timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
+                timesheet.Status = "approved";
+                _userRepository.addtimesheet(timesheet);
+                return Json(new { status = 1 });
+            }
+            else
+            {
+                ModelState.AddModelError("data", "data is not valid");
+                return Json(new { status = 0 });
+            }
+
+        }
+
+        [HttpPost]
+        public IActionResult deletetimesheet(long timesheetid)
+        {
+            Timesheet timesheet = new Timesheet();
+            timesheet.TimesheetId = timesheetid;
+            _userRepository.deletetimesheet(timesheet);
+            return RedirectToAction("VolunteeringTimesheet", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult deletetimesheetgoal(long timesheetid)
+        {
+            Timesheet timesheet = new Timesheet();
+            timesheet.TimesheetId = timesheetid;
+            _userRepository.deletetimesheet(timesheet);
+            return RedirectToAction("VolunteeringTimesheet", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, DateTime DateVolunteered)
+        {
+            Timesheet timesheet = new Timesheet();
+            timesheet.Notes = Notes;
+            if (hours != null && minutes != null && Notes != null)
+            {
+                timesheet.DateVolunteered = DateVolunteered;
+                timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
+                _userRepository.edittimesheet(timesheetid, hours, minutes, MissionId, Notes, DateVolunteered);
+                return Json(new { status = 1 });
+            }
+            else
+            {
+                return Json(new { status = 0 });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action, DateTime DateVolunteered)
+        {
+
+            _userRepository.edittimesheetgoal(timesheetid, MissionId, Notes, Action, DateVolunteered);
+            return RedirectToAction("VolunteeringTimesheet", "Account");
+        }
     }
 }
