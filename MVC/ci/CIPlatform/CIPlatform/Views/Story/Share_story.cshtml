@@ -9,49 +9,67 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 
-    <div class="container">
-          <div class="row">
-            <div id="menubarimg"class="d-md-none">
-                <button  onclick="menubartoggle()"><img src="~/images/list.png"
-                        alt=""></button>
-            </div>
-            <div class="col-6  leftnav">
-
-                <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
-                <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Policy
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></l
-                </ul>
-            </div>
-            <div class="col-6 d-flex px-5 rightnav">
-                <img src="@Model.avatar"style="border-radius: 50%;height: 100%; padding: 4px;">
-                    <button value="@Model.userid" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn"          type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    @Model.username
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
-                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">Logout</a>VolunteeringTimesheet</button></li>
-                </ul>
-
-
-
-            </div>
+<div class="container">
+    <div class="row">
+        <div id="menubarimg" class="d-md-none">
+            <button onclick="menubartoggle()">
+                <img src="~/images/list.png"
+                     alt="">
+            </button>
         </div>
+        <div class="col-6  leftnav">
 
+            <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
+            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                    id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Policy
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("Privacy_policy", "Account")">Policy</a>
+                    </button>
+                </li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></l
+            </ul>
+        </div>
+        <div class="col-6 d-flex px-5 rightnav">
+            <img src="@Model.avatar" style="border-radius: 50%;height: 100%; padding: 4px;">
+            <button value="@Model.userid" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                @Model.username
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("EditProfile", "Account")">Edit profile</a>
+                    </button>
+                </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a>
+                    </button>
+                </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
+                    </button>
+                </li>
+            </ul>
+
+
+
+        </div>
     </div>
+
+</div>
 
 
 <hr />
- <a type="hidden" style="display:none" id="userid">@Model.userid</a>
+<a type="hidden" style="display:none" id="userid">@Model.userid</a>
 <form>
     <div class="container mt-3">
-  <div class="row">
+        <div class="row">
             <h2>Share your story</h2>
         </div>
         <div class="row mt-3">
@@ -60,7 +78,7 @@
                 <select class="form-select" aria-label="Default select example" id="storydropdown">
                     @foreach (var item in Model.getmission)
                     {
-                            <option value="@item.Mission.MissionId">@item.Mission.Title</option>
+                        <option value="@item.Mission.MissionId">@item.Mission.Title</option>
                     }
                 </select>
             </div>
@@ -128,11 +146,9 @@
     </div>
 </form>
 
-    <hr>
-    <div class="container mt-3">
-        <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
-    </div>
-    <hr>
+@Html.Partial("_Footer");
+
+
 @section Javascript{
 
 <!-- TinyMCE -->
@@ -150,7 +166,7 @@
 <script>
 
 
-        // // upload images
+    // // upload images
 
 </script>
 <script src="~/js/share_story.js" asp-append-version="true"></script>

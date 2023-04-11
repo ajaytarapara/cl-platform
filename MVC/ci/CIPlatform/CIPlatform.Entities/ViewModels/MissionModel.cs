@@ -39,6 +39,6 @@ namespace CIPlatform.Entities.ViewModels
         public decimal? Rating { get; set; }
         public int? TotalUser { get; set; }  
 
-        public string mission_type { get; set; }
+        public string? mission_type { get; set; }
     }
 }

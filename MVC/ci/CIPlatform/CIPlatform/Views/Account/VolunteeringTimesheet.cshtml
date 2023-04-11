@@ -15,7 +15,11 @@
                 Policy
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("Privacy_policy", "Account")">Policy</a>
+                    </button>
+                </li>
                 <li><button class="dropdown-item" type="button">Another action</button></li>
                 <li><button class="dropdown-item" type="button">Something else here</button></li>
             </ul>
@@ -27,22 +31,20 @@
                     id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                 @Model.username
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
-                <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-
-
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                        style="text-decoration:none;color:black;"href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
+                        </button></li>
+                </ul>
 
         </div>
     </div>
 
 </div>
-
-
-<hr />
-
 
 <div class="container">
     <div class="row">
@@ -52,8 +54,8 @@
             </h1>
         </div>
     </div>
-    <div class="row d-flex mt-3" style="justify-content: space-between;overflow-x:auto;">
-        <div class="card" id="Volunteeringhours">
+    <div class="row d-flex mt-3" style="justify-content: space-between;overflow-x:auto">
+        <div class="card" id="Volunteeringhours" style="height:564px;">
             <div class="row pt-3 d-flex">
                 <h3 style="width:70%">
                     Volunteering Hours
@@ -100,7 +102,7 @@
                                         <td>@item.Time.ToString().Substring(3,2)</td>
                                         <td>
 
-                                            <button style="background: none;padding: 0px;border:none" data-bs-toggle="modal" data-bs-target="#editTIMEMISSIONSHEET" id="@item.TimesheetId" class="editmodalopentime"> 
+                                            <button style="background: none;padding: 0px;border:none" data-bs-toggle="modal" data-bs-target="#editTIMEMISSIONSHEET" id="@item.TimesheetId" class="editmodalopentime">
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/Voted-Missions.png">
                                             </button>
@@ -121,7 +123,7 @@
 
         </div>
 
-        <div class="card" id="VolunteeringGoals">
+        <div class="card" id="VolunteeringGoals" style="height:564px;">
             <div class="row pt-3 d-flex">
                 <h3 style="width:70%">
                     Volunteering Goals
@@ -164,13 +166,14 @@
                                         <td>@item.DateVolunteered.ToString().Substring(0,10)</td>
                                         <td>@item.Action</td>
                                         <td>
-                                            <button style="background: none;padding: 0px;border:none"data-bs-toggle="modal" data-bs-target="#editGOALMISSIONSHEET" id="@item.TimesheetId" class="editmodalopengoal">
+                                            <button style="background: none;padding: 0px;border:none" data-bs-toggle="modal"
+                                        data-bs-target="#editGOALMISSIONSHEET" id="@item.TimesheetId" class="editmodalopengoal">
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/Voted-Missions.png">
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="timesheetdeletebtngoal" style="background: none;padding: 0px;border:none"id="@item.TimesheetId">
+                                            <button class="timesheetdeletebtngoal" style="background: none;padding: 0px;border:none" id="@item.TimesheetId">
                                                 <input type="hidden" value="@item.TimesheetId" id="timesheetidgetgoal" />
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/bin.png">
@@ -186,7 +189,6 @@
         </div>
     </div>
 </div>
-<hr>
 @*====================================================
     modals*@
 @*modal for add missiontimesheet*@
@@ -197,7 +199,8 @@
 
 @*modal for add missiongoalsheet*@
 
-@Html.Partial("_TimesheetModals")
+@Html.Partial("_TimesheetModals");
+@Html.Partial("_Footer");
 
 @section Javascript{
 

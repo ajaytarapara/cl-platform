@@ -71,7 +71,8 @@
                     Policy
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
+                     <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button">
+                         <a style="text-decoration:none;color:black;"href="@Url.Action("Privacy_policy", "Account")">Policy</a></button></li>
                     <li><button class="dropdown-item" type="button">Another action</button></li>
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
@@ -82,11 +83,14 @@
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     @Model.navusername
                 </button>
-                </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
-                    <li><button class="dropdown-item" type="button"><a href="@Url.Action("logout", "Account")">Logout</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">Logout</a>VolunteeringTimesheet</button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                        style="text-decoration:none;color:black;"href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
+                        </button></li>
                 </ul>
 
 
@@ -186,14 +190,9 @@
     </div>
     <br>
 </div>
-<hr style="margin: top 10px;">
-<div class="container mt-3">
-    <a style="text-decoration: none;color: gray;" href="">Privacy Policy</a>
-</div>
-<hr style="margin-top:10px;">
-    @section Javascript{
+@Html.Partial("_Footer");
 
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @section Javascript{
 <script>
     $('#recommand').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal

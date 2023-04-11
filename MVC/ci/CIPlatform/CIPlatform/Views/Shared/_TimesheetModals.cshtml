@@ -71,7 +71,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Goal </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+ <form>
             <div class="modal-body">
 
                 <div class="mb-3">
@@ -110,7 +110,7 @@
                 <button type="button" class="btn btn-secondary btncancel-timesheet" data-bs-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-success btnsubmit-timesheet" id="addgoaltimesheetbtn">Submit</button>
             </div>
-            </form>
+ </form>
         </div>
     </div>
 </div>
@@ -129,9 +129,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edit below Volunteering Hours </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+<form>
             <div class="modal-body">
-
                 <div class="mb-3">
                     <div class="col-md-12">
                         Mission
@@ -147,19 +146,20 @@
                 </div>
                 <div class="col-md-12 storydropdown mt-3">
                     Date
-                    <input asp-for="DateVolunteered" id="getdatediv-edit" class="form-control mt-1" type="date" placeholder="Select date" aria-label="default input example">
+                    <input asp-for="DateVolunteered" id="getdatediv-edit" class="form-control mt-1" type="date" placeholder="Select date" 
+                    aria-label="default input example" required>
                     <span asp-validation-for="DateVolunteered" class="text-danger"></span>
                 </div>
                 <div class="d-flex align-items-center" style="justify-content:space-between">
                     <div class="mt-3" style="width:48%">
                         <label>Hours</label>
-                        <input id="gethourdiv-edit" class="form-control mt-2" placeholder="Enter your Hours" type="text" asp-for="hours">
+                        <input id="gethourdiv-edit" class="form-control mt-2" placeholder="Enter your Hours" type="text" asp-for="hours" required>
                         <span asp-validation-for="hours" class="text-danger"></span>
 
                     </div>
                     <div class="mt-3" style="width:48%">
                         <label>Minutes</label>
-                        <input id="getminitediv-edit" class="form-control mt-2 " placeholder="Enter your Minutes" type="text" asp-for="minutes">
+                        <input id="getminitediv-edit" class="form-control mt-2 " placeholder="Enter your Minutes" type="text" asp-for="minutes" required>
                         <span asp-validation-for="minutes" class="text-danger"></span>
                     </div>
 
@@ -167,7 +167,7 @@
                 <div class="mt-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
                     <textarea asp-for="Notes" id="getmsgdiv-edit" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message"
-rows="3"></textarea>
+                     rows="3" required></textarea>
                      <span asp-validation-for="Notes" class="text-danger"></span>
                 </div>
             </div>
@@ -176,7 +176,7 @@ rows="3"></textarea>
                 <button type="button" class="btn btn-secondary btncancel-timesheet" data-bs-dismiss="modal">Cancel</button>
                 <input type="submit" class="btn btn-success btnsubmit-timesheet" id="edittimesheet" value="Submit" />"
             </div>
-            </form>
+</form>
         </div>
     </div>
 </div>
@@ -190,7 +190,7 @@ rows="3"></textarea>
                 <h5 class="modal-title" id="exampleModalLabel">Edit input below Volunteering Goal </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
+<form>
             <div class="modal-body">
 
                 <div class="mb-3">
@@ -208,16 +208,19 @@ rows="3"></textarea>
                 </div>
                 <div class="col-md-12 mt-3">
                     <label>Action</label>
-                    <input class="form-control mt-2" placeholder="Enter your Hours" type="text" id="actiongoalgetdiv-edit">
+                    <input asp-for="Action" class="form-control mt-2" placeholder="Enter your Hours" type="text" id="actiongoalgetdiv-edit">
+                    <span asp-validation-for="Action" class="text-danger"></span>
 
                 </div>
                 <div class="col-md-12 storydropdown mt-3">
                     Date
-                    <input  class="form-control mt-1" type="date" placeholder="Select date" aria-label="default input example" id="dategoalgetdiv-edit">
+                    <input asp-for="DateVolunteered"  class="form-control mt-1" type="date" placeholder="Select date" aria-label="default input example"                     id="dategoalgetdiv-edit">
+                    <span asp-validation-for="DateVolunteered" class="text-danger"></span>
                 </div>
                 <div class="mt-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
-                    <textarea class="form-control" placeholder="Enter your Message" rows="3" id="msggoalgetdiv-edit"></textarea>
+                    <textarea asp-for="Notes" class="form-control" placeholder="Enter your Message" rows="3" id="msggoalgetdiv-edit"></textarea>
+                    <span asp-validation-for="Notes" class="text-danger"></span>
                 </div>
             </div>
 
@@ -225,6 +228,7 @@ rows="3"></textarea>
                 <button type="button" class="btn btn-secondary btncancel-timesheet" data-bs-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-success btnsubmit-timesheet" id="editgoaltimesheetbtn">Submit</button>
             </div>
+</form>
         </div>
     </div>
 </div>

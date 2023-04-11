@@ -1,8 +1,6 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bolder;
 }
 .leftnav {
 
@@ -518,3 +516,16 @@ width: 100px;
   button:hover, a:hover {
     opacity: 0.7;
   }
+
+
+/* 
+  ===============================================
+  privacy policy
+  ================================================== */
+
+ .privacy-links-sidebar
+ {
+    text-decoration: none;
+    color: black;
+    font-size: medium;
+ }

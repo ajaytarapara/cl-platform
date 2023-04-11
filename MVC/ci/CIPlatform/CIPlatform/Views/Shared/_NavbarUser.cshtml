@@ -14,21 +14,26 @@
                     Policy
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button class="dropdown-item" type="button">Action</button></li>
+                     <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button">
+                         <a style="text-decoration:none;color:black;"href="@Url.Action("Privacy_policy", "Account")">Policy</a></button></li>
                     <li><button class="dropdown-item" type="button">Another action</button></li>
                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                 </ul>
             </div>
             <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
-         <img src="@Model.avatar"style="border-radius: 50%;height: 100%; padding: 4px;">
+             <img src="@Model.avatar"style="border-radius: 50%;height: 100%; padding: 4px;">
                     <button value="@Model.id" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     @Model.username
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;"href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                        style="text-decoration:none;color:black;"href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a></button></li>
+                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
+                        style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
+                        </button></li>
                 </ul>
 
 

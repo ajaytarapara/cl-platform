@@ -406,29 +406,51 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, DateTime DateVolunteered)
+        public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, string DateVolunteered)
         {
             Timesheet timesheet = new Timesheet();
             timesheet.Notes = Notes;
-            if (hours != null && minutes != null && Notes != null)
+            if (hours != null && minutes != null && Notes != null && DateVolunteered !=null)
             {
-                timesheet.DateVolunteered = DateVolunteered;
+                timesheet.DateVolunteered =DateTime.Parse( DateVolunteered);
                 timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
                 _userRepository.edittimesheet(timesheetid, hours, minutes, MissionId, Notes, DateVolunteered);
                 return Json(new { status = 1 });
             }
             else
             {
+                ModelState.AddModelError("data", "data is not valid");
                 return Json(new { status = 0 });
             }
         }
 
         [HttpPost]
-        public IActionResult edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action, DateTime DateVolunteered)
+        public IActionResult edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action, string DateVolunteered)
         {
+            if (Notes != null && Action != 0 && DateVolunteered != null)
+            {
+                _userRepository.edittimesheetgoal(timesheetid, MissionId, Notes, Action, DateVolunteered);
+                return Json(new { status = 1 });
+            }
+            else
+            {
+                ModelState.AddModelError("data", "data is not valid");
+                return Json(new { status = 0 });
+            }
+        }
 
-            _userRepository.edittimesheetgoal(timesheetid, MissionId, Notes, Action, DateVolunteered);
-            return RedirectToAction("VolunteeringTimesheet", "Account");
+        public IActionResult Privacy_policy()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            HomeModel privacy = new HomeModel();
+            privacy.username= userObj.FirstName + " " + userObj.LastName;
+            privacy.avatar= userObj.Avatar;
+            return View(privacy);
         }
     }
 }

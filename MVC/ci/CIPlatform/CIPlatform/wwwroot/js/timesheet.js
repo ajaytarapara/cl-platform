@@ -61,7 +61,8 @@ $("#addgoaltimesheetbtn").on("click", function () {
             {
                 alert("your goal time sheet addded  successfully");
             }
-            else {
+            else
+            {
                 alert("data is not valid");
             }
         },
@@ -146,7 +147,8 @@ $("#edittimesheet").on("click", function (e) {
             if (data["status"] == 1) {
                 alert("your time sheet updated successfully");
             }
-            else {
+            else
+            {
                 alert("data is not valid");
             }
         },
@@ -181,8 +183,13 @@ $("#editgoaltimesheetbtn").on("click", function (e) {
         url: '/Account/edittimesheetgoal',
         data: { timesheetid: timesheetidseg, MissionId: MissionIdseg, DateVolunteered: DateVolunteeredeg, Notes: Noteseg, Action: Actioneg },
         success: function (data) {
-            console.log(data);
-            alert("your time sheet updated successfully");
+            if (data["status"] == 1) {
+                alert("your time sheet updated successfully");
+            }
+            else
+            {
+                alert("data is not valid");
+            }
         },
         error: function (xhr, status, error) {
             // Handle error

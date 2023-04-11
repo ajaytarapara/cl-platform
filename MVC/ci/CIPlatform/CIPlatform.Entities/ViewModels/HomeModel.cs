@@ -20,8 +20,8 @@ namespace CIPlatform.Entities.ViewModels
 
         public IEnumerable<string> missiondiscription { get; set; }
 
-        public int  Missionid { get; set; }
-        public IEnumerable<string> MissionTheme { get; set; }
+        public int?  Missionid { get; set; }
+        public IEnumerable<string>? MissionTheme { get; set; }
         public string MissionTitle { get; set; }
         public string CityName{ get; set; }
         public string MissionShortDescription { get; set; }
@@ -34,8 +34,6 @@ namespace CIPlatform.Entities.ViewModels
         public string Medianame { get; set; }
         public string Mediatype { get; set; }
         public string themetitle { get; set; }
-       
-
     }
 
 }

@@ -2,20 +2,20 @@
     @foreach (var Item in Model.Stories)
 {
 
-    <div class="card mb-5" style="width: 25rem;">
+    <div class="card mb-5" style="width: 25rem;height: 486px;display: flex;">
 
-        <div class="howerimg">
-             @{
-                    string[] mediapath=@Item.storymediapath.ToString().Split(",");
-                    
-                }
-            <img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">
+        <div class="howerimg" style="">
+            @{
+                string[] mediapath = @Item.storymediapath.ToString().Split(",");
+
+            }
+            <img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;height:198px;">
             @*<img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">*@
             <div class="overlay overlayforhower">
                 <div class="howertext">
                     <button id="btnhower">
-                         <a href="@Url.Action("View_Story", "Story", new { storyid = @Item.storyid })" style="color:white;text-decoration:none;">View details</a> 
-                            <i class="bi bi-arrow-right" style="color:white"></i>
+                        <a href="@Url.Action("View_Story", "Story", new { storyid = @Item.storyid })" style="color:white;text-decoration:none;">View details</a>
+                        <i class="bi bi-arrow-right" style="color:white"></i>
                     </button>
                 </div>
             </div>
@@ -24,19 +24,19 @@
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="card-body" style="overflow:scroll">
             <h5 class="card-title" style="margin-top: 5%;">
                 @Item.storytitle
             </h5>
             <p style="color:#6c757d">
-                  @{ 
-                     string description = @Item.storydescription.ToString().Replace("<p>", "");
-                        description=description.Replace("</p>","");
-                        description=description.Replace("<strong>","");
-                        description=description.Replace("</strong>","");
-                    }
+                @{
+                    string description = @Item.storydescription.ToString().Replace("<p>", "");
+                    description = description.Replace("</p>", "");
+                    description = description.Replace("<strong>", "");
+                    description = description.Replace("</strong>", "");
+                }
                 @description
-                                 
+
             </p>
         </div>
         <div class="card-body">

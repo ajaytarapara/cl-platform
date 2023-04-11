@@ -162,26 +162,26 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(timesheet);
             _ciPlatformDbContext.SaveChanges();
         }
-        void IUserRepository.edittimesheet(long timesheetid, string hours,string minutes,long MissionId,string Notes, DateTime DateVolunteered)
+        void IUserRepository.edittimesheet(long timesheetid, string hours,string minutes,long MissionId,string Notes, string DateVolunteered)
         {
             Timesheet a= _ciPlatformDbContext.Timesheets.Where(x=>x.TimesheetId== timesheetid).FirstOrDefault();
             a.Time = TimeOnly.Parse(hours + ":" + minutes);
             a.UpdatedAt = DateTime.Now;
             a.MissionId = MissionId;
             a.Notes= Notes; 
-            a.DateVolunteered= DateVolunteered; 
+            a.DateVolunteered= DateTime.Parse( DateVolunteered); 
             _ciPlatformDbContext.Update(a);
             _ciPlatformDbContext.SaveChanges();
         }
 
-        void IUserRepository.edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action,DateTime DateVolunteered)
+        void IUserRepository.edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action,string DateVolunteered)
         {
             Timesheet a = _ciPlatformDbContext.Timesheets.Where(x => x.TimesheetId == timesheetid).FirstOrDefault();
             a.UpdatedAt = DateTime.Now;
             a.MissionId = MissionId;
             a.Notes = Notes;
             a.Action = (int?)Action;
-            a.DateVolunteered = DateVolunteered;
+            a.DateVolunteered =DateTime.Parse( DateVolunteered);
             _ciPlatformDbContext.Update(a);
             _ciPlatformDbContext.SaveChanges();
 
