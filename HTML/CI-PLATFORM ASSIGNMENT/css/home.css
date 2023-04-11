@@ -390,11 +390,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    b
 }
 
-.pagination-number,
-.pagination-button {
+.pagination-number,.pagination-button{
     font-size: 1.1rem;
     background-color: transparent;
     border: none;

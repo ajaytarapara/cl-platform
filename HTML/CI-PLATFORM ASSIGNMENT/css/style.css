@@ -176,5 +176,36 @@ margin-bottom: 0.2vh;
 }
 
 /* =========================================================================================================== */
-/* Home.html */
+/* user-crud */
 /* =========================================================================================================== */
+#admin-page-navigation{
+    background-color: #ff7800;
+    color: white;
+    align-items: center;
+    height: 100vh;
+}
+.admin-page-button-nav{
+    border:none;
+    background-color: transparent;
+    display: flex;
+    color: white;
+    width: 80%;
+    padding: 4px;
+    margin-top: 10px;
+}
+.admin-page-button-nav:hover{
+    border:none;
+    background-color: white;
+    display: flex;
+    color: orange;
+    box-shadow:whitesmoke;
+    border-radius: 5px;
+    
+}
+.admin-page-btn-img-nav{
+    margin-right: .5vw;
+}
+.admin-page-button-nav>a:hover{
+
+    color: orange;
+}
