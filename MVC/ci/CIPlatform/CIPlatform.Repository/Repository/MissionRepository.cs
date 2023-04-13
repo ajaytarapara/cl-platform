@@ -117,6 +117,11 @@ namespace CIPlatform.Repository.Repository
             List<MissionApplication>recentvol= _ciPlatformDbContext.MissionApplications.Where(m => m.MissionId==missionid).Include(A => A.User).ToList();
             return recentvol;
         }
+        MissionApplication IMissionRepository.GetAppliedBtnForUser(long UserId, long MissionId)
+        {
+           MissionApplication missionApplicationstatus = _ciPlatformDbContext.MissionApplications.Include(x => x.User).Where(x => x.UserId == UserId && x.MissionId == MissionId).FirstOrDefault();
+            return missionApplicationstatus;
+        }
 
 
     }

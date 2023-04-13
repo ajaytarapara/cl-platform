@@ -84,8 +84,9 @@
             </div>
             <div class="col-md-4 storydropdown">
                 My Story Title
-                <input class="form-control" type="text" placeholder="Enter story title"
+                <input asp-for="Title"class="form-control" type="text" placeholder="Enter story title"
                        aria-label="default input example" id="title">
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="col-md-4 storydropdown">
                 Date
@@ -96,8 +97,9 @@
         <div class="row mt-3">
             <div class="storydropdown" id="description">
                 My Story
-                <input class="form-control" type="text" placeholder="Enter story description"
+                <input asp-for="Description" class="form-control" type="text" placeholder="Enter story description"
                        aria-label="default input example" id="myTextarea" style="height: 150px;">
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
 

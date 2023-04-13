@@ -16,14 +16,17 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext = cIPlatformDbContext;
         }
-        public IEnumerable<Admin> getAdmins()
+        bool IAdminRepository.validateadmin(string adminemail)
         {
-            var admin = _ciPlatformDbContext.a;
-            return Users;
+            return _ciPlatformDbContext.Admins.Any(x => x.Email == adminemail);
         }
-        bool IAdminRepository.validateadmin(string Email)
+        bool IAdminRepository.validateadmincred(string adminemail, string adminpassword)
         {
-            return _ciPlatformDbContext.Admin
+            return _ciPlatformDbContext.Admins.Any(x => x.Email == adminemail && x.Password == adminpassword);
+        }
+        Admin IAdminRepository.findadmin(string adminemail)
+        {
+            return _ciPlatformDbContext.Admins.Where(x => x.Email == adminemail).FirstOrDefault();
         }
     }
 }

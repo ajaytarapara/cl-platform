@@ -9,8 +9,10 @@ namespace CIPlatform.Repository.Repository.Interface
 {
     public interface IAdminRepository
     {
-        public IEnumerable<Admin> getAdmins();
-        public Boolean validateadmin(string Email);
+        public Boolean validateadmin(string adminemail);
 
+        public Boolean validateadmincred(string adminemail,string adminpassword);
+
+        public Admin findadmin(string adminemail);
     }
 }

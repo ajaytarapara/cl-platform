@@ -40,6 +40,8 @@ namespace CIPlatform.Controllers
                 missionModel.username = userObj.FirstName + " " + userObj.LastName;
                 homeModel.id = userObj.UserId;
                 homeModel.avatar= userObj.Avatar;
+                long UserId = userObj.UserId;
+                long MissionId=missionModel.MissionId;
                 missionModel.avatar = homeModel.avatar;
                 return View(missionModel);
             }

@@ -1,4 +1,4 @@
-﻿
+﻿@model CIPlatform.Entities.ViewModels.Admin_user_crudModel
 <div class="col-md-6 col-sm-5 p-2 d-flex"
      style="font-size:18px;align-items: center;justify-content: space-around;"
      id="admin-page-right-nav">
@@ -9,12 +9,12 @@
 <div class="col-md-3 col-sm-1">
 </div>
 <div class="col-md-3 col-sm-5 d-flex p-2" id="admin-page-left-nav">
-    <img class="img-fluid" src="./images/user1.png" style="border-radius: 50%;height:40px;">
+    <img class="img-fluid" src="@Model.adminavatar" style="border-radius: 50%;height:40px;">
     <button value=""
             style="border: none; background: white;margin-left: 10px;height: 30px;"
             class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2"
             data-bs-toggle="dropdown" aria-expanded="false">
-        john due
+        @Model.adminname
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
         @*         <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a

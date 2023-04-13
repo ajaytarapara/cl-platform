@@ -284,10 +284,30 @@ else
                                     src="~/images/right-arrow.png" alt=""></p>
                      }
                                   
-                     else{     <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                     else if(Model.statususer == "Pending")
+                     {    
+                         <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied For Approval<img
+                                    src="~/images/right-arrow.png" alt=""></a>
+                        </button>
+                    }
+                    else if (Model.statususer == "approved")
+                    {
+                           <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied Already<img
+                                    src="~/images/right-arrow.png" alt=""></a>
+                        </button>
+                        
+                    }
+                     else if(Model.MissionId !=null)
+                    {
+                           <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
                      <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Apply<img
                                     src="~/images/right-arrow.png" alt=""></a>
-                     </button>}
+                        </button>
+                        
+                    }
+
                     </form>
                 </div>
 
@@ -357,8 +377,11 @@ border-radius: 20px;
                         else
                         {
                             string[] documentname=@Model.documentname.ToString().Split(",");
-                            
-                        foreach (var item in documentname)
+                            string[] documenttype=@Model.documenttype.ToString().Split(",");
+                            string[] documentpath=@Model.documentpath.ToString().Split(",");
+
+                            int a = 0;
+                            foreach (var item in documentname)
                         {
 
                             if (documentname.Length==0)
@@ -368,10 +391,11 @@ border-radius: 20px;
                             else
                             {
                             <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                <img src="~/images/doc.png" class="px-2"> <a download href="/@Model.documentpath/@documentname[0]@Model.documenttype" target="_blank">@documentname[0]@Model.documenttype</a>
-                            </button>
+                                <img src="~/images/doc.png" class="px-2"> <a href="/@documentpath[a]/@documentname[a]@documenttype[a]" target="_blank">@documentname[a]@Model.documenttype[0]</a>
+                                    </button>
+                                }
+                                a++;
                             }
-                           }
                            }
                         </div>
                     </div>

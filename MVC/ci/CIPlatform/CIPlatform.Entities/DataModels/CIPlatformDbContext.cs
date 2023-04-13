@@ -16,6 +16,8 @@ public partial class CIPlatformDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Admin> Admins { get; set; }
+
     public virtual DbSet<Banner> Banners { get; set; }
 
     public virtual DbSet<City> Cities { get; set; }
@@ -63,6 +65,7 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserSkill> UserSkills { get; set; }
+
     public virtual DbSet<GridModel> GridModel { get; set; }
     public virtual DbSet<MissionModel> MissionModels { get; set; }
     public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
@@ -72,6 +75,32 @@ public partial class CIPlatformDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Admin>(entity =>
+        {
+            entity.ToTable("admin");
+
+            entity.Property(e => e.AdminId).HasColumnName("admin_id");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
+            entity.Property(e => e.DeletedAt).HasColumnName("deleted_at");
+            entity.Property(e => e.Email)
+                .HasMaxLength(128)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(16)
+                .IsUnicode(false)
+                .HasColumnName("first_name");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(16)
+                .IsUnicode(false)
+                .HasColumnName("last_name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("password");
+            entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
+        });
+
         modelBuilder.Entity<Banner>(entity =>
         {
             entity.HasKey(e => e.BannerId).HasName("PK_banner_id");

@@ -138,7 +138,6 @@ window.addEventListener("load", () => {
 $(document).ready(function () {
     releatedmission();
     var val = $("#heartbtn").val();
-    addtofavi(val, flag);
     var missionId = $("#post-comment-btn").val();
     listComment(missionId);
     RecentVolunteer(missionid);
@@ -182,6 +181,7 @@ function addtofavi(abc, flag) {
         url: '/Mission/addToFavourites',
         data: { missionid: val, fav: flag },
         success: function (data) {
+            location.reload();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -293,6 +293,7 @@ $("#rating .rating").click(function () {
     //var rating = $(".user-rating").val();
     var rating = $("#add-rating").serialize();
     //var rating = rating1.rate.val();
+    console.log(missionid);
 
     const rateValue = rating.substring(rating.length, rating.lastIndexOf("=") + 1)
     $.ajax({

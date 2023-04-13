@@ -19,5 +19,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<ReleatedMissionModel> GetReleatedMission(string missiontitle,string city,string country);
         public void ApplyApplication(long UserId, long missionid);
         public List<MissionApplication> GetRecentVolunteer(long missionid);
+
+        public MissionApplication GetAppliedBtnForUser(long UserId,long MissionId);
     }
 }

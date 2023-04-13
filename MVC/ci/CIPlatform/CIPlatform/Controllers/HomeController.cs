@@ -50,7 +50,7 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IHomeRepository _homeRepository;
 
-      
+
 
         public HomeController(IUserRepository userRepository, IHomeRepository homeRepository)
         {
@@ -61,19 +61,18 @@ namespace CIPlatform.Controllers
         {
 
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-    
+
             if (userSessionEmailId == null)
-              {
-                  return RedirectToAction("Login", "Account");
-              }
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var missions = _homeRepository.GetMissions();
 
             HomeModel HomeModel = new HomeModel();
-      
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel.username = userObj.FirstName + " " + userObj.LastName;
-            HomeModel.avatar=userObj.Avatar;
+            HomeModel.avatar = userObj.Avatar;
             HomeModel.id = userObj.UserId;
 
 
@@ -89,9 +88,9 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> skills = _homeRepository.getSkills();
             HomeModel.skillList = skills;
 
-            
+
             IEnumerable<string> missiontitle = _homeRepository.GetMissionThemestitle();
-            HomeModel.missiontitle=missiontitle;
+            HomeModel.missiontitle = missiontitle;
 
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
@@ -111,8 +110,8 @@ namespace CIPlatform.Controllers
         }
         public IActionResult GetCities()
         {
-           IEnumerable<City> cities = _homeRepository.getCities();
-          return Json(new { data = cities });
+            IEnumerable<City> cities = _homeRepository.getCities();
+            return Json(new { data = cities });
         }
         public IActionResult GetThemes()
         {
@@ -121,21 +120,21 @@ namespace CIPlatform.Controllers
         }
         public IActionResult GetSkills()
         {
-           IEnumerable<Skill> missionSkills = _homeRepository.getSkills();
+            IEnumerable<Skill> missionSkills = _homeRepository.getSkills();
             return Json(new { data = missionSkills });
         }
 
         public IActionResult GetMissionThemeTitle()
         {
             IEnumerable<string> missiontitle = _homeRepository.GetMissionThemestitle();
-            return Json(new { data = missiontitle });   
+            return Json(new { data = missiontitle });
         }
         public IActionResult GetMissionDiscription()
         {
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             return Json(new { data = missiondiscription });
         }
-       public IActionResult GetMission()
+        public IActionResult GetMission()
         {
             IEnumerable<Mission> mission = _homeRepository.GetMissions();
             JsonSerializerOptions options = new()

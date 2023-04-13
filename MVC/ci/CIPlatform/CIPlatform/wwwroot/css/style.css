@@ -1007,10 +1007,14 @@ footer {
         width: 100%;
         color: orange;
     }
+.rating-bg {
+    color: red !important;
+    background-color: red !important;
+}
 
-        .mission-rating progress.rating-bg::-webkit-progress-value {
-            background-color: yellow;
-        }
+.mission-rating progress.rating-bg::-webkit-progress-value {
+    background-color: yellow;
+}
 
         .mission-rating progress.rating-bg::-moz-progress-bar {
             background-color: yellow;
