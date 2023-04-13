@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-12 d-lg-flex flex-column" id="admin-page-navigation">
+            @Html.Partial("_Admin_dashboard")
+        </div>
+        <div class="col-lg-9 col-md-12">
+            <div class="card row d-flex p-3" style="flex-direction: row;">
+                @Html.Partial("_Admin_Header")
+            </div>
+            <div class="container mt-3">
+                <h1>
+                    Mission
+                </h1>
+                <hr>
+                <div class="row mt-4" style="justify-content: space-between;">
+                    <div class="col-3 px-1"
+                         style="align-items: center;display: flex;justify-content:space-between;flex-direction: row;border:1px solid gray;height:50px;border-radius: 10px;margin-left:10px;">
+                        <img src="./images/search.png" style="height:20px;">
+                        <input type="text" name="" id="" placeholder="Search" style="width:90%;border: none;">
+                    </div>
+                    <div class="col-5">
+                    </div>
+                    <div class="col-3 d-flex" style="justify-content: flex-end;">
+                        <button class="p-2"
+                                style="background: none;border: 2px solid orange;border-radius: 15px;color: orange;font-weight: bolder;width: 150px;margin-right: 0px;">
+                            + Add
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="table-responsive">
+                        <table class="table" style="border:1px solid rgb(197, 195, 195);">
+                            <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
+                                box-shadow: 0px 2px 3px #0000000F;">
+                                <tr>
+                                    <th>Mission Title</th>
+                                    <th>Mission Type</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Action</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, ad.</td>
+                                    <td>time</td>
+                                    <td>2/2/2000</td>
+                                    <td>
+                                        2/2/2000
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <svg style="color:orange;width: 20px;height: 20px;"
+                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                <path fill-rule="evenodd"
+                                                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                            </svg>
+                                    </td>
+                                    </a>
+                                    </td>
+                                    <td>
+                                        <button class="admin-story-cancel-btn">
+                                            <span class="close">&times;</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/bootstrap.bundle.js"></script>
+<script>
+    function adminpage_openNav() {
+        document.getElementById("admin-page-navigation").style.display = "flex";
+        document.getElementById("admin-page-navigation").style.width = "65%";
+        document.getElementById("admin-page-navigation").style.opacity = "1";
+        document.getElementById("admin-page-navigation").style.height = "100vh";
+
+    }
+    function closeNav() {
+        document.getElementById("admin-page-navigation").style.width = "0%";
+        document.getElementById("admin-page-navigation").style.opacity = "0";
+    }
+</script>

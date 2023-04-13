@@ -1,173 +1,206 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
-.maincarouselpart>.row{
+
+.maincarouselpart>.row {
     height: 100vh;
     width: 100vw;
 }
-#imagecontent{
+
+#imagecontent {
     margin: 0px;
     padding: 0px;
 }
-#imagecontent img{
+
+#imagecontent img {
     height: 100vh;
 }
-.imgcontent{
+
+.imgcontent {
     text-align: left;
     left: 14%;
     bottom: 4rem;
     display: block !important;
 }
-.imgcontent h2{
+
+.imgcontent h2 {
     font-weight: normal;
     line-height: 5vh;
     width: 61%;
 }
-.imgcontent p{   
+
+.imgcontent p {
     width: 83%;
 }
-.logincontent{
+
+.logincontent {
     height: 100vh;
 }
 
-.logincontent{
+.logincontent {
     display: flex;
     flex-direction: column;
     padding: 5vh;
     justify-content: center;
 }
-.logincontent>form{
+
+.logincontent>form {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 74vh;
     justify-content: center;
 }
-.logincontent>form>*{
+
+.logincontent>form>* {
     width: 100%;
     color: #414141;
     margin-bottom: 1vh;
     padding: 1vh;
     font-size: 2vh;
 }
-.logincontent>form>a{
+
+.logincontent>form>a {
     width: auto;
     width: auto;
     text-decoration: none;
-    font-size:2vh;
+    font-size: 2vh;
 }
-.logincontent>form>input{
+
+.logincontent>form>input {
     box-shadow: 0.97px 0.26px 3px #0000000D;
     border: 1px solid #D9D9D9;
     border-radius: 1vh;
 }
-.logincontent>form>p>a{
-    color:#2B64B1;
+
+.logincontent>form>p>a {
+    color: #2B64B1;
     text-decoration: none;
 }
-.logincontent>form>p{
+
+.logincontent>form>p {
     width: auto;
     font-size: 2vh;
 }
-.logincontent>form>input[type=submit]{
+
+.logincontent>form>input[type=submit] {
     background: #F8863400 0% 0% no-repeat padding-box;
     border: 2px solid #F88634;
     color: #F88634;
     margin-top: 1vh;
     border-radius: 2.4vh;
 }
-#loginpolicy>p{
+
+#loginpolicy>p {
     text-align: center;
 }
 
-@media screen and (max-width:1200px){
-    .logincontent>form>*{
+@media screen and (max-width:1200px) {
+    .logincontent>form>* {
         font-size: 1vh;
-    }    
-    .logincontent{
-        padding:1vh;
+    }
+
+    .logincontent {
+        padding: 1vh;
     }
 }
-@media screen and (max-width:767px){
-    #imagecontent{
+
+@media screen and (max-width:767px) {
+    #imagecontent {
         height: 45vh;
     }
-    #imagecontent img{
+
+    #imagecontent img {
         height: 45vh;
     }
-    .logincontent{
+
+    .logincontent {
         height: 55vh;
     }
-    .imgcontent{
+
+    .imgcontent {
         bottom: 0;
         display: block !important;
     }
-    .imgcontent p{
+
+    .imgcontent p {
         font-size: 1.5vh;
         width: 100%;
     }
+
     .imgcontent h2 {
         font-weight: normal;
         line-height: 3vh;
         width: 100%;
     }
-    .logincontent>form>*{
-        font-size:1.9vh;
-    }    
-    .logincontent{
-        padding:4vh;
+
+    .logincontent>form>* {
+        font-size: 1.9vh;
+    }
+
+    .logincontent {
+        padding: 4vh;
     }
 }
+
 /* =========================================================================================================== */
 /* register */
 /* =========================================================================================================== */
-#registerform{
+#registerform {
     height: 80vh;
 }
-#registerform>*{
-margin-bottom: 0.2vh;
+
+#registerform>* {
+    margin-bottom: 0.2vh;
 }
+
 /* responsive register */
-@media only screen and (max-width:767px){  
-    #registercontent>#loginpolicy{
+@media only screen and (max-width:767px) {
+    #registercontent>#loginpolicy {
         font-size: 1vh;
     }
-    #registerform{
+
+    #registerform {
         padding-top: 2vh;
     }
+
     #registerform>* {
         margin-bottom: 0;
         font-size: 1.3vh;
         padding-bottom: 0.2vh;
     }
 }
+
 /* =========================================================================================================== */
 /* forgot password */
 /* =========================================================================================================== */
-#forgotheading{
+#forgotheading {
     text-align: center;
     color: #414141;
     font-size: 2vh;
     margin-bottom: 0;
 }
-#forgotinfo{
+
+#forgotinfo {
     text-align: center;
     color: #414141;
     font-size: 1.5vh;
     padding-top: 0;
     padding: 0vh 2vw;
 }
+
 /* =========================================================================================================== */
 /* newpassword.html */
 /* =========================================================================================================== */
-#newpassheading{
+#newpassheading {
     text-align: center;
     color: #414141;
     font-size: 2vh;
     margin-bottom: 0;
 }
-#newpassinfo{
+
+#newpassinfo {
     text-align: center;
     color: #414141;
     font-size: 1.5vh;
@@ -178,14 +211,19 @@ margin-bottom: 0.2vh;
 /* =========================================================================================================== */
 /* user-crud */
 /* =========================================================================================================== */
-#admin-page-navigation{
+#admin-page-navigation {
     background-color: #ff7800;
     color: white;
     align-items: center;
+    display: none;
+    transition: 0.5s;
+    overflow-x: auto;
+    z-index: 3;
     height: 100vh;
 }
-.admin-page-button-nav{
-    border:none;
+
+.admin-page-button-nav {
+    border: none;
     background-color: transparent;
     display: flex;
     color: white;
@@ -193,19 +231,121 @@ margin-bottom: 0.2vh;
     padding: 4px;
     margin-top: 10px;
 }
-.admin-page-button-nav:hover{
-    border:none;
+
+.admin-page-button-nav:hover {
+    border: none;
     background-color: white;
     display: flex;
     color: orange;
-    box-shadow:whitesmoke;
+    box-shadow: whitesmoke;
     border-radius: 5px;
-    
-}
-.admin-page-btn-img-nav{
-    margin-right: .5vw;
-}
-.admin-page-button-nav>a:hover{
 
+}
+
+#admin-page-left-nav {
+    justify-content: flex-end;
+}
+
+.admin-page-btn-img-nav {
+    margin-right: .3vw;
+}
+
+.admin-page-button-nav>a:hover {
     color: orange;
+}
+
+.closebtn {
+    text-decoration: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.closebtn:hover {
+    background-color: white;
+    color: orange;
+}
+
+@media(max-width:570px) {
+    #admin-page-right-nav {
+        justify-content: center;
+        display: flex;
+    }
+
+    #admin-page-left-nav {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media(max-width:990px) {
+    #admin-page-navigation {
+        position: absolute;
+        transition: 1s;
+        width: 60%;
+    }
+}
+
+@media(max-width:550px) {
+    #admin-page-navigation {
+        width: 70%;
+    }
+}
+
+/* ===========================================================================================================
+/* Admin_story*/
+/* ========================================================================================= */
+
+.admin-story-view-btn {
+    border: 2px solid orange;
+    border-radius: 14px;
+    color: orange;
+    text-decoration: none;
+    width: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-story-approve-btn {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 2px solid green;
+    border-radius: 14px;
+    color: green;
+}
+
+.admin-story-cancel-btn {
+    background: none;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    border-radius: 14px;
+    width: 30px;
+    font-size: 100%;
+}
+
+.admin-story-delete-btn {
+    width: 30px;
+    background: none;
+    padding: 0px;
+    border: none;
+    margin-left: 4px;
+}
+
+
+/* =================================================================
+Admin add cms 
+======================================================================= */
+.admin-add-cms-heading {
+    background: #F8F9FC 0% 0% no-repeat padding-box;
 }
