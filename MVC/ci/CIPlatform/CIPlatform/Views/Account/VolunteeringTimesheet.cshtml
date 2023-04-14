@@ -8,7 +8,6 @@
             </button>
         </div>
         <div class="col-6  leftnav">
-
             <button style="border: none; background: white;">Stories</button>
             <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,21 +30,26 @@
                     id="ddirectionionwnMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                 @Model.username
             </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
-                        style="text-decoration:none;color:black;"href="@Url.Action("EditProfile", "Account")">Edit profile</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
-                        style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a></button></li>
-                    <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a 
-                        style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
-                        </button></li>
-                </ul>
-
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("EditProfile", "Account")">Edit profile</a>
+                    </button>
+                </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("logout", "Account")">Logout</a>
+                    </button>
+                </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
+                    </button>
+                </li>
+            </ul>
         </div>
     </div>
-
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-4">
@@ -69,7 +73,6 @@
                 </button>
             </div>
             <hr>
-
             <div class="row p-2 table-responsive mt-3">
                 <table class="table">
                     <thead>
@@ -83,8 +86,6 @@
                         </tr>
                     </thead>
                     @foreach (var item in Model.timesheet)
-
-
                     {
                         @if (item.Mission.MissionType == "time")
                         {
@@ -103,7 +104,7 @@
                                         <td>
 
                                             <button style="background: none;padding: 0px;border:none" data-bs-toggle="modal"
-                                            data-bs-target="#editTIMEMISSIONSHEET" id="@item.TimesheetId" class="editmodalopentime">
+                                        data-bs-target="#editTIMEMISSIONSHEET" id="@item.TimesheetId" class="editmodalopentime">
                                                 <img style="width:20px;height: 20px;"
                                          class="img-fluid" src="~/images/Voted-Missions.png">
                                             </button>
@@ -121,9 +122,7 @@
                         } }
                 </table>
             </div>
-
         </div>
-
         <div class="card" id="VolunteeringGoals" style="height:564px;">
             <div class="row pt-3 d-flex">
                 <h3 style="width:70%">
@@ -138,7 +137,6 @@
                 </button>
             </div>
             <hr>
-
             <div class="row p-2 table-responsive mt-3">
                 <table class="table">
                     <thead>
@@ -193,17 +191,10 @@
 @*====================================================
     modals*@
 @*modal for add missiontimesheet*@
-
-
-
 @*===============================================*@
-
 @*modal for add missiongoalsheet*@
-
 @Html.Partial("_TimesheetModals");
 @Html.Partial("_Footer");
-
 @section Javascript{
-
 <script src="~/js/timesheet.js" asp-append-version="true"></script>
   }

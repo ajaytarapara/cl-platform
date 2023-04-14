@@ -1,9 +1,7 @@
 using CIPlatform.Entities.DataModels;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
-using Microsoft.EntityFrameworkCore;
-
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;var builder = WebApplication.CreateBuilder(args);
 
  //Add services to the container.
 builder.Services.AddControllersWithViews();

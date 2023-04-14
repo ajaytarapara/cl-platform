@@ -28,6 +28,11 @@ namespace CIPlatform.Entities.ViewModels
 
         public string? MissionGoal { get; set; }
 
+        public string? statusofuser { get; set; }
+
+        public int? goalvalue { get; set; }
+
+        public int? total { get; set; }
     }
 }
 

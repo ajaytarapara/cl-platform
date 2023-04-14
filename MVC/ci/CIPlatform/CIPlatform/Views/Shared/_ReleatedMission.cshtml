@@ -2,10 +2,8 @@
 
 @foreach (var item in Model)
 {
-
-
     <div class="col-md-4 mt-2">
-        <div class="card mt-2 shadow">
+        <div class="card mt-2 shadow" style="height:625px;overflow:hidden">
             <div class="list-image-part position-relative">
                 @{
                     string[] mediaNames = @item.MediaName.ToString().Split(",");
@@ -29,7 +27,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">@item.Title </h5>
+                <h5 class="card-title" style="height:50px;">@item.Title </h5>
                 <p class="card-text">@item.ShortDescription</p>
                 <div style="justify-content:space-between;" class="d-flex ">
                     <span>
@@ -54,7 +52,6 @@
                     <div style="width:15%">
                         <hr>
                     </div>
-
                 </div>
                 <div style="justify-content:space-between;" class="d-flex pt-1 ">
                     <div><img src="~/images/Seats-left.png" alt=""><span>@item.seats <br> seats left</span></div>
@@ -66,14 +63,14 @@
                         </span>
                     </div>
                 </div>
-
                 <hr>
-
                 <div style="justify-content: center;" class="d-flex pt-2">
-                    
-                <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;">  
-                    <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @item.MissionId})">Apply</a>
-                    <img src="~/images/right-arrow.png" alt=""></button>                        
+                    <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634;
+                 border-radius: 24px;color: #F88634; width:30%;height:30px;">
+                        <a style="text-decoration:none;color: #F88634;"
+                       href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @item.MissionId})">Apply</a>
+                        <img src="~/images/right-arrow.png" alt="">
+                    </button>
                 </div>
             </div>
         </div>

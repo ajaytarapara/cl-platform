@@ -80,7 +80,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModels.username = userObj.FirstName + " " + userObj.LastName;
             HomeModels.id = userObj.UserId;
-            HomeModels.avatar=userObj.Avatar;   
+            HomeModels.avatar=userObj.Avatar;
             ShareStoryModel ShareStoryModel = new ShareStoryModel();
             ShareStoryModel.userid = HomeModels.id;
             ShareStoryModel.username = HomeModels.username;
@@ -152,7 +152,7 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public void recommendedtocoworker(string cow_email, int Missionid)
+        public void recommendedtocoworker(string cow_email, int Missionid,long storyId)
         {
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
@@ -161,6 +161,12 @@ namespace CIPlatform.Controllers
             string subject = "Your Friend recommanded for volunteering";
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path,subject);
+            StoryInvite  invite = new StoryInvite();
+            invite.FromUserId = userObj.UserId;
+            invite.StoryId = storyId;
+            invite.CreatedAt = DateTime.Now;
+            invite.ToUserId = _storyRepository.GetInvitedUserid(cow_email);
+            _storyRepository.AddInvitedUser(invite);
 
         }
 

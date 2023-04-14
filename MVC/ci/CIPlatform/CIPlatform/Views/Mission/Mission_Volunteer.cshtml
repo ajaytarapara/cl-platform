@@ -1,5 +1,4 @@
 ﻿@model CIPlatform.Entities.ViewModels.MissionModel
-
 @*  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Open modal
   </button>*@
@@ -13,7 +12,6 @@
         <h4 class="modal-title">Recommanded to your Co-worker</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
       <!-- Modal body -->
       <div class="modal-body">
             <form action="recommendedtocoworker" method="Post">
@@ -26,15 +24,12 @@
                <button type="submit" class="btn btn-primary" id="btn-recommend" value="@Model.MissionId">Send Email</button>
             </form>
       </div>
-
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
-
     </div>
   </div>
-
 </div>
 <div style="display:none"id="missionid">@Model.MissionId</div>
     <div class="col-4  d-md-none"
@@ -55,12 +50,7 @@
                 <li><button class="dropdown-item" type="button">Another action</button></li>
                 <li><button class="dropdown-item" type="button">Something else here</button></li>
             </ul>
-
-
         </div>
-
-
-
     </div>
     <div class="container">
           <div class="row">
@@ -69,7 +59,6 @@
                         alt=""></button>
             </div>
             <div class="col-6  leftnav">
-
                 <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
                 <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -98,19 +87,13 @@
                         style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
                         </button></li>
                 </ul>
-
-
-
             </div>
     </div>
    </div>
     <hr />
- 
-
     <div class="container">
         <div class="row pt-5">
-            <div class="col-md-5">
-                
+            <div class="col-md-5">                
                 <div> @{
                     string[] mediaNames=@Model.MediaName.ToString().Split(",");
                     int mediaLength = mediaNames.Length;
@@ -138,9 +121,7 @@
                                      }
                                    
                                 </div>
-                            </div>-
-                            
-                            
+                            </div>                                                     
                         </div>
                         <button class="carousel-control-prev bg-black" type="button"
                             data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -153,20 +134,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-
-
             </div>
             <div class="col-md-7">
                 <div>
@@ -177,12 +145,18 @@
                     <div style="width:30%">
                         <hr>
                     </div>
-                    <button style="width:70%;background:transparent;border-radius: 10px;">Plant 10,000 Trees</button>
-                    <div style="width:30%">
+                    @if(Model.mission_type=="goal"){
+                    <button style="width:70%;background:transparent;border-radius: 10px;">@Model.goalobjective</button>
+                }
+                else
+                {
+                    <button style="width:70%;background:transparent;border-radius: 10px;">@Model.StartDate.ToString().Substring(0,10)
+                        to @Model.EndDate.ToString().Substring(0,10)</button>
+                }
+                <div style="width:30%">
                         <hr>
                     </div>
                 </div>
-
                 <div class="d-flex mt-4">
                     <div style="width:50% ;margin-left: 20px;display: flex;flex-direction: row;">
                         <div>
@@ -199,53 +173,86 @@
                         </div>
                     @if (Model.mission_type == "time")
                     {
-                        <P>type is time</P>
+                        <div class="d-flex-column flex-column mx-2">
+                            <P>@Model.EndDate.ToString().Substring(0,10)</P>
+                            <p>Mission end at this date</p>
+                        </div>
                     }
                     else{
                         <div style="display:flex;flex-direction: column;width: 100%;margin-left: 10px;">
                             <div class="progress" style="width: 100%;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: @(Model.total*100/Model.goalvalue)%"
                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>
-                            <span style="padding-top: 4px;">8000 achieved</span>
+                            <span style="padding-top: 4px;">@Model.total achieved</span>
                         </div>
                         }
                     </div>
                 </div>
-
                 <div>
                     <hr>
                     <div style="display:flex;justify-content: space-evenly;margin-top:10px;">
-                                                          @if (Model.favourite == 1)
-                                 {
-<button style="    border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;" class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;" class="Icon mx-auto" alt="" />Add To Favourite</button>
-}
-else
-{
-<button style="    border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Model.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" />Add To Favourite</button>
-
-                                 }
-                        <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
-                            style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;margin-top:10px"><img
-                                style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
+                    @if (Model.favourite == 1)
+                    {
+                    <button style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"
+                    class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Model.MissionId">
+                    <img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;" class="Icon mx-auto" alt="" />
+                    Add To Favourite</button>
+                    }
+                    else
+                    {
+                    <button style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;"
+                    class="btnaddtofav" onclick="addtofavi(this, 0)" id="heartbtn" value="@Model.MissionId">
+                    <img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" />
+                    Add To Favourite</button>
+                    }
+                    <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
+                            style="border: 2px solid #757575;border-radius: 25px;width: 40%;background: none;padding: 4px;margin-top:10px">
+                            <img style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
                     </div>
                     <div style="display: flex;flex-direction: row;align-items: center;">
                         <hr style="width:30%">
-                                       <form id="add-rating"-moz-border-radius"width:auto;">
+                            
+                                    <form id="add-rating"-moz-border-radius"width:auto;">
                                                 <div id="rating" class="skills">
                                                     <div class="rating">
-                                                        <input class="user-rating" type="radio" name="rate" value="5" />
-                                                        <input class="user-rating" type="radio" name="rate" value="4" />
-                                                        <input class="user-rating" type="radio" name="rate" value="3" />
-                                                        <input class="user-rating" type="radio" name="rate" value="2" />
-                                                        <input class="user-rating" type="radio" name="rate" value="1" />
+                            @if(@Model.Rating !=null)
+                            {
+                                
+                      
+                                @for(int i = 1; i <= @Model.Rating; i++)
+                                {
+                                    <style>
+                                        .skills .rating .selected-star::before {
+                                            color:gray;
+                                        }
+                                    </style>
+                                    <input class="user-rating selected-star" type="radio" name="rate" value="@i" />                                    
+                                }
+                                @for(int j = 1; j <= 5 - @Model.Rating; j++)
+                                {                                    
+                                    <style>
+                                        .skills .rating .unselected-star::before {
+                                            color:orange;
+                                        }
+                                    </style>
+                                    <input class="user-rating unselected-star" type="radio" name="rate" value="5" />                                    
+                                }
+                            }
+                            else
+                            {
+                                  <input class="user-rating" type="radio" name="rate" value="5" />
+                                  <input class="user-rating" type="radio" name="rate" value="4" />
+                                  <input class="user-rating" type="radio" name="rate" value="3" />
+                                  <input class="user-rating" type="radio" name="rate" value="2" />
+                                  <input class="user-rating" type="radio" name="rate" value="1" />
+                            }
                                                     </div>
                                                 </div>
                                        </form>
                         <hr style="width:30%">
                     </div>
-
                 </div>
                 <div style="display: flex;flex-wrap: wrap;margin-top:10px">
                     <div
@@ -276,57 +283,41 @@ else
                         </div>
                     </div>
                 </div>
-                <div style="display: flex;justify-content: center;margin-top:10px">
-                    <form>
-                        @if(Model.EndDate<DateTime.Now)
+       <form>
+              <div style="display: flex;justify-content: center;margin-top:10px">
+                       @if(Model.EndDate<DateTime.Now)
                         {
-                     <p style="text-decoration:none;color: #F88634;border:1px solid orange;border-radius:4px;display:flex;justify-content:center;align-items:center;height:35px;">View details<img
-                                    src="~/images/right-arrow.png" alt=""></p>
-                     }
-                                  
-                     else if(Model.statususer == "Pending")
-                     {    
+                          <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                         <p style="text-decoration:none;color: #F88634;border:1px solid orange;border-radius:4px;display:flex
+                         justify-content:center;align-items:center;height:35px;">View details
+                         <img  src="~/images/right-arrow.png" alt=""></p>
+                       }                                  
+                       else if(Model.statususer == "Pending")
+                       {    
                          <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
-                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied For Approval<img
-                                    src="~/images/right-arrow.png" alt=""></a>
+                         <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied For Approval
+                             <img src="~/images/right-arrow.png" alt=""></a>
                         </button>
-                    }
-                    else if (Model.statususer == "approved")
-                    {
-                           <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
-                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied Already<img
+                       }
+                      else if (Model.statususer == "approved")
+                       {
+                         <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                         <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied Already<img
                                     src="~/images/right-arrow.png" alt=""></a>
-                        </button>
-                        
-                    }
+                        </button>                        
+                       }
                      else if(Model.MissionId !=null)
-                    {
-                           <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
-                     <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Apply<img
-                                    src="~/images/right-arrow.png" alt=""></a>
-                        </button>
-                        
-                    }
-
-                    </form>
-                </div>
-
-@*                style="border: 2px solid orange;
-border-radius: 20px;
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    height: 38px;
-    align-items: center;
-    color: orange;"*@
-
-
-
+                       {
+                        <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
+                        <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Apply
+                            <img src="~/images/right-arrow.png" alt=""></a>
+                        </button>                       
+                        }
+               </div>
+          </form>
             </div>
-
         </div>
     </div>
-
     <div class="container mt-3 " style="opacity: 0.9;">
         <div class="row">
             <div class=" card shadow col-md-8">
@@ -391,8 +382,10 @@ border-radius: 20px;
                             else
                             {
                             <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                <img src="~/images/doc.png" class="px-2"> <a href="/@documentpath[a]/@documentname[a]@documenttype[a]" target="_blank">@documentname[a]@Model.documenttype[0]</a>
-                                    </button>
+                                <img src="~/images/doc.png" class="px-2"> 
+                                <a href="/@documentpath[a]/@documentname[a]@documenttype[a]" target="_blank">
+                                 @documentname[a]@Model.documenttype[0]</a>
+                                </button>
                                 }
                                 a++;
                             }
@@ -404,14 +397,11 @@ border-radius: 20px;
                         <p>
                             @Model.organizationdetail
                         </p>
-
                     </div>
-
                     <div id="Comments" class="tabcontent">
                         <h5>Comments</h5>
                            <form>
-                                <div>
-                         
+                                <div>                         
                                     <input style="height: 100px; width: 100%;" type="text"  id="commentText"
                                         placeholder="Enter your comments..">
                             
@@ -425,14 +415,9 @@ border-radius: 20px;
 
                             <div class="d-flex mx-auto"> <button style="background: none;border: none;">Read More
                                     Comments..</button> </div>
-
-
                         </div>
-
-
                     </div>
                 </div>
-
             </div>
             <div class="col-md-4" id="vol-right-info">
                 <div class="card shadow">
@@ -454,44 +439,41 @@ border-radius: 20px;
                         <hr>
                         <div class="information-title">Rating 
                             <svg style="display:none;">
-<defs>
-<symbol id="fivestars">
-<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
-fill="white" fill-rule="evenodd" />
-<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
-fill="white" fill-rule="evenodd" transform="translate(24)" />
-<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
-fill="white" fill-rule="evenodd" transform="translate(48)" />
-<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
-fill="white" fill-rule="evenodd" transform="translate(72)" />
-<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
-fill="white" fill-rule="evenodd" transform="translate(96)" />
-</symbol>
-</defs>
-</svg>
-<div class="mission-rating">
-<!-- <div class="rating-bg" style="width: 90%;"></div> -->
-@if (Model.Rating == null)
-{
-<progress class="rating-bg" value="0" max="5"></progress>
-<svg>
-<use xlink:href="#fivestars" />
-</svg>
-}
-else
-{
-<progress class="rating-bg" value="@Model.Rating" max="5"></progress>
-<svg>
-<use xlink:href="#fivestars" />
-</svg>
-}
-
-</div>
-<span class="gray2">(by @Model.TotalUser volunteers)</span>
-                        </div>
-
+                        <defs>
+                        <symbol id="fivestars">
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                        fill="white" fill-rule="evenodd" />
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                        fill="white" fill-rule="evenodd" transform="translate(24)" />
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                        fill="white" fill-rule="evenodd" transform="translate(48)" />
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                        fill="white" fill-rule="evenodd" transform="translate(72)" />
+                        <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                        fill="white" fill-rule="evenodd" transform="translate(96)" />
+                        </symbol>
+                        </defs>
+                        </svg>
+                        <div class="mission-rating">
+                        <!-- <div class="rating-bg" style="width: 90%;"></div> -->
+                        @if (Model.Rating == null)
+                        {
+                        <progress class="rating-bg" value="0" max="5"></progress>
+                        <svg>
+                        <use xlink:href="#fivestars" />
+                        </svg>
+                        }
+                        else
+                        {
+                        <progress class="rating-bg" value="@Model.Rating" max="5"></progress>
+                        <svg>
+                        <use xlink:href="#fivestars" />
+                        </svg>
+                        }
+                   </div>
+                        <span class="gray2">(by @Model.TotalUser volunteers)</span>
+                                                </div>
                     </div>
-
                 </div>
                 <div class="card shadow d-flex mt-5">
                     <main>
@@ -501,9 +483,7 @@ else
                         <ul id="paginated-list" data-current-page="1" aria-live="polite"
                             style="   margin: 0px 0px; padding-left: 0px; justify-content: space-evenly;margin-top: 4px;">
                         </ul>
-
                     </main>
-
                     <div class="pagination-container mt-3 mb-3">
                         <nav
                             style="width:100% ;display: flex;flex-direction: row;justify-content: space-between;border-top: 1px solid gray;border-bottom: 1px solid gray;">
@@ -512,47 +492,30 @@ else
                                 title="Previous page" style="border-right: 1px solid gray;">
                                 &lt;
                             </button>
-
                             <div id="pagination-numbers">
-
                             </div>
-
                             <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page"
                                 style="border-left: 1px solid gray;">
                                 &gt;
                             </button>
                         </nav>
                     </div>
-
-
                 </div>
-
-
-
             </div>
-
         </div>
     </div>
-    </div>
-
     <hr>
-
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex mt-3" style="justify-content: center;">
                 <h1 style="font-weight: bolder;">Related Missions</h1>
             </div>
             <div id="releatedmissions" class="row" style="margin:0px;">
-
             </div>
-
         </div>
-
     </div>
-
 @Html.Partial("_Footer");
  @section Javascript{
-
  <script src="~/js/Mission.js" asp-append-version="true"></script>
   }
     

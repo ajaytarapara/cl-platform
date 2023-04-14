@@ -158,5 +158,15 @@ namespace CIPlatform.Repository.Repository
             return emails;
         }
 
+        void IStoryRepository.AddInvitedUser(StoryInvite invite)
+        {
+            _ciPlatformDbContext.Add(invite);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        long IStoryRepository.GetInvitedUserid(string cow_email)
+        {
+            User user= _ciPlatformDbContext.Users.Where(x=>x.Email== cow_email).FirstOrDefault();
+            return user.UserId;
+        }
     }
 }

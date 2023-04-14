@@ -1,244 +1,191 @@
 ﻿@model CIPlatform.Entities.ViewModels.HomeModel
 @inject IHttpContextAccessor httpcontextaccessor
-
 <div class="col-4  d-md-none"
-        style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
-        id="menubar">
-        <div style="display: flex; justify-content:flex-end;">
-            <button style="background: none;border: none;" onclick="closemenu()" id="closingimg"><img
-                    src="~/images/cancel1.png" alt=""></button>
-        </div>
-        <div class="menuitem">
-            <a style="border: none; background: white;" href="@Url.Action("StoryListing", "Story")">Stories</a>
-            <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
-                id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
-                Policy
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-
-
-        </div>
-
-
-
+     style="position: absolute;border:1px solid black; flex-direction: column; justify-content: center;"
+     id="menubar">
+    <div style="display: flex; justify-content:flex-end;">
+        <button style="background: none;border: none;" onclick="closemenu()" id="closingimg">
+            <img src="~/images/cancel1.png" alt="">
+        </button>
     </div>
-
-
-    <div class="col-4  d-md-none" id="filterbar">
-        <div style="display: flex; justify-content:flex-end;">
-            <button style="background: none;border: none;" onclick="closefilter()" id="closingimg"><img
-                    src="~/images/cancel1.png" alt=""></button>
-        </div>
-        <div class="d-flex filteritem" style="justify-content: center; flex-direction: column;">
-            <button style="border: none; background: white;background: white;
+    <div class="menuitem">
+        <a style="border: none; background: white;" href="@Url.Action("StoryListing", "Story")">Stories</a>
+        <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
+                id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+            Policy
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+    </div>
+</div>
+<div class="col-4  d-md-none" id="filterbar">
+    <div style="display: flex; justify-content:flex-end;">
+        <button style="background: none;border: none;" onclick="closefilter()" id="closingimg">
+            <img src="~/images/cancel1.png" alt="">
+        </button>
+    </div>
+    <div class="d-flex filteritem" style="justify-content: center; flex-direction: column;">
+        <button style="border: none; background: white;background: white;
             height: 100%;
             border-left: 1px solid;
             border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                Country
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-            <button style="border: none; background: white;background: white;
+            Country
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white;background: white;
             height: 100%;
-           
+
             border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                City
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-            <button style="border: none; background: white;background: white;
+            City
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white;background: white;
             height: 100%;
-            
+
             border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                Theme
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-            <button style="border: none; background: white; background: white;
+            Theme
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
+        <button style="border: none; background: white; background: white;
             height: 100%;
-    
+
             border-right: -moz-text-decoration-colorolid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                Skills
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">Action</button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
-
-
-
-
-
-
-        </div>
-
-
-
+            Skills
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><button class="dropdown-item" type="button">Action</button></li>
+            <li><button class="dropdown-item" type="button">Another action</button></li>
+            <li><button class="dropdown-item" type="button">Something else here</button></li>
+        </ul>
     </div>
-
+</div>
 @Html.Partial("_NavbarUser");
-
-    <div class="container-fluid mt-2">
-        <div style="border-color: #414141; border:1px solid" class="row">
-            <div class="col-md-6 d-flex leftheader" style="padding-left:9vw;">
-               <img src="~/images/search.png"  alt="">
-                <input type="text" name="searchtext" id="search-input" placeholder="Search Mission" style="width:67%;">
-                <div>
-                    <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
-                </div>
-
-
+<div class="container-fluid mt-2">
+    <div style="border-color: #414141; border:1px solid" class="row">
+        <div class="col-md-6 d-flex leftheader" style="padding-left:9vw;">
+            <img src="~/images/search.png" alt="">
+            <input type="text" name="searchtext" id="search-input" placeholder="Search Mission" style="width:67%;">
+            <div>
+                <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
             </div>
-            <div class="col-md-6 d-flex rightheader" id="rightheader">
-                <button style="border: none; background: white;background: white;
+        </div>
+        <div class="col-md-6 d-flex rightheader" id="rightheader">
+            <button style="border: none; background: white;background: white;
                 height: 100%;
                 border-left: 1px solid;
                 border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    Country
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="countryDropDownList">
-                  @* @{
-                       @foreach (var country in Model.countryList)
-                  {
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          @country.Name
-                          </a>
-                      </li>
-                  }  } *@ 
-                </ul>
-                <button style="border: none; background: white;background: white;
-                height: 100%;
-               
-                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                 city
-                </button>
-
-                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="cityDropDownList">
-                                     
-                    
-                 </ul>
-                
-                <button style="border: none; background: white;background: white;
-                height: 100%;
-                
-                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Theme
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="themeDropDownList">
-            
-                </ul>
-                <button style="border: none; background: white; background: white;
-                height: 100%;
-        
-                border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Skills
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="skillDropDownList">
-                </ul>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="container mt-2">
-        <div class="row">
-      <div  class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
-      <div class="chips d-flex flex-wrap mr-2">
-        
-        
-      </div>
-      <p class="no-filter-text">No filters applied</p>
-      <a class="close-chips" style="display:none;" href="#">Clear All</a>
-    </div>
-        </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="container mt-3">
-        <div class="row d-flex">
-            <div class="col-6 d-flex">
-                <h1  style="font-weight: bolder;">Explore Mission</h1>
-            </div>
-            <div style="justify-content:flex-end;" class="col-6 d-flex">
-                <button class="dropdown-toggle bg-light" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-                    aria-expanded="false"style="margin: 10px;">
-                    Sort by
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="sort">
-
+                Country
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="countryDropDownList">
+                @* @{
+                    @foreach (var country in Model.countryList)
+                    {
                     <li class="p-1">
-                        <a class="dropdown-item" name="highestseats" id="" />highestseats</a>
-                      </li>
-                        <li class="p-1">
-                        <a class="dropdown-item"  name="lowestseats" id="" />lowestseats</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item"  name="sortbydate" id="" />Newest</a>
-                      </li>
-                      </li>
-                        <li class="p-1">
-                        <a class="dropdown-item"  name="lowestseats" id="" />Oldest</a>
-                      </li>
-                </ul>
-                <button id="grid-view-btn" style="border-radius:10px;margin: 10px" ><img src="~/images/grid.png" alt="">
-                    <link rel="" href="" >
-                </button>
-                <button id="list-view-btn" style="border-radius:10px ;margin: 10px"><img src="~/images/list.png" alt=""></button>
-
+                    <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                    @country.Name
+                    </a>
+                    </li>
+                    }  } *@
+            </ul>
+            <button style="border: none; background: white;background: white;
+                height: 100%;border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                city
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="cityDropDownList">
+            </ul>
+            <button style="border: none; background: white;background: white;
+                height: 100%;border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Theme
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="themeDropDownList">
+            </ul>
+            <button style="border: none; background: white; background: white;
+                height: 100%;border-right: 1px solid;" class="dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                Skills
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="skillDropDownList">
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container mt-2">
+    <div class="row">
+        <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
+            <div class="chips d-flex flex-wrap mr-2">
             </div>
-
+            <p class="no-filter-text">No filters applied</p>
+            <a class="close-chips" style="display:none;" href="#">Clear All</a>
         </div>
     </div>
-
-    <div class="container mt-3">
-
-
-        <div class="" id="grid">
-               
+</div>
+<div class="container mt-3">
+    <div class="row d-flex">
+        <div class="col-6 d-flex">
+            <h1 style="font-weight: bolder;">Explore Mission</h1>
         </div>
+        <div style="justify-content:flex-end;" class="col-6 d-flex">
+            <button class="dropdown-toggle bg-light" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin: 10px;">
+                Sort by
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="sort">
+
+                <li class="p-1">
+                    <a class="dropdown-item" name="highestseats" id="" />highestseats</a>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="lowestseats" id="" />lowestseats</a>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="sortbydate" id="" />Newest</a>
+                </li>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="lowestseats" id="" />Oldest</a>
+                </li>
+            </ul>
+            <button id="grid-view-btn" style="border-radius:10px;margin: 10px">
+                <img src="~/images/grid.png" alt="">
+                <link rel="" href="">
+            </button>
+            <button id="list-view-btn" style="border-radius:10px ;margin: 10px"><img src="~/images/list.png" alt=""></button>
+
+        </div>
+
     </div>
-
-
-
-
-
-
-
-    <div style="justify-content:center;" class="container d-flex pt-3">
-       
-
+</div>
+<div class="container mt-3">
+    <div class="" id="grid">
     </div>
+</div>
+<div style="justify-content:center;" class="container d-flex pt-3">
+</div>
 @Html.Partial("_Footer");
   @section Javascript{
-    <script src="~/js/custom.js" asp-append-version="true"></script>
-     <script src="~/js/ci.js" asp-append-version="true"></script>
+<script src="~/js/custom.js" asp-append-version="true"></script>
+<script src="~/js/ci.js" asp-append-version="true"></script>
   }
-    
-  
+

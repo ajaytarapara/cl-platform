@@ -24,7 +24,7 @@ namespace CIPlatform.Entities.ViewModels
         public TimeOnly? hours { get; set; }
         [Required]
         [MaxLength(2, ErrorMessage = "please enter valid minutes")]
-        public TimeOnly? minutes { get; set; }  
+        public TimeOnly? minutes { get; set; }
         [Required]
         public int? Action { get; set; }
         [Required]

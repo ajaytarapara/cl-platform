@@ -2,19 +2,17 @@
 @model List<MissionApplication>
 @foreach (var item in Model)
 {
-    @if (@item.ApprovalStatus.ToLower()=="approved")
+    @if (@item.ApprovalStatus.ToLower() == "approved")
     {
-        
-   
-<li>
-    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
-        <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
-            <div class="d-flex" style="flex-direction: column;">
-                <img src="@item.User.Avatar" alt="" class="volunteer-list-img">
-                <div>@item.User.FirstName @item.User.LastName</div>
+        <li>
+            <div style="display: flex;flex-wrap: wrap;justify-content: space-around;flex-direction: column;">
+                <div style="display:flex;flex-direction: row;flex-wrap: wrap;height: 30%;">
+                    <div class="d-flex" style="flex-direction: column;">
+                        <img src="@item.User.Avatar" alt="" class="volunteer-list-img">
+                        <div>@item.User.FirstName @item.User.LastName</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
         </li>
     }
     else

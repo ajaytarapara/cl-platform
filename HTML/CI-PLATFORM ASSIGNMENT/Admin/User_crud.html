@@ -17,8 +17,8 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-12 d-lg-flex flex-column" id="admin-page-navigation">
+        <div class="row d-flex">
+            <div class="d-lg-flex flex-column" id="admin-page-navigation">
                 <div class="mt-3 d-flex"
                     style="width:100%;padding-left: 15px;justify-content: space-between;align-items: center;">
                     <h5>
@@ -97,7 +97,7 @@
                 </button>
 
             </div>
-            <div class="col-lg-9 col-md-12">
+            <div class="table-admin-page">
                 <div class="card row d-flex p-3" style="flex-direction: row;">
                     <div class="col-md-6 col-sm-5 p-2 d-flex"
                         style="font-size:18px;align-items: center;justify-content: space-around;"
@@ -202,14 +202,15 @@
     <script>
         function adminpage_openNav() {
             document.getElementById("admin-page-navigation").style.display = "flex";
-            document.getElementById("admin-page-navigation").style.width = "65%";
-            document.getElementById("admin-page-navigation").style.opacity = "1";
-            document.getElementById("admin-page-navigation").style.zIndex = "3";
+            // document.getElementById("admin-page-navigation").style.width = "65%";
+            // document.getElementById("admin-page-navigation").style.opacity = "1";
+            // document.getElementById("admin-page-navigation").style.zIndex = "3";
 
         }
         function closeNav() {
-            document.getElementById("admin-page-navigation").style.width = "0%";
-            document.getElementById("admin-page-navigation").style.opacity = "0";
+            // document.getElementById("admin-page-navigation").style.width = "0%";
+            // document.getElementById("admin-page-navigation").style.opacity = "0";
+            document.getElementById("admin-page-navigation").style.display = "none";
         }
     </script>
 </body>

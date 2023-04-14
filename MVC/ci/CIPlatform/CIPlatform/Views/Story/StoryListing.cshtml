@@ -18,15 +18,8 @@
             <li><button class="dropdown-item" type="button">Another action</button></li>
             <li><button class="dropdown-item" type="button">Something else here</button></li>
         </ul>
-
-
     </div>
-
-
-
 </div>
-
-
 <div class="col-4  d-md-none" id="filterbar">
     <div style="display: flex; justify-content:flex-end;">
         <button style="background: none;border: none;" onclick="closefilter()" id="closingimg">
@@ -82,20 +75,9 @@
             <li><button class="dropdown-item" type="button">Another action</button></li>
             <li><button class="dropdown-item" type="button">Something else here</button></li>
         </ul>
-
-
-
-
-
-
     </div>
-
-
-
 </div>
-
 @Html.Partial("_NavbarUser");
-
 <div class="container-fluid mt-2">
     <div style="border-color: #414141; border:1px solid" class="row">
         <div class="col-md-6 d-flex leftheader" style="padding-left:9vw;">
@@ -104,8 +86,6 @@
             <div>
                 <button id="filterbutton" onclick="filterbartoggle()"><img src="~/images/filter.png" alt=""></button>
             </div>
-
-
         </div>
         <div class="col-md-6 d-flex rightheader" id="rightheader">
             <button style="border: none; background: white;background: white;
@@ -136,7 +116,6 @@
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="cityDropDownList">
             </ul>
-
             <button style="border: none; background: white;background: white;
                 height: 100%;
 
@@ -155,14 +134,9 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="skillDropDownList">
             </ul>
-
-
         </div>
-
     </div>
-
 </div>
-
 <div class="container mt-2">
     <div class="row">
         <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
@@ -173,8 +147,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="container-fluid mt-2">
     <div class=row>
         <div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white storymainbgimg"
@@ -194,18 +166,10 @@
 </div>
 <div class="container">
     <div class="row" style="justify-content: space-evenly;" id="storylist">
-
-        </div>
     </div>
 </div>
-
-
 @Html.Partial("_Footer");
-
-
-
-     @section Javascript{
-
- <script src="~/js/Story.js" asp-append-version="true"></script>
+@section Javascript
+{
+<script src="~/js/Story.js" asp-append-version="true"></script>
   }
-    

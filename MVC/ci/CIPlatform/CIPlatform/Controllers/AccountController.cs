@@ -195,6 +195,12 @@ namespace CIPlatform.Controllers
             editProfile.userid = userObj.UserId;
             editProfile.useremail = userObj.Email;
             editProfile.countrofuser = userObj.CountryId;
+            editProfile.title = userObj.Title;
+            editProfile.whyivol = userObj.WhyIVolunteer;
+            editProfile.employeeid = userObj.EmployeeId;
+            editProfile.linkedinurl=userObj.LinkedInUrl;
+            editProfile.department=userObj.Department;
+            editProfile.profiletext= userObj.ProfileText;
             return View(editProfile);
         }
 
@@ -407,11 +413,16 @@ namespace CIPlatform.Controllers
 
         [HttpPost]
         public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, string DateVolunteered)
-        {
+        {            
             Timesheet timesheet = new Timesheet();
             timesheet.Notes = Notes;
             if (hours != null && minutes != null && Notes != null && DateVolunteered !=null)
             {
+                if (Int32.Parse(minutes) > 60)
+                {
+                   
+                    return Json(new { status = 2 });
+                }
                 timesheet.DateVolunteered =DateTime.Parse( DateVolunteered);
                 timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
                 _userRepository.edittimesheet(timesheetid, hours, minutes, MissionId, Notes, DateVolunteered);

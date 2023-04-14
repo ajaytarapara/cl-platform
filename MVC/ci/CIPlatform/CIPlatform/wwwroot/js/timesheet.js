@@ -147,6 +147,9 @@ $("#edittimesheet").on("click", function (e) {
             if (data["status"] == 1) {
                 alert("your time sheet updated successfully");
             }
+            if (data["status"] == 2) {
+                alert("enter minutes less than 60" );
+            }
             else
             {
                 alert("data is not valid");

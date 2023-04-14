@@ -3,16 +3,14 @@
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Recommanded to your Co-worker</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
       <!-- Modal body -->
-      <div class="modal-body">
-            
+      <div class="modal-body"> 
+          <input type="hidden" value="@Model.story.StoryId" id="storyidgetdiv" />
               <div class="mb-3">
                   <form action="recommendedtocoworker" method="Post">
                   <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -24,27 +22,26 @@
                      }
                 </select>
                 <button type="submit" class="btn btn-primary mt-2" id="btn-recommend" value="@Model.story.MissionId">Send Email</button>
-                <div style="width:100%;margin-top:10px;">
-                     </form>                     
-                     <label>Search Email address</label>
-                     <form action="recommendedtocoworker" method="Post">
-                        <input list="cars" style="width: 100%;border: 1px solid gray;height: 35px;" id="searchemail">
-                        <datalist id="cars">
-                            @foreach (var item in Model.usersemails)
-                            {
-                            <option value="@item.Email" />
-                            <span>@item.FirstName @item.LastName</span>
-                            }
-                        </datalist>
-                         <button type="submit" class="btn btn-primary mt-2" id="btn-recommend-search"                value="@Model.story.MissionId">Send Email</button>
-                     </form>
-                </div>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              
-                  
+                    <div style="width:100%;margin-top:10px;">
+                            </form>                     
+                                 <label>Search Email address</label>
+                                 <form action="recommendedtocoworker" method="Post">
+                                    <input list="cars" style="width: 100%;border: 1px solid gray;height: 35px;"
+                                    id="searchemail">
+                                    <datalist id="cars">
+                                        @foreach (var item in Model.usersemails)
+                                        {
+                                        <option value="@item.Email" />
+                                        <span>@item.FirstName @item.LastName</span>
+                                        }
+                                    </datalist>
+                                     <button type="submit" class="btn btn-primary mt-2"
+                                     id="btn-recommend-search"value="@Model.story.MissionId">Send Email</button>
+                            </form>
+                    </div>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>                
       </div>
-
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -52,11 +49,7 @@
 
     </div>
   </div>
-
 </div>
-
-
-
     <div class="container">
           <div class="row">
             <div id="menubarimg"class="d-md-none">
@@ -79,7 +72,8 @@
             </div>
             <div class="col-6 d-flex px-5 rightnav" id="ajaxtest">
                 <img src="@Model.navavatar"style="border-radius: 50%;height: 100%; padding: 4px;">
-                    <button value="@Model.story.UserId" style="border: none; background: white;" class="dropdown-toggle bg-light user-btn" type="button"
+                    <button value="@Model.story.UserId" style="border: none; background: white;"
+                    class="dropdown-toggle bg-light user-btn" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
                     @Model.navusername
                 </button>
@@ -92,18 +86,10 @@
                         style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
                         </button></li>
                 </ul>
-
-
-
             </div>
         </div>
-
     </div>
-
-    <hr>
-
-
-
+ <hr>
 <div id="mission-content" class="container overflow-y-scroll p-0 volunteer-content">
     <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
         <div id="volunteer-image-part" class="w-50">
@@ -132,12 +118,9 @@
                                                     @:<div class="carousel-item h-100 w-100">
                                                 @:<div class="d-flex h-100 w-100">
                                             }
-                                     }
-                                   
+                                     }                                   
                                 </div>
-                            </div>
-                            
-                            
+                            </div>                                                    
                         </div>
                         <button class="carousel-control-prev bg-black" type="button"
                             data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -170,17 +153,20 @@
                 @Model.story.User.WhyIVolunteer
             </div>
             <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
-                                        <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
-                            style="border: 2px solid #757575;border-radius: 25px;width: 51%;background: none;padding: 4px;margin-top: 10px;padding: 10px;">
+                  <button data-bs-toggle="modal" data-bs-target="#myModal" id="btn-recommend"
+                            style="border: 2px solid #757575;border-radius: 25px;width: 51%;background: none;padding: 4px;
+                            margin-top: 10px;padding: 10px;">
                             <img style="margin-right: 10px;" src="~/images/add1.png" alt="">Recommnded to a Co-worker </button>
-                <button class="rounded-5 orange-btn bg-white d-flex align-items-center" style="border: 2px solid orange;border-radius: 25px;width:24%;background: none;padding: 4px;margin-top:10px;color:orange;height:47px;color:orange;">
-                    <a style="color:orange;text-decoration:none" class="px-md-2" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Model.story.MissionId })">Open Mission</a>
+                <button class="rounded-5 orange-btn bg-white d-flex align-items-center" 
+                style="border: 2px solid orange;border-radius: 25px;width:24%;background: none;
+                padding: 4px;margin-top:10px;color:orange;height:47px;color:orange;">
+                    <a style="color:orange;text-decoration:none" class="px-md-2" 
+                    href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Model.story.MissionId })">Open Mission</a>
                     <img src="~/images/right-arrow.png" alt="">
                 </button>
             </div>
         </div>
     </div>
-
     <div id="story-details-info" class="py-3">
         <h4>@Model.story.Title</h4>
         <hr>
@@ -191,7 +177,6 @@
     <br>
 </div>
 @Html.Partial("_Footer");
-
     @section Javascript{
 <script>
     $('#recommand').on('show.bs.modal', function (event) {
@@ -203,14 +188,11 @@
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
-
-
 //================================================================================================
 //RECOMMANDED TO CO WORKER
 //=================================================================================================
 $("#btn-recommend").on("click", function (e) {
     e.preventDefault();
-
     var missionid = $(this).val();
     var co_email = $("#receipient-email").val();
     var val = missionid;
@@ -218,8 +200,9 @@ $("#btn-recommend").on("click", function (e) {
         type: "POST",
         url: '/Story/recommendedtocoworker',
         dataType: "html",
-        data: { Missionid: val, cow_email: co_email.toString() },
+        data: { Missionid: val, cow_email: co_email.toString(),storyId:storyId},       
         success: function (data) {
+
             alert("email send successfully");
           $("#receipient-email").val();
         },
@@ -230,18 +213,19 @@ $("#btn-recommend").on("click", function (e) {
     })
 
 });
-
-
+ var storyIds="";
 $("#btn-recommend-search").on("click", function (e) {
     e.preventDefault();
     var missionid = $(this).val();
     var co_email = $("#searchemail").val();
     var val = missionid;
+    storyIds=$("#storyidgetdiv").val();
+    console.log("call");
     $.ajax({
         type: "POST",
         url: '/Story/recommendedtocoworker',
         dataType: "html",
-        data: { Missionid: val, cow_email: co_email.toString() },
+        data: { Missionid: val, cow_email: co_email.toString(),storyId:storyIds },
         success: function (data) {
             alert("email send successfully");
           $("#cars").val();
@@ -253,6 +237,5 @@ $("#btn-recommend-search").on("click", function (e) {
     })
 
 });
-
 </script>
     }

@@ -22,5 +22,8 @@ namespace CIPlatform.Entities.ViewModels
 
         public string? themetitle { get; set; }
 
+        public string? storystatus { get; set; }
+
+        public DateTime? storypublishdate { get; set; }
     }
 }

@@ -9,7 +9,7 @@
     {
         @*    Views_Shared__grid view of mision card*@
         <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
-            <div class="card mt-2 shadow" style="position:relative;height:625px;overflow-x:auto">
+            <div class="card mt-2 shadow" style="position:relative;height:625px;overflow:hidden">
                 <div class="list-image-part position-relative">
                     @{
                         string[] mediaNames = @Item.MediaName.ToString().Split(",");
@@ -22,7 +22,18 @@
                             <span class="badge " style="background-color:rgba(255, 0, 0,.1);">Closed</span>
                         </span>
                     }
-                    else { }
+                    else if (@Item.statusofuser == "approved")
+                    {
+                        <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-success border border-light rounded-pill">
+                            <span class="badge " style="background-color:rgba(255, 0, 0,.1);">applied</span>
+                        </span>
+                    }
+                    else if (@Item.statusofuser == "Pending")
+                    {
+                        <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-warning border border-light rounded-pill">
+                            <span class="badge " style="background-color:rgba(255, 0, 0,.1);">pending</span>
+                        </span>
+                    }
 
                     <h5 class="list-card-theme-title bg-white rounded-5 p-2 " style="border:2px ">@Item.ThemeTitle</h5>
                     <div id="grid-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2">
@@ -90,38 +101,58 @@
                                     <use xlink:href="#fivestars" />
                                 </svg>
                             }
-
                         </div>
                     </div>
                     <div CLASS="mt-3 mb-3 d-flex missiondate">
                         <div style="width:15%">
                             <hr>
                         </div>
-                        <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
+                        @if (Item.MissionType == "time")
+                        {
+                            <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
                          class="d-flex">
-                            From @Item.StartDate untill @Item.EndDate
-                        </div>
+                                From @Item.StartDate.ToString().Substring(0,10) untill @Item.EndDate.ToString().Substring(0,10)
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
+                         class="d-flex">
+                                @Item.MissionGoal
+                            </div>
+                        }
+
                         <div style="width:15%">
                             <hr>
                         </div>
                     </div>
                     <div style="justify-content:space-between;" class="d-flex pt-1 ">
-                        <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
 
-                        <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br>Deadline</span> </div>
-                    </div>
-                    @if (Item.MissionType == "time")
-                    {
-
-                    }
-                    else
-                    {
-                        <div class="w-100">
-
-                            <div class="progress d-flex align-content-center">
+                        @if (@Item.MissionType == "time")
+                        {
+                            <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
+                            <div>
+                                <img style="height: 25px;" src="~/images/hours.png" alt=""><span>
+                                    @Item.EndDate.ToString().Substring(0,10)
+                                    <br>Deadline
+                                </span>
                             </div>
-                        </div>
-                    }
+                        }
+                        else
+                        {
+                            <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
+                            <div class="d-flex col-6" style="justify-content:space-around">
+                                <img src="~/images/mission.png" style="width:25px;height:25px">
+                                <div style="display:flex;flex-direction:column;justify-content:flex-start;width:80%;">
+                                    <div class="progress" style="width:60%;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: @(@Item.total*100/@Item.goalvalue)%"
+                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div><span style="padding-top: 4px;">@Item.total achieved</span> 
+                            </div>
+                            </div>
+                        }
+                    </div>
                     <hr>
 
                     <div style="justify-content: center;" class="d-flex pt-2" id="apply">
@@ -143,7 +174,7 @@
         </div>
     }
 </div>
-         </div>
+ </div>
 
 
 
@@ -168,12 +199,21 @@
                             <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1 heart-btn">
                                 @if (@Item.favourite == 1)
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none;border-radius:5px;" class="Icon mx-auto" alt="" /></button>
+                                    <button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn"
+                                    value="@Item.MissionId">
+                                        <img src="/images/heart.png"
+                                     style="height:20px;width:20px; background-color:red;border:none;border-radius:5px;"
+                                     class="Icon mx-auto" alt="" />
+                                    </button>
                                 }
                                 else
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
-
+                                    <button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn"
+                                    value="@Item.MissionId">
+                                        <img src="/images/heart1.png"
+                                     style="height:20px;width:20px; color:red ;border:none"
+                                     class="Icon mx-auto" alt="" />
+                                    </button>
                                 }
                             </div>
                             <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
@@ -182,7 +222,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card-title-list mt-1">
                     <h3 class="card-title-list-text">@Item.Title</h3>
                     <p class="card-text">@Item.ShortDescription</p>
@@ -200,10 +239,11 @@
                         <div>
                             <div style="justify-content:flex-start;margin-right:2vw" class="d-flex pt-3">
                                 <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;
-                                       color: #F88634;width: 109%;height: 30px;display: flex;align-items: center;justify-content: center;padding:5px;">
-                                    <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">
-                                        Apply
-                                    </a><img src="~/images/right-arrow.png" alt="">
+                                       color: #F88634;width: 109%;height: 30px;display: flex;
+                                       align-items: center;justify-content: center;padding:5px;">
+                                    <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission",
+                                    new { missionId = @Item.MissionId })">   Apply</a>
+                                    <img src="~/images/right-arrow.png" alt="">
                                 </button>
                             </div>
                         </div>
