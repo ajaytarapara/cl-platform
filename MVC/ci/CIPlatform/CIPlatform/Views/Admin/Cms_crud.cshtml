@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-md-12 d-lg-flex flex-column" id="admin-page-navigation">
+        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation">
             @Html.Partial("_Admin_dashboard")
         </div>
-        <div class="col-lg-9 col-md-12">
+        <div class="col-xl-10 col-lg-9">
             <div class="card row d-flex p-3" style="flex-direction: row;">
                 @Html.Partial("_Admin_Header")
 
@@ -104,17 +104,3 @@
         </div>
     </div>
 </div>
-<script src="js/bootstrap.bundle.js"></script>
-<script>
-    function adminpage_openNav() {
-        document.getElementById("admin-page-navigation").style.display = "flex";
-        document.getElementById("admin-page-navigation").style.width = "70%";
-        document.getElementById("admin-page-navigation").style.opacity = "1";
-        document.getElementById("admin-page-navigation").style.height = "100vh";
-
-    }
-    function closeNav() {
-        document.getElementById("admin-page-navigation").style.width = "0%";
-        document.getElementById("admin-page-navigation").style.opacity = "0";
-    }
-</script>

@@ -65,7 +65,6 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserSkill> UserSkills { get; set; }
-
     public virtual DbSet<GridModel> GridModel { get; set; }
     public virtual DbSet<MissionModel> MissionModels { get; set; }
     public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
@@ -663,6 +662,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Views).HasColumnName("views");
 
             entity.HasOne(d => d.Mission).WithMany(p => p.Stories)
                 .HasForeignKey(d => d.MissionId)

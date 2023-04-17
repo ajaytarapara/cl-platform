@@ -144,7 +144,7 @@
                     <button class="rounded-5 p-1 px-2 bg-white" style="    border: 1px solid black;
                          border-radius: 20px;">
                         <img src="~/images/eye.png" alt="">
-                        <span>12000</span>
+                        <span>@Model.story.Views</span>
                         <span>Views</span>
                     </button>
                 </div>
@@ -236,6 +236,22 @@ $("#btn-recommend-search").on("click", function (e) {
         }
     })
 
+});
+
+$(document).ready(function(){
+        storyIds=$("#storyidgetdiv").val();
+        $.ajax({
+        type: "POST",
+        url: '/Story/view_story',
+        dataType: "html",
+        data: {storyId:storyIds},
+        success: function (data) {
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
 });
 </script>
     }

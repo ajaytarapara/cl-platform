@@ -2,6 +2,7 @@
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Helpers;
 using CIPlatform.Repository.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CIPlatform.Controllers
@@ -150,7 +151,22 @@ namespace CIPlatform.Controllers
             model.usersemails = _storyRepository.Getusersemail();
             return View(model);
         }
+        [HttpPost]
+        public void view_story(long storyid, Story story)
+        {
+            Story story1 = _storyRepository.Getdetailstory(story, storyid);
+            story1.StoryId = storyid;
+            if (story1.Views != null)
+            {
+                story1.Views = story1.Views + 1;
+            }
+            else
+            {
+                story1.Views = 1;
+            }
+            _storyRepository.AddStoryViews(story1);
 
+        }
         [HttpPost]
         public void recommendedtocoworker(string cow_email, int Missionid,long storyId)
         {

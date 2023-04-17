@@ -47,7 +47,12 @@ namespace CIPlatform.Repository.Repository
 
         User IUserRepository.findUser(string email)
         {
-            return _ciPlatformDbContext.Users.Where(u => u.Email.Equals(email)).First();
+            User user = _ciPlatformDbContext.Users.Where(u => u.Email.Equals(email)).FirstOrDefault();
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
         }
         User IUserRepository.findUser(int? id)
         {

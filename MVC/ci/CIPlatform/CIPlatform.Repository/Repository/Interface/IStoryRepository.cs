@@ -27,5 +27,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public long GetInvitedUserid(string cow_email);
 
+        public void AddStoryViews(Story story);
+
     }
 }

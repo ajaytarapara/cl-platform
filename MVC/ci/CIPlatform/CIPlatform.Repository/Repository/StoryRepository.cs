@@ -168,5 +168,11 @@ namespace CIPlatform.Repository.Repository
             User user= _ciPlatformDbContext.Users.Where(x=>x.Email== cow_email).FirstOrDefault();
             return user.UserId;
         }
+
+        void IStoryRepository.AddStoryViews(Story story)
+        {
+            _ciPlatformDbContext.Update(story);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace CIPlatform.Controllers
             }
             return View();
         }
-        public IActionResult User_crud(Admin_user_crudModel admin_User_Crud)
+        public IActionResult User_crud(Admin_user_crudModel Admin_user_crudModel)
         {
             string adminSessionEmailId = HttpContext.Session.GetString("Email");
 
@@ -77,12 +77,95 @@ namespace CIPlatform.Controllers
             {
                 string adminemail = adminSessionEmailId;
                 Admin adminobj = _adminrepository.findadmin(adminemail);
-                admin_User_Crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                admin_User_Crud.adminavatar = "./images/user1.png";
+                Admin_user_crudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                Admin_user_crudModel.adminavatar = "./images/user1.png";
+
             }
 
-            return View(admin_User_Crud);
+            return View(Admin_user_crudModel);
         }
+        [HttpPost]
+        public IActionResult User_crud(string searchtext)
+        {
+            Admin_user_crudModel admin_User_Crud = new Admin_user_crudModel();
+            admin_User_Crud.Users = _adminrepository.GetUsers(searchtext).ToList();
+            return PartialView("_Admin_user_crud_table", admin_User_Crud);
+        }
+
+        [HttpPost]
+        public IActionResult AddUser_crud(Admin_user_crudModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                string email = model.Email;
+                User isvalid = _userRepository.findUser(email);
+                if (isvalid == null)
+                {
+
+                    User user = new User();
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.Password = model.Password;
+                    user.EmployeeId = model.EmplyoeeId;
+                    user.CreatedAt = DateTime.Now;
+                    user.Department = model.Department;
+                    user.PhoneNumber = model.PhoneNumber;
+                    _adminrepository.AddUserAdmin(user);
+                }
+                else
+                {
+                    ModelState.AddModelError("Email", "Email is already user");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("parameter", "wronfg");
+            }
+            return RedirectToAction("User_crud", "Admin");
+        }
+        [HttpPost]
+        public void DeleteUser_crud(long userid)
+        {
+            _adminrepository.RemoveUserAdmin(userid);
+        }
+        [HttpPost]
+        public IActionResult editUser_crud(long userid)
+        {
+            Admin_user_crudModel model = new Admin_user_crudModel();
+
+            if (ModelState.IsValid)
+            {
+                string email = model.Email;
+                User isvalid = _userRepository.findUser(email);
+                if (isvalid == null)
+                {
+
+                    User user = new User();
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.Password = model.Password;
+                    user.EmployeeId = model.EmplyoeeId;
+                    user.CreatedAt = DateTime.Now;
+                    user.Department = model.Department;
+                    user.PhoneNumber = model.PhoneNumber;
+                    user.UserId = userid;
+                    _adminrepository.UpdateUserAdmin(userid);
+                }
+                else
+                {
+                    ModelState.AddModelError("Email", "Email is already user");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("parameter", "wronfg");
+            }
+            return RedirectToAction("User_crud", "Admin");
+        }
+
         public IActionResult Cms_crud()
         {
             return View();

@@ -14,5 +14,12 @@ namespace CIPlatform.Repository.Repository.Interface
         public Boolean validateadmincred(string adminemail,string adminpassword);
 
         public Admin findadmin(string adminemail);
+
+        public List<User> GetUsers(string searchtext);
+
+        public void AddUserAdmin(User user);
+
+        public void RemoveUserAdmin(long userid);
+        public void UpdateUserAdmin(long userid);
     }
 }

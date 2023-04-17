@@ -21,6 +21,7 @@
     width: 80%;
     padding: 4px;
     margin-top: 10px;
+   align-items:center;
 }
 
 .admin-page-button-nav:hover {
@@ -60,6 +61,15 @@
     background-color: white;
     color: orange;
 }
+.link-dash-admin{
+    color: white;
+    display:flex;
+    width:100%;
+    justify-content:flex-start;
+}
+.link-dash-admin:hover{
+    color:orange;
+}
 
 @media(max-width:570px) {
     #admin-page-right-nav {
@@ -70,6 +80,9 @@
     #admin-page-left-nav {
         justify-content: center;
         display: flex;
+    }
+    .admin-page-btn-img-nav {
+        display:none;
     }
 }
 
@@ -84,6 +97,10 @@
 @media(max-width:550px) {
     #admin-page-navigation {
         width: 70%;
+
+    }
+    .admin-page-btn-img-nav {
+        display: none;
     }
 }
 

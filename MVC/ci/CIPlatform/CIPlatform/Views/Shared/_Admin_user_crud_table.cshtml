@@ -1,0 +1,63 @@
+﻿
+@model CIPlatform.Entities.ViewModels.Admin_user_crudModel
+<div class="table-responsive">
+    <table class="table" style="border:1px solid rgb(197, 195, 195);">
+        <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
+                                box-shadow: 0px 2px 3px #0000000F;">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Employee id</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Users != null)
+            {
+                @foreach (var item in Model.Users)
+                {
+                    <tr>
+                                                    
+                        <td>@item.FirstName <input type="hidden" value="@item.UserId" class="useriddiv_admin_crud"/></td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.Department</td>
+                        @if (item.Status == true)
+                        {
+                            <td style="color: green;">active</td>
+                        }
+                        else
+                        {
+                            <td style="color: red;">Deactivate</td>
+
+                        }
+                        <td>
+                            <button  data-bs-toggle="modal" data-bs-target="#EDITUSERADMIN" class="Editbtnuser"
+                            value="@item.UserId" style="background: none;padding: 0px;border:none;">
+                            <svg style="color:orange;width: 20px;height: 20px;" xmlns="http://www.w3.org/2000/svg" width="16"
+                         height="16" fill="currentColor" class="bi bi-pencil-square"
+                         viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="deletebtnuser" value="@item.UserId" style="background: none;padding: 0px;border:none;">
+                                <img style="width:20px;height: 20px;"
+                             src="./images/bin.png">
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
