@@ -46,15 +46,54 @@ namespace CIPlatform.Repository.Repository
         }
         void IAdminRepository.RemoveUserAdmin(long userid)
         {
-            User users=_ciPlatformDbContext.Users.Where(user=>user.UserId== userid).FirstOrDefault();   
+            User users = _ciPlatformDbContext.Users.Where(user => user.UserId == userid).FirstOrDefault();
             _ciPlatformDbContext.Remove(users);
             _ciPlatformDbContext.SaveChanges();
         }
-        void IAdminRepository.UpdateUserAdmin(long userid)
+        User IAdminRepository.UpdateUserAdminget(long userid)
         {
-            User edituser=_ciPlatformDbContext.Users.Where(user=>user.UserId==userid).FirstOrDefault();
-            _ciPlatformDbContext.Update(edituser);
+            User edituser = _ciPlatformDbContext.Users.Where(user => user.UserId == userid).FirstOrDefault();
+            return edituser;
+        }
+        void IAdminRepository.UpdateneedUser(User useredit)
+        {
+            _ciPlatformDbContext.Update(useredit);
+            _ciPlatformDbContext.SaveChanges();
+
+        }
+        List<CmsPage> IAdminRepository.GetCmspages(string searchText)
+        {
+            if (searchText != null)
+            {
+                List<CmsPage>cms =_ciPlatformDbContext.CmsPages.Where(x => x.Title.Contains(searchText)).ToList();
+                return cms;
+            }
+            else
+            {
+                return _ciPlatformDbContext.CmsPages.ToList();
+            }
+        }
+        void IAdminRepository.AddCmsAdmin(CmsPage CMS)
+        {
+            _ciPlatformDbContext.Add(CMS);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        CmsPage IAdminRepository.GetCmsAdmin(long cmsId)
+        {
+            return _ciPlatformDbContext.CmsPages.Where(CmsPage=>CmsPage.CmsPageId == cmsId).FirstOrDefault();
+        }
+        void IAdminRepository.UpdateCmsAdmin(CmsPage cms)
+        {
+            _ciPlatformDbContext.Update(cms);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.DeleteCmsAdmin(long cmsId)
+        {
+            CmsPage cms = _ciPlatformDbContext.CmsPages.Where(CmsPages => CmsPages.CmsPageId == cmsId).FirstOrDefault();
+            _ciPlatformDbContext.Remove(cms);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
     }
 }

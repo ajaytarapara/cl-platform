@@ -2,7 +2,17 @@
     console.log("call");
     loadusers();
 });
-
+var UserId = "";
+var Firstname = "";
+var LastName = "";
+var Password = "";
+var Department = "";
+var EmployeeId = "";
+var PhoneNumber = "";
+var Email = "";
+//=====================================================================================================
+//search ajax in user crud admin
+//======================================================================================================
 var searchusertext = "";
 $("#admin-user-search-bar").on("keyup", function () {
     searchusertext = $("#admin-user-search-bar").val();
@@ -15,7 +25,9 @@ $("#admin-user-search-bar").on("keyup", function () {
         loadusers();
     }
 });
-
+//=====================================================================================================
+//load user ajax in user crud admin
+//======================================================================================================
 function loadusers() {
     searchusertext = $("#admin-user-search-bar").val();
     $.ajax({
@@ -29,7 +41,7 @@ function loadusers() {
             griddata.html("");
             griddata.html(data);
             deleteUser();
-            EditUser();
+            editData();
         },
         failure: function (response) {
             alert("failure");
@@ -40,41 +52,59 @@ function loadusers() {
 
     });
 }
-
+//=====================================================================================================
+//delete user ajax in user crud admin
+//======================================================================================================
 function deleteUser() {
-    console.log($(".deletebtnuser"));
+    var userid = "";
+    $(".deletebtnuser").on("click", function () {
+        userid = this.value;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/DeleteUser_crud",
+            data: { userid: userid },
+            success: function (data) {
+                loadusers();
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
 
-var userid = "";
-$(".deletebtnuser").on("click",function() {
-    userid = this.value;
-    console.log("call", userid);
-    $.ajax({
-        type: "POST",
-        url: "/Admin/DeleteUser_crud",
-        data: { userid: userid },
-        success: function (data) {
-            loadusers();
-        },
-        failure: function (response) {
-            alert("failure");
-        },
-        error: function (response) {
-            alert("Something went Worng");
-        }
+        });
 
     });
-
-});
 }
-var useridedit = "";
-function EditUser() {
+//=====================================================================================================
+//edit user ajax in user crud admin
+//======================================================================================================
+function editData() {
+
+    $(".Editbtnusermodalopen").on("click", function () {
+        UserId = this.id;
+
+        console.log(UserId);
+    });
+
     $(".editbtnuser").on("click", function () {
-        useridedit = $(".Editbtnuser").value;
-        console.log("call", useridedit);
+        Firstname = $("#firstnameedit").val();
+        console.log(Firstname);
+        LastName = $("#lastnamenameedit").val();
+        console.log(LastName);
+        Password = $("#passwordedit").val();
+        Department = $("#departmentedit").val();
+        console.log(Department);
+        EmployeeId = $("#employeeidedit").val();
+        console.log(EmployeeId);
+        PhoneNumber = $("#phonenumberedit").val();
+        console.log(PhoneNumber);
+        Email = $("#emailedit").val();
         $.ajax({
             type: "POST",
             url: "/Admin/editUser_crud",
-            data: { userid: useridedit },
+            data: { UserId: UserId, Firstname: Firstname, LastName: LastName, Password: Password, Department: Department, EmployeeId: EmployeeId, PhoneNumber: PhoneNumber, Email: Email },
             success: function (data) {
                 loadusers();
             },

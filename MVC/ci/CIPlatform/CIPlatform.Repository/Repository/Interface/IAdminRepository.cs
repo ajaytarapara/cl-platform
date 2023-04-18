@@ -20,6 +20,13 @@ namespace CIPlatform.Repository.Repository.Interface
         public void AddUserAdmin(User user);
 
         public void RemoveUserAdmin(long userid);
-        public void UpdateUserAdmin(long userid);
+        public User UpdateUserAdminget(long userid);
+
+        public void UpdateneedUser(User useredit);
+        public List<CmsPage> GetCmspages(string searchText);
+        public void AddCmsAdmin(CmsPage CMS);
+        public void UpdateCmsAdmin(CmsPage cms);
+        public CmsPage GetCmsAdmin(long cmsId);
+        public void DeleteCmsAdmin(long cmsId);
     }
 }
