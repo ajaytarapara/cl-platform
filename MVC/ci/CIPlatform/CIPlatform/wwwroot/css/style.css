@@ -1529,3 +1529,8 @@ footer {
     color: black;
     font-size: medium;
 }
+.notyf{
+justify-content:flex-start !important;
+align-content:end !important;
+border-radius:10px;
+}

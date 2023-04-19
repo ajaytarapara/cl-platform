@@ -63,6 +63,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbWlzc2lvbl9hcHBsaWNhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_mission_theme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbWlzc2lvbl90aGVtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_story.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -101,6 +105,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Mission_Application_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9NaXNzaW9uX0FwcGxpY2F0aW9uX2NydWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Mission_theme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9NaXNzaW9uX3RoZW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Story_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9TdG9yeV9jcnVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_user_crud_table.cshtml]

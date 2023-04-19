@@ -1,0 +1,44 @@
+﻿@model CIPlatform.Entities.ViewModels.Admin_story_crud
+<div class="table-responsive">
+    <table class="table" style="border:1px solid rgb(197, 195, 195);">
+        <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
+                                box-shadow: 0px 2px 3px #0000000F;">
+            <tr>
+                <th>Story Title</th>
+                <th>Full Name</th>
+                <th>Mission Title</th>
+                <th>Action</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.stories != null)
+            {
+
+                @foreach (var item in Model.stories)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.User.FirstName @item.User.LastName</td>
+                        <td>@item.Mission.Title</td>
+                        <td>
+                            <a class="admin-story-view-btn" href="@Url.Action("View_Story","Story",new{ storyid=@item.StoryId})">
+                                view</a>
+                        </td>
+                        <td>
+                            <button id="@item.StoryId" class="adminstoryapprovebtn">
+                                <span class="close">&#10003;</span>
+                            </button>
+                        </td>
+                        <td>
+                            <button id="@item.StoryId" class="admin-story-cancel-btn">
+                                <span class="close">&times;</span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

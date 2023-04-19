@@ -1,3 +1,4 @@
+ @model CIPlatform.Entities.ViewModels.Admin_story_crud
 <link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
 <div class="container-fluid">
     <div class="row">
@@ -6,7 +7,36 @@
         </div>
         <div class="col-xl-10 col-lg-9">
             <div class="card row d-flex p-3" style="flex-direction: row;">
-                @Html.Partial("_Admin_Header")
+                <div class="col-md-6 col-sm-5 p-2 d-flex"
+                     style="font-size:18px;align-items: center;justify-content: space-around;"
+                     id="admin-page-right-nav">
+                    <span style="font-size:30px;cursor:pointer" onclick="adminpage_openNav()"
+                          class="d-lg-none d-flex" style="position:absolute;display: inline-flex;">&#9776;</span>
+                    Thursday,November 3 2022,10:06 AM
+                </div>
+                <div class="col-md-3 col-sm-1">
+                </div>
+                <div class="col-md-3 col-sm-5 d-flex p-2" id="admin-page-left-nav">
+                    <img class="img-fluid" src="@Model.adminavatar" style="border-radius: 50%;height:40px;">
+                    <button value=""
+                            style="border: none; background: white;margin-left: 10px;height: 30px;"
+                            class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @Model.adminname
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        @*         <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            EditProfile", "Account" )">Edit profile</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action(" logout", "Account"
+                            )">Logout</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            VolunteeringTimesheet", "Account" )">VolunteeringTimesheet</a>
+                            </button></li>*@
+                    </ul>
+                </div>
             </div>
             <div class="container mt-3">
                 <h1>
@@ -18,64 +48,21 @@
                          style="align-items: center;display: flex;justify-content:space-between;flex-direction: row;
                          border:1px solid gray;height:50px;border-radius: 10px;margin-left:10px;">
                         <img src="./images/search.png" style="height:20px;">
-                        <input type="text" name="" id="" placeholder="Search" style="width:90%;border: none;">
+                        <input type="text" name="" id="searchstoryadmin" placeholder="Search" style="width:90%;border: none;">
                     </div>
                     <div class="col-5">
                     </div>
                     <div class="col-3 d-flex" style="justify-content: flex-end;">
-                        <button class="p-2"
-                                style="background: none;border: 2px solid orange;border-radius: 15px;
-                               color: orange;font-weight: bolder;width: 150px;margin-right: 0px;">
-                            + Add
-                        </button>
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="table-responsive">
-                        <table class="table" style="border:1px solid rgb(197, 195, 195);">
-                            <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
-                                box-shadow: 0px 2px 3px #0000000F;">
-                                <tr>
-                                    <th>Story Title</th>
-                                    <th>Full Name</th>
-                                    <th>Mission Title</th>
-                                    <th>Action</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, ad.</td>
-                                    <td>ajay Tarpara</td>
-                                    <td>Animal welfare is best for environment</td>
-                                    <td>
-                                        <a class="admin-story-view-btn" href="">view</a>
-                                    </td>
-                                    <td>
-                                        <button class="admin-story-approve-btn">
-                                            <span class="close">&#10003;</span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="admin-story-cancel-btn">
-                                            <span class="close">&times;</span>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="admin-story-delete-btn">
-                                            <img style="width:20px;height: 20px;" class="img-fluid"
-                                                 src="./images/bin.png">
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="row mt-4" id="storydatalist">
+                   @Html.Partial("_Admin_Story_crud")
                 </div>
             </div>
         </div>
     </div>
 </div>
+ @section Javascript{
+<script src="~/js/Admin_story.js" asp-append-version="true"></script>
+  }
 

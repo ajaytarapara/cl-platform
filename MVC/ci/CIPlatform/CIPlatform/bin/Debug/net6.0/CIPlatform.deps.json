@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "CIPlatform/1.0.0": {
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": "1.1.0",
           "CIPlatform.Entities": "1.0.0",
           "CIPlatform.Repository": "1.0.0",
           "MailKit": "3.5.0",
@@ -19,6 +20,21 @@
         },
         "runtime": {
           "CIPlatform.dll": {}
+        }
+      },
+      "AspNetCoreHero.ToastNotification/1.1.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/AspNetCoreHero.ToastNotification.Views.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          },
+          "lib/net5.0/AspNetCoreHero.ToastNotification.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
         }
       },
       "Azure.Core/1.25.0": {
@@ -2508,6 +2524,7 @@
       },
       "CIPlatform.Entities/1.0.0": {
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": "1.1.0",
           "MailKit": "3.5.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.1.23111.4"
         },
@@ -2517,6 +2534,7 @@
       },
       "CIPlatform.Repository/1.0.0": {
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": "1.1.0",
           "CIPlatform.Entities": "1.0.0",
           "MailKit": "3.5.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.1.23111.4"
@@ -2532,6 +2550,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNetCoreHero.ToastNotification/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bCAYeD+b2pRelcOrHMNtYGVtRq+J2u+SAaND33v3u6qZCatHf4XSZOEPhBfCKJAjMGvsggtPKaNFnrv4VhwOfA==",
+      "path": "aspnetcorehero.toastnotification/1.1.0",
+      "hashPath": "aspnetcorehero.toastnotification.1.1.0.nupkg.sha512"
     },
     "Azure.Core/1.25.0": {
       "type": "package",

@@ -15,8 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/6ttqk19gy8444y0iatxsawtnr5aztoh7n93ugdihhzk62ku8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
@@ -29,5 +27,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @RenderSection("Javascript",required:false)
     @await RenderSectionAsync("Scripts",required:false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("Notyf")
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

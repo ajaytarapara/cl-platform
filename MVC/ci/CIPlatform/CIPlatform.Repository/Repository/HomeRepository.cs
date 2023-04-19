@@ -58,7 +58,7 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x => x.City);
         }
-        
+
 
         IEnumerable<string> IHomeRepository.GetMissionThemestitle()
         {

@@ -4,7 +4,7 @@
 
     if (@Item.storystatus == "approved")
     {
-        <div class="card mb-5" style="width: 25rem;height: 486px;display: flex;">
+        <div class="card mb-5 mx-3" style="width: 25rem;height: 486px;display: flex;">
             <div class="howerimg" style="">
                 @{
                     string[] mediapath = @Item.storymediapath.ToString().Split(",");
@@ -12,7 +12,7 @@
                 <img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;height:198px;">
                 @*<img src="~/images/uploads/@mediapath[0]" alt="Avatar" class="howermainimage" style="width: 106%; margin-left: -11px;">*@
                 <div class="overlay overlayforhower">
-                    <div class="howertext p-2">
+                    <div class="howertext">
                         <button id="btnhower">
                             <a href="@Url.Action("View_Story", "Story", new { storyid = @Item.storyid })"
                        style="color:white;text-decoration:none;">View details</a>

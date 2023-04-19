@@ -1090,3 +1090,5 @@ D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
+D:\cl platform\MVC\ci\CIPlatform\CIPlatform\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
+D:\cl platform\MVC\ci\CIPlatform\CIPlatform\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll

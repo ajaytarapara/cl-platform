@@ -9,6 +9,7 @@ using System.Collections;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace CIPlatform.Controllers
 {
@@ -19,13 +20,15 @@ namespace CIPlatform.Controllers
         private readonly IConfiguration configuration;
         private readonly IHomeRepository _homeRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly INotyfService _notyf;
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
-, IHomeRepository homeRepository, IWebHostEnvironment webHostEnvironment)
+, IHomeRepository homeRepository, IWebHostEnvironment webHostEnvironment, INotyfService notyf)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
             _homeRepository = homeRepository;
+            _notyf = notyf;
             _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Login()
@@ -54,7 +57,7 @@ namespace CIPlatform.Controllers
             if (ModelState.IsValid)
             {
                 HttpContext.Session.SetString("useremail", emailId);
-
+                _notyf.Success("lOGIN Successfully", 3);
                 return RedirectToAction("Index", "Home");
             }
             return Login();

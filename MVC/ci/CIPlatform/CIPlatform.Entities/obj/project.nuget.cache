@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3aMYx3qm6Nk5/wcC6g5NgQNqe+PHTgPmjE6njtyQYss9PNw5Ij008hikohoNjaOo+CMANuve4drOmOIKDhwe3g==",
+  "dgSpecHash": "IsevzYF64za73REoeZmfFc2wT4T2uPU9exr2WN7tw9ZCEzSh2Kp9vKqHnz5mdprh4WrMLwc6flrtO4NkGZICwQ==",
   "success": true,
   "projectFilePath": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\tatva\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -43,6 +44,7 @@
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\mimekit\\3.5.0\\mimekit.3.5.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\tatva\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
