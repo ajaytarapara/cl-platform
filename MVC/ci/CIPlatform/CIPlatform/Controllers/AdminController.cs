@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.DataModels;
+﻿
+using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
@@ -12,10 +13,12 @@ namespace CIPlatform.Controllers
         private readonly IAdminRepository _adminrepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserRepository _userRepository;
-        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment)
         {
             _adminrepository = adminRepository;
             _httpContextAccessor = httpContextAccessor;
+            _webHostEnvironment = webHostEnvironment;
             _userRepository = userRepository;
         }
         public IActionResult Admin_login()
@@ -88,9 +91,9 @@ namespace CIPlatform.Controllers
             return View(Admin_user_crudModel);
         }
         [HttpPost]
-        public IActionResult User_crud(string searchtext ,int pageNumber, int pageSize)
+        public IActionResult User_crud(string searchtext, int pageNumber, int pageSize)
         {
-            AdminPageList<User> users= _adminrepository.GetUsers(searchtext, pageNumber, pageSize);
+            AdminPageList<User> users = _adminrepository.GetUsers(searchtext, pageNumber, pageSize);
             return PartialView("_Admin_user_crud_table", users);
         }
         [HttpPost]
@@ -367,7 +370,7 @@ namespace CIPlatform.Controllers
             int pageSize = 2;
             string searchText = "";
             AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
-            return PartialView("_Admin_Mission_Application_crud",missionapplication);
+            return PartialView("_Admin_Mission_Application_crud", missionapplication);
 
         }
         [HttpPost]
@@ -463,7 +466,7 @@ namespace CIPlatform.Controllers
                 Admin adminobj = _adminrepository.findadmin(adminemail);
                 _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 _Theme_CrudModels.adminavatar = "./images/user1.png";
-                _Theme_CrudModels.themeId =themeId;
+                _Theme_CrudModels.themeId = themeId;
                 MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
                 _Theme_CrudModels.themeTitle = themes.Title;
             }
@@ -475,7 +478,7 @@ namespace CIPlatform.Controllers
         {
             long themeId = (long)_Theme_CrudModels.themeId;
             MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
-            themes.UpdatedAt= DateTime.Now;
+            themes.UpdatedAt = DateTime.Now;
             themes.Title = _Theme_CrudModels.themeTitle;
             _adminrepository.EditThemeAdmin(themes);
             return View(_Theme_CrudModels);
@@ -484,10 +487,10 @@ namespace CIPlatform.Controllers
         public IActionResult Admin_Delete_themes(long themeId)
         {
             MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
-            themes.DeletedAt= DateTime.Now;
+            themes.DeletedAt = DateTime.Now;
             _adminrepository.DeleteThemeAdmin(themes);
             string searchText = "";
-            int pageNumber=1;
+            int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<MissionTheme> missionthemes = _adminrepository.GetMissionThemeAdmin(searchText, pageNumber, pageSize);
             return PartialView("_Admin_Mission_theme", missionthemes);
@@ -559,8 +562,8 @@ namespace CIPlatform.Controllers
                 Admin adminobj = _adminrepository.findadmin(adminemail);
                 SkillModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 SkillModels.adminavatar = "./images/user1.png";
-                SkillModels.SkillId=skillId;
-                Skill skills=_adminrepository.GetSkill(skillId);
+                SkillModels.SkillId = skillId;
+                Skill skills = _adminrepository.GetSkill(skillId);
                 SkillModels.SkillTitle = skills.SkillName;
             }
             return View(SkillModels);
@@ -568,14 +571,135 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Admin_edit_Skill(Admin_skill_Model SkillModels)
         {
-            long skillId=(long)SkillModels.SkillId;
-            Skill skill=_adminrepository.GetSkill(skillId);
+            long skillId = (long)SkillModels.SkillId;
+            Skill skill = _adminrepository.GetSkill(skillId);
             skill.SkillName = SkillModels.SkillTitle;
             skill.UpdatedAt = DateTime.Now;
             _adminrepository.EditSkill(skill);
             return RedirectToAction("Admin_skill");
         }
+        [HttpPost]
+        public IActionResult Delete_Skill(int skillId)
+        {
+            Skill skill = _adminrepository.GetSkill(skillId);
+            skill.DeletedAt = DateTime.Now;
+            _adminrepository.DeleteSkill(skill);
+            return RedirectToAction("Admin_skill");
+        }
+        //=========================================================================================================================
+        ////Banner admin part crud
+        //==================================================================================================================
+        public IActionResult Admin_Banner(Admin_Banner_crudModel banner_CrudModel)
+        {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
 
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            banner_CrudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            banner_CrudModel.adminavatar = "./images/user1.png";
+            return View(banner_CrudModel);
+        }
+        [HttpPost]
+        public IActionResult Admin_Banner(string searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Banner> banner = _adminrepository.GetBanner(searchText, pageNumber, pageSize);
+            return PartialView("Admin_Banner_crud", banner);
+
+        }
+        public IActionResult Admin_Add_Banner()
+        {
+            Admin_Banner_crudModel banner = new Admin_Banner_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            banner.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            banner.adminavatar = "./images/user1.png";
+            return View(banner);
+
+        }
+        [HttpPost]
+        public IActionResult Admin_Add_Banner(Admin_Banner_crudModel banner, IFormFile? filename)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            Banner banner1 = new Banner();
+            if (filename != null)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                banner1.Image = fileName;
+                var uploads = Path.Combine(wwwRootPath, @"images\Banner");
+                var extension = Path.GetExtension(filename.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    filename.CopyTo(fileStreams);
+                }
+                banner1.Image = @"\images\Banner\" + fileName + extension;
+            }
+            banner1.Text = banner.text;
+
+            banner1.CreatedAt = DateTime.Now;
+            banner1.SortOrder = (int)banner.sortorder;
+            _adminrepository.AddBannerAdmin(banner1);
+            return RedirectToAction("Admin_Add_Banner", "Admin");
+        }
+        public IActionResult Admin_Edit_Banner(long bannerId)
+        {
+            Admin_Banner_crudModel banners = new Admin_Banner_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            banners.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            banners.adminavatar = "./images/user1.png";
+            banners.bannerid = (int)bannerId;
+            return View(banners);
+
+        }
+        [HttpPost]
+        public IActionResult Admin_Edit_Banner(Admin_Banner_crudModel banners, IFormFile? filename)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            long bannerId = (long)banners.bannerid;
+            Banner banner1 = _adminrepository.GetBanner(bannerId);
+            if (filename != null)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                banner1.Image = fileName;
+                var uploads = Path.Combine(wwwRootPath, @"images\Banner");
+                var extension = Path.GetExtension(filename.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    filename.CopyTo(fileStreams);
+                }
+                banner1.Image = @"\images\Banner\" + fileName + extension;
+            }
+            banner1.Text = banners.text;
+
+            banner1.UpdatedAt = DateTime.Now;
+            banner1.SortOrder = (int)banners.sortorder;
+            _adminrepository.EditBannerAdmin(banner1);
+            string searchText = "";
+            int pageNumber = 1;
+            int pageSize = 2;
+            AdminPageList<Banner> banner = _adminrepository.GetBanner(searchText, pageNumber, pageSize);
+            return RedirectToAction("Admin_Banner", banner);
+        }
         public IActionResult Admin_mission()
         {
             return View();

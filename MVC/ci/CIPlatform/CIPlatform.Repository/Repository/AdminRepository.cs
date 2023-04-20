@@ -270,5 +270,36 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Skills.Update(skill);
             _ciPlatformDbContext.SaveChanges();
         }
+        AdminPageList<Banner> IAdminRepository.GetBanner(string searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Banner> Banner;
+            if (searchText != null)
+            {
+
+                Banner = _ciPlatformDbContext.Banners.Where
+                    (Banner=>Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).ToList();
+            }
+            else
+            {
+                Banner = _ciPlatformDbContext.Banners.Where(Banner => Banner.DeletedAt == null).ToList();
+            }
+            var totalCounts = Banner.Count();
+            var records = Banner.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Banner>(records, totalCounts);
+        }
+        void IAdminRepository.AddBannerAdmin(Banner banner1)
+        {
+            _ciPlatformDbContext.Add(banner1);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        Banner IAdminRepository.GetBanner(long bannerId)
+        {
+            return _ciPlatformDbContext.Banners.Where(banner=>banner.BannerId==bannerId).FirstOrDefault();   
+        }
+        void IAdminRepository.EditBannerAdmin(Banner banner1)
+        {
+            _ciPlatformDbContext.Update(banner1);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

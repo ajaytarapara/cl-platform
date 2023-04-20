@@ -3,7 +3,12 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using CIPlatform.Entities.DataModels;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
-using Microsoft.EntityFrameworkCore;var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+
+var builder = WebApplication.CreateBuilder(args);
 
  //Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,11 +30,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
 var app = builder.Build();
-
-
-
+var myAssembly = typeof(ViewComponent).Assembly;
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -45,10 +47,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.UseSession();
-app.UseNotyf();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();
+

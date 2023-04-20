@@ -191,5 +191,9 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.SaveChanges();
 
         }
+        List<Banner> IUserRepository.getbanner()
+        {
+            return _ciPlatformDbContext.Banners.ToList();
+        }
     }
 }

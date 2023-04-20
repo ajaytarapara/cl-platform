@@ -117,7 +117,8 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnName("image");
             entity.Property(e => e.SortOrder).HasColumnName("sort_order");
             entity.Property(e => e.Text)
-                .HasColumnType("text")
+                .HasMaxLength(500)
+                .IsUnicode(false)
                 .HasColumnName("text");
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
         });

@@ -1,0 +1,72 @@
+﻿@model CIPlatform.Entities.ViewModels.Admin_Banner_crudModel
+<link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation">
+            @Html.Partial("_Admin_dashboard")
+        </div>
+        <div class="col-xl-10 col-lg-9">
+            <div class="card row d-flex p-3" style="flex-direction: row;">
+                <div class="col-md-6 col-sm-5 p-2 d-flex"
+                     style="font-size:18px;align-items: center;justify-content: space-around;"
+                     id="admin-page-right-nav">
+                    <span style="font-size:30px;cursor:pointer" onclick="adminpage_openNav()"
+                          class="d-lg-none d-flex" style="position:absolute;display: inline-flex;">&#9776;</span>
+                    Thursday,November 3 2022,10:06 AM
+                </div>
+                <div class="col-md-3 col-sm-1">
+                </div>
+                <div class="col-md-3 col-sm-5 d-flex p-2" id="admin-page-left-nav">
+                    <img class="img-fluid" src="@Model.adminavatar" style="border-radius: 50%;height:40px;">
+                    <button value=""
+                            style="border: none; background: white;margin-left: 10px;height: 30px;"
+                            class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @Model.adminname
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        @*         <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            EditProfile", "Account" )">Edit profile</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action(" logout", "Account"
+                            )">Logout</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            VolunteeringTimesheet", "Account" )">VolunteeringTimesheet</a>
+                            </button></li>*@
+                    </ul>
+                </div>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                <div class="row card mt-4 mx-3">
+                    <div class="container">
+                        <div class="row admin-add-cms-heading p-1">
+                            <h1>
+                                Add Banner
+                            </h1>
+                        </div>
+                        <label asp-for="bannerimg"  class="mt-2">Banner img</label>
+                        <br />
+                        <input type="file" name="filename"/>
+                        <div class="mt-3">
+                            <label asp-for="text" class="mt-2 p-2">Banner Text</label><br>
+                            <input type="text" asp-for="text" />
+                            <span class="text-danger" asp-validation-for="text"></span>
+                        </div>
+                        <label asp-for="sortorder" class="mt-2">Sort Order</label><br>
+                        <input asp-for="sortorder" class="mt-2 p-2 mb-3" type="number" style="width:100%;">
+                        <span class="text-danger" asp-validation-for="sortorder"></span>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:flex-end" class="container-fluid pb-3 mt-3">
+                    <button style="background-color: transparent;color: black;padding: 10px;border:2px solid black;
+                     border-radius: 10px;margin-right: 10px;width: 100px;">
+                    <a href="@Url.Action("Admin_Banner","Admin")" style="text-decoration:none;color:black">cancel</a></button>
+                    <button type="submit" style="background-color: transparent;color: orange;
+                     border:2px solid orange;color:orange;border-radius: 10px;padding: 10px;width: 100px;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

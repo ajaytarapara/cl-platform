@@ -67,5 +67,12 @@ namespace CIPlatform.Repository.Repository.Interface
         public Skill GetSkill(long skillId);
         public void EditSkill(Skill skill);
         public void DeleteSkill(Skill skill);
+        //========================
+        //Banner crud
+        //==========================
+        public AdminPageList<Banner> GetBanner(string searchText, int pageNumber, int pageSize);
+        public void AddBannerAdmin(Banner banner1);
+        public Banner GetBanner(long bannerId);
+        public void EditBannerAdmin(Banner banner1);
     }
 }

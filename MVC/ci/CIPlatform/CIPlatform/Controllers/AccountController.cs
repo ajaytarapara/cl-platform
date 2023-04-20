@@ -9,7 +9,6 @@ using System.Collections;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace CIPlatform.Controllers
 {
@@ -20,20 +19,20 @@ namespace CIPlatform.Controllers
         private readonly IConfiguration configuration;
         private readonly IHomeRepository _homeRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly INotyfService _notyf;
         public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration
-, IHomeRepository homeRepository, IWebHostEnvironment webHostEnvironment, INotyfService notyf)
+, IHomeRepository homeRepository, IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
             _homeRepository = homeRepository;
-            _notyf = notyf;
             _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Login()
         {
-            return View();
+            LoginModel model = new LoginModel();
+            model.Banner =_userRepository.getbanner();
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -57,14 +56,15 @@ namespace CIPlatform.Controllers
             if (ModelState.IsValid)
             {
                 HttpContext.Session.SetString("useremail", emailId);
-                _notyf.Success("lOGIN Successfully", 3);
                 return RedirectToAction("Index", "Home");
             }
             return Login();
         }
         public IActionResult ForgotPassword()
         {
-            return View();
+            ForgotPasswordModel model = new ForgotPasswordModel();
+            model.Banner = _userRepository.getbanner();
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -100,7 +100,9 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Register()
         {
-            return View();
+            RegistrationModel model = new RegistrationModel();
+            model.Banner = _userRepository.getbanner();
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -147,6 +149,7 @@ namespace CIPlatform.Controllers
             }
             NewPasswordModel newPasswordModel = new NewPasswordModel();
             newPasswordModel.token = token;
+            newPasswordModel.Banner = _userRepository.getbanner();
             return View(newPasswordModel);
         }
 

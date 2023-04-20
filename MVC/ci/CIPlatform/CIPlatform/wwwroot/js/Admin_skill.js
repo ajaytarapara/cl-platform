@@ -31,6 +31,7 @@ function loadskill() {
             $("#skilldatalist").html("");
             $("#skilldatalist").html(data);
             loadPagination();
+            skilldelete();
             //applicationapprove();
             //applicationdelete();
         },
@@ -74,5 +75,26 @@ function loadPagination() {
             }
         }
         loadskill();
+    });
+}
+var skillidfordelete = "";
+function skilldelete() {
+    $(".skilldeletebtn").on("click", function () {
+        skillidfordelete = this.id;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Delete_Skill",
+            data: { skillId: skillidfordelete },
+            success: function (data) {
+                loadskill();
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
     });
 }

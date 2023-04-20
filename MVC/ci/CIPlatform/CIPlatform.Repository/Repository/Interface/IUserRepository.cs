@@ -40,5 +40,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void edittimesheet(long timesheetid,string hours, string minutes,long MissionId,string Notes, string DateVolunteered);
 
         public void edittimesheetgoal(long timesheetid, long MissionId, string Notes,long Action,string DateVolunteered);
+
+        public List<Banner> getbanner();
     }
 }
