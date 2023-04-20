@@ -13,7 +13,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? adminname { get; set; }
         public string? adminavatar { get; set; }
         public Admin_NavbarModel? Navbar { get; set; }
-        public List<User>? Users { get; set; }
         public long? UserId { get; set; }
         [Required]
         public string? FirstName { get; set; }

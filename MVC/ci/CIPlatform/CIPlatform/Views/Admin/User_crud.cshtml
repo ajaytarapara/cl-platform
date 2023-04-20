@@ -1,3 +1,4 @@
+@using CIPlatform.Entities.DataModels
 @model CIPlatform.Entities.ViewModels.Admin_user_crudModel
 
 <link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
@@ -34,7 +35,6 @@
                     </div>
                 </div>
                 <div class="row mt-4" id="usertablelist">
-                    @Html.Partial("_Admin_user_crud_table")
                 </div>
             </div>
         </div>

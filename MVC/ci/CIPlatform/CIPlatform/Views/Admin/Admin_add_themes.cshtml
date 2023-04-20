@@ -1,4 +1,4 @@
- @model CIPlatform.Entities.ViewModels.Admin_story_crud
+﻿@model CIPlatform.Entities.ViewModels.Admin_mission_theme_crudModel
 <link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
 <div class="container-fluid">
     <div class="row">
@@ -38,30 +38,24 @@
                     </ul>
                 </div>
             </div>
-            <div class="container mt-3">
-                <h1>
-                    Story
-                </h1>
-                <hr>
-                <div class="row mt-4" style="justify-content: space-between;">
-                    <div class="col-3 px-1"
-                         style="align-items: center;display: flex;justify-content:space-between;flex-direction: row;
-                         border:1px solid gray;height:50px;border-radius: 10px;margin-left:10px;">
-                        <img src="./images/search.png" style="height:20px;">
-                        <input type="text" name="" id="searchstoryadmin" placeholder="Search" style="width:90%;border: none;">
+            <form method="post" action="AddAdmin_mission_theme">
+            <div class="row card mt-4 mx-3">
+                <div class="container">
+                    <div class="row admin-add-cms-heading p-1">
+                        <h1>
+                            Add Themes
+                        </h1>
                     </div>
-                    <div class="col-5">
-                    </div>
-                    <div class="col-3 d-flex" style="justify-content: flex-end;">
-                    </div>
-                </div>
-                <div class="row mt-4" id="storydatalist">
+                    <label class="mt-2" asp-for="themeTitle">Title</label><br>
+                    <input class="mt-2 p-1 mb-3" asp-for="themeTitle" type="text" style="width:100%;">
+                    <span class="text-danger" asp-validation-for="themeTitle"></span>
                 </div>
             </div>
+            <div style="display:flex;justify-content:flex-end" class="container-fluid pb-3 mt-3">
+                <button style="background-color: transparent;color: black;padding: 10px;border:2px solid black;border-radius: 10px;margin-right: 10px;width: 100px;"><a href="@Url.Action("Admin_mission_theme","Admin")"style="text-decoration:none;color:black">cancel</a></button>
+                <button type="submit" style="background-color: transparent;color: orange;border:2px solid orange;color:orange;border-radius: 10px;padding: 10px;width: 100px;">Save</button>
+            </div>
+            </form>
         </div>
     </div>
 </div>
- @section Javascript{
-<script src="~/js/Admin_story.js" asp-append-version="true"></script>
-  }
-

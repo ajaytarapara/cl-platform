@@ -88,13 +88,11 @@ namespace CIPlatform.Controllers
             return View(Admin_user_crudModel);
         }
         [HttpPost]
-        public IActionResult User_crud(string searchtext)
+        public IActionResult User_crud(string searchtext ,int pageNumber, int pageSize)
         {
-            Admin_user_crudModel admin_User_Crud = new Admin_user_crudModel();
-            admin_User_Crud.Users = _adminrepository.GetUsers(searchtext).ToList();
-            return PartialView("_Admin_user_crud_table", admin_User_Crud);
+            AdminPageList<User> users= _adminrepository.GetUsers(searchtext, pageNumber, pageSize);
+            return PartialView("_Admin_user_crud_table", users);
         }
-
         [HttpPost]
         public IActionResult AddUser_crud(Admin_user_crudModel model)
         {
@@ -189,16 +187,15 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cms_crud(string searchText)
+        public IActionResult Cms_crud(string searchText, int pageNumber, int pageSize)
         {
-            Admin_cms_crudModel _Cms_ = new Admin_cms_crudModel();
-            _Cms_.CmsPage = _adminrepository.GetCmspages(searchText).ToList();
+            AdminPageList<CmsPage> _Cms_ = _adminrepository.GetCmspages(searchText, pageNumber, pageSize);
             return PartialView("_Admin_Cms", _Cms_);
         }
         public IActionResult Admin_add_cms()
         {
             Admin_cms_crudModel _Cms_CrudModels = new Admin_cms_crudModel();
-            string adminSessionEmailId = HttpContext.Session.GetString("Email");
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
 
             if (adminSessionEmailId == null)
             {
@@ -240,7 +237,7 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Admin_edit_cms(int CmsId)
         {
-            Admin_cms_crudModel admin_Cms_=new Admin_cms_crudModel();
+            Admin_cms_crudModel admin_Cms_ = new Admin_cms_crudModel();
             string adminSessionEmailId = HttpContext.Session.GetString("useremail");
 
             if (adminSessionEmailId == null)
@@ -251,12 +248,12 @@ namespace CIPlatform.Controllers
             Admin adminobj = _adminrepository.findadmin(adminemail);
             admin_Cms_.adminname = adminobj.FirstName + " " + adminobj.LastName;
             admin_Cms_.adminavatar = "./images/user1.png";
-            admin_Cms_.CmsId= CmsId;
+            admin_Cms_.CmsId = CmsId;
             return View(admin_Cms_);
         }
 
         [HttpPost]
-        public IActionResult Admin_edit_cms(long CmsId,Admin_cms_crudModel cms_CrudModels)
+        public IActionResult Admin_edit_cms(long CmsId, Admin_cms_crudModel cms_CrudModels)
         {
             string adminSessionEmailId = HttpContext.Session.GetString("useremail");
 
@@ -271,7 +268,7 @@ namespace CIPlatform.Controllers
                 Admin adminobj = _adminrepository.findadmin(adminemail);
                 cms_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 cms_CrudModels.adminavatar = "./images/user1.png";
-                CmsPage cms=_adminrepository.GetCmsAdmin(cmsId);
+                CmsPage cms = _adminrepository.GetCmsAdmin(cmsId);
                 cms.Title = cms_CrudModels.Title;
                 cms.Description = cms_CrudModels.Description;
                 cms.Slug = cms_CrudModels.Slug;
@@ -305,23 +302,24 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult Admin_story(string searchText)
+        public IActionResult Admin_story(string searchText, int pageNumber, int pageSize)
         {
-            Admin_story_crud story_Crud = new Admin_story_crud();
-            story_Crud.stories= _adminrepository.GetStoryAdmin(searchText).ToList();
-            return PartialView("_Admin_Story_crud", story_Crud);
+            AdminPageList<Story> stories = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Story_crud", stories);
         }
 
         [HttpPost]
         public IActionResult ApproveAdmin_story(long storyId)
         {
-            Story story=_adminrepository.GetstoryForApprove(storyId);
+            Story story = _adminrepository.GetstoryForApprove(storyId);
             story.Status = "approved";
             _adminrepository.ApproveStory(story);
             Admin_story_crud story_Crud = new Admin_story_crud();
-            string searchText="";
-            story_Crud.stories = _adminrepository.GetStoryAdmin(searchText).ToList();
-            return PartialView("_Admin_Story_crud", story_Crud);
+            string searchText = "";
+            int pageNumber = 1;
+            int pageSize = 2;
+            AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Story_crud", storyLIST);
 
         }
         [HttpPost]
@@ -330,10 +328,11 @@ namespace CIPlatform.Controllers
             Story story = _adminrepository.GetstoryForApprove(storyId);
             story.Status = "rejected";
             _adminrepository.DeleteStory(story);
-            Admin_story_crud story_Crud = new Admin_story_crud();
             string searchText = "";
-            story_Crud.stories = _adminrepository.GetStoryAdmin(searchText).ToList();
-            return PartialView("_Admin_Story_crud", story_Crud);
+            int pageNumber = 1;
+            int pageSize = 2;
+            AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Story_crud", storyLIST);
         }
         //=========================================================================================================================
         ////mission application admin part crud
@@ -349,15 +348,14 @@ namespace CIPlatform.Controllers
             string adminemail = adminSessionEmailId;
             Admin adminobj = _adminrepository.findadmin(adminemail);
             mission_Application.adminname = adminobj.FirstName + " " + adminobj.LastName;
-            mission_Application.adminavatar= "./images/user1.png";
+            mission_Application.adminavatar = "./images/user1.png";
             return View(mission_Application);
         }
         [HttpPost]
-        public IActionResult Admin_mission_application(string searchText)
+        public IActionResult Admin_mission_application(string searchText, int pageNumber, int pageSize)
         {
-           Admin_mission_theme _Application = new Admin_mission_theme();
-            _Application.missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText).ToList();
-            return PartialView("_Admin_Mission_Application_crud", _Application);
+            AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Mission_Application_crud", missionapplication);
         }
         [HttpPost]
         public IActionResult ApproveAdmin_mission_application(long missionAppId)
@@ -365,10 +363,11 @@ namespace CIPlatform.Controllers
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "approved";
             _adminrepository.ApproveApplication(application);
-            Admin_mission_theme msAPP = new Admin_mission_theme();
+            int pageNumber = 1;
+            int pageSize = 2;
             string searchText = "";
-            msAPP.missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText).ToList();
-            return PartialView("_Admin_Mission_Application_crud", msAPP);
+            AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Mission_Application_crud",missionapplication);
 
         }
         [HttpPost]
@@ -377,10 +376,12 @@ namespace CIPlatform.Controllers
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "rejected";
             _adminrepository.DeleteApplication(application);
-            Admin_mission_theme msAPP = new Admin_mission_theme();
+            int pageNumber = 1;
+            int pageSize = 2;
             string searchText = "";
-            msAPP.missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText).ToList();
-            return PartialView("_Admin_Mission_Application_crud", msAPP);
+            AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Mission_Application_crud", missionapplication);
+
         }
         //=========================================================================================================================
         ////mission theme admin part crud
@@ -400,12 +401,181 @@ namespace CIPlatform.Controllers
             return View(theme);
         }
         [HttpPost]
-        public IActionResult Admin_mission_theme(string searchText)
+        public IActionResult Admin_mission_theme(string searchText, int pageNumber, int pageSize)
         {
-            Admin_mission_theme_crudModel _theme = new Admin_mission_theme_crudModel();
-            _theme.missionthemes = _adminrepository.GetMissionApplicationAdmin(searchText).ToList();
-            return PartialView("_Admin_Mission_Application_crud", _theme);
+            AdminPageList<MissionTheme> missionthemes = _adminrepository.GetMissionThemeAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Mission_theme", missionthemes);
+
         }
+        public IActionResult Admin_add_themes()
+        {
+            Admin_mission_theme_crudModel _Theme_CrudModels = new Admin_mission_theme_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                Admin adminobj = _adminrepository.findadmin(adminemail);
+                _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                _Theme_CrudModels.adminavatar = "./images/user1.png";
+            }
+            return View(_Theme_CrudModels);
+        }
+        [HttpPost]
+        public IActionResult AddAdmin_mission_theme(Admin_mission_theme_crudModel _Theme_CrudModels)
+        {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                Admin adminobj = _adminrepository.findadmin(adminemail);
+                _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                _Theme_CrudModels.adminavatar = "./images/user1.png";
+                MissionTheme theme = new MissionTheme();
+                theme.Title = _Theme_CrudModels.themeTitle;
+                theme.CreatedAt = DateTime.Now;
+                _adminrepository.AddThemeAdmin(theme);
+                return RedirectToAction("Admin_add_themes", "Admin");
+            }
+
+        }
+        public IActionResult Admin_Edit_themes(long themeId)
+        {
+            Admin_mission_theme_crudModel _Theme_CrudModels = new Admin_mission_theme_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                Admin adminobj = _adminrepository.findadmin(adminemail);
+                _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                _Theme_CrudModels.adminavatar = "./images/user1.png";
+                _Theme_CrudModels.themeId =themeId;
+                MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
+                _Theme_CrudModels.themeTitle = themes.Title;
+            }
+            return View(_Theme_CrudModels);
+
+        }
+        [HttpPost]
+        public IActionResult Admin_Edit_themes(Admin_mission_theme_crudModel _Theme_CrudModels)
+        {
+            long themeId = (long)_Theme_CrudModels.themeId;
+            MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
+            themes.UpdatedAt= DateTime.Now;
+            themes.Title = _Theme_CrudModels.themeTitle;
+            _adminrepository.EditThemeAdmin(themes);
+            return View(_Theme_CrudModels);
+        }
+        [HttpPost]
+        public IActionResult Admin_Delete_themes(long themeId)
+        {
+            MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
+            themes.DeletedAt= DateTime.Now;
+            _adminrepository.DeleteThemeAdmin(themes);
+            string searchText = "";
+            int pageNumber=1;
+            int pageSize = 2;
+            AdminPageList<MissionTheme> missionthemes = _adminrepository.GetMissionThemeAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_Mission_theme", missionthemes);
+        }
+
+        //=========================================================================================================================
+        ////mission Skill admin part crud
+        //============================================================================================================================
+        public IActionResult Admin_skill(Admin_skill_Model _Skill_Model)
+        {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            _Skill_Model.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            _Skill_Model.adminavatar = "./images/user1.png";
+            return View(_Skill_Model);
+        }
+        [HttpPost]
+        public IActionResult Admin_skill(string searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Skill> skill = _adminrepository.GetSkillAdmin(searchText, pageNumber, pageSize);
+            return PartialView("_Admin_skill_crud", skill);
+
+        }
+        public IActionResult Admin_Add_Skill()
+        {
+            Admin_skill_Model SkillModels = new Admin_skill_Model();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                Admin adminobj = _adminrepository.findadmin(adminemail);
+                SkillModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                SkillModels.adminavatar = "./images/user1.png";
+            }
+            return View(SkillModels);
+        }
+        [HttpPost]
+        public IActionResult Admin_Add_Skill(Admin_skill_Model SkillModels)
+        {
+            Skill skill = new Skill();
+            skill.SkillName = SkillModels.SkillTitle;
+            skill.CreatedAt = DateTime.Now;
+            _adminrepository.AddSkillAdmin(skill);
+            return RedirectToAction("Admin_add_Skill", "Admin");
+        }
+        public IActionResult Admin_edit_skill(long skillId)
+        {
+            Admin_skill_Model SkillModels = new Admin_skill_Model();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                Admin adminobj = _adminrepository.findadmin(adminemail);
+                SkillModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                SkillModels.adminavatar = "./images/user1.png";
+                SkillModels.SkillId=skillId;
+                Skill skills=_adminrepository.GetSkill(skillId);
+                SkillModels.SkillTitle = skills.SkillName;
+            }
+            return View(SkillModels);
+        }
+        [HttpPost]
+        public IActionResult Admin_edit_Skill(Admin_skill_Model SkillModels)
+        {
+            long skillId=(long)SkillModels.SkillId;
+            Skill skill=_adminrepository.GetSkill(skillId);
+            skill.SkillName = SkillModels.SkillTitle;
+            skill.UpdatedAt = DateTime.Now;
+            _adminrepository.EditSkill(skill);
+            return RedirectToAction("Admin_skill");
+        }
+
         public IActionResult Admin_mission()
         {
             return View();

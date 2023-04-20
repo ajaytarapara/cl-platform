@@ -10,6 +10,8 @@ var Department = "";
 var EmployeeId = "";
 var PhoneNumber = "";
 var Email = "";
+var pageSize = 2;
+var pageNumber = 1;
 //=====================================================================================================
 //search ajax in user crud admin
 //======================================================================================================
@@ -33,13 +35,12 @@ function loadusers() {
     $.ajax({
         type: "POST",
         url: "/Admin/User_crud",
-        data: { searchtext: searchusertext },
+        dataType: "html",
+        data: { searchtext: searchusertext, pageNumber: pageNumber, pageSize: pageSize },
         success: function (data) {
-            var html = "";
-            var griddata = $("#usertablelist");
-
-            griddata.html("");
-            griddata.html(data);
+            $("#usertablelist").html("");
+            $("#usertablelist").html(data);
+            loadPagination();
             deleteUser();
             editData();
         },
@@ -50,6 +51,39 @@ function loadusers() {
             alert("Something went Worng");
         }
 
+    });
+}
+//========================================================================
+//Pagination
+//========================================================================
+function loadPagination() {
+    var totalPages = parseInt($(".Pagination-total")[0].id.slice(6));
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        e.preventDefault();
+        paging = $(this).text();
+        if (!isNaN(paging)) {
+            pageNumber = parseInt(paging);
+        }
+        else {
+            if (paging == "<") {
+                if (pageNumber != 1) {
+                    --pageNumber;
+                }
+            }
+            else if (paging == ">") {
+                if (pageNumber != totalPages) {
+                    ++pageNumber;
+                }
+            }
+            else if (paging == ">>") {
+                pageNumber = totalPages;
+            }
+            else if (paging == "<<") {
+                pageNumber = 1;
+            }
+        }
+        loadusers();
     });
 }
 //=====================================================================================================

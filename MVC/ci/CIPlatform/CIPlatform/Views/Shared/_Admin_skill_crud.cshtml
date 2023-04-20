@@ -1,32 +1,32 @@
 ﻿@using CIPlatform.Entities.DataModels
-@model CIPlatform.Entities.ViewModels.AdminPageList<CmsPage> 
-
+ @model CIPlatform.Entities.ViewModels.AdminPageList<Skill>
 <div class="table-responsive">
     <table class="table" style="border:1px solid rgb(197, 195, 195);">
         <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
                                 box-shadow: 0px 2px 3px #0000000F;">
             <tr>
-                <th>Title</th>
+                <th>Skill Name</th>
+                <th>Skill Id</th>
                 <th>Status</th>
+                <th>Created at</th>
                 <th>Action</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @if (Model.Records != null)
+            @if (@Model.Records != null)
             {
-
-
                 @foreach (var item in Model.Records)
                 {
-
                     <tr>
+                        <td>@item.SkillName</td>
+                        <td>@item.SkillId</td>
+                        <td>@item.Status</td>
                         <td>
-                            @item.Title
+                            @item.CreatedAt.ToString().Substring(0,10)
                         </td>
-                        <td style="color: green;">@item.Status</td>
                         <td>
-                            <a href="@Url.Action("Admin_edit_cms","Admin",new { CmsId = @item.CmsPageId })">
+                            <a href="@Url.Action("Admin_edit_skill","Admin",new{skillId = @item.SkillId})">
                                 <svg style="color:orange;width: 20px;height: 20px;"
                              xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -37,10 +37,9 @@
                             </a>
                         </td>
                         <td>
-                            <button class="deletecms_admin" value="@item.CmsPageId"
-                            style="background: none;padding: 0px;border:none;margin-left:4px;width:20px;height: 20px;"
-                            data-bs-toggle="modal" data-bs-target="#admin-cms-delete">
-                                <img style="width:20px;height: 20px;" class="img-fluid"
+                            <button class="themedeletebtn"
+                            id="@item.SkillId" style="background: none;padding: 0px;border:none;">
+                                <img style="width:20px;height: 20px;"
                              src="./images/bin.png">
                             </button>
                         </td>

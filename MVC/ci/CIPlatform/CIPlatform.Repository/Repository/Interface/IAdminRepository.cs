@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace CIPlatform.Repository.Repository.Interface
         //========================
         //Admin user crud
         //==========================
-        public List<User> GetUsers(string searchtext);
+        public AdminPageList<User> GetUsers(string searchtext, int pageNumber, int pageSize);
 
         public void AddUserAdmin(User user);
 
@@ -31,7 +32,7 @@ namespace CIPlatform.Repository.Repository.Interface
         //========================
         //Admin cms crud
         //==========================
-        public List<CmsPage> GetCmspages(string searchText);
+        public AdminPageList<CmsPage> GetCmspages(string searchText, int pageNumber, int pageSize);
         public void AddCmsAdmin(CmsPage CMS);
         public void UpdateCmsAdmin(CmsPage cms);
         public CmsPage GetCmsAdmin(long cmsId);
@@ -39,16 +40,32 @@ namespace CIPlatform.Repository.Repository.Interface
         //========================
         //Admin story crud
         //==========================
-        public List<Story> GetStoryAdmin(string searchText);
+        public AdminPageList<Story> GetStoryAdmin(string searchText, int pageNumber, int pageSize);
         public Story GetstoryForApprove(long storyId);
         public void ApproveStory(Story story);
         public void DeleteStory(Story story);
         //========================
         //Admin Application crud
         //==========================
-        public List<MissionApplication> GetMissionApplicationAdmin(string searchText);
+        public AdminPageList<MissionApplication> GetMissionApplicationAdmin(string searchText, int pageNumber, int pageSize);
         public MissionApplication GetApplicationForApprove(long missionAppId);
         public void ApproveApplication(MissionApplication application);
         public void DeleteApplication(MissionApplication application);
+        //========================
+        //Admin mission theme crud
+        //==========================
+        public AdminPageList<MissionTheme> GetMissionThemeAdmin(string searchText, int pageNumber, int pageSize);
+        public void AddThemeAdmin(MissionTheme theme);
+        public MissionTheme GetThemeAdmin(long themeId);
+        public void EditThemeAdmin(MissionTheme theme);
+        public void DeleteThemeAdmin(MissionTheme theme);
+        //========================
+        //Admin skill crud
+        //==========================
+        public AdminPageList<Skill> GetSkillAdmin(string searchText, int pageNumber, int pageSize);
+        public void AddSkillAdmin(Skill skill);
+        public Skill GetSkill(long skillId);
+        public void EditSkill(Skill skill);
+        public void DeleteSkill(Skill skill);
     }
 }

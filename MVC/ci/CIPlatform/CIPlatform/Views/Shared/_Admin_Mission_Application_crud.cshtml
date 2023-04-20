@@ -1,4 +1,5 @@
-﻿ @model CIPlatform.Entities.ViewModels.Admin_mission_theme
+﻿@using CIPlatform.Entities.DataModels
+ @model CIPlatform.Entities.ViewModels.AdminPageList<MissionApplication>
 <div class="table-responsive">
     <table class="table" style="border:1px solid rgb(197, 195, 195);">
         <thead style="background: #F8F9FC 0% 0% no-repeat padding-box;
@@ -14,9 +15,9 @@
             </tr>
         </thead>
         <tbody>
-            @if (@Model.missionapplication != null)
+            @if (@Model.Records != null)
             {
-                @foreach (var item in Model.missionapplication)
+                @foreach (var item in Model.Records)
                 {
 
 
@@ -46,4 +47,27 @@
             }
         </tbody>
     </table>
+</div>
+@{
+    int pageSize = 2;
+    double pageCount = Math.Ceiling((Model.TotalCount * 1.0) / (pageSize*1.0));
+}
+<div class="pe-0 pe-sm-5 d-flex justify-content-end align-items-center mt-4">
+    <div id="pages-@pageCount" class="Pagination Pagination-total" style="display:flex">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id="pagination">
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;&lt;</a></li>
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;</a></li>
+
+                @for (int i = 1; i <= pageCount; i++)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
+                }
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>

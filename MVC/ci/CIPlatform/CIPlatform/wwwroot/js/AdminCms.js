@@ -5,6 +5,8 @@ $(document).ready(function () {
     loadcms();
 });
 var searchcmstext = "";
+var pageSize = 2;
+var pageNumber = 1;
 $("#admin-cms-search-bar").on("keyup", function (e) {
     e.preventDefault();
     searchcmstext = $("#admin-cms-search-bar").val();
@@ -25,11 +27,12 @@ function loadcms() {
     $.ajax({
         type: "POST",
         url: "/Admin/Cms_crud",
-        data: { searchText: searchcmstext },
+        dataType: "html",
+        data: { searchText: searchcmstext, pageNumber: pageNumber, pageSize: pageSize },
         success: function (data) {
-            var cmsdata = $("#cmstablelist");
-            cmsdata.html("");
-            cmsdata.html(data);
+            $("#cmstablelist").html("");
+            $("#cmstablelist").html(data);
+            loadPagination();
             deleteUser();
         },
         failure: function (response) {
@@ -41,7 +44,39 @@ function loadcms() {
 
     });
 }
-
+//========================================================================
+//Pagination
+//========================================================================
+function loadPagination() {
+    var totalPages = parseInt($(".Pagination-total")[0].id.slice(6));
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        e.preventDefault();
+        paging = $(this).text();
+        if (!isNaN(paging)) {
+            pageNumber = parseInt(paging);
+        }
+        else {
+            if (paging == "<") {
+                if (pageNumber != 1) {
+                    --pageNumber;
+                }
+            }
+            else if (paging == ">") {
+                if (pageNumber != totalPages) {
+                    ++pageNumber;
+                }
+            }
+            else if (paging == ">>") {
+                pageNumber = totalPages;
+            }
+            else if (paging == "<<") {
+                pageNumber = 1;
+            }
+        }
+        loadcms() ;
+    });
+}
 //=====================================================================================================
 //delete ajax in cms page crud admin
 //======================================================================================================

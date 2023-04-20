@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -35,16 +36,25 @@ namespace CIPlatform.Repository.Repository
         //========================
         //Admin user crud
         //==========================
-        List<User> IAdminRepository.GetUsers(string searchtext)
+        AdminPageList<User> IAdminRepository.GetUsers(string searchtext, int pageNumber, int pageSize)
         {
+            IEnumerable<User> userPages;
             if (searchtext != null)
             {
-                return _ciPlatformDbContext.Users.Where(x => x.FirstName.Contains(searchtext) || x.LastName.Contains(searchtext) || x.Department.Contains(searchtext)).ToList();
+                userPages = _ciPlatformDbContext.Users.Where(page => page.DeletedAt == null && page.Status == true).Where
+                    (x => x.FirstName.Contains(searchtext) || x.LastName.Contains
+                 (searchtext) || x.Department.Contains(searchtext));
             }
             else
             {
-                return _ciPlatformDbContext.Users.ToList();
+                userPages = _ciPlatformDbContext.Users.Where
+                    (page => page.DeletedAt == null && page.Status == true);
+
             }
+            var totalCounts = userPages.Count();
+            var records = userPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<User>(records, totalCounts);
+
         }
         void IAdminRepository.AddUserAdmin(User user)
         {
@@ -71,17 +81,22 @@ namespace CIPlatform.Repository.Repository
         //========================
         //Admin cms crud
         //==========================
-        List<CmsPage> IAdminRepository.GetCmspages(string searchText)
+        AdminPageList<CmsPage> IAdminRepository.GetCmspages(string searchText, int pageNumber, int pageSize)
         {
+            IEnumerable<CmsPage> CmsPages;
             if (searchText != null)
             {
-                List<CmsPage> cms = _ciPlatformDbContext.CmsPages.Where(x => x.Title.Contains(searchText)).ToList();
-                return cms;
+                CmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true).Where
+                    (x => x.Title.Contains(searchText)).ToList();
             }
             else
             {
-                return _ciPlatformDbContext.CmsPages.ToList();
+                CmsPages = _ciPlatformDbContext.CmsPages.Where
+                    (page => page.DeletedAt == null && page.Status == true);
             }
+            var totalCounts = CmsPages.Count();
+            var records = CmsPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<CmsPage>(records, totalCounts);
         }
         void IAdminRepository.AddCmsAdmin(CmsPage CMS)
         {
@@ -107,20 +122,25 @@ namespace CIPlatform.Repository.Repository
         //========================
         //Admin story crud
         //==========================
-        List<Story> IAdminRepository.GetStoryAdmin(string searchText)
+        AdminPageList<Story> IAdminRepository.GetStoryAdmin(string searchText, int pageNumber, int pageSize)
         {
+            IEnumerable<Story> Story;
             if (searchText != null)
             {
-                List<Story> story = _ciPlatformDbContext.Stories.Include(user => user.User).Include(mission => mission.Mission).Where
+                Story = _ciPlatformDbContext.Stories.Where(page => page.DeletedAt == null && page.Status !="approved" && page.Status != "rejected").
+                    Include(user => user.User).Include(mission => mission.Mission).Where
                     (stories => stories.Title.Contains(searchText)||stories.Mission.Title.Contains(searchText)
-                    ||stories.User.FirstName.Contains(searchText)||stories.User.LastName.Contains(searchText)).Where
-                    (x=>x.Status!="approved"&& x.Status != "rejected").ToList();
-                return story;
+                    ||stories.User.FirstName.Contains(searchText)||stories.User.LastName.Contains(searchText)).ToList();
             }
             else
             {
-                return _ciPlatformDbContext.Stories.Include(Mission=>Mission.Mission).Include(User => User.User).Where(x=>x.Status !="approved"&&x.Status!="rejected").ToList();
+                Story = _ciPlatformDbContext.Stories.Where
+                    (page => page.DeletedAt == null && page.Status != "approved" && page.Status != "rejected").Include
+                    (User => User.User).Include(x=>x.Mission).ToList();
             }
+            var totalCounts = Story.Count();
+            var records = Story.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Story>(records, totalCounts);
         }
         Story IAdminRepository.GetstoryForApprove(long storyId)
         {
@@ -139,26 +159,29 @@ namespace CIPlatform.Repository.Repository
         //=============================
         //Admin missionapplication crud
         //==============================
-        List<MissionApplication> IAdminRepository.GetMissionApplicationAdmin(string searchText)
+        AdminPageList<MissionApplication> IAdminRepository.GetMissionApplicationAdmin(string searchText, int pageNumber, int pageSize)
         {
+            IEnumerable<MissionApplication> applications;
             if (searchText != null)
             {
-                List<MissionApplication> applications = _ciPlatformDbContext.MissionApplications.Include(user => user.User).Include(mission => mission.Mission).Where(MissionApplication => MissionApplication.Mission.Title.Contains(searchText) 
-                || MissionApplication.User.FirstName.Contains(searchText)
-                || MissionApplication.User.FirstName.Contains(searchText)
-                || MissionApplication.User.LastName.Contains(searchText)).Where
-                (MissionApplication => MissionApplication.ApprovalStatus != "approved" && MissionApplication.ApprovalStatus != "rejected").ToList();
-                return applications;
+                applications = _ciPlatformDbContext.MissionApplications.Where(page => page.DeletedAt == null && page.ApprovalStatus != "approved" && page.ApprovalStatus != "rejected").Include
+                     (user => user.User).Include(mission => mission.Mission).Where
+                     (MissionApplication => MissionApplication.Mission.Title.Contains(searchText)
+                 || MissionApplication.User.FirstName.Contains(searchText)
+                 || MissionApplication.User.LastName.Contains(searchText)).ToList();
             }
             else
             {
-                return _ciPlatformDbContext.MissionApplications.Include(Mission => Mission.Mission).Include(User => User.User).Where
-                    (MissionApplication => MissionApplication.ApprovalStatus != "approved" && MissionApplication.ApprovalStatus != "rejected").ToList();
+                applications= _ciPlatformDbContext.MissionApplications.Where(page => page.DeletedAt == null && page.ApprovalStatus != "approved" && page.ApprovalStatus != "rejected").Include(Mission => Mission.Mission).Include(User => User.User).ToList();
             }
+            var totalCounts = applications.Count();
+            var records = applications.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<MissionApplication>(records, totalCounts);
         }
         MissionApplication IAdminRepository.GetApplicationForApprove(long missionAppId)
         {
-            return _ciPlatformDbContext.MissionApplications.Where(application => application.MissionApplicationId == missionAppId).FirstOrDefault();
+            return _ciPlatformDbContext.MissionApplications.Where
+                (application => application.MissionApplicationId == missionAppId).FirstOrDefault();
         }
         void IAdminRepository.ApproveApplication(MissionApplication application)
         {
@@ -168,6 +191,83 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.DeleteApplication(MissionApplication application)
         {
             _ciPlatformDbContext.Update(application);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        //=============================
+        //Admin mission theme crud
+        //==============================
+        AdminPageList<MissionTheme> IAdminRepository.GetMissionThemeAdmin(string searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<MissionTheme> themes;
+            if (searchText != null)
+            {
+                themes = _ciPlatformDbContext.MissionThemes.Where
+                   (MissionThemes => MissionThemes.Title.Contains(searchText) && MissionThemes.DeletedAt == null).ToList();
+            }
+            else
+            {
+                themes= _ciPlatformDbContext.MissionThemes.Where(x=>x.DeletedAt==null).ToList();
+            }
+            var totalCounts = themes.Count();
+            var records = themes.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<MissionTheme>(records, totalCounts);
+        }
+        void IAdminRepository.AddThemeAdmin(MissionTheme theme)
+        {
+            _ciPlatformDbContext.Add(theme);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        MissionTheme IAdminRepository.GetThemeAdmin(long themeId)
+        {
+            return _ciPlatformDbContext.MissionThemes.Where(x=>x.MissionThemeId == themeId).FirstOrDefault();
+        }
+        void IAdminRepository.EditThemeAdmin(MissionTheme theme)
+        {
+            _ciPlatformDbContext.Update(theme);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.DeleteThemeAdmin(MissionTheme theme)
+        {
+            _ciPlatformDbContext.Update(theme);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        //=============================
+        //Admin skill crud
+        //==============================
+        AdminPageList<Skill> IAdminRepository.GetSkillAdmin(string searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Skill> skills;
+            if (searchText != null)
+            {
+
+                skills = _ciPlatformDbContext.Skills.Where
+                    (skills => skills.SkillName.Contains(searchText) && skills.DeletedAt == null).ToList();
+            }
+            else
+            {
+                skills = _ciPlatformDbContext.Skills.Where(skills => skills.DeletedAt == null).ToList();
+            }
+            var totalCounts = skills.Count();
+            var records = skills.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Skill>(records, totalCounts);
+        }
+        void IAdminRepository.AddSkillAdmin(Skill skill)
+        {
+            _ciPlatformDbContext.Skills.Add(skill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        Skill IAdminRepository.GetSkill(long skillId)
+        {
+            return _ciPlatformDbContext.Skills.Where(x=>x.SkillId == skillId).FirstOrDefault(); 
+        }
+        void IAdminRepository.EditSkill(Skill skill)
+        {
+            _ciPlatformDbContext.Skills.Update(skill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.DeleteSkill(Skill skill)
+        {
+            _ciPlatformDbContext.Skills.Update(skill);
             _ciPlatformDbContext.SaveChanges();
         }
     }

@@ -5,6 +5,8 @@ $(document).ready(function () {
     loadstory();
 });
 var searchstorytext = "";
+var pageSize = 2;
+var pageNumber = 1;
 $("#searchstoryadmin").on("keyup", function (e) {
     e.preventDefault();
     searchcmstext = $("#searchstoryadmin").val();
@@ -23,11 +25,12 @@ function loadstory() {
     $.ajax({
         type: "POST",
         url: "/Admin/Admin_story",
-        data: { searchText: searchstorytext },
+        dataType: "html",
+        data: { searchText: searchstorytext, pageNumber: pageNumber, pageSize: pageSize },
         success: function (data) {
-            var storydata = $("#storydatalist");
-            storydata.html("");
-            storydata.html(data);
+            $("#storydatalist").html("");
+            $("#storydatalist").html(data);
+            loadPagination();
             storyapprove();
             storydelete();
         },
@@ -38,6 +41,39 @@ function loadstory() {
             alert("Something went Worng");
         }
 
+    });
+}
+//========================================================================
+//Pagination
+//========================================================================
+function loadPagination() {
+    var totalPages = parseInt($(".Pagination-total")[0].id.slice(6));
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        e.preventDefault();
+        paging = $(this).text();
+        if (!isNaN(paging)) {
+            pageNumber = parseInt(paging);
+        }
+        else {
+            if (paging == "<") {
+                if (pageNumber != 1) {
+                    --pageNumber;
+                }
+            }
+            else if (paging == ">") {
+                if (pageNumber != totalPages) {
+                    ++pageNumber;
+                }
+            }
+            else if (paging == ">>") {
+                pageNumber = totalPages;
+            }
+            else if (paging == "<<") {
+                pageNumber = 1;
+            }
+        }
+        loadstory();
     });
 }
 //=====================================================================================================

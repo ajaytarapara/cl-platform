@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Entities.ViewModels
 {
-    public  class Admin_mission_theme_crudModel
+    public class Admin_skill_Model
     {
         public string? adminname { get; set; }
         public string? adminavatar { get; set; }
-        public List<MissionTheme>? missionthemes { get; set; }
-        public string? themeTitle { get; set; }
-        public long? themeId { get; set; }
+        public List<Skill>? skills { get; set; }
+        public string? SkillTitle { get; set; }
+        public long? SkillId { get; set; }
     }
 }

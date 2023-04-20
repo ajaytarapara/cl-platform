@@ -40,7 +40,7 @@
             </div>
             <div class="container mt-3">
                 <h1>
-                     Mission Theme
+                    Mission Theme
                 </h1>
                 <hr>
                 <div class="row mt-4" style="justify-content: space-between;">
@@ -48,20 +48,26 @@
                          style="align-items: center;display: flex;justify-content:space-between;flex-direction: row;
                          border:1px solid gray;height:50px;border-radius: 10px;margin-left:10px;">
                         <img src="./images/search.png" style="height:20px;">
-                        <input type="text" name="" id="searchstoryadmin" placeholder="Search" style="width:90%;border: none;">
+                        <input type="text" name="" id="search_mission_theme_adminbtn"
+                               placeholder="Search" style="width:90%;border: none;">
                     </div>
                     <div class="col-5">
                     </div>
                     <div class="col-3 d-flex" style="justify-content: flex-end;">
+                        <button class="p-2"
+                                style="background: none;border: 2px solid orange;border-radius: 15px;
+                               color: orange;font-weight: bolder;width: 150px;margin-right: 0px;">
+                            <a href="@Url.Action("Admin_add_themes","Admin")" 
+                            style="text-decoration: none;color: orange;">+ Add</a>
+                        </button>
                     </div>
                 </div>
-                <div class="row mt-4" id="storydatalist">
-                   @Html.Partial("_Admin_Mission_theme")
+                <div class="row mt-4" id="themedatalist">
                 </div>
             </div>
         </div>
     </div>
 </div>
-@* @section Javascript{
-<script src="~/js/Admin_story.js" asp-append-version="true"></script>
-  }*@
+ @section javascript{
+<script src="~/js/Admin_mission_theme_.js" asp-append-version="true"></script>
+    }

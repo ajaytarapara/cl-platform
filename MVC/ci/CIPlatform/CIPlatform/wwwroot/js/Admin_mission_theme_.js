@@ -1,38 +1,38 @@
 ﻿//=====================================================================================================
-//search ajax in mission application page crud admin
+//search ajax in mission theme page crud admin
 //======================================================================================================
 $(document).ready(function () {
-    loadmissionapplication();
+    loadmissiontheme();
 });
-var searchapplicationtext = "";
+var search_mission_themetext = "";
 var pageSize = 2;
 var pageNumber = 1;
-$("#searchapplicationadmin").on("keyup", function (e) {
+$("#search_mission_theme_adminbtn").on("keyup", function (e) {
     e.preventDefault();
-    searchapplicationtext = $("#searchapplicationadmin").val();
-    console.log("VALUE:" + searchapplicationtext);
-    if (searchapplicationtext.length > 2) {
-        loadmissionapplication();
+    search_mission_themetext = $("#search_mission_theme_adminbtn").val();
+    console.log("VALUE:" + search_mission_themetext);
+    if (search_mission_themetext.length > 2) {
+        loadmissiontheme();
     }
     else {
-        searchapplicationtext = "";
-        loadmissionapplication();
+        search_mission_themetext = "";
+        loadmissiontheme();
     }
 });
 
-function loadmissionapplication() {
-    searchapplicationtext = $("#searchapplicationadmin").val();
+function loadmissiontheme() {
+    search_mission_themetext = $("#search_mission_theme_adminbtn").val();
     $.ajax({
         type: "POST",
-        url: "/Admin/Admin_mission_application",
+        url: "/Admin/Admin_mission_theme",
         dataType: "html",
-        data: { searchText: searchapplicationtext, pageNumber: pageNumber, pageSize: pageSize },
+        data: { searchText: search_mission_themetext, pageNumber: pageNumber, pageSize: pageSize },
         success: function (data) {
-            $("#applicationdatalist").html("");
-            $("#applicationdatalist").html(data);
+            $("#themedatalist").html("");
+            $("#themedatalist").html(data);
             loadPagination();
-            applicationapprove();
-            applicationdelete();
+            //applicationapprove();
+            Missionthemedelete();
         },
         failure: function (response) {
             alert("failure");
@@ -73,47 +73,22 @@ function loadPagination() {
                 pageNumber = 1;
             }
         }
-        loadmissionapplication();
+        loadmissiontheme();
     });
 }
 //=====================================================================================================
-// approve ajax in MS APPLI page crud admin
+// delete ajax in MS theme page crud admin
 //======================================================================================================
-var Missionappid = "";
-function applicationapprove() {
-    $(".adminapplicationapprovebtn").on("click", function () {
-        Missionappid = this.id;
-        console.log("call", Missionappid);
+var missionthemeidfordelete = "";
+function Missionthemedelete() {
+    $(".themedeletebtn").on("click", function () {
+        missionthemeidfordelete = this.id;
         $.ajax({
             type: "POST",
-            url: "/Admin/ApproveAdmin_mission_application",
-            data: { missionAppId: Missionappid },
+            url: "/Admin/Admin_Delete_themes",
+            data: { themeId: missionthemeidfordelete },
             success: function (data) {
-                loadmissionapplication();
-            },
-            failure: function (response) {
-                alert("failure");
-            },
-            error: function (response) {
-                alert("Something went Worng");
-            }
-
-        });
-    });
-}
-//=====================================================================================================
-// delete ajax in MS APPLI page crud admin
-//======================================================================================================
-var msappfordelete = "";
-function applicationdelete() {
-    $(".adminapplicationdeletebtn").on("click", function () {
-        msappfordelete = this.id;
-        $.ajax({
-            type: "POST",
-            url: "/Admin/DeleteAdmin_mission_application",
-            data: { missionAppId: msappfordelete },
-            success: function (data) {
-                loadmissionapplication();
+                loadmissiontheme();
             },
             failure: function (response) {
                 alert("failure");
