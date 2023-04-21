@@ -666,6 +666,9 @@ namespace CIPlatform.Controllers
             banners.adminname = adminobj.FirstName + " " + adminobj.LastName;
             banners.adminavatar = "./images/user1.png";
             banners.bannerid = (int)bannerId;
+            Banner banner1 = _adminrepository.GetBanner(bannerId);
+            banners.sortorder = banner1.SortOrder;
+            banners.text = banner1.Text;
             return View(banners);
 
         }
@@ -700,10 +703,246 @@ namespace CIPlatform.Controllers
             AdminPageList<Banner> banner = _adminrepository.GetBanner(searchText, pageNumber, pageSize);
             return RedirectToAction("Admin_Banner", banner);
         }
-        public IActionResult Admin_mission()
+        [HttpPost]
+        public IActionResult Delete_Banner(int bannerId)
         {
-            return View();
+            Banner banner1 = _adminrepository.GetBanner(bannerId);
+            banner1.DeletedAt = DateTime.Now;
+            _adminrepository.DeleteBannerAdmin(banner1);
+            return RedirectToAction("Admin_Banner");
+        }
+        //=========================================================================================================================
+        ///Mission admin part crud
+        //==================================================================================================================
+        public IActionResult Admin_mission(Admin_Mission_crudModel mission_crud)
+        {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            mission_crud.adminavatar = "./images/user1.png";
+            return View(mission_crud);
+        }
+        [HttpPost]
+        public IActionResult Admin_mission(string searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Mission> Missions = _adminrepository.GetMissionAdmin(searchText, pageNumber, pageSize);
+            return PartialView("Admin_Mission_crud", Missions);
+
+        }
+        public IActionResult Admin_Add_Mission()
+        {
+            Admin_Mission_crudModel mission_crud = new Admin_Mission_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            mission_crud.adminavatar = "./images/user1.png";
+            return View(mission_crud);
+        }
+        [HttpPost]
+        public IActionResult Admin_Add_Mission(Admin_Mission_crudModel missionModels, IFormFile? filename, IFormFile? documentfilename)
+        {
+            Mission mission = new Mission();
+            mission.Title = missionModels.missiontitle;
+            mission.ShortDescription = missionModels.shortdescription;
+            mission.Description = missionModels.longdescription;
+            mission.StartDate = missionModels.startdate;
+            mission.EndDate = missionModels.enddate;
+            mission.MissionType = missionModels.missiontype;
+            mission.OrganizationName = missionModels.organizationname;
+            mission.OrganizationDetail = missionModels.organizationdescription;
+            mission.CreatedAt = DateTime.Now;
+            mission.Availability = (int)missionModels.avaliblity;
+            mission.CountryId = (long)missionModels.country;
+            mission.CityId = (long)missionModels.city;
+            mission.ThemeId = (long)missionModels.missiontheme;
+            long missionid = _adminrepository.AddMission(mission);
+            if (missionModels.missionskills != null)
+            {
+                string[] skills = missionModels.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
+                foreach (var skill in skills)
+                {
+                    int SkillId = _adminrepository.GetSkillvianame(skill);
+                    MissionSkill mSkill = new MissionSkill();
+                    mSkill.SkillId = SkillId;
+                    mSkill.MissionId = missionid;
+                    _adminrepository.AddMissionSkill(mSkill);
+
+                }
+            }
+            if (missionModels.missiontype == "goal")
+            {
+                GoalMission goalMission = new GoalMission();
+                goalMission.MissionId = missionid;
+                goalMission.CreatedAt = DateTime.Now;
+                goalMission.GoalValue = (int)missionModels.goalvalue;
+                goalMission.GoalObjectiveText = missionModels.goalobjective;
+                _adminrepository.AddGoalMission(goalMission);
+            }
+            if (filename != null)
+            {
+                string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                User userObj = _userRepository.findUser(userSessionEmailId);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                MissionMedium media = new MissionMedium();
+                media.MissionId = missionid;
+                media.CreatedAt = DateTime.Now;
+                media.MediaPath = "images";
+                media.MediaType = "png";
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(wwwRootPath, @"images\");
+                var extension = Path.GetExtension(filename.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    filename.CopyTo(fileStreams);
+                }
+                media.MediaName = fileName;
+                _adminrepository.AddMissionMedia(media);
+
+            }
+            if (documentfilename != null)
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                MissionDocument missionDocument = new MissionDocument();
+                missionDocument.MissionId = missionid;
+                missionDocument.CreatedAt = DateTime.Now;
+                string documentfilenames = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(wwwRootPath, @"document\");
+                var extension = Path.GetExtension(documentfilename.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, documentfilenames + extension), FileMode.Create))
+                {
+                    documentfilename.CopyTo(fileStreams);
+                }
+                missionDocument.DocumentType = "." + extension;
+                missionDocument.DocumentPath = "document";
+                missionDocument.DocumentName = documentfilenames;
+                _adminrepository.AddMissionDocument(missionDocument);
+            }
+            return RedirectToAction("Admin_Add_Mission");
+        }
+        public IActionResult Admin_Edit_Mission(long missionId, IFormFile? filename, IFormFile? documentfilename)
+        {
+            Admin_Mission_crudModel mission_crud = new Admin_Mission_crudModel();
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            Admin adminobj = _adminrepository.findadmin(adminemail);
+            mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
+            mission_crud.adminavatar = "./images/user1.png";
+            mission_crud.missionid = missionId;
+            Mission mission = _adminrepository.GetMission(missionId);
+            mission_crud.missiontitle = mission.Title;
+            mission_crud.shortdescription = mission.ShortDescription;
+            mission_crud.longdescription = mission.Description;
+            mission_crud.startdate = mission.StartDate;
+            mission_crud.enddate = mission.EndDate;
+            mission_crud.missiontype = mission.MissionType;
+            mission_crud.organizationname = mission.OrganizationName;
+            mission_crud.organizationdescription = mission.OrganizationDetail;
+            if (mission_crud.missiontype == "goal")
+            {
+                long goalId = missionId;
+                GoalMission goal = _adminrepository.GetGoalMission(goalId);
+                mission_crud.goalobjective = goal.GoalObjectiveText;
+                mission_crud.goalvalue = goal.GoalValue;
+            }
+            MissionMedium media=_adminrepository.GetMissionMedium(missionId);
+            if(media!=null)
+            {
+                mission_crud.filename = media.MediaName;
+                mission_crud.filetype = media.MediaType;
+            }
+            return View(mission_crud);
+        }
+        [HttpPost]
+        public IActionResult Admin_Edit_Mission(Admin_Mission_crudModel admin_Mission_)
+        {
+            long missionId = (long)admin_Mission_.missionid;
+            Mission mission = _adminrepository.GetMission(missionId);
+            mission.Title = admin_Mission_.missiontitle;
+            mission.ShortDescription = admin_Mission_.shortdescription;
+            mission.Description = admin_Mission_.longdescription;
+            mission.StartDate = admin_Mission_.startdate;
+            mission.EndDate = admin_Mission_.enddate;
+            mission.MissionType = admin_Mission_.missiontype;
+            mission.OrganizationName = admin_Mission_.organizationname;
+            mission.OrganizationDetail = admin_Mission_.organizationdescription;
+            mission.CreatedAt = DateTime.Now;
+            mission.Availability = (int)admin_Mission_.avaliblity;
+            mission.CountryId = (long)admin_Mission_.country;
+            mission.CityId = (long)admin_Mission_.city;
+            mission.ThemeId = (long)admin_Mission_.missiontheme;
+            if (admin_Mission_.missionskills != null)
+            {
+                string[] skills = admin_Mission_.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
+                foreach (var skill in skills)
+                {
+                    int SkillId = _adminrepository.GetSkillvianame(skill);
+                    MissionSkill mSkill = new MissionSkill();
+                    mSkill.SkillId = SkillId;
+                    mSkill.MissionId = admin_Mission_.missionid;
+                    _adminrepository.AddMissionSkill(mSkill);
+
+                }
+            }
+            string searchText = "";
+            int pageNumber = 1;
+            int pageSize = 2;
+            AdminPageList<Mission> missionget = _adminrepository.GetMissionAdmin(searchText, pageNumber, pageSize);
+            return RedirectToAction("Admin_mission", missionget);
         }
 
+        //===================================
+        //get  data of mission page
+        //===================================
+        public IActionResult GetCountries()
+        {
+            IEnumerable<Country> countries = _userRepository.getCountries();
+            return Json(new { data = countries });
+        }
+        public IActionResult GetCities()
+        {
+            IEnumerable<City> cities = _userRepository.getCities();
+            return Json(new { data = cities });
+        }
+        [HttpPost]
+        public IActionResult GetCities(long countryid)
+        {
+            IEnumerable<City> cities = _userRepository.getCities(countryid);
+            return Json(new { data = cities });
+        }
+        public IActionResult GetMissionTheme()
+        {
+            IEnumerable<MissionTheme> themes = _adminrepository.GetMissionTheme();
+            return Json(new { data = themes });
+        }
+        public IActionResult GetSkills()
+        {
+            IEnumerable<Skill> skill = _userRepository.getSkill();
+            return Json(new { data = skill });
+        }
+        [HttpPost]
+        public IActionResult Delete_Mission(int missionId)
+        {
+            Mission mission = _adminrepository.GetMission(missionId);
+            mission.DeletedAt = DateTime.Now;
+            _adminrepository.DeleteMission(mission);
+            return RedirectToAction("Admin_mission");
+        }
     }
 }

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "CIPlatform/1.0.0": {
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": "1.1.0",
           "CIPlatform.Entities": "1.0.0",
           "CIPlatform.Repository": "1.0.0",
           "MailKit": "3.5.0",

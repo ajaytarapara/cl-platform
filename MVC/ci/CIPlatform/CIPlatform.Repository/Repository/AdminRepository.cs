@@ -127,16 +127,16 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<Story> Story;
             if (searchText != null)
             {
-                Story = _ciPlatformDbContext.Stories.Where(page => page.DeletedAt == null && page.Status !="approved" && page.Status != "rejected").
+                Story = _ciPlatformDbContext.Stories.Where(page => page.DeletedAt == null && page.Status != "approved" && page.Status != "rejected").
                     Include(user => user.User).Include(mission => mission.Mission).Where
-                    (stories => stories.Title.Contains(searchText)||stories.Mission.Title.Contains(searchText)
-                    ||stories.User.FirstName.Contains(searchText)||stories.User.LastName.Contains(searchText)).ToList();
+                    (stories => stories.Title.Contains(searchText) || stories.Mission.Title.Contains(searchText)
+                    || stories.User.FirstName.Contains(searchText) || stories.User.LastName.Contains(searchText)).ToList();
             }
             else
             {
                 Story = _ciPlatformDbContext.Stories.Where
                     (page => page.DeletedAt == null && page.Status != "approved" && page.Status != "rejected").Include
-                    (User => User.User).Include(x=>x.Mission).ToList();
+                    (User => User.User).Include(x => x.Mission).ToList();
             }
             var totalCounts = Story.Count();
             var records = Story.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -144,7 +144,7 @@ namespace CIPlatform.Repository.Repository
         }
         Story IAdminRepository.GetstoryForApprove(long storyId)
         {
-            return _ciPlatformDbContext.Stories.Where(story=>story.StoryId == storyId).FirstOrDefault();
+            return _ciPlatformDbContext.Stories.Where(story => story.StoryId == storyId).FirstOrDefault();
         }
         void IAdminRepository.ApproveStory(Story story)
         {
@@ -172,7 +172,7 @@ namespace CIPlatform.Repository.Repository
             }
             else
             {
-                applications= _ciPlatformDbContext.MissionApplications.Where(page => page.DeletedAt == null && page.ApprovalStatus != "approved" && page.ApprovalStatus != "rejected").Include(Mission => Mission.Mission).Include(User => User.User).ToList();
+                applications = _ciPlatformDbContext.MissionApplications.Where(page => page.DeletedAt == null && page.ApprovalStatus != "approved" && page.ApprovalStatus != "rejected").Include(Mission => Mission.Mission).Include(User => User.User).ToList();
             }
             var totalCounts = applications.Count();
             var records = applications.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -206,7 +206,7 @@ namespace CIPlatform.Repository.Repository
             }
             else
             {
-                themes= _ciPlatformDbContext.MissionThemes.Where(x=>x.DeletedAt==null).ToList();
+                themes = _ciPlatformDbContext.MissionThemes.Where(x => x.DeletedAt == null).ToList();
             }
             var totalCounts = themes.Count();
             var records = themes.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -219,7 +219,7 @@ namespace CIPlatform.Repository.Repository
         }
         MissionTheme IAdminRepository.GetThemeAdmin(long themeId)
         {
-            return _ciPlatformDbContext.MissionThemes.Where(x=>x.MissionThemeId == themeId).FirstOrDefault();
+            return _ciPlatformDbContext.MissionThemes.Where(x => x.MissionThemeId == themeId).FirstOrDefault();
         }
         void IAdminRepository.EditThemeAdmin(MissionTheme theme)
         {
@@ -258,7 +258,7 @@ namespace CIPlatform.Repository.Repository
         }
         Skill IAdminRepository.GetSkill(long skillId)
         {
-            return _ciPlatformDbContext.Skills.Where(x=>x.SkillId == skillId).FirstOrDefault(); 
+            return _ciPlatformDbContext.Skills.Where(x => x.SkillId == skillId).FirstOrDefault();
         }
         void IAdminRepository.EditSkill(Skill skill)
         {
@@ -277,7 +277,7 @@ namespace CIPlatform.Repository.Repository
             {
 
                 Banner = _ciPlatformDbContext.Banners.Where
-                    (Banner=>Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).ToList();
+                    (Banner => Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).ToList();
             }
             else
             {
@@ -294,12 +294,99 @@ namespace CIPlatform.Repository.Repository
         }
         Banner IAdminRepository.GetBanner(long bannerId)
         {
-            return _ciPlatformDbContext.Banners.Where(banner=>banner.BannerId==bannerId).FirstOrDefault();   
+            return _ciPlatformDbContext.Banners.Where(banner => banner.BannerId == bannerId).FirstOrDefault();
         }
         void IAdminRepository.EditBannerAdmin(Banner banner1)
         {
             _ciPlatformDbContext.Update(banner1);
             _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.DeleteBannerAdmin(Banner banner1)
+        {
+            _ciPlatformDbContext.Update(banner1);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        //=============================
+        //Admin mission crud
+        //==============================
+        AdminPageList<Mission> IAdminRepository.GetMissionAdmin(string searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Mission> Missions;
+            if (searchText != null)
+            {
+
+                Missions = _ciPlatformDbContext.Missions.Where
+                    (Missions => Missions.Title.Contains((searchText)) && Missions.DeletedAt == null).ToList();
+            }
+            else
+            {
+                Missions = _ciPlatformDbContext.Missions.Where(Missions => Missions.DeletedAt == null).ToList();
+            }
+            var totalCounts = Missions.Count();
+            var records = Missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Mission>(records, totalCounts);
+        }
+        Mission IAdminRepository.GetMission(long missionId)
+        {
+            return _ciPlatformDbContext.Missions.Where(x => x.MissionId == missionId).FirstOrDefault();
+        }
+        void IAdminRepository.DeleteMission(Mission mission)
+        {
+            _ciPlatformDbContext.Update(mission);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        long IAdminRepository.AddMission(Mission mission)
+        {
+            _ciPlatformDbContext.Add(mission);
+            _ciPlatformDbContext.SaveChanges();
+            return mission.MissionId;
+        }
+        IEnumerable<MissionTheme> IAdminRepository.GetMissionTheme()
+        {
+            return _ciPlatformDbContext.MissionThemes;
+        }
+
+        int IAdminRepository.GetSkillvianame(string skill)
+        {
+            Skill skill1= _ciPlatformDbContext.Skills.Where(u => u.SkillName == skill).FirstOrDefault();
+            return skill1.SkillId;
+        }
+        void IAdminRepository.AddMissionSkill(MissionSkill mSkill)
+        {
+            _ciPlatformDbContext.Add(mSkill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.AddGoalMission(GoalMission goalMission)
+        {
+            _ciPlatformDbContext.Add(goalMission);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.AddMissionMedia(MissionMedium media)
+        {
+            _ciPlatformDbContext.Add(media);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.AddMissionDocument(MissionDocument missionDocument)
+        {
+            _ciPlatformDbContext.Add(missionDocument);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.EditMission(Mission mission)
+        {
+            _ciPlatformDbContext.Update(mission);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        GoalMission IAdminRepository.GetGoalMission(long goalId)
+        {
+            return _ciPlatformDbContext.GoalMissions.Where(x => x.MissionId == goalId).FirstOrDefault();
+        }
+        MissionMedium IAdminRepository.GetMissionMedium(long missionId)
+        {
+            return _ciPlatformDbContext.MissionMedia.Where(x=>x.MissionId==missionId).FirstOrDefault();
+        }
+        void IAdminRepository.EditMissionSkill(long skillId, long missionId,MissionSkill missionskill)
+        {
+            MissionSkill a=_ciPlatformDbContext.MissionSkills.Where(x=>x.SkillId == skillId && x.MissionSkillId==missionId).FirstOrDefault();
         }
     }
 }

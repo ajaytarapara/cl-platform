@@ -10332,6 +10332,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AspNetCoreHero.ToastNotification >= 1.1.0",
       "CIPlatform.Entities >= 1.0.0",
       "CIPlatform.Repository >= 1.0.0",
       "MailKit >= 3.5.0",
@@ -10395,6 +10396,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "MailKit": {
             "target": "Package",
             "version": "[3.5.0, )"

@@ -1,0 +1,422 @@
+﻿@model CIPlatform.Entities.ViewModels.Admin_Mission_crudModel
+<link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation" style="height:180vh">
+            @Html.Partial("_Admin_dashboard")
+        </div>
+        <div class="col-xl-10 col-lg-9">
+            <div class="card row d-flex p-3" style="flex-direction: row;">
+                <div class="col-md-6 col-sm-5 p-2 d-flex"
+                     style="font-size:18px;align-items: center;justify-content: space-around;"
+                     id="admin-page-right-nav">
+                    <span style="font-size:30px;cursor:pointer" onclick="adminpage_openNav()"
+                          class="d-lg-none d-flex" style="position:absolute;display: inline-flex;">&#9776;</span>
+                    Thursday,November 3 2022,10:06 AM
+                </div>
+                <div class="col-md-3 col-sm-1">
+                </div>
+                <div class="col-md-3 col-sm-5 d-flex p-2" id="admin-page-left-nav">
+                    <img class="img-fluid" src="@Model.adminavatar" style="border-radius: 50%;height:40px;">
+                    <button value=""
+                            style="border: none; background: white;margin-left: 10px;height: 30px;"
+                            class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @Model.adminname
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        @*         <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            EditProfile", "Account" )">Edit profile</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action(" logout", "Account"
+                            )">Logout</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            VolunteeringTimesheet", "Account" )">VolunteeringTimesheet</a>
+                            </button></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="cms-add-form mt-3">
+                <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                    <h4>Edit Mission</h4>
+                </div>
+                <form enctype="multipart/form-data" method="post">
+                    <div class="border px-1 p-sm-3 ">
+                        <div class="py-2">
+                            <label asp-for="missiontitle" class="form-label">Mission Title</label>
+                            <input asp-for="missiontitle" type="text" class="form-control">
+                            <span class="text-danger" asp-validation-for="missiontitle"></span>
+                        </div>
+                        <div class="py-2">
+                            <label asp-for="shortdescription" class="form-label">Mission Short Description</label>
+                            <input asp-for="shortdescription" type="text" class="form-control">
+                            <span class="text-danger" asp-validation-for="shortdescription"></span>
+
+                        </div>
+                        <div class="py-2">
+                            <label asp-for="longdescription" class="form-label">Description</label>
+                            <textarea asp-for="longdescription" id="" class="form-control" rows="3"></textarea>
+                            <span class="text-danger" asp-validation-for="longdescription"></span>
+                        </div>
+                        <div class="py-2">
+                            <label asp-for="missiontype" class="form-label">Type</label>
+                            <select class="form-select" asp-for="missiontype">
+                                <option value="time">time</option>
+                                <option value="goal">goal</option>
+                            </select>
+                        </div>
+
+                        <div class="py-2 d-flex">
+                            <div class="w-50 me-1">
+                                <label asp-for="startdate" class="form-label">Start Date</label>
+                                <input asp-for="startdate" type="date" class="form-control">
+                            </div>
+                            <div class="w-50 ms-1">
+                                <label asp-for="enddate" class="form-label">End Date</label>
+                                <input asp-for="enddate" type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="py-2 d-flex">
+                            <div class="w-50 me-1">
+                                <label asp-for="goalvalue" class="form-label">Goal Value</label>
+                                <input asp-for="goalvalue" type="number" class="form-control">
+                            </div>
+                            <div class="w-50 ms-1">
+                                <label asp-for="goalobjective" class="form-label">Goal Objective</label>
+                                <input asp-for="goalobjective" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="py-2 d-flex">
+                            <div class="w-50 me-1">
+                                <label for="" class="form-label">Country</label>
+                                <select asp-for="country" class="form-select" id="countrydropdown">
+                                </select>
+                            </div>
+                            <div class="w-50 ms-1">
+                                <label for="" class="form-label">City</label>
+                                <select asp-for="city" id="citydropdown" class="form-select">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="py-2 d-flex">
+                            <div class="w-50 ms-1">
+                                <label asp-for="totalseats" class="form-label">Total seats</label>
+                                <input asp-for="totalseats" type="number" class="form-control">
+                            </div>
+                            <div class="w-50 ms-1">
+                                <label asp-for="missiontheme" class="form-label">Mission Theme</label>
+                                <select asp-for="missiontheme" id="themedropdown" class="form-select">
+                                    <option value="1">Environment</option>
+                                    <option value="1">Children</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <div class="row formargin d-flex" style="justify-content: center;height: 146px;">
+                                <div class="row user-edit-selected-skill-div p-2 mx-2">
+                                    <textarea asp-for="missionskills" class="navbar-nav user-edit-selected-skill" id="skilltext">
+                                </textarea>
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <button id="BtnforAddSkills" class="user-edit-add-skill-btn">
+                                        <span style="color:#757575;">Add Skills</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label asp-for="organizationname" class="form-label">Organization Name</label>
+                                <input asp-for="organizationname" type="text" class="form-control">
+                            </div>
+                            <div class="py-2">
+                                <label asp-for="organizationdescription" class="form-label">Organization Detail</label>
+                                <textarea asp-for="organizationdescription" id="" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label asp-for="avaliblity" class="form-label">Availability</label>
+                                <select asp-for="avaliblity" id="" class="form-select">
+                                    <option value="1">Daily</option>
+                                    <option value="1">Weekly</option>
+                                    <option value="1">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <label asp-for="filename" class="form-label">Mission Media</label>
+                                <input type="file" name="filename" id="admin-mission-media" class="form-control" asp-for="filename" multiple>
+                                <div class="border" id="preview-mission-media"></div>
+                                @if (Model.filename != null)
+                                {
+                                    string[] filenames = @Model.filename.ToString().Split(",");
+                                    foreach (var items in filenames)
+                                    {
+                                        <img src="/images/@items.@Model.filetype" />
+                                    }
+                                }
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Documents</label>
+                                <input type="file" name="documentfilename" id="admin-mission-document" class="form-control" multiple>
+                                <p class="border" id="preview-mission-document"></p>
+                            </div>
+
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Save">
+                        </div>
+                </form>
+                @*----Pop-Up For AddSkills---*@
+                <div class="popup-container ">
+                    <div class="popup-content d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+                            <h5>Add your Skills</h5>
+                            <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <div class="available-skills">
+                                <ul class="skill-list" id="skilllistinmodal">
+                                    <li data-skill="skill1">Environment Science </li>
+                                    <li data-skill="skill2">Helth</li>
+                                    <li data-skill="skill3">Computer</li>
+                                    <li data-skill="skill4">Leadership</li>
+                                    <li data-skill="skill1">Environment Science </li>
+                                    <li data-skill="skill2">Helth</li>
+                                    <li data-skill="skill3">Computer</li>
+                                    <li data-skill="skill4">Leadership</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center" style="margin-right:8px;gap:5px;">
+                                <button class="add-skill"><i class="bi bi-chevron-right"></i></button>
+                                <button class="remove-skill"><i class="bi bi-chevron-left"></i></button>
+                            </div>
+                            <div class="selected-skills">
+                                <ul class="skill-list">
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row mt-3" style="gap:10px;">
+                                <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills" style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;"><span style="color:black;">Cancel</span></button>
+                                <button class="user-edit-save-btn" id="btnsaveforaddskills" style="border: 1px solid orange;
+ background: transparent;padding: 8px;border-radius: 12px;">
+                                    <span style="color:#F88634;">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Javascript{
+<script>
+           $(document).ready(function () {
+               getcountry();
+               getcity();
+               getskill();
+               gettheme();
+          });
+          //====================================================
+          //data of add page
+          //====================================================
+
+          function getcountry() {
+              $.ajax({
+                  type: "GET",
+                  url: "/Admin/GetCountries",
+                  data: "{}",
+                  success: function (data) {
+
+                      var str = "";
+                      //console.log(data);
+                      var releatedmission = $("#countrydropdown");
+                      for (var i = 0; i < data["data"].length; i++) {
+                          str += '<option value=' + data["data"][i].countryId
+                              + '>' + data["data"][i].name + '</option>';
+                      }
+                      releatedmission.append(str);
+
+                  },
+                  failure: function (response) {
+                      alert("failure");
+                  },
+                  error: function (response) {
+                      alert("Something went Worng");
+                  }
+
+              });
+          }
+
+          function getcity() {
+              $.ajax({
+                  type: "get",
+                  url: "/Admin/GetCities",
+                  data: "{}",
+                  success: function (data) {
+                      var str = "";
+                      //console.log(data);
+                      var releatedmission = $("#citydropdown");
+                      for (i = 0; i < data["data"].length; i++) {
+
+                          str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+                      }
+
+                      releatedmission.append(str);
+                  },
+                  failure: function (response) {
+                      alert("failure");
+                  },
+                  error: function (response) {
+                      alert("Something went Worng");
+                  }
+
+              });
+          }
+
+
+          $("#countrydropdown").on("change", function () {
+              var countryid = $("#countrydropdown").val();
+              console.log(countryid);
+              $.ajax({
+                  type: "Post",
+                  url: "/Admin/GetCities",
+                  data: { countryid: countryid },
+                  success: function (data) {
+                      var str = "";
+                      //console.log(data);
+                      var releatedmission = $("#citydropdown");
+                      for (i = 0; i < data["data"].length; i++) {
+
+                          str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+                      }
+                      $("#citydropdown").text("");
+                      releatedmission.append(str);
+                  },
+                  failure: function (response) {
+                      alert("failure");
+                  },
+                  error: function (response) {
+                      alert("Something went Worng");
+                  }
+
+              });
+          });
+              function gettheme() {
+              $.ajax({
+                  type: "get",
+                  url: "/Admin/GetMissionTheme",
+                  data: "{}",
+                  success: function (data) {
+                      console.log(data);
+                      var str = "";
+                      //console.log(data);
+                      var releatedmission = $("#themedropdown");
+                      for (i = 0; i < data["data"].length; i++) {
+
+                          str += '<option value=' + data["data"][i].missionThemeId + '>' + data["data"][i].title + '</option>';
+                      }
+
+                      releatedmission.append(str);
+                  },
+                  failure: function (response) {
+                      alert("failure");
+                  },
+                  error: function (response) {
+                      alert("Something went Worng");
+                  }
+
+              });
+          }
+          function getskill() {
+          $.ajax({
+              type: "GET",
+              url: "/Admin/GetSkills",
+              data: "{}",
+              success: function (data) {
+                  console.log(data);
+                  var str = "";
+                  //console.log(data);
+                  var releatedmission = $("#skilllistinmodal");
+                  for (i = 0; i < data["data"].length; i++) {
+
+                      str += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+
+                  }
+
+                  releatedmission.html(str);
+                  $(".popup-container .skill-list li").on("click", function () {
+                      console.log("clicked");
+                      $(this).toggleClass("selected");
+                  });
+              },
+              failure: function (response) {
+                  alert("failure");
+              },
+              error: function (response) {
+                  alert("Something went Worng");
+              }
+
+          });
+      }
+
+      $(document).ready(function () {
+      $(".popup-container").hide();
+      $(".user-edit-add-skill-btn").on("click", function (event) {
+          event.preventDefault();
+          $(".popup-container").show();
+      });
+
+      $(".user-edit-close-btn").on("click", function () {
+          $(".popup-container").hide();
+      });
+
+      $(".closebtnpopup").on("click", function () {
+          $(".popup-container").hide();
+      });
+
+
+      $(".close-popup-btn").click(function () {
+          $(".popup-container").fadeOut();
+      });
+
+      $(".add-skill").on("click", function (e) {
+          e.preventDefault();
+          var selectedSkill = $(".available-skills .skill-list li.selected");
+          if (selectedSkill.length > 0) {
+              selectedSkill.appendTo($(".selected-skills .skill-list"));
+              selectedSkill.removeClass("selected");
+          }
+      });
+
+      $(".remove-skill").on("click", function (e) {
+          e.preventDefault();
+          var selectedSkill = $(".selected-skills .skill-list li.selected");
+          if (selectedSkill.length > 0) {
+              selectedSkill.appendTo($(".available-skills .skill-list"));
+              selectedSkill.removeClass("selected");
+          }
+      });
+
+
+      var names = "";
+      $(".user-edit-save-btn").on("click", function (e) {
+          e.preventDefault();
+          $(".user-edit-selected-skill").empty();
+          $(".selected-skills .skill-list li").each(function () {
+              var skillName = $(this).text().trim();
+              names += skillName+"\n";
+              /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
+              $("#skilltext").text(names);
+          });
+          $(".popup-container").hide();
+      });
+    });
+</script>
+
+  }
+

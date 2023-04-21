@@ -74,5 +74,23 @@ namespace CIPlatform.Repository.Repository.Interface
         public void AddBannerAdmin(Banner banner1);
         public Banner GetBanner(long bannerId);
         public void EditBannerAdmin(Banner banner1);
+        public void DeleteBannerAdmin(Banner banner1);
+        //========================
+        //Mission crud
+        //==========================
+        public AdminPageList<Mission> GetMissionAdmin(string searchText, int pageNumber, int pageSize);
+        public Mission GetMission(long missionId);
+        public void DeleteMission(Mission mission);
+        public long AddMission(Mission mission);
+        public IEnumerable<MissionTheme> GetMissionTheme();
+        public int GetSkillvianame(string skill);
+        public void AddMissionSkill(MissionSkill mSkill);
+        public void AddGoalMission(GoalMission goalMission);
+        public void AddMissionMedia(MissionMedium media);
+        public void AddMissionDocument(MissionDocument missionDocument);
+        public void EditMission(Mission mission);
+        public GoalMission GetGoalMission(long goalId);
+        public MissionMedium GetMissionMedium(long missionId);
+        public void EditMissionSkill(long skillId, long missionId,MissionSkill skill);
     }
 }

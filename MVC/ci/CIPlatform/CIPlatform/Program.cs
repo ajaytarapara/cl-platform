@@ -30,6 +30,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
 var app = builder.Build();
 var myAssembly = typeof(ViewComponent).Assembly;
 // Configure the HTTP request pipeline.
@@ -47,6 +48,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.UseSession();
+app.UseNotyf();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");

@@ -158,11 +158,13 @@ $(document).ready(function () {
     });
 
 
-    $(".close-popup-btn").click(function () {
+    $(".close-popup-btn").click(function (e) {
+        e.preventDefault();
         $(".popup-container").fadeOut();
     });
 
-    $(".add-skill").on("click", function () {
+    $(".add-skill").on("click", function (e) {
+        e.preventDefault();
         var selectedSkill = $(".available-skills .skill-list li.selected");
         if (selectedSkill.length > 0) {
             selectedSkill.appendTo($(".selected-skills .skill-list"));
@@ -170,7 +172,8 @@ $(document).ready(function () {
         }
     });
 
-    $(".remove-skill").on("click", function () {
+    $(".remove-skill").on("click", function (e) {
+        e.preventDefault)();
         var selectedSkill = $(".selected-skills .skill-list li.selected");
         if (selectedSkill.length > 0) {
             selectedSkill.appendTo($(".available-skills .skill-list"));

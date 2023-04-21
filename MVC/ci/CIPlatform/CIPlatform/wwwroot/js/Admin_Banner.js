@@ -31,7 +31,7 @@ function loadbannner() {
             $("#bannerdatalist").html("");
             $("#bannerdatalist").html(data);
             loadPagination();
-            //applicationapprove();
+            deleteBanner();
             /*Missionthemedelete();*/
         },
         failure: function (response) {
@@ -74,5 +74,31 @@ function loadPagination() {
             }
         }
         loadbannner();
+    });
+}
+//=====================================================================================================
+//delete banner ajax in banner crud admin
+//======================================================================================================
+function deleteBanner() {
+    var bannerid = "";
+    $(".bannerdeleteadminbtn").on("click", function () {
+        bannerid = this.id;
+        console.log("call", bannerid);
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Delete_Banner",
+            data: { bannerId: bannerid },
+            success: function (data) {
+                loadbannner();
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+
     });
 }
