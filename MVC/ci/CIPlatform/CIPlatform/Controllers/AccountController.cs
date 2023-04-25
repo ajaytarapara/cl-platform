@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using CIPlatform.Entities.Auth;
+using CIPlatform.Auth;
 
 namespace CIPlatform.Controllers
 {
@@ -34,7 +36,7 @@ namespace CIPlatform.Controllers
         public IActionResult Login()
         {
             LoginModel model = new LoginModel();
-            model.Banner =_userRepository.getbanner();
+            model.Banner = _userRepository.getbanner();
             return View(model);
         }
         [HttpPost]
@@ -50,17 +52,39 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                Boolean isValidUser = _userRepository.validateUser(emailId, password);
-                if (!isValidUser)
+                User isValidUser = _userRepository.validateUser(emailId, password);
+                if (isValidUser == null)
                 {
                     ModelState.AddModelError("Password", "Password does not match");
                 }
             }
             if (ModelState.IsValid)
             {
+                User isValidUser = _userRepository.validateUser(emailId, password);
+                SessionDetailsViewModel sessionDetailsViewModel = new SessionDetailsViewModel();
+                sessionDetailsViewModel.Email = isValidUser.Email;
+                sessionDetailsViewModel.Avatar = isValidUser.Avatar;
+                sessionDetailsViewModel.UserId = isValidUser.UserId;
+                sessionDetailsViewModel.FullName = isValidUser.FirstName + " " + isValidUser.LastName;
+                sessionDetailsViewModel.Role = isValidUser.Role;
+                var jwtSetting = configuration.GetSection(nameof(JwtSetting)).Get<JwtSetting>();
+                var token = JwtTokenHelper.GenerateToken(jwtSetting, sessionDetailsViewModel);
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    ModelState.AddModelError("email", "Enter correct email");
+                    return View("Login");
+                }
+
+                HttpContext.Session.SetString("Token", token);
                 HttpContext.Session.SetString("useremail", emailId);
-                _notyf.Success("Success Notification",3);
-                return RedirectToAction("Index", "Home");
+                if (isValidUser.Role == "volunteer")
+                {
+                    _notyf.Success("LoginSuccessFully",3);
+                    return RedirectToAction("Index", "Home");
+                }
+                if (isValidUser.Role == "admin")
+                    return RedirectToAction("User_crud", "Admin");
+                //return RedirectToAction("Index", "Home");
             }
             return Login();
         }
@@ -208,9 +232,9 @@ namespace CIPlatform.Controllers
             editProfile.title = userObj.Title;
             editProfile.whyivol = userObj.WhyIVolunteer;
             editProfile.employeeid = userObj.EmployeeId;
-            editProfile.linkedinurl=userObj.LinkedInUrl;
-            editProfile.department=userObj.Department;
-            editProfile.profiletext= userObj.ProfileText;
+            editProfile.linkedinurl = userObj.LinkedInUrl;
+            editProfile.department = userObj.Department;
+            editProfile.profiletext = userObj.ProfileText;
             return View(editProfile);
         }
 
@@ -254,7 +278,8 @@ namespace CIPlatform.Controllers
             }
 
             _userRepository.edituserprofile(userObj, userSkill);
-            return View(user);
+            _notyf.Success("Your Profile updated Successfully", 3);
+            return RedirectToAction("EditProfile");
 
         }
 
@@ -293,23 +318,27 @@ namespace CIPlatform.Controllers
                 {
                     if (editPassword.password.Newpassword.Equals(userObj.Password))
                     {
+                        _notyf.Error("you can not set new pass equal old pass", 3);
                         ModelState.AddModelError("oldpassword", "you can not set new pass equal old pass");
                     }
                     else
                     {
                         userObj.Password = editPassword.password.Newpassword;
                         _userRepository.editPassword(userObj);
+                        _notyf.Success("Password Updated Successfully", 3);
 
                     }
 
                 }
                 else
                 {
+                    _notyf.Error("Confirm password does not match to new password", 3);
                     ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
                 }
             }
             else
             {
+                _notyf.Error("old password is does not match ", 3);
                 ModelState.AddModelError("oldpassword", "old password is does not match ");
             }
             return RedirectToAction("EditProfile");
@@ -324,6 +353,7 @@ namespace CIPlatform.Controllers
             var subject = profileModel.subject;
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send(adminemail, welcomeMessage + message, subject);
+            _notyf.Error("mail sended successfully", 3);
             return RedirectToAction("EditProfile");
 
         }
@@ -367,10 +397,12 @@ namespace CIPlatform.Controllers
                 timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
                 timesheet.Status = "approved";
                 _userRepository.addtimesheet(timesheet);
+                _notyf.Success("time sheet added successfully", 3);
                 return Json(new { status = 1 });
             }
             else
             {
+                _notyf.Error("time is required", 3);
                 ModelState.AddModelError("time", "time is required");
                 return Json(new { status = 0 });
             }
@@ -393,10 +425,13 @@ namespace CIPlatform.Controllers
                 timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
                 timesheet.Status = "approved";
                 _userRepository.addtimesheet(timesheet);
+                _notyf.Success("time sheet deleted successfully", 3);
+
                 return Json(new { status = 1 });
             }
             else
             {
+                _notyf.Error("time sheet not added successfully", 3);
                 ModelState.AddModelError("data", "data is not valid");
                 return Json(new { status = 0 });
             }
@@ -409,6 +444,7 @@ namespace CIPlatform.Controllers
             Timesheet timesheet = new Timesheet();
             timesheet.TimesheetId = timesheetid;
             _userRepository.deletetimesheet(timesheet);
+            _notyf.Success("time sheet deleted successfully", 3);
             return RedirectToAction("VolunteeringTimesheet", "Account");
         }
 
@@ -418,28 +454,31 @@ namespace CIPlatform.Controllers
             Timesheet timesheet = new Timesheet();
             timesheet.TimesheetId = timesheetid;
             _userRepository.deletetimesheet(timesheet);
+            _notyf.Success("time sheet deleted successfully", 3);
             return RedirectToAction("VolunteeringTimesheet", "Account");
         }
 
         [HttpPost]
         public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, string DateVolunteered)
-        {            
+        {
             Timesheet timesheet = new Timesheet();
             timesheet.Notes = Notes;
-            if (hours != null && minutes != null && Notes != null && DateVolunteered !=null)
+            if (hours != null && minutes != null && Notes != null && DateVolunteered != null)
             {
                 if (Int32.Parse(minutes) > 60)
                 {
-                   
+
                     return Json(new { status = 2 });
                 }
-                timesheet.DateVolunteered =DateTime.Parse( DateVolunteered);
+                timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
                 timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
                 _userRepository.edittimesheet(timesheetid, hours, minutes, MissionId, Notes, DateVolunteered);
+                _notyf.Success("time sheet upadeted successfully", 3);
                 return Json(new { status = 1 });
             }
             else
             {
+                _notyf.Error("time sheet not upadeted successfully", 3);
                 ModelState.AddModelError("data", "data is not valid");
                 return Json(new { status = 0 });
             }
@@ -451,10 +490,12 @@ namespace CIPlatform.Controllers
             if (Notes != null && Action != 0 && DateVolunteered != null)
             {
                 _userRepository.edittimesheetgoal(timesheetid, MissionId, Notes, Action, DateVolunteered);
+                _notyf.Error("time sheet  upadeted successfully", 3);
                 return Json(new { status = 1 });
             }
             else
             {
+                _notyf.Error("time sheet not upadeted successfully", 3);
                 ModelState.AddModelError("data", "data is not valid");
                 return Json(new { status = 0 });
             }
@@ -469,8 +510,8 @@ namespace CIPlatform.Controllers
             }
             User userObj = _userRepository.findUser(userSessionEmailId);
             HomeModel privacy = new HomeModel();
-            privacy.username= userObj.FirstName + " " + userObj.LastName;
-            privacy.avatar= userObj.Avatar;
+            privacy.username = userObj.FirstName + " " + userObj.LastName;
+            privacy.avatar = userObj.Avatar;
             return View(privacy);
         }
     }

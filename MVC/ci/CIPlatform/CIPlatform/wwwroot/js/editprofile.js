@@ -173,7 +173,7 @@ $(document).ready(function () {
     });
 
     $(".remove-skill").on("click", function (e) {
-        e.preventDefault)();
+        e.preventDefault();
         var selectedSkill = $(".selected-skills .skill-list li.selected");
         if (selectedSkill.length > 0) {
             selectedSkill.appendTo($(".available-skills .skill-list"));

@@ -90,7 +90,7 @@
                 <div class="row formargin">
                     <div class="col-md-6">
                         <label for="">Employee ID</label>
-                        <input asp-for="employeeid" class="form-control " placeholder="Enter your employee id" value="@Model.employeeid"type="text">
+                        <input asp-for="employeeid" class="form-control " placeholder="Enter your employee id" value="@Model.employeeid" type="text">
                         <span asp-validation-for="employeeid" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
@@ -113,7 +113,7 @@
                 <div class="row formargin">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">My Profile*</label>
-<textarea asp-for="profiletext" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea asp-for="profiletext" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <span asp-validation-for="profiletext" class="text-danger"></span>
                 </div>
@@ -224,7 +224,10 @@
         </div>
         <div>
             <div class="d-flex flex-row mt-3" style="gap:10px;">
-                <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills" style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;"><span style="color:black;">Cancel</span></button>
+                <button class="user-edit-add-skill-btn closebtnpopup" id="btncancelforaddskills"
+                        style="border-radius: 16px;border: 1px solid black;padding: 10px;background: transparent;color: black;">
+                    <span style="color:black;">Cancel</span>
+                </button>
                 <button class="user-edit-save-btn" id="btnsaveforaddskills" style="border: 1px solid orange;
  background: transparent;padding: 8px;border-radius: 12px;">
                     <span style="color:#F88634;">Save</span>
@@ -305,7 +308,15 @@
         </div>
     </form>
 </div>
-@Html.Partial("_Footer");
+<div style="position:sticky;">
+    <hr>
+    <div class="container mt-3 d-flex">
+        <a style="text-decoration:none;color:black;" href="@Url.Action("Privacy_policy", "Account")">Privacy Policy</a>
+        <button type="button" class="btn d-flex mx-3" data-bs-toggle="modal" data-bs-target="#ContactusModel">Contact us</button>
+    </div>
+
+    <hr>
+</div>
 @section Javascript{
 <script src="/js/editprofile.js" asp-append-version="true"></script>
   }

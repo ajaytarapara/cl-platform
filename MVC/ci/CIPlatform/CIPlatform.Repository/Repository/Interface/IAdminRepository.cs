@@ -17,7 +17,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public Boolean validateadmincred(string adminemail,string adminpassword);
 
-        public Admin findadmin(string adminemail);
+        public User findadmin(string adminemail);
         //========================
         //Admin user crud
         //==========================
@@ -55,6 +55,7 @@ namespace CIPlatform.Repository.Repository.Interface
         //Admin mission theme crud
         //==========================
         public AdminPageList<MissionTheme> GetMissionThemeAdmin(string searchText, int pageNumber, int pageSize);
+
         public void AddThemeAdmin(MissionTheme theme);
         public MissionTheme GetThemeAdmin(long themeId);
         public void EditThemeAdmin(MissionTheme theme);
@@ -92,5 +93,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public GoalMission GetGoalMission(long goalId);
         public MissionMedium GetMissionMedium(long missionId);
         public void EditMissionSkill(long skillId, long missionId,MissionSkill skill);
+        public void UpdateMissionMedia(MissionMedium media);
+        public MissionDocument GetMissionDocument(long missionId);
+        public void UpdateMissionDocument(MissionDocument missionDocument);
     }
 }

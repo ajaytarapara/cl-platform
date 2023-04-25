@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CGHDNjgTMTkdekIh3qPthNzMae0z1uZx0C082Z7CU+kz1wvjOaJNhhFQ9XkL6YQdPpr1YuCn3JVg9KKsMUVEUg==",
+  "dgSpecHash": "w/u0l/epwDPnxihuPHgw2VnG1PpJ0/RaedMCs5LAWzPtCRAUIIf8Qrn1C9BeINIV+CJIiShBBf5iriT++jSSUQ==",
   "success": true,
   "projectFilePath": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\tatva\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\tatva\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",

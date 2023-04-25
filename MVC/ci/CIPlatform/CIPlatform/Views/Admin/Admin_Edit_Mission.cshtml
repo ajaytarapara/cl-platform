@@ -148,13 +148,21 @@
                                 <label asp-for="filename" class="form-label">Mission Media</label>
                                 <input type="file" name="filename" id="admin-mission-media" class="form-control" asp-for="filename" multiple>
                                 <div class="border" id="preview-mission-media"></div>
+                                <input type="hidden" asp-for="@Model.filename" />
+                                <input type="hidden" asp-for="@Model.filepath" />
+                                <input type="hidden" asp-for="@Model.filetype" />
+
                                 @if (Model.filename != null)
                                 {
                                     string[] filenames = @Model.filename.ToString().Split(",");
+                                    string[] filetypes = @Model.filetype.ToString().Split(",");
+
                                     foreach (var items in filenames)
                                     {
-                                        <img src="/images/@items.@Model.filetype" />
-                                    }
+                                        <img style="height:100px;width:100px;" src="/@Model.filepath/@items.@Model.filetype"/>
+                                     
+                                    }                                 
+                                  
                                 }
                             </div>
                             <div class="py-2">

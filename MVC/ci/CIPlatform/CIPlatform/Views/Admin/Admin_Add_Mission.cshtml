@@ -130,10 +130,12 @@
                             <div class="py-2">
                                 <label asp-for="organizationname" class="form-label">Organization Name</label>
                                 <input asp-for="organizationname" type="text" class="form-control">
+                                 <span class="text-danger" asp-validation-for="organizationname"></span>
                             </div>
                             <div class="py-2">
                                 <label asp-for="organizationdescription" class="form-label">Organization Detail</label>
                                 <textarea asp-for="organizationdescription" id="" class="form-control" rows="3"></textarea>
+                                 <span class="text-danger" asp-validation-for="organizationdescription"></span>
                             </div>
                             <div class="py-2">
                                 <label asp-for="avaliblity" class="form-label">Availability</label>
@@ -145,7 +147,7 @@
                             </div>
                             <div class="py-2">
                                 <label for="" class="form-label">Mission Media</label>
-                                <input type="file" name="filename" id="admin-mission-media" class="form-control" multiple>
+                                <input type="file" name="filename" id="admin-mission-media" class="form-control" multiple required>
                                 <div class="border" id="preview-mission-media"></div>
                             </div>
                             <div class="py-2">

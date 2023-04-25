@@ -301,10 +301,8 @@ $("#rating .rating").click(function () {
         type: 'POST',
         data: { ratingCount: rateValue, missionid: missionid },
         success: function (CountryResult) {
-            alert('Rating submitted.');
         },
         error: function () {
-            alert('Rating Failed!');
         }
     });
 });

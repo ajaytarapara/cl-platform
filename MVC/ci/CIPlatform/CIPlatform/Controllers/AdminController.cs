@@ -3,11 +3,13 @@ using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CIPlatform.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private readonly IAdminRepository _adminrepository;
@@ -82,9 +84,9 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 Admin_user_crudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                Admin_user_crudModel.adminavatar = "./images/user1.png";
+                Admin_user_crudModel.adminavatar =adminobj.Avatar;
 
             }
 
@@ -150,7 +152,7 @@ namespace CIPlatform.Controllers
                     useredit.Email = Email;
                     useredit.Password = Password;
                     useredit.EmployeeId = EmployeeId;
-                    useredit.CreatedAt = DateTime.Now;
+                    useredit.UpdatedAt = DateTime.Now;
                     useredit.Department = Department;
                     useredit.PhoneNumber = PhoneNumber;
                     _adminrepository.UpdateneedUser(useredit);
@@ -182,9 +184,9 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 _Cms_CrudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                _Cms_CrudModel.adminavatar = "./images/user1.png";
+                _Cms_CrudModel.adminavatar = adminobj.Avatar;
             }
             return View(_Cms_CrudModel);
         }
@@ -207,9 +209,9 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 _Cms_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                _Cms_CrudModels.adminavatar = "./images/user1.png";
+                _Cms_CrudModels.adminavatar = adminobj.Avatar;
             }
             return View(_Cms_CrudModels);
         }
@@ -225,9 +227,9 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 cms_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                cms_CrudModels.adminavatar = "./images/user1.png";
+                cms_CrudModels.adminavatar = adminobj.Avatar;
                 CmsPage CMS = new CmsPage();
                 CMS.Title = cms_CrudModels.Title;
                 CMS.Description = cms_CrudModels.Description;
@@ -248,9 +250,9 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             admin_Cms_.adminname = adminobj.FirstName + " " + adminobj.LastName;
-            admin_Cms_.adminavatar = "./images/user1.png";
+            admin_Cms_.adminavatar = adminobj.Avatar;
             admin_Cms_.CmsId = CmsId;
             return View(admin_Cms_);
         }
@@ -268,9 +270,9 @@ namespace CIPlatform.Controllers
             {
                 long cmsId = CmsId;
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 cms_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                cms_CrudModels.adminavatar = "./images/user1.png";
+                cms_CrudModels.adminavatar = adminobj.Avatar;
                 CmsPage cms = _adminrepository.GetCmsAdmin(cmsId);
                 cms.Title = cms_CrudModels.Title;
                 cms.Description = cms_CrudModels.Description;
@@ -298,9 +300,9 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             story_Crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
-            story_Crud.adminavatar = "./images/user1.png";
+            story_Crud.adminavatar = adminobj.Avatar;
             return View(story_Crud);
         }
 
@@ -330,6 +332,7 @@ namespace CIPlatform.Controllers
         {
             Story story = _adminrepository.GetstoryForApprove(storyId);
             story.Status = "rejected";
+            story.DeletedAt = DateTime.Now;
             _adminrepository.DeleteStory(story);
             string searchText = "";
             int pageNumber = 1;
@@ -349,9 +352,9 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+           User adminobj = _adminrepository.findadmin(adminemail);
             mission_Application.adminname = adminobj.FirstName + " " + adminobj.LastName;
-            mission_Application.adminavatar = "./images/user1.png";
+            mission_Application.adminavatar = adminobj.Avatar;
             return View(mission_Application);
         }
         [HttpPost]
@@ -398,9 +401,9 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             theme.adminname = adminobj.FirstName + " " + adminobj.LastName;
-            theme.adminavatar = "./images/user1.png";
+            theme.adminavatar = adminobj.Avatar;
             return View(theme);
         }
         [HttpPost]
@@ -422,9 +425,9 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                _Theme_CrudModels.adminavatar = "./images/user1.png";
+                _Theme_CrudModels.adminavatar = adminobj.Avatar;
             }
             return View(_Theme_CrudModels);
         }
@@ -440,7 +443,7 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+               User adminobj = _adminrepository.findadmin(adminemail);
                 _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 _Theme_CrudModels.adminavatar = "./images/user1.png";
                 MissionTheme theme = new MissionTheme();
@@ -463,7 +466,7 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 _Theme_CrudModels.adminavatar = "./images/user1.png";
                 _Theme_CrudModels.themeId = themeId;
@@ -508,7 +511,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             _Skill_Model.adminname = adminobj.FirstName + " " + adminobj.LastName;
             _Skill_Model.adminavatar = "./images/user1.png";
             return View(_Skill_Model);
@@ -532,7 +535,7 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 SkillModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 SkillModels.adminavatar = "./images/user1.png";
             }
@@ -559,7 +562,7 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-                Admin adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 SkillModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 SkillModels.adminavatar = "./images/user1.png";
                 SkillModels.SkillId = skillId;
@@ -598,7 +601,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             banner_CrudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
             banner_CrudModel.adminavatar = "./images/user1.png";
             return View(banner_CrudModel);
@@ -620,7 +623,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             banner.adminname = adminobj.FirstName + " " + adminobj.LastName;
             banner.adminavatar = "./images/user1.png";
             return View(banner);
@@ -662,7 +665,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             banners.adminname = adminobj.FirstName + " " + adminobj.LastName;
             banners.adminavatar = "./images/user1.png";
             banners.bannerid = (int)bannerId;
@@ -723,7 +726,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
             mission_crud.adminavatar = "./images/user1.png";
             return View(mission_crud);
@@ -745,13 +748,13 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
             mission_crud.adminavatar = "./images/user1.png";
             return View(mission_crud);
         }
         [HttpPost]
-        public IActionResult Admin_Add_Mission(Admin_Mission_crudModel missionModels, IFormFile? filename, IFormFile? documentfilename)
+        public IActionResult Admin_Add_Mission(Admin_Mission_crudModel missionModels, List<IFormFile>? filename,List<IFormFile>? documentfilename)
         {
             Mission mission = new Mission();
             mission.Title = missionModels.missiontitle;
@@ -792,41 +795,59 @@ namespace CIPlatform.Controllers
             }
             if (filename != null)
             {
-                string userSessionEmailId = HttpContext.Session.GetString("useremail");
-                User userObj = _userRepository.findUser(userSessionEmailId);
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
                 MissionMedium media = new MissionMedium();
                 media.MissionId = missionid;
-                media.CreatedAt = DateTime.Now;
-                media.MediaPath = "images";
-                media.MediaType = "png";
-                string fileName = Guid.NewGuid().ToString();
-                var uploads = Path.Combine(wwwRootPath, @"images\");
-                var extension = Path.GetExtension(filename.FileName);
-                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                string name = "";
+                string path = "";
+                string type = "";
+                foreach (var files in filename)
                 {
-                    filename.CopyTo(fileStreams);
+                    string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                    User userObj = _userRepository.findUser(userSessionEmailId);
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\media\");
+                    var extension = Path.GetExtension(files.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        files.CopyTo(fileStreams);
+                    }
+
+                    name += fileName + ",";
+                    type = "png";
+                    path = @"images/media";
                 }
-                media.MediaName = fileName;
+                media.MediaName = name;
+                media.MediaType = type;
+                media.MediaPath = path;
                 _adminrepository.AddMissionMedia(media);
 
             }
             if (documentfilename != null)
             {
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
-                MissionDocument missionDocument = new MissionDocument();
+                MissionDocument missionDocument =new MissionDocument();
                 missionDocument.MissionId = missionid;
-                missionDocument.CreatedAt = DateTime.Now;
-                string documentfilenames = Guid.NewGuid().ToString();
-                var uploads = Path.Combine(wwwRootPath, @"document\");
-                var extension = Path.GetExtension(documentfilename.FileName);
-                using (var fileStreams = new FileStream(Path.Combine(uploads, documentfilenames + extension), FileMode.Create))
+                string doctype = "";
+                string docname = "";
+                foreach (var docfile in documentfilename)
                 {
-                    documentfilename.CopyTo(fileStreams);
+                    string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                    User userObj = _userRepository.findUser(userSessionEmailId);
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    missionDocument.UpdatedAt = DateTime.Now;
+                    string documentfilenames = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"document\");
+                    var extension = Path.GetExtension(docfile.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, documentfilenames + extension), FileMode.Create))
+                    {
+                        docfile.CopyTo(fileStreams);
+                    }
+                    docname += documentfilenames + ",";
+                    doctype += extension + ",";
                 }
-                missionDocument.DocumentType = "." + extension;
+                missionDocument.DocumentType = doctype;
                 missionDocument.DocumentPath = "document";
-                missionDocument.DocumentName = documentfilenames;
+                missionDocument.DocumentName = docname;
                 _adminrepository.AddMissionDocument(missionDocument);
             }
             return RedirectToAction("Admin_Add_Mission");
@@ -841,7 +862,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-            Admin adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             mission_crud.adminname = adminobj.FirstName + " " + adminobj.LastName;
             mission_crud.adminavatar = "./images/user1.png";
             mission_crud.missionid = missionId;
@@ -861,16 +882,23 @@ namespace CIPlatform.Controllers
                 mission_crud.goalobjective = goal.GoalObjectiveText;
                 mission_crud.goalvalue = goal.GoalValue;
             }
-            MissionMedium media=_adminrepository.GetMissionMedium(missionId);
-            if(media!=null)
+            MissionMedium media = _adminrepository.GetMissionMedium(missionId);
+            if (media != null)
             {
                 mission_crud.filename = media.MediaName;
                 mission_crud.filetype = media.MediaType;
+                mission_crud.filepath = media.MediaPath;
             }
+            MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
+            if (missionDocument != null)
+            {
+
+            }
+
             return View(mission_crud);
         }
         [HttpPost]
-        public IActionResult Admin_Edit_Mission(Admin_Mission_crudModel admin_Mission_)
+        public IActionResult Admin_Edit_Mission(Admin_Mission_crudModel admin_Mission_, List<IFormFile>? filename, List<IFormFile>? documentfilename)
         {
             long missionId = (long)admin_Mission_.missionid;
             Mission mission = _adminrepository.GetMission(missionId);
@@ -900,6 +928,67 @@ namespace CIPlatform.Controllers
 
                 }
             }
+            MissionMedium media = _adminrepository.GetMissionMedium(missionId);
+            if (filename.Count != 0)
+            {             
+                media.UpdatedAt = DateTime.Now;
+                long MissionId = (long)admin_Mission_.missionid;
+                string name = "";
+                string path = "";
+                string type = "";
+                foreach (var files in filename)
+                {
+                    string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                    User userObj = _userRepository.findUser(userSessionEmailId);
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\media\");
+                    var extension = Path.GetExtension(files.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        files.CopyTo(fileStreams);
+                    }
+
+                    name += fileName + ",";
+                    type += "png";
+                    path = @"images/media";
+                }
+                media.MediaName = name;
+                media.MediaPath = path;
+                media.MediaType = type;
+                _adminrepository.UpdateMissionMedia(media);
+            }
+            
+            MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
+            if (documentfilename.Count!= 0)
+            {
+           
+                string doctype = "";
+                string docname = "";
+                foreach (var docfile in documentfilename)
+                {
+                    string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                    User userObj = _userRepository.findUser(userSessionEmailId);
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    missionDocument.UpdatedAt = DateTime.Now;
+                    string documentfilenames = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"document\");
+                    var extension = Path.GetExtension(docfile.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, documentfilenames + extension), FileMode.Create))
+                    {
+                        docfile.CopyTo(fileStreams);
+                    }
+                    docname += documentfilenames + ",";
+                    doctype += extension + ",";
+                }
+                int index = doctype.LastIndexOf(',');
+                missionDocument.DocumentType = doctype.Substring(0,index);
+
+                missionDocument.DocumentPath = "document";
+                missionDocument.DocumentName = docname;
+                _adminrepository.UpdateMissionDocument(missionDocument);
+            }
+           
             string searchText = "";
             int pageNumber = 1;
             int pageSize = 2;

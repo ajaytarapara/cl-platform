@@ -5,9 +5,12 @@ using CIPlatform.Entities.DataModels;
 using CIPlatform.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
 using CIPlatform.Helpers;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CIPlatform.Controllers
 {
+    [Authorize(Roles="admin,volunteer")]
     public class MissionController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -16,7 +19,8 @@ namespace CIPlatform.Controllers
         private readonly CIPlatformDbContext _ciPlatformDbContext;
         private readonly IConfiguration configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public MissionController(IUserRepository userRepository, IMissionRepository missionRepository, IHomeRepository homeRepository, CIPlatformDbContext cIPlatformDbContext, IConfiguration _configuration, IHttpContextAccessor httpContextAccessor)
+        private readonly INotyfService _notyf;
+        public MissionController(IUserRepository userRepository, IMissionRepository missionRepository, IHomeRepository homeRepository, CIPlatformDbContext cIPlatformDbContext, IConfiguration _configuration, IHttpContextAccessor httpContextAccessor, INotyfService notyf)
         {
             _missionRepository = missionRepository;
             _userRepository = userRepository;
@@ -24,6 +28,7 @@ namespace CIPlatform.Controllers
             _ciPlatformDbContext = cIPlatformDbContext;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
+            _notyf = notyf;
         }
         public IActionResult Mission_Volunteer(string missionid)
         {
@@ -61,6 +66,8 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
 
             _missionRepository.addToFavourites(missionid, userObj.UserId, fav);
+            _notyf.Success("Added to favoiurite list", 3);
+
         }
 
         public IActionResult addcomment()
@@ -76,6 +83,7 @@ namespace CIPlatform.Controllers
             long misid = Int64.Parse(MissionID);
             int missid = Int32.Parse(MissionID);
             _missionRepository.addcomment(misid, userObj.UserId, comment);
+            _notyf.Success("commented successfully", 3);
             //List<Comment> comment1 = _context.Comments.Where(x => x.MissionId == missid).AsEnumerable().ToList();
 
         }
@@ -107,6 +115,7 @@ namespace CIPlatform.Controllers
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             _missionRepository.ApplyApplication(missionid,userObj.UserId);
+            _notyf.Warning("your request submmited successfully", 3);
         }
 
         public IActionResult MissionUserRating(float ratingCount, long? missionid)

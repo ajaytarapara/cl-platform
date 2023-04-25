@@ -85,9 +85,9 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.Users.Any(u => u.Email == email);
         }
 
-        bool IUserRepository.validateUser(string email, string password)
+        User IUserRepository.validateUser(string email, string password)
         {
-            return _ciPlatformDbContext.Users.Any(u => u.Password == password && u.Email == email);
+            return _ciPlatformDbContext.Users.FirstOrDefault(u => u.Password == password && u.Email == email);
         }
 
         void IUserRepository.removeResetPasswordToken(PasswordReset obj)

@@ -6,7 +6,7 @@
 
 <div id="mission-grid" class="row">
     @foreach (var Item in Model.missions)
-    {
+    {             
         @*    Views_Shared__grid view of mision card*@
         <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
             <div class="card mt-2 shadow" style="position:relative;height:625px;overflow:hidden">
@@ -28,7 +28,8 @@
                             <span class="badge " style="background-color:rgba(255, 0, 0,.1);">applied</span>
                         </span>
                     }
-                    else if (@Item.statusofuser == "Pending")
+
+                    else if (@Item.statusofuser == "pending")
                     {
                         <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-warning border border-light rounded-pill">
                             <span class="badge " style="background-color:rgba(255, 0, 0,.1);">pending</span>

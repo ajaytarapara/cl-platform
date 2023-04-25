@@ -1,41 +1,5 @@
-﻿//using CIPlatform.Entities.DataModels;
-//using CIPlatform.Entities.ViewModels;
-//using CIPlatform.Models;
-//using CIPlatform.Repository.Repository.Interface;
-//using Microsoft.AspNetCore.Mvc;
-//using System.Diagnostics;
-
-//namespace CIPlatform.Controllers
-//{
-//    public class HomeController : Controller
-//    {
-//        private readonly IUserRepository _userRepository;
-//        private readonly IHomeRepository _homerepository;
-
-//        public HomeController(IUserRepository userRepository, IHomeRepository homeRepository  )
-//        {
-//            _userRepository = userRepository;
-//            _homerepository = homeRepository;
-//        }
-//        public IActionResult Index(HomeModel obj)
-//            {
-//                HomeModel HomeModel = new HomeModel();
-//                string email = "sagar@gmail.com";
-//                var finduser = _userRepository.findUser(email);
-
-//                HomeModel.username = finduser.FirstName + " " + finduser.LastName;
-
-//                return View(HomeModel);
-//            }
-
-
-//        public IActionResult Privacy()
-//        {
-//            return View();
-//        }
-
-//    }
-//}
+﻿
+using AspNetCoreHero.ToastNotification.Abstractions;
 using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
@@ -50,12 +14,13 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IHomeRepository _homeRepository;
 
+        private readonly INotyfService _notyf;
 
-
-        public HomeController(IUserRepository userRepository, IHomeRepository homeRepository)
+        public HomeController(IUserRepository userRepository, IHomeRepository homeRepository, INotyfService notyf)
         {
             _userRepository = userRepository;
             _homeRepository = homeRepository;
+            _notyf = notyf;
         }
         public IActionResult Index()
         {
@@ -166,6 +131,7 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             long misid = Int64.Parse(missionid);
             _homeRepository.addToFavourites(misid, userObj.UserId, fav);
+            _notyf.Success("time sheet not upadeted successfully", 3);
             return RedirectToAction("Index");
         }
 

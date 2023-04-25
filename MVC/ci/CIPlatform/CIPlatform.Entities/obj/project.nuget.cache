@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IsevzYF64za73REoeZmfFc2wT4T2uPU9exr2WN7tw9ZCEzSh2Kp9vKqHnz5mdprh4WrMLwc6flrtO4NkGZICwQ==",
+  "dgSpecHash": "R2MXVBBjylflSHz9HgVLw0fMglCFRdXc2+3esrPhJePfgTZiFfXcBemKVGhVeLl5ZlQUvE6wkBJoAUNB4NhUhw==",
   "success": true,
   "projectFilePath": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\tatva\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\mailkit\\3.5.0\\mailkit.3.5.0.nupkg.sha512",
+    "C:\\Users\\tatva\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\tatva\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.0\\microsoft.data.sqlclient.5.1.0.nupkg.sha512",

@@ -29,9 +29,9 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Admins.Any(x => x.Email == adminemail && x.Password == adminpassword);
         }
-        Admin IAdminRepository.findadmin(string adminemail)
+        User IAdminRepository.findadmin(string adminemail)
         {
-            return _ciPlatformDbContext.Admins.Where(x => x.Email == adminemail).FirstOrDefault();
+            return _ciPlatformDbContext.Users.Where(x => x.Email == adminemail).FirstOrDefault();
         }
         //========================
         //Admin user crud
@@ -41,14 +41,14 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<User> userPages;
             if (searchtext != null)
             {
-                userPages = _ciPlatformDbContext.Users.Where(page => page.DeletedAt == null && page.Status == true).Where
+                userPages = _ciPlatformDbContext.Users.Where(page => page.DeletedAt == null && page.Status == true && page.DeletedAt==null).Where
                     (x => x.FirstName.Contains(searchtext) || x.LastName.Contains
                  (searchtext) || x.Department.Contains(searchtext));
             }
             else
             {
                 userPages = _ciPlatformDbContext.Users.Where
-                    (page => page.DeletedAt == null && page.Status == true);
+                    (page => page.DeletedAt == null && page.Status == true&& page.DeletedAt == null);
 
             }
             var totalCounts = userPages.Count();
@@ -64,7 +64,8 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.RemoveUserAdmin(long userid)
         {
             User users = _ciPlatformDbContext.Users.Where(user => user.UserId == userid).FirstOrDefault();
-            _ciPlatformDbContext.Remove(users);
+            users.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.Update(users);
             _ciPlatformDbContext.SaveChanges();
         }
         User IAdminRepository.UpdateUserAdminget(long userid)
@@ -116,7 +117,8 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.DeleteCmsAdmin(long cmsId)
         {
             CmsPage cms = _ciPlatformDbContext.CmsPages.Where(CmsPages => CmsPages.CmsPageId == cmsId).FirstOrDefault();
-            _ciPlatformDbContext.Remove(cms);
+            cms.DeletedAt=DateTime.Now;
+            _ciPlatformDbContext.Update(cms);
             _ciPlatformDbContext.SaveChanges();
         }
         //========================
@@ -277,7 +279,7 @@ namespace CIPlatform.Repository.Repository
             {
 
                 Banner = _ciPlatformDbContext.Banners.Where
-                    (Banner => Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).ToList();
+                    (Banner => Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).OrderBy(x=>x.SortOrder).ToList();
             }
             else
             {
@@ -388,5 +390,20 @@ namespace CIPlatform.Repository.Repository
         {
             MissionSkill a=_ciPlatformDbContext.MissionSkills.Where(x=>x.SkillId == skillId && x.MissionSkillId==missionId).FirstOrDefault();
         }
+        void IAdminRepository.UpdateMissionMedia(MissionMedium media)
+        {
+            _ciPlatformDbContext.Update(media);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        MissionDocument IAdminRepository.GetMissionDocument(long missionId)
+        {
+            return _ciPlatformDbContext.MissionDocuments.Where(x=>x.MissionId==missionId).FirstOrDefault();
+        }
+        void IAdminRepository.UpdateMissionDocument(MissionDocument missionDocument)
+        {
+            _ciPlatformDbContext.MissionDocuments.Update(missionDocument);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        //=======================================================================================================================================
     }
 }
