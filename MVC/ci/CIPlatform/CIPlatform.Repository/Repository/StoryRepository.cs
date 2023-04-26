@@ -64,88 +64,6 @@ namespace CIPlatform.Repository.Repository
             return storymission;
         }
 
-       int IStoryRepository.Savestory(Story storymodel,StoryMedium storymedia)
-        {
-            Story story = new Story();
-            story.Title = storymodel.Title;
-            story.Description = storymodel.Description;
-            story.PublishedAt = storymodel.PublishedAt;
-            story.UserId = storymodel.UserId;
-            story.MissionId = storymodel.MissionId;
-            StoryMedium storymedium = new StoryMedium();    
-            storymedia.Path = storymedia.Path;
-            bool hasAlreadystory = _ciPlatformDbContext.Stories.Any(u => u.UserId == storymodel.UserId && u.MissionId == storymodel.MissionId);
-            if (hasAlreadystory) 
-            {
-                Story storyobj = _ciPlatformDbContext.Stories.Where(u => u.UserId == storymodel.UserId && u.MissionId == storymodel.MissionId).FirstOrDefault();
-                StoryMedium storymedium1 = new StoryMedium();
-                storymedium1.Path = storymedia.Path;
-                storyobj.UpdatedAt = DateTime.Now;
-                storyobj.Description = storymodel.Description;
-                storyobj.Title = storymodel.Title;
-                _ciPlatformDbContext.Stories.Update(storyobj);
-                _ciPlatformDbContext.SaveChanges();
-                storymedium1.StoryId = storyobj.StoryId;
-
-                StoryMedium storymidea = _ciPlatformDbContext.StoryMedia.Where(u => u.StoryId == storymedium1.StoryId).FirstOrDefault();
-                if (storymidea != null)
-                {
-                    storymidea.Path = storymedium1.Path;
-                    storymidea.Type = ".png";
-                    storymidea.StoryId = storymedium1.StoryId;
-                    _ciPlatformDbContext.StoryMedia.Update(storymidea);
-                    _ciPlatformDbContext.SaveChanges();
-                }
-                else
-                {
-                    StoryMedium media = new StoryMedium();
-                    media.Path = storymedium1.Path;
-                    media.Type = ".png";
-                    media.StoryId = storymedium1.StoryId;
-                    _ciPlatformDbContext.StoryMedia.Add(media);
-                    _ciPlatformDbContext.SaveChanges();
-
-                }
-                return (int)storyobj.StoryId;
-
-            }
-            else
-            {
-                Story story1 = new Story();
-                StoryMedium storymedium1 = new StoryMedium();
-                storymedium1.Path = storymedia.Path;
-                story1.Title = storymodel.Title;
-                story1.Description = storymodel.Description;
-                story1.PublishedAt = storymodel.PublishedAt;
-                story1.UserId = storymodel.UserId;
-                story1.MissionId = storymodel.MissionId;
-                _ciPlatformDbContext.Stories.Add(story1);
-                _ciPlatformDbContext.SaveChanges();
-                storymedium1.StoryId = story1.StoryId;
-                StoryMedium storymidea = new StoryMedium();
-                if (storymidea != null)
-                {
-                    storymidea.Path = storymedium1.Path;
-                    storymidea.Type = ".png";
-                    storymidea.StoryId = storymedium1.StoryId;
-                    _ciPlatformDbContext.StoryMedia.Update(storymidea); 
-                    _ciPlatformDbContext.SaveChanges();
-                }
-                else
-                {
-                    StoryMedium storymedium2 = new StoryMedium();
-                    storymedium2.Path = storymedium1.Path;
-                    storymedium2.Type = ".png";
-                    storymedium2.StoryId = storymedium1.StoryId;
-                    _ciPlatformDbContext.StoryMedia.Add(storymedium2);
-                    _ciPlatformDbContext.SaveChanges();
-
-                }
-                return (int)story1.StoryId;
-
-            }
-        }
-
         Story IStoryRepository.Getdetailstory(Story story,long storyid)
         {
            Story storydetail= _ciPlatformDbContext.Stories.Include(u => u.StoryMedia).Include(u =>u.User).Where(u => u.StoryId == storyid).FirstOrDefault();
@@ -172,6 +90,17 @@ namespace CIPlatform.Repository.Repository
         void IStoryRepository.AddStoryViews(Story story)
         {
             _ciPlatformDbContext.Update(story);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        int IStoryRepository.AddStory(Story story)
+        {
+            _ciPlatformDbContext.Add(story);
+            _ciPlatformDbContext.SaveChanges();
+            return (int)story.StoryId;
+        }
+        void IStoryRepository.AddStoryMedia(StoryMedium storyMedium)
+        {
+            _ciPlatformDbContext.Add(storyMedium);
             _ciPlatformDbContext.SaveChanges();
         }
     }

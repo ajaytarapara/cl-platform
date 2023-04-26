@@ -12,11 +12,13 @@ namespace CIPlatform.Entities.ViewModels
     {
         public long? MissionId { get; set; }
         [Required]
-        [MinLength(255, ErrorMessage = "Please enter more than 255 characters")]
+        [MinLength(255, ErrorMessage = "Please enter less than 255 characters")]
         public string? Title { get; set; }
         [Required]
         [MinLength(2550, ErrorMessage = "Please enter more than 2550 characters")]
         public string? Description { get; set; }
+
+        [Required]
         public DateTime? PublishedAt { get; set; }
 
         public string? username { get; set; }

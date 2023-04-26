@@ -10,8 +10,10 @@ namespace CIPlatform.Entities.ViewModels
     public class StoryModel
     {
         [Key]
-        public long? storyid { get; set; }    
+        public long? storyid { get; set; } 
+        [Required]
         public string? storydescription { get; set; }
+        [Required]
         public string? storytitle { get; set;}
         public string? userfirstname { get; set; }
         public string? userlastname { get; set; }
@@ -23,7 +25,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? themetitle { get; set; }
 
         public string? storystatus { get; set; }
-
+        [Required]
         public DateTime? storypublishdate { get; set; }
     }
 }

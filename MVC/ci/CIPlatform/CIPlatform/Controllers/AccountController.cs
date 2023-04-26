@@ -79,11 +79,12 @@ namespace CIPlatform.Controllers
                 HttpContext.Session.SetString("useremail", emailId);
                 if (isValidUser.Role == "volunteer")
                 {
-                    _notyf.Success("LoginSuccessFully",3);
+                    _notyf.Success("LoginSuccessFully", 3);
                     return RedirectToAction("Index", "Home");
                 }
                 if (isValidUser.Role == "admin")
                     return RedirectToAction("User_crud", "Admin");
+                //_notyf.Success("LoginSuccessFully", 3);
                 //return RedirectToAction("Index", "Home");
             }
             return Login();
@@ -235,6 +236,15 @@ namespace CIPlatform.Controllers
             editProfile.linkedinurl = userObj.LinkedInUrl;
             editProfile.department = userObj.Department;
             editProfile.profiletext = userObj.ProfileText;
+            long userid=editProfile.userid;
+            List<UserSkill> userSkills = _userRepository.getUserSkill(userid);
+            string str = "";
+            foreach(UserSkill skill in userSkills)
+            {
+                str += skill.Skill.SkillName + ",";
+            }
+            int index = str.LastIndexOf(',');
+            editProfile.userskills = str.Substring(0, index);
             return View(editProfile);
         }
 
@@ -390,15 +400,27 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             timesheet.UserId = userObj.UserId;
             timesheet.MissionId = MissionId;
+            Mission mission = _userRepository.GetMission(MissionId);
             timesheet.Notes = Notes;
             if (hours != null && minutes != null && DateVolunteered != null)
             {
+
                 timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
-                timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
-                timesheet.Status = "approved";
-                _userRepository.addtimesheet(timesheet);
-                _notyf.Success("time sheet added successfully", 3);
-                return Json(new { status = 1 });
+                if (timesheet.DateVolunteered > mission.StartDate && timesheet.DateVolunteered <= mission.EndDate)
+                {
+                    timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
+                    timesheet.Status = "approved";
+                    _userRepository.addtimesheet(timesheet);
+                    _notyf.Success("time sheet added successfully", 3);
+                    return Json(new { status = 1 });
+                }
+                else
+                {
+                    _notyf.Error("date volunteer in not valid pls correct", 3);
+                    ModelState.AddModelError("DateVolunteered", "date volunteer in not valid pls correct");
+                    return Json(new { status = 2 });
+                }
+
             }
             else
             {
@@ -418,16 +440,24 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             timesheet.UserId = userObj.UserId;
             timesheet.MissionId = MissionId;
+            Mission mission = _userRepository.GetMission(MissionId);
             timesheet.Notes = Notes;
             if (Action != null && DateVolunteered != null)
             {
                 timesheet.Action = int.Parse(Action);
                 timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
-                timesheet.Status = "approved";
-                _userRepository.addtimesheet(timesheet);
-                _notyf.Success("time sheet deleted successfully", 3);
+                if (timesheet.DateVolunteered > mission.StartDate && timesheet.DateVolunteered <= mission.EndDate)
+                {
+                    timesheet.Status = "approved";
+                    _userRepository.addtimesheet(timesheet);
+                    _notyf.Success("time sheet deleted successfully", 3);
 
-                return Json(new { status = 1 });
+                    return Json(new { status = 1 });
+                }
+                else
+                {
+                    return Json(new { status = 2 });
+                }
             }
             else
             {
@@ -457,48 +487,91 @@ namespace CIPlatform.Controllers
             _notyf.Success("time sheet deleted successfully", 3);
             return RedirectToAction("VolunteeringTimesheet", "Account");
         }
-
-        [HttpPost]
-        public IActionResult edittimesheet(long timesheetid, string hours, string minutes, long MissionId, string Notes, string DateVolunteered)
+        public IActionResult edittimesheet(long timesheetid)
         {
-            Timesheet timesheet = new Timesheet();
-            timesheet.Notes = Notes;
-            if (hours != null && minutes != null && Notes != null && DateVolunteered != null)
-            {
-                if (Int32.Parse(minutes) > 60)
-                {
-
-                    return Json(new { status = 2 });
-                }
-                timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
-                timesheet.Time = TimeOnly.Parse(hours + ":" + minutes);
-                _userRepository.edittimesheet(timesheetid, hours, minutes, MissionId, Notes, DateVolunteered);
-                _notyf.Success("time sheet upadeted successfully", 3);
-                return Json(new { status = 1 });
-            }
-            else
-            {
-                _notyf.Error("time sheet not upadeted successfully", 3);
-                ModelState.AddModelError("data", "data is not valid");
-                return Json(new { status = 0 });
-            }
+            VolunteeringTimesheetModel model = new VolunteeringTimesheetModel();
+            Timesheet timesheet = _userRepository.GetTimesheet(timesheetid);
+            long missionId = timesheet.MissionId;
+            Mission mission = _userRepository.GetMission(missionId);
+            model.DateVolunteered = timesheet.DateVolunteered;
+            model.minutes = timesheet.Time.ToString().Substring(3, 2);
+            model.hours = timesheet.Time.ToString().Substring(0, 2);
+            model.Notes = timesheet.Notes;
+            model.missiontitleedit = mission.Title;
+            model.MissionId = mission.MissionId;
+            model.timesheetid = timesheet.TimesheetId;
+            return PartialView("_Timesheet_edit_timebase", model);
         }
-
         [HttpPost]
-        public IActionResult edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action, string DateVolunteered)
+        public IActionResult edittimesheet(VolunteeringTimesheetModel model)
         {
-            if (Notes != null && Action != 0 && DateVolunteered != null)
+            long timesheetid = (long)model.timesheetid;
+            Timesheet timesheet = _userRepository.GetTimesheet(timesheetid);
+            long Missionid = timesheet.MissionId;
+            Mission mission = _userRepository.GetMission(Missionid);
+            if (model.DateVolunteered > mission.StartDate && model.DateVolunteered < mission.EndDate)
             {
-                _userRepository.edittimesheetgoal(timesheetid, MissionId, Notes, Action, DateVolunteered);
-                _notyf.Error("time sheet  upadeted successfully", 3);
-                return Json(new { status = 1 });
+                timesheet.DateVolunteered = timesheet.DateVolunteered;
+                if (model.hours != null && Int32.Parse(model.hours) < 24 && Int32.Parse(model.minutes) < 59)
+                {
+                    timesheet.UpdatedAt = DateTime.Now;
+                    timesheet.Time = TimeOnly.Parse(model.hours + ":" + model.minutes);
+                    timesheet.Notes = model.Notes;
+                    timesheet.MissionId = mission.MissionId;
+                    _userRepository.edittimesheet(timesheet);
+                    _notyf.Success("timesheet edited successfully", 3);
+                    return RedirectToAction("VolunteeringTimesheet");
+                }
+                else
+                {
+                    _notyf.Error("time is not valid", 3);
+                }
             }
             else
             {
-                _notyf.Error("time sheet not upadeted successfully", 3);
-                ModelState.AddModelError("data", "data is not valid");
-                return Json(new { status = 0 });
+                _notyf.Error("date is not valid", 3);
+
             }
+
+            return RedirectToAction("VolunteeringTimesheet");
+        }
+        public IActionResult edittimesheetgoal(long timesheetid)
+        {
+            VolunteeringTimesheetModel model = new VolunteeringTimesheetModel();
+            Timesheet timesheet = _userRepository.GetTimesheet(timesheetid);
+            long Missionid = timesheet.MissionId;
+            Mission mission = _userRepository.GetMission(Missionid);
+            model.DateVolunteered = timesheet.DateVolunteered;
+            model.Notes = timesheet.Notes;
+            model.Action = timesheet.Action;
+            model.missiontitleedit = mission.Title;
+            model.MissionId = mission.MissionId;
+            model.timesheetid = timesheetid;
+            return PartialView("_Timesheet_edit_goal_based", model);
+        }
+        [HttpPost]
+        public IActionResult edittimesheetgoal(VolunteeringTimesheetModel model)
+        {
+            long timesheetid = (long)model.timesheetid;
+            Timesheet timesheet = _userRepository.GetTimesheet(timesheetid);
+            long Missionid = model.MissionId;
+            Mission mission = _userRepository.GetMission(Missionid);
+            if (model.DateVolunteered > mission.StartDate && model.DateVolunteered < mission.EndDate)
+            {
+                timesheet.MissionId = model.MissionId;
+            timesheet.Action = model.Action;
+            timesheet.UpdatedAt = DateTime.Now;
+            timesheet.DateVolunteered = (DateTime)model.DateVolunteered;
+            timesheet.Notes = model.Notes;
+            _userRepository.edittimesheetgoal(timesheet);
+            _notyf.Success("timesheet edited successfully", 3);
+                return RedirectToAction("VolunteeringTimesheet");
+            }
+            else
+            {
+                _notyf.Error("date volunteer is not valid");
+            }
+            return RedirectToAction("VolunteeringTimesheet");
         }
 
         public IActionResult Privacy_policy()

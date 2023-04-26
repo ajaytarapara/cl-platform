@@ -46,6 +46,9 @@
                         <a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
                     </button>
                 </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("User_crud", "Admin")">Login AS Admin</a></button>
             </ul>
         </div>
     </div>
@@ -61,9 +64,9 @@
                     <img id="uimg" src="@Model.avatar" alt="" class="mx-auto d-flex mt-3" id="imgavatar">
                     <p style="text-align: center;" class="mt-2">@Model.firstname @Model.lastname</p>
                     <div style="display:flex;margin:auto" class="mt-2">
-                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
+@*                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
                         <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
-                        <a href="" class="socialmedia" target="_blank"><img src="~/images/linkedin.png" /></a>
+                        <a href="" class="socialmedia" target="_blank"><img src="~/images/linkedin.png" /></a>*@
                     </div>
                     <button type="button" class="btn d-flex mx-auto mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
                 </div>
@@ -90,7 +93,7 @@
                 <div class="row formargin">
                     <div class="col-md-6">
                         <label for="">Employee ID</label>
-                        <input asp-for="employeeid" class="form-control " placeholder="Enter your employee id" value="@Model.employeeid" type="text">
+                        <input type="number" asp-for="employeeid" class="form-control" placeholder="Enter your employee id" value="@Model.employeeid">
                         <span asp-validation-for="employeeid" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
@@ -218,7 +221,7 @@
                 <button class="remove-skill"><i class="bi bi-chevron-left"></i></button>
             </div>
             <div class="selected-skills">
-                <ul class="skill-list">
+                <ul id="secondList" class="skill-list">
                 </ul>
             </div>
         </div>
@@ -248,16 +251,16 @@
                 <div class="modal-body">
 
                     <div class="mb-3">
-                        <input asp-for="password.Oldpassword" type="text" class="form-control" placeholder="Enter Old Password">
+                        <input asp-for="password.Oldpassword" type="password" class="form-control" placeholder="Enter Old Password">
                         <span asp-validation-for="password.Oldpassword" class="text-danger"></span>
 
                     </div>
                     <div class="mb-3">
-                        <input asp-for="password.Newpassword" type="text" class="form-control" placeholder="Enter New Password">
+                        <input asp-for="password.Newpassword" type="password" class="form-control" placeholder="Enter New Password">
                         <span asp-validation-for="password.Newpassword" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input asp-for="password.ConfirmPassword" type="text" class="form-control" placeholder="Enter confirm   Password">
+                        <input asp-for="password.ConfirmPassword" type="password" class="form-control" placeholder="Enter confirm   Password">
                         <span asp-validation-for="password.ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>

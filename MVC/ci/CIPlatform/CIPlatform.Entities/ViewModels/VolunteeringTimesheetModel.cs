@@ -21,10 +21,12 @@ namespace CIPlatform.Entities.ViewModels
         public TimeOnly? Time { get; set; }
         [Required]
         [MaxLength(2,ErrorMessage ="please enter valid hours")]
-        public TimeOnly? hours { get; set; }
+        [Range(0, 23, ErrorMessage = "enter minutes between 0 to 23")]
+        public string? hours { get; set; }
         [Required]
         [MaxLength(2, ErrorMessage = "please enter valid minutes")]
-        public TimeOnly? minutes { get; set; }
+        [Range(0,59,ErrorMessage ="enter minutes between 0 to 59")]
+        public string? minutes { get; set; }
         [Required]
         public int? Action { get; set; }
         [Required]
@@ -35,5 +37,7 @@ namespace CIPlatform.Entities.ViewModels
         public string Status { get; set; } = null!;
 
         public DateTime CreatedAt { get; set; }
+        public string? missiontitleedit { get; set; }
+        public long? timesheetid { get; set; }  
     }
 }

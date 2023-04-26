@@ -23,11 +23,17 @@ $("#addtimesheet").on("click", function () {
         success: function (data) {
             if (data["status"] == 1) {
                 alert("your time type time sheet addded  successfully");
+                location.reload();
             }
-            else
+            else if (data["status"] == 0)
             {
-                alert("data is not valid");
+                alert("time is required");
             }
+            else if (data["status"] == 2) {
+                alert("date volunteer is not valid");
+            }
+            location.reload();
+         
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -61,9 +67,12 @@ $("#addgoaltimesheetbtn").on("click", function () {
             {
                 alert("your goal time sheet addded  successfully");
             }
-            else
+            else if (data["status"] == 0)
             {
                 alert("data is not valid");
+            }
+            else if (data["status"] == 2) {
+                alert("date volunteer is not valid");
             }
         },
         error: function (xhr, status, error) {
@@ -87,6 +96,7 @@ $(".timesheetdeletebtn").on("click", function () {
         data: {timesheetid: timesheetid},
         success: function (data) {
             alert("your time sheet deleted successfully");
+            location.reload();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -106,6 +116,7 @@ $(".timesheetdeletebtngoal").on("click", function () {
         data: { timesheetid: timesheetid },
         success: function (data) {
             alert("your time sheet deleted successfully");
+            location.reload();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -130,38 +141,42 @@ var timesheetidse ="";
 $(".editmodalopentime").on("click", function (e) {
     e.preventDefault();
     timesheetidse = this.id;
-});
-$("#edittimesheet").on("click", function (e) {
-    e.preventDefault();
-     Missionide = $("#missionidgetdiv-edit").val();
-     datevole = $("#getdatediv-edit").val();
-     houre = $("#gethourdiv-edit").val();
-     minutese = $("#getminitediv-edit").val();
-     msge = $("#getmsgdiv-edit").val();
-   $.ajax({
-        type: "POST",
+    $.ajax({
+        type: "Get",
         url: '/Account/edittimesheet',
-        data: { timesheetid: timesheetidse, MissionId: Missionide, DateVolunteered: datevole, hours: houre, minutes: minutese, Notes: msge },
+        dataType: "html",
+        data: { timesheetid: timesheetidse },
         success: function (data) {
-           
-            if (data["status"] == 1) {
-                alert("your time sheet updated successfully");
-            }
-            if (data["status"] == 2) {
-                alert("enter minutes less than 60" );
-            }
-            else
-            {
-                alert("data is not valid");
-            }
+            $("#timesheetedit").html(data);
         },
         error: function (xhr, status, error) {
             // Handle error
             console.log(error);
-       }
+        }
     })
 
 });
+//$("#edittimesheet").on("click", function (e) {
+//    e.preventDefault();
+//     Missionide = $("#missionidgetdiv-edit").val();
+//     datevole = $("#getdatediv-edit").val();
+//     houre = $("#gethourdiv-edit").val();
+//     minutese = $("#getminitediv-edit").val();
+//     msge = $("#getmsgdiv-edit").val();
+//   $.ajax({
+//        type: "POST",
+//        url: '/Account/edittimesheet',
+//        data: { timesheetid: timesheetidse, MissionId: Missionide, DateVolunteered: datevole, hours: houre, minutes: minutese, Notes: msge },
+//       success: function (data) {
+            
+//        },
+//        error: function (xhr, status, error) {
+//            // Handle error
+//            console.log(error);
+//       }
+//    })
+
+//});
 
 
 var MissionIdseg = "";
@@ -172,34 +187,47 @@ var timesheetidseg = "";
 $(".editmodalopengoal").on("click", function (e) {
     e.preventDefault();
     timesheetidseg = this.id;
-});
-$("#editgoaltimesheetbtn").on("click", function (e) {
-    e.preventDefault();
-    MissionIdseg = $("#getmissionid-goaledit").val();
-    Actioneg = $("#actiongoalgetdiv-edit").val();
-    console.log(Actioneg);
-    Noteseg = $("#msggoalgetdiv-edit").val();
-    console.log(Noteseg);
-    DateVolunteeredeg = $("#dategoalgetdiv-edit").val();
     $.ajax({
-        type: "POST",
+        type: "Get",
         url: '/Account/edittimesheetgoal',
-        data: { timesheetid: timesheetidseg, MissionId: MissionIdseg, DateVolunteered: DateVolunteeredeg, Notes: Noteseg, Action: Actioneg },
+        dataType: "html",
+        data: { timesheetid: timesheetidseg },
         success: function (data) {
-            if (data["status"] == 1) {
-                alert("your time sheet updated successfully");
-            }
-            else
-            {
-                alert("data is not valid");
-            }
+            $("#timesheeteditgoal").html(data);
         },
         error: function (xhr, status, error) {
             // Handle error
             console.log(error);
         }
     })
-
 });
+//$("#editgoaltimesheetbtn").on("click", function (e) {
+//    e.preventDefault();
+//    MissionIdseg = $("#getmissionid-goaledit").val();
+//    Actioneg = $("#actiongoalgetdiv-edit").val();
+//    console.log(Actioneg);
+//    Noteseg = $("#msggoalgetdiv-edit").val();
+//    console.log(Noteseg);
+//    DateVolunteeredeg = $("#dategoalgetdiv-edit").val();
+//    $.ajax({
+//        type: "POST",
+//        url: '/Account/edittimesheetgoal',
+//        data: { timesheetid: timesheetidseg, MissionId: MissionIdseg, DateVolunteered: DateVolunteeredeg, Notes: Noteseg, Action: Actioneg },
+//        success: function (data) {
+//            if (data["status"] == 1) {
+//                alert("your time sheet updated successfully");
+//            }
+//            else
+//            {
+//                alert("data is not valid");
+//            }
+//        },
+//        error: function (xhr, status, error) {
+//            // Handle error
+//            console.log(error);
+//        }
+//    })
+
+//});
 
 

@@ -37,10 +37,13 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public void deletetimesheet(Timesheet timesheet);
 
-        public void edittimesheet(long timesheetid,string hours, string minutes,long MissionId,string Notes, string DateVolunteered);
+        public void edittimesheet(Timesheet timesheet);
 
-        public void edittimesheetgoal(long timesheetid, long MissionId, string Notes,long Action,string DateVolunteered);
+        public void edittimesheetgoal(Timesheet timesheet);
 
         public List<Banner> getbanner();
+        public Mission GetMission(long MissionId);
+        public Timesheet GetTimesheet(long timesheetId);
+        public List<UserSkill> getUserSkill(long userid);
     }
 }

@@ -81,7 +81,8 @@
             </div>
             <div class="col-md-4 storydropdown">
                 Date
-                <input id="PublishedAt" class="form-control" type="date" placeholder="Select date" aria-label="default input example">
+                <input id="PublishedAt" class="form-control" type="date" placeholder="Select date" aria-label="default input example" asp-for="PublishedAt">
+                <span class="text-danger" asp-validation-for="PublishedAt"></span>
             </div>
 
         </div>
@@ -93,10 +94,10 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
-        <div class="storydropdown mt-3">
+@*        <div class="storydropdown mt-3">
             Enter Video URL
             <input class="form-control" type="text" placeholder="Enter your url" aria-label="default input example">
-        </div>
+        </div>*@
         <div class="row">
             <div class="storydropdown">
             </div>

@@ -5,10 +5,10 @@
     <div class="modal-dialog" style="margin: 10vh 0 0 10vw;">
         <div class="modal-content" style="width:80vw;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Hours </h5>
+                <h5 class="modal-title" id="exampleModalLabel">Please Add User </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
-            <form id="add-user-by-admin" class="needs-validation" autocomplete="off" method="post" action="AddUser_crud">
+            <form id="add-user-by-admin"  autocomplete="off" method="post" action="AddUser_crud">
                 <div class="modal-body">
                     <span class="text-danger" id="user-add-by-admin"></span>
                     <br>
@@ -46,7 +46,7 @@
                         <div class="mb-3 col-6">
                             <label asp-for="EmplyoeeId" class="col-form-label">Employee Id:</label>
                             <br />
-                            <input type="text" asp-for="EmplyoeeId" class="w-100" id="employee-id">
+                            <input type="number" asp-for="EmplyoeeId" class="w-100" id="employee-id">
                             <span class="text-danger" asp-validation-for="EmplyoeeId"></span>
                         </div>
                         <div class="mb-3 col-6 ">
@@ -73,7 +73,7 @@
     <div class="modal-dialog" style="margin: 10vh 0 0 10vw;">
         <div class="modal-content" style="width:80vw;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Please Edit below Volunteering Hours </h5>
+                <h5 class="modal-title" id="exampleModalLabel">Please Edit User </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
             <form id="edit-user-by-admin" class="needs-validation" autocomplete="off">
@@ -114,7 +114,7 @@
                         <div class="mb-3 col-6">
                             <label asp-for="EmplyoeeId" class="col-form-label">Employee Id:</label>
                             <br />
-                            <input type="text" asp-for="EmplyoeeId" class="w-100" id="employeeidedit">
+                            <input type="number" asp-for="EmplyoeeId" class="w-100" id="employeeidedit">
                             <span class="text-danger" asp-validation-for="EmplyoeeId"></span>
                         </div>
                         <div class="mb-3 col-6 ">

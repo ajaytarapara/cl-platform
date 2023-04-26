@@ -46,6 +46,9 @@
                         <a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
                     </button>
                 </li>
+                <li class="dropdownnavbarlinks">
+                    <button class="dropdown-item" type="button">
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("User_crud", "Admin")">Login AS Admin</a></button>
             </ul>
         </div>
     </div>
@@ -194,6 +197,8 @@
 @*===============================================*@
 @*modal for add missiongoalsheet*@
 @Html.Partial("_TimesheetModals");
+<div id="timesheetedit"></div>
+<div id="timesheeteditgoal"></div>
 @Html.Partial("_Footer");
 @section Javascript{
 <script src="~/js/timesheet.js" asp-append-version="true"></script>

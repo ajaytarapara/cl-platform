@@ -1,0 +1,59 @@
+﻿@model CIPlatform.Entities.ViewModels.VolunteeringTimesheetModel
+ 
+@*@*======================================================*@
+@*edit time sheet modals for time based*@@*@
+@*=====================================================*@
+<div class="modal fade" id="editTIMEMISSIONSHEET" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog" style="margin: 10vh 0 0 10vw;">
+        <div class="modal-content" style="width:80vw;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit below Volunteering Hours </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="edittimesheet">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="col-md-12">
+                            Mission
+                                @if (Model.missiontitleedit != null)
+                                {
+                                    <input type="text" asp-for="missiontitleedit" value="@Model.missiontitleedit" readonly class="w-100 p-2">
+                                    <input type="hidden" value="@Model.MissionId" id="missionidgetdiv-edit" asp-for="MissionId">
+                                    <input type="hidden" value="@Model.timesheetid" asp-for="timesheetid"/>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12 storydropdown mt-3">
+                        Date
+                        <input asp-for="DateVolunteered" id="getdatediv-edit" class="form-control mt-1" type="date" placeholder="Select date"
+                               aria-label="default input example" required>
+                        <span asp-validation-for="DateVolunteered" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex align-items-center" style="justify-content:space-between">
+                        <div class="mt-3" style="width:48%">
+                            <label>Hours</label>
+                            <input id="gethourdiv-edit" class="form-control mt-2" placeholder="Enter your Hours" type="text" asp-for="hours" required>
+                            <span asp-validation-for="hours" class="text-danger"></span>
+
+                        </div>
+                        <div class="mt-3" style="width:48%">
+                            <label>Minutes</label>
+                            <input id="getminitediv-edit" class="form-control mt-2 " placeholder="Enter your Minutes" type="text" asp-for="minutes" required>
+                            <span asp-validation-for="minutes" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message*</label>
+                        <textarea asp-for="Notes" id="getmsgdiv-edit" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your Message"
+                                  rows="3" required></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btncancel-timesheet" data-bs-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-success btnsubmit-timesheet" id="edittimesheet" value="Submit" />"
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

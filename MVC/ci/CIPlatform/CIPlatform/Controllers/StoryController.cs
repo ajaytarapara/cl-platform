@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.DataModels;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Helpers;
 using CIPlatform.Repository.Repository.Interface;
@@ -15,7 +16,8 @@ namespace CIPlatform.Controllers
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly IConfiguration configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository,IUserRepository userRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IConfiguration _configuration, IHttpContextAccessor httpContextAccessor)
+        private readonly INotyfService _notyf;
+        public StoryController(IStoryRepository storyRepository,IHomeRepository homeRepository,IUserRepository userRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IConfiguration _configuration, IHttpContextAccessor httpContextAccessor, INotyfService notyf)
         {
             _homeRepository = homeRepository;
             _storyRepository = storyRepository;
@@ -23,6 +25,7 @@ namespace CIPlatform.Controllers
             _hostingEnvironment = hostingEnvironment;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
+            _notyf = notyf;
         }
         public IActionResult StoryListing()
         {
@@ -92,18 +95,34 @@ namespace CIPlatform.Controllers
         }
 
         [HttpPost]
-        public IActionResult Savestory(ShareStoryModel storymodel)
+        public IActionResult Savestory(long userid,long MissionId,string Title,DateTime PublishedAt,string Description,string StoryMedia)
         {
-            Story story = new Story();
-            story.UserId = storymodel.userid;
-            story.MissionId = (long)storymodel.MissionId;
-            story.Title = storymodel.Title;
-            story.Description = storymodel.Description;
-            story.PublishedAt = storymodel.PublishedAt;
-             StoryMedium storymedia = new StoryMedium();
-            storymedia.Path = storymodel.StoryMedia;
-            int storyId = _storyRepository.Savestory(story, storymedia); 
-            return Json(new { storyId = storyId });
+            if (StoryMedia != null && PublishedAt!=null&& Description!=null&&Title !=null)
+            {
+                ShareStoryModel storymodel = new ShareStoryModel();
+                Story story = new Story();
+                story.Title = Title;
+                story.MissionId = MissionId;
+                story.UserId = userid;
+                story.Status = "pending";
+                story.PublishedAt = PublishedAt;
+                story.CreatedAt = DateTime.Now;
+                story.Description = Description;
+                int storyId = _storyRepository.AddStory(story);
+                StoryMedium storyMedium = new StoryMedium();
+                storyMedium.StoryId = storyId;
+                storyMedium.Type = ".png";
+                storyMedium.Path = StoryMedia;
+                _storyRepository.AddStoryMedia(storyMedium);
+                _notyf.Warning("your story requested for approval", 5);
+                return Json(new { storyId = storyId });
+            }
+            else
+            {
+                _notyf.Error("pls fill all field of this page", 5);
+                ModelState.AddModelError("add", "pls correct enter data");
+                return Json(new { status = 1 });
+            }           
         }
 
         public IActionResult Upload(List<IFormFile> postedFiles)

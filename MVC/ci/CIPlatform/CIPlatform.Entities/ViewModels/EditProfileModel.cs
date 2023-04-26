@@ -15,14 +15,20 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string? useremail { get; set; }
         [Required]
+        [MaxLength(30,ErrorMessage ="enter less than 100 character")]
         public string? firstname { get; set; }
         [Required]
+        [MaxLength(100, ErrorMessage = "enter less than 100 character")]
         public string? lastname { get; set; }
         public string? avatar { get; set; }
+        [Required]
+        [MaxLength(20, ErrorMessage = "enter less than 100 character")]
         public string? department { get; set; }
         [Required]
+        [MaxLength(255, ErrorMessage = "enter less than 100 character")]
         public string? profiletext { get; set; }
         [Required]
+        [MaxLength(400, ErrorMessage = "enter less than 100 character")]
         public string? whyivol { get; set; }
 
         public IEnumerable<City>? cities { get; set; }
@@ -47,6 +53,7 @@ namespace CIPlatform.Entities.ViewModels
 
         public string? employeeid { get; set; }
         public string? title { get; set; }
+        public List<UserSkill>? userskillforview { get; set; }
 
     }
 }

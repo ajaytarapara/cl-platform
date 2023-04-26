@@ -25,8 +25,14 @@ $("#submitbtnsharestory").on("click", function (e) {
         type: "Post",
         url: "/Story/Savestory",
         data: { userid: UserId, MissionId: selectedmissionid, Title: Title, PublishedAt: PublishedAt, Description: Description, StoryMedia: storyFileNames },
-        success: function () {
-            alert("story added succesfully");
+        success: function (data) {
+            if (data["storyId"] != null) {
+                alert("story added succesfully");
+            }
+            else {
+                alert("data is not valid");
+            }
+            
         },
         failure: function (response) {
             alert("failure");

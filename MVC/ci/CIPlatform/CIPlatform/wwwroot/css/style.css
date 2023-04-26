@@ -461,6 +461,7 @@
     top: 220px;
     left: 33%;
     font-weight: lighter;
+    border-radius: 29px;
 }
 
 #grid-card-image-content {

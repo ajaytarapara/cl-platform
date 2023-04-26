@@ -152,6 +152,10 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<Timesheet>timesheet= _ciPlatformDbContext.Timesheets.Include(x => x.Mission).Where(u=>u.UserId== UserId && u.Status=="approved");
             return timesheet;
         }
+        Timesheet IUserRepository.GetTimesheet(long timesheetId)
+        {
+            return _ciPlatformDbContext.Timesheets.Where(x => x.TimesheetId == timesheetId).FirstOrDefault();
+        }
         IEnumerable<Mission> IUserRepository.getmissiontitle(long UserId)
         {
             IEnumerable<Mission> titlesmission =_ciPlatformDbContext.MissionApplications.Where(u=>u.UserId==UserId && u.ApprovalStatus=="approved").Select(u=>u.Mission);
@@ -167,33 +171,29 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(timesheet);
             _ciPlatformDbContext.SaveChanges();
         }
-        void IUserRepository.edittimesheet(long timesheetid, string hours,string minutes,long MissionId,string Notes, string DateVolunteered)
+        void IUserRepository.edittimesheet(Timesheet timesheet)
         {
-            Timesheet a= _ciPlatformDbContext.Timesheets.Where(x=>x.TimesheetId== timesheetid).FirstOrDefault();
-            a.Time = TimeOnly.Parse(hours + ":" + minutes);
-            a.UpdatedAt = DateTime.Now;
-            a.MissionId = MissionId;
-            a.Notes= Notes; 
-            a.DateVolunteered= DateTime.Parse( DateVolunteered); 
-            _ciPlatformDbContext.Update(a);
+            _ciPlatformDbContext.Update(timesheet);
             _ciPlatformDbContext.SaveChanges();
         }
 
-        void IUserRepository.edittimesheetgoal(long timesheetid, long MissionId, string Notes, long Action,string DateVolunteered)
+        void IUserRepository.edittimesheetgoal(Timesheet timesheet)
         {
-            Timesheet a = _ciPlatformDbContext.Timesheets.Where(x => x.TimesheetId == timesheetid).FirstOrDefault();
-            a.UpdatedAt = DateTime.Now;
-            a.MissionId = MissionId;
-            a.Notes = Notes;
-            a.Action = (int?)Action;
-            a.DateVolunteered =DateTime.Parse( DateVolunteered);
-            _ciPlatformDbContext.Update(a);
+            _ciPlatformDbContext.Update(timesheet);
             _ciPlatformDbContext.SaveChanges();
 
         }
         List<Banner> IUserRepository.getbanner()
         {
             return _ciPlatformDbContext.Banners.ToList();
+        }
+        Mission IUserRepository.GetMission(long MissionId)
+        {
+            return _ciPlatformDbContext.Missions.Where(x=>x.MissionId==MissionId).FirstOrDefault();
+        }
+        List<UserSkill> IUserRepository.getUserSkill(long userid)
+        {
+            return _ciPlatformDbContext.UserSkills.Include(x=>x.Skill).Where(x=>x.UserId==userid).ToList();
         }
     }
 }

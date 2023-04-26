@@ -17,7 +17,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public PaginationMission Storydata(int pageNumber);
 
         public List<MissionApplication> Getstorymission(long UserId);
-        public int Savestory(Story story,StoryMedium storymedia);
+        //public int Savestory(Story story,StoryMedium storymedia);
 
         public Story  Getdetailstory(Story story, long storyid);
 
@@ -28,6 +28,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public long GetInvitedUserid(string cow_email);
 
         public void AddStoryViews(Story story);
+
+        public int AddStory(Story story);
+        public void AddStoryMedia(StoryMedium storyMedium);
 
     }
 }

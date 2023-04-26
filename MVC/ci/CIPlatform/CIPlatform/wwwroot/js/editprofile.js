@@ -103,12 +103,22 @@ function getskill() {
             var str = "";
             //console.log(data);
             var releatedmission = $("#skilllistinmodal");
+            var secondList = $("#secondList");
+            var skillValues = $("#skilltext").text().split(",");
+            var str2 = "";
             for (i = 0; i < data["data"].length; i++) {
-             
-                str += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
-               
+
+                if (!skillValues.includes(data["data"][i].skillName)) {
+                    str += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+                }
+                else {
+                    str2 += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+
+                }
+                
             }
 
+            secondList.html(str2);
             releatedmission.html(str);
             $(".popup-container .skill-list li").on("click", function () {
                 console.log("clicked");
@@ -145,6 +155,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".popup-container").hide();
     $(".user-edit-add-skill-btn").on("click", function (event) {
+        $("#skilltext").text("");
         event.preventDefault();
         $(".popup-container").show();
     });
@@ -165,6 +176,7 @@ $(document).ready(function () {
 
     $(".add-skill").on("click", function (e) {
         e.preventDefault();
+        $("#skilltext").text("");
         var selectedSkill = $(".available-skills .skill-list li.selected");
         if (selectedSkill.length > 0) {
             selectedSkill.appendTo($(".selected-skills .skill-list"));
@@ -184,6 +196,7 @@ $(document).ready(function () {
    
     var names = "";
     $(".user-edit-save-btn").on("click", function () {
+        $("#skilltext").text("");
         $(".user-edit-selected-skill").empty();
         $(".selected-skills .skill-list li").each(function () {
             var skillName = $(this).text().trim();

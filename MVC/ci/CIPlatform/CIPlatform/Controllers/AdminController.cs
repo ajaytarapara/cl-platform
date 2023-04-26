@@ -136,6 +136,7 @@ namespace CIPlatform.Controllers
         {
             _adminrepository.RemoveUserAdmin(userid);
         }
+
         [HttpPost]
         public IActionResult editUser_crud(long UserId, string Firstname, string LastName, string Password, string Department, string EmployeeId, long PhoneNumber, string Email)
         {
