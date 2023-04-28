@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     console.log("call");
     loadusers();
+    
 });
 var UserId = "";
 var Firstname = "";
@@ -10,7 +11,7 @@ var Department = "";
 var EmployeeId = "";
 var PhoneNumber = "";
 var Email = "";
-var pageSize = 2;
+var pageSize = 4;
 var pageNumber = 1;
 //=====================================================================================================
 //search ajax in user crud admin
@@ -114,12 +115,25 @@ function deleteUser() {
 //=====================================================================================================
 //edit user ajax in user crud admin
 //======================================================================================================
-function editData() {
 
+function editData() {
     $(".Editbtnusermodalopen").on("click", function () {
         UserId = this.id;
-
         console.log(UserId);
+        $.ajax({
+            type: "get",
+            url: '/Admin/editUser_crud',
+            dataType: "html",
+            data: { UserId: UserId },
+            success: function (data) {
+                $("#editusermodal").html();
+                $("#editusermodal").html(data);
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.log(error);
+            }
+        })
     });
 
     $(".editbtnuser").on("click", function () {
@@ -152,4 +166,4 @@ function editData() {
         });
 
     });
-}
+};

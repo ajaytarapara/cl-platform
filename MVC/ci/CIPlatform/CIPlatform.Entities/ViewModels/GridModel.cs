@@ -32,6 +32,7 @@ namespace CIPlatform.Entities.ViewModels
 
         public int? goalvalue { get; set; }
 
+        public int? SeatsLeft { get; set; }
         public int? total { get; set; }
     }
 }

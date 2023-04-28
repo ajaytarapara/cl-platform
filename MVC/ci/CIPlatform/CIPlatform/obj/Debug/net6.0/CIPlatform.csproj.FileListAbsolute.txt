@@ -1091,5 +1091,5 @@ D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.pdb
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.genruntimeconfig.cache
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll
-D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs
 D:\cl platform\MVC\ci\CIPlatform\CIPlatform\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\cl platform\MVC\ci\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.MvcApplicationPartsAssemblyInfo.cs

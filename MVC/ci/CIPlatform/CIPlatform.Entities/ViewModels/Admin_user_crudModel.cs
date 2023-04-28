@@ -15,18 +15,24 @@ namespace CIPlatform.Entities.ViewModels
         public Admin_NavbarModel? Navbar { get; set; }
         public long? UserId { get; set; }
         [Required]
+        [MinLength(10, ErrorMessage = "pls enter less than 10 char")]
         public string? FirstName { get; set; }
         [Required]
+        [MinLength(20, ErrorMessage = "pls enter less than 20 char")]
         public string? LastName { get; set; }
         [Required]
+        [RegularExpression("^[a-z]{1}[a-z0-9]+@[a-z]+\\.+[a-z]{2,3}$", ErrorMessage = "Please enter valid e-mail address")]
         public string? Email { get; set; }
         [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
         public string? Password { get; set; }
         [Required]
+        [MinLength(10, ErrorMessage = "pls enter less than 10 char")]
         public long? PhoneNumber { get; set; }
         [Required]
         public string? EmplyoeeId { get; set; }
         [Required]
+        [MinLength(10, ErrorMessage = "pls enter less than 10 char")]
         public string? Department { get; set; } 
 
     }

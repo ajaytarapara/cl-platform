@@ -5,81 +5,16 @@ i:{00000000-0000-0000-0000-000000000000}:CIPlatform.Entities
 i:{2b15f143-5bce-4ce2-915e-04753256f347}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\bin\debug\net6.0\ciplatform.entities.dll
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\bin\debug\net6.0\ciplatform.entities.dll
 ++Dependencies
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>1136
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>1135
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>1987
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>290
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>291
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2017
+++Auth
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\auth\
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\auth\
+++JwtSetting.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\auth\jwtsetting.cs
 ++DataModels
 i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\datamodels\
-++ViewModels
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\
-++Admin_Banner_crudModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_banner_crudmodel.cs
-++Admin_cms_crudModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_cms_crudmodel.cs
-++Admin_loginModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_loginmodel.cs
-++Admin_Mission_Application.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_application.cs
-++Admin_Mission_crudModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_crudmodel.cs
-++Admin_mission_theme_crudModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_theme_crudmodel.cs
-++Admin_NavbarModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_navbarmodel.cs
-++Admin_skill_Model.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_skill_model.cs
-++Admin_story_crud.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_story_crud.cs
-++Admin_user_crudModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_user_crudmodel.cs
-++AdminPageList.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\adminpagelist.cs
-++CommentModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\commentmodel.cs
-++EditPasswordModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\editpasswordmodel.cs
-++EditProfileModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\editprofilemodel.cs
-++ForgotPasswordModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\forgotpasswordmodel.cs
-++GridModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\gridmodel.cs
-++HomeModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\homemodel.cs
-++LoginModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\loginmodel.cs
-++MissionModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\missionmodel.cs
-++NewPasswordModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\newpasswordmodel.cs
-++PaginationMission.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\paginationmission.cs
-++PrivacypolicyModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\privacypolicymodel.cs
-++RegistrationModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\registrationmodel.cs
-++ReleatedMissionModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\releatedmissionmodel.cs
-++ShareStoryModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\sharestorymodel.cs
-++StoryDetailModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\storydetailmodel.cs
-++StoryModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\storymodel.cs
-++VolunteeringTimesheetModel.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\volunteeringtimesheetmodel.cs
-++Analyzers
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:analyzers
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:analyzers
-i:{6e8e2976-3958-4055-aada-f8745b559524}:analyzers
-++Frameworks
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:frameworks
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:frameworks
-i:{6e8e2976-3958-4055-aada-f8745b559524}:frameworks
-++Packages
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:packages
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:packages
-i:{6e8e2976-3958-4055-aada-f8745b559524}:packages
 ++Admin.cs
 i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\datamodels\admin.cs
 ++Banner.cs
@@ -136,6 +71,78 @@ i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\datamodels\user2.cs
 ++UserSkill.cs
 i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\datamodels\userskill.cs
+++ViewModels
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\
+++Admin_Banner_crudModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_banner_crudmodel.cs
+++Admin_cms_crudModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_cms_crudmodel.cs
+++Admin_loginModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_loginmodel.cs
+++Admin_Mission_Application.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_application.cs
+++Admin_Mission_crudModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_crudmodel.cs
+++Admin_mission_theme_crudModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_mission_theme_crudmodel.cs
+++Admin_NavbarModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_navbarmodel.cs
+++Admin_skill_Model.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_skill_model.cs
+++Admin_story_crud.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_story_crud.cs
+++Admin_user_crudModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\admin_user_crudmodel.cs
+++AdminPageList.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\adminpagelist.cs
+++CommentModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\commentmodel.cs
+++EditPasswordModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\editpasswordmodel.cs
+++EditProfileModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\editprofilemodel.cs
+++ForgotPasswordModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\forgotpasswordmodel.cs
+++GridModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\gridmodel.cs
+++HomeModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\homemodel.cs
+++LoginModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\loginmodel.cs
+++MissionModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\missionmodel.cs
+++NewPasswordModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\newpasswordmodel.cs
+++PaginationMission.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\paginationmission.cs
+++PrivacypolicyModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\privacypolicymodel.cs
+++RegistrationModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\registrationmodel.cs
+++ReleatedMissionModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\releatedmissionmodel.cs
+++SessionDetailsViewModel .cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\sessiondetailsviewmodel .cs
+++ShareStoryModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\sharestorymodel.cs
+++StoryDetailModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\storydetailmodel.cs
+++StoryModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\storymodel.cs
+++VolunteeringTimesheetModel.cs
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\volunteeringtimesheetmodel.cs
+++Analyzers
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:analyzers
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:analyzers
+i:{6e8e2976-3958-4055-aada-f8745b559524}:analyzers
+++Frameworks
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:frameworks
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:frameworks
+i:{6e8e2976-3958-4055-aada-f8745b559524}:frameworks
+++Packages
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:packages
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:packages
+i:{6e8e2976-3958-4055-aada-f8745b559524}:packages
 ++Microsoft.AspNetCore.App.Analyzers
 i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
 i:{2b15f143-5bce-4ce2-915e-04753256f347}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
@@ -169,24 +176,28 @@ i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{2b15f143-5bce-4ce2-915e-04753256f347}:d:\cl platform\mvc\ci\ciplatform\ciplatform.repository\microsoft.netcore.app
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\microsoft.netcore.app
 ++AspNetCoreHero.ToastNotification (1.1.0)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2019
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2029
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2064
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2043
 ++MailKit (3.5.0)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2021
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2050
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2032
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2068
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2083
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2047
+++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.16)
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2066
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2081
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2044
 ++Microsoft.EntityFrameworkCore.Design (8.0.0-preview.1.23111.4)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2018
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2048
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2027
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2063
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2080
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2041
 ++Microsoft.EntityFrameworkCore.SqlServer (8.0.0-preview.1.23111.4)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2017
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2047
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2026
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2062
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2079
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2040
 ++Microsoft.EntityFrameworkCore.Tools (8.0.0-preview.1.23111.4)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2020
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2049
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2030
+i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2067
+i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2082
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2045
 ++CIPlatform.Repository
 i:{00000000-0000-0000-0000-000000000000}:CIPlatform.Repository
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform.repository\bin\debug\net6.0\ciplatform.repository.dll
@@ -220,7 +231,7 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:projects
 ++CIPlatform
 i:{00000000-0000-0000-0000-000000000000}:CIPlatform
 ++Connected Services 
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>1988
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2018
 ++Properties
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\properties\
 ++wwwroot
@@ -232,26 +243,56 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\css\
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\admin\css\
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\lib\bootstrap\dist\css\
+++site.css
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\css\site.css
+++style.css
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\css\style.css
 ++document
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\
 ++223f9f08-14c0-498a-9e36-33e1ff63e5d7.html
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\223f9f08-14c0-498a-9e36-33e1ff63e5d7.html
+++2c24f531-fc7a-4b19-b896-b8a56e39b0e2.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\2c24f531-fc7a-4b19-b896-b8a56e39b0e2.html
+++2c918b8f-c604-4844-b3eb-3913c0350f66.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\2c918b8f-c604-4844-b3eb-3913c0350f66.html
 ++3169cf6d-5a1a-45f1-a6d4-74f141210b9d.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\3169cf6d-5a1a-45f1-a6d4-74f141210b9d.png
+++37f6ce5f-7aad-45a7-8aca-0e62ad78ec6b.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\37f6ce5f-7aad-45a7-8aca-0e62ad78ec6b.html
+++582c35af-a25b-46d6-a2c3-5b0436d81eb6.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\582c35af-a25b-46d6-a2c3-5b0436d81eb6.ico
 ++65cfb41c-4d1b-4f56-8f87-4cec3cb42528.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\65cfb41c-4d1b-4f56-8f87-4cec3cb42528.png
+++66027f4b-1d9d-47f9-bc96-6683bf1c43ce.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\66027f4b-1d9d-47f9-bc96-6683bf1c43ce.html
+++675a0309-a646-4ad2-a91f-ce9306cd17fa.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\675a0309-a646-4ad2-a91f-ce9306cd17fa.html
 ++6d6f7eeb-6106-4a9c-9ceb-7d6a0c0bfc25.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\6d6f7eeb-6106-4a9c-9ceb-7d6a0c0bfc25.png
+++703a4daa-92c5-40b7-8480-5feccf0b71ae.css
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\703a4daa-92c5-40b7-8480-5feccf0b71ae.css
+++71ea8d81-9b6d-4ecd-9ed3-0145164e4a88.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\71ea8d81-9b6d-4ecd-9ed3-0145164e4a88.html
 ++7a0ddd4b-a840-4372-9b5c-26b4b2592600.html
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\7a0ddd4b-a840-4372-9b5c-26b4b2592600.html
 ++9082ed38-5ea5-4c52-9262-9c3412d35f92.svg
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\9082ed38-5ea5-4c52-9262-9c3412d35f92.svg
+++96e6bcdb-7f0f-4620-858e-f579c9f6a5e5.css
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\96e6bcdb-7f0f-4620-858e-f579c9f6a5e5.css
+++9eedcc32-3175-403f-88ce-1dc1dc6d0431.svg
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\9eedcc32-3175-403f-88ce-1dc1dc6d0431.svg
+++a29dace7-c3fc-4dc5-a202-d0867e744569.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\a29dace7-c3fc-4dc5-a202-d0867e744569.html
+++a69ccf90-b651-452b-915c-60de15181c3b.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\a69ccf90-b651-452b-915c-60de15181c3b.ico
 ++a6f773ac-d1ef-4651-90de-f69494d6ca23.svg
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\a6f773ac-d1ef-4651-90de-f69494d6ca23.svg
 ++aa39688f-7e3e-461b-82cf-914158190030.css
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\aa39688f-7e3e-461b-82cf-914158190030.css
 ++bd3f4649-cdac-417f-bec8-c26b63f2220a.css
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\bd3f4649-cdac-417f-bec8-c26b63f2220a.css
+++bf7edbbc-a887-420c-a292-e93dd2cefce9.html
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\bf7edbbc-a887-420c-a292-e93dd2cefce9.html
 ++c1b2c715-3895-457d-9d2c-5357dd1b9db5.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\c1b2c715-3895-457d-9d2c-5357dd1b9db5.png
 ++c53bc388-1cfd-4240-b747-3ca27f83d31f.png
@@ -284,17 +325,6 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\banner\
 ++media
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\
-++16a36e10-f435-4dfe-a122-9120be8ef676.ico
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\16a36e10-f435-4dfe-a122-9120be8ef676.ico
-++2198f629-773a-4b08-ba37-681598ee1250.svg
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\2198f629-773a-4b08-ba37-681598ee1250.svg
-++626ddede-13f2-4734-87fe-317e72e99320.ico
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\626ddede-13f2-4734-87fe-317e72e99320.ico
-++7c61ef5e-4375-439c-a0f2-89201675af02.svg
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\7c61ef5e-4375-439c-a0f2-89201675af02.svg
-++Microsoft.AspNetCore.Http.FormFile.png
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\microsoft.aspnetcore.http.formfile.png
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\microsoft.aspnetcore.http.formfile.png
 ++uploads
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\
 ++066db21b-1a86-48b9-9720-26f608a0b1e8.png
@@ -515,6 +545,9 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 ++logo.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\logo.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\admin\images\logo.png
+++Microsoft.AspNetCore.Http.FormFile.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\microsoft.aspnetcore.http.formfile.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\microsoft.aspnetcore.http.formfile.png
 ++mission.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\mission.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\admin\images\mission.png
@@ -656,10 +689,46 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\admin\js\
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\lib\bootstrap\dist\js\
+++Admin.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin.js
+++Admin_Banner.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_banner.js
+++Admin_Mission.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission.js
+++Admin_Mission_apllication.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission_apllication.js
+++Admin_mission_theme_.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission_theme_.js
+++Admin_skill.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_skill.js
+++Admin_story.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_story.js
+++AdminCms.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admincms.js
+++ci.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\ci.js
+++custom.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\custom.js
+++editprofile.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\editprofile.js
+++filedrop.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\filedrop.js
+++Mission.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\mission.js
+++share_story.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\share_story.js
+++site.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\site.js
+++Story.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\story.js
+++timesheet.js
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\timesheet.js
 ++lib
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\lib\
 ++favicon.ico
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\favicon.ico
+++JwtTokenHelper.cs
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\auth\jwttokenhelper.cs
 ++Controllers
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\controllers\
 ++AccountController.cs
@@ -680,6 +749,20 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\
 ++Account
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\
+++EditProfile.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\editprofile.cshtml
+++ForgotPassword.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\forgotpassword.cshtml
+++Login.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\login.cshtml
+++NewPassword.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\newpassword.cshtml
+++Privacy_policy.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\privacy_policy.cshtml
+++Register.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\register.cshtml
+++VolunteeringTimesheet.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\volunteeringtimesheet.cshtml
 ++Admin_Add_Banner.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\admin\admin_add_banner.cshtml
 ++Admin_add_cms.cshtml
@@ -702,6 +785,8 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\admin\admin_edit_skill.cshtml
 ++Admin_Edit_themes.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\admin\admin_edit_themes.cshtml
+++Admin_Edit_User.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\admin\admin_edit_user.cshtml
 ++Admin_login.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\admin\admin_login.cshtml
 ++Admin_mission.cshtml
@@ -748,6 +833,8 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_admin_user_crud_table.cshtml
 ++_CommentMission.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_commentmission.cshtml
+++_Edit_user_admin.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_edit_user_admin.cshtml
 ++_Footer.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_footer.cshtml
 ++_grid.cshtml
@@ -764,6 +851,10 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_releatedmission.cshtml
 ++_Storylist.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_storylist.cshtml
+++_Timesheet_edit_goal_based.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_timesheet_edit_goal_based.cshtml
+++_Timesheet_edit_timebase.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_timesheet_edit_timebase.cshtml
 ++_TimesheetModals.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_timesheetmodals.cshtml
 ++_ValidationScriptsPartial.cshtml
@@ -776,6 +867,12 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\error.cshtml
 ++Story
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\
+++Share_story.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\share_story.cshtml
+++StoryListing.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\storylisting.cshtml
+++View_Story.cshtml
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\view_story.cshtml
 ++_ViewImports.cshtml
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\_viewimports.cshtml
 ++_ViewStart.cshtml
@@ -787,13 +884,9 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 ++Program.cs
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\program.cs
 ++No service dependencies discovered
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>1989
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2019
 ++launchSettings.json
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\properties\launchsettings.json
-++site.css
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\css\site.css
-++style.css
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\css\style.css
 ++0574397e-a959-426b-a234-7d97de64445f.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\avatars\0574397e-a959-426b-a234-7d97de64445f.png
 ++1a5fb9f3-bc96-4459-9d47-a95a9830d53d.png
@@ -858,50 +951,82 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\banner\ea2b9c46-5c13-41e9-b1bc-b122179d165d.png
 ++ec581e12-1293-4b29-8d2d-37b5188a36cf.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\banner\ec581e12-1293-4b29-8d2d-37b5188a36cf.png
+++0aaf3a3f-b9da-4cf1-bae2-6394397e1ade.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\0aaf3a3f-b9da-4cf1-bae2-6394397e1ade.png
+++12546be8-b499-4a75-9dc0-5d0cea41b90b.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\12546be8-b499-4a75-9dc0-5d0cea41b90b.png
+++14c8998d-c3bc-4c62-b6d8-4626363a736a.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\14c8998d-c3bc-4c62-b6d8-4626363a736a.png
+++16a36e10-f435-4dfe-a122-9120be8ef676.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\16a36e10-f435-4dfe-a122-9120be8ef676.ico
+++2198f629-773a-4b08-ba37-681598ee1250.svg
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\2198f629-773a-4b08-ba37-681598ee1250.svg
+++3286a56d-aeca-41ff-a131-3581049b27c2.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\3286a56d-aeca-41ff-a131-3581049b27c2.ico
+++33057e39-f847-44bd-b174-999fe043bd6d.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\33057e39-f847-44bd-b174-999fe043bd6d.png
+++38db4e99-043b-4f3f-892e-bfc240a77b4a.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\38db4e99-043b-4f3f-892e-bfc240a77b4a.png
+++40a91ae7-be48-458c-8260-274544631c8e.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\40a91ae7-be48-458c-8260-274544631c8e.png
+++4bf5ee30-e955-4f44-a87b-b5a14614cfc2.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\4bf5ee30-e955-4f44-a87b-b5a14614cfc2.png
+++5750aa93-fad2-491f-be75-b3aaf8f368fa.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\5750aa93-fad2-491f-be75-b3aaf8f368fa.png
+++626ddede-13f2-4734-87fe-317e72e99320.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\626ddede-13f2-4734-87fe-317e72e99320.ico
+++6721b489-4874-4b10-a104-12340e3f8fc3.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\6721b489-4874-4b10-a104-12340e3f8fc3.png
+++7c61ef5e-4375-439c-a0f2-89201675af02.svg
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\7c61ef5e-4375-439c-a0f2-89201675af02.svg
+++879042c2-e4db-464f-b0ac-4ec970c8e4f6.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\879042c2-e4db-464f-b0ac-4ec970c8e4f6.png
+++8dfc8c9f-4aff-4581-a2ff-f0bacf1af3ae.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\8dfc8c9f-4aff-4581-a2ff-f0bacf1af3ae.png
+++94773422-d20a-4c36-9218-000b84bde96f.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\94773422-d20a-4c36-9218-000b84bde96f.png
+++982564b7-6f99-4b17-8ab8-deb6e1f75be8.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\982564b7-6f99-4b17-8ab8-deb6e1f75be8.png
+++9f7c6f04-5492-409e-b63c-3dd9ad48ec70.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\9f7c6f04-5492-409e-b63c-3dd9ad48ec70.png
+++a19d7e7b-3c50-4e7b-84c3-ddd642e805bc.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\a19d7e7b-3c50-4e7b-84c3-ddd642e805bc.png
+++a614361b-646d-4bc3-9e9f-12de20223ce5.ico
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\a614361b-646d-4bc3-9e9f-12de20223ce5.ico
+++a75ff4fb-6cdc-407c-bc75-a7be25ce18c6.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\a75ff4fb-6cdc-407c-bc75-a7be25ce18c6.png
+++aaa7e44d-7dc5-461f-bf79-7c9ca3f0e60f.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\aaa7e44d-7dc5-461f-bf79-7c9ca3f0e60f.png
+++bb73a75d-1593-4658-a0c0-e82c83258e3c.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\bb73a75d-1593-4658-a0c0-e82c83258e3c.png
+++c0748fbf-0ab7-4fd8-93d0-827ca169fdd8.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\c0748fbf-0ab7-4fd8-93d0-827ca169fdd8.png
+++c1a01595-1bee-465b-b707-f0597d8dcf2a.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\c1a01595-1bee-465b-b707-f0597d8dcf2a.png
+++c72b6b9f-6b53-4ccc-b83b-8cc55dd15898.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\c72b6b9f-6b53-4ccc-b83b-8cc55dd15898.png
+++cd75c1aa-5b27-4048-af1b-9042e96f249f.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\cd75c1aa-5b27-4048-af1b-9042e96f249f.png
+++d78bdafe-38e5-404a-9da3-789cbd165288.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\d78bdafe-38e5-404a-9da3-789cbd165288.png
+++fbe8f76a-8dfc-4141-92f9-a3665bb8f52f.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\fbe8f76a-8dfc-4141-92f9-a3665bb8f52f.png
 ++cplogin.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\cplogin.png
 ++cpregister.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\cpregister.png
 ++cpreset.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\cpreset.png
+++data-graph.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\data-graph.png
 ++forgot%20pass%20vadation.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\forgot%20pass%20vadation.png
 ++GECR-Logo.png
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\gecr-logo.png
-++Admin.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin.js
-++Admin_Banner.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_banner.js
-++Admin_Mission.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission.js
-++Admin_Mission_apllication.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission_apllication.js
-++Admin_mission_theme_.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_mission_theme_.js
-++Admin_skill.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_skill.js
-++Admin_story.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admin_story.js
-++AdminCms.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\admincms.js
-++ci.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\ci.js
-++custom.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\custom.js
-++editprofile.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\editprofile.js
-++filedrop.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\filedrop.js
-++Mission.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\mission.js
-++share_story.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\share_story.js
-++site.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\site.js
-++Story.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\story.js
-++timesheet.js
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\js\timesheet.js
+++hero-image.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\hero-image.png
+++profile.png
+i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\uploads\profile.png
 ++bootstrap
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\lib\bootstrap\
 ++jquery
@@ -914,28 +1039,8 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\helpers\mailhelper.cs
 ++ErrorViewModel.cs
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\models\errorviewmodel.cs
-++EditProfile.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\editprofile.cshtml
-++ForgotPassword.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\forgotpassword.cshtml
-++Login.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\login.cshtml
-++NewPassword.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\newpassword.cshtml
-++Privacy_policy.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\privacy_policy.cshtml
-++Register.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\register.cshtml
-++VolunteeringTimesheet.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\account\volunteeringtimesheet.cshtml
 ++_Layout.cshtml.css
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\shared\_layout.cshtml.css
-++Share_story.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\share_story.cshtml
-++StoryListing.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\storylisting.cshtml
-++View_Story.cshtml
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\views\story\view_story.cshtml
 ++appsettings.Development.json
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\appsettings.development.json
 ++MessagePackAnalyzer
@@ -957,9 +1062,9 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:c:\program files\dotnet\sdk\6.0.100\sdk
 ++Microsoft.AspNetCore.App
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\microsoft.aspnetcore.app
 ++Microsoft.VisualStudio.Web.CodeGeneration.Design (6.0.12)
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2031
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2046
 ++Swashbuckle.AspNetCore (6.3.0)
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2028
+i:{6e8e2976-3958-4055-aada-f8745b559524}:>2042
 ++admin.css
 i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\admin\css\admin.css
 ++bootstrap.min.css
@@ -1088,111 +1193,24 @@ i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplat
 ++notyf.min.js
 ++localhost:7165
 ++aspnetcore-browser-refresh.js
-++Admin_Login
 ++User_crud
+++Admin_Banner
+++VM266
+++Cms_crud
+++Admin_mission_theme
 ++Admin_mission
 ++Admin_Edit_Mission
-++VM80
-++VM81
-++VM86
-++VM89
-++VM217
-++VM220
-++VM317
-++VM320
-++VM321
-++VM324
-++VM327
-++VM330
-++VM385
-++VM388
-++VM393
-++VM394
-++VM397
-++VM400
-++VM529
-++VM631
-++VM636
-++VM637
-++VM638
-++VM641
-++VM753
-++VM758
-++VM759
-++VM764
-++VM124
-++VM125
-++VM128
-++VM131
-++VM134
-++VM137
-++VM142
-++VM145
-++VM148
-++VM153
-++VM156
-++VM157
-++VM160
-++VM161
-++VM166
-++VM171
-++VM172
-++VM189
-++VM190
-++VM195
-++VM198
-++VM201
-++VM204
-++VM207
-++VM267
-++VM270
-++VM275
-++9f7c6f04-5492-409e-b63c-3dd9ad48ec70.png
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\9f7c6f04-5492-409e-b63c-3dd9ad48ec70.png
-++0d9ad83d-10a0-4ab4-bccc-0469c5006214.ico
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\0d9ad83d-10a0-4ab4-bccc-0469c5006214.ico
-++a69ccf90-b651-452b-915c-60de15181c3b.ico
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\a69ccf90-b651-452b-915c-60de15181c3b.ico
-++14c8998d-c3bc-4c62-b6d8-4626363a736a.png
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\14c8998d-c3bc-4c62-b6d8-4626363a736a.png
-++Index
+++Admin_mission_application
+++index
 ++Mission_Volunteer
-++EditProfile
-++a614361b-646d-4bc3-9e9f-12de20223ce5.ico
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\images\media\a614361b-646d-4bc3-9e9f-12de20223ce5.ico
-++9eedcc32-3175-403f-88ce-1dc1dc6d0431.svg
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\wwwroot\document\9eedcc32-3175-403f-88ce-1dc1dc6d0431.svg
-++Microsoft.AspNetCore.Authentication.JwtBearer (6.0.16)
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:>2097
-i:{2b15f143-5bce-4ce2-915e-04753256f347}:>2098
-i:{6e8e2976-3958-4055-aada-f8745b559524}:>2099
-++NewFolder
-++Auth
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\auth\
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\auth\
-++JwtSetting.cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\auth\jwtsetting.cs
-++JwtTokenHelper.cs
-i:{6e8e2976-3958-4055-aada-f8745b559524}:d:\cl platform\mvc\ci\ciplatform\ciplatform\auth\jwttokenhelper.cs
-++SessionDetailsViewModel .cs
-i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplatform.entities\viewmodels\sessiondetailsviewmodel .cs
-++VM31
-++VM32
-++VM33
-++VM34
-++VM35
-++VM36
-++VM37
-++VM38
-++chromewebdata
-++VM47
-++VM48
-++VM49
-++VM50
-++VM51
-++VM52
-++VM53
-++VM54
+++VM187
+++VM189
+++VM195
+++VM196
+++VM197
+++VM200
+++VM201
+++Index
 ++VM55
 ++VM56
 ++VM57
@@ -1212,40 +1230,9 @@ i:{61865e08-c6c8-403f-b3c4-069bf6c14254}:d:\cl platform\mvc\ci\ciplatform\ciplat
 ++VM71
 ++VM72
 ++VM73
-++VM90
-++VM116
-++VM117
-++VM118
-++VM119
-++VM120
-++VM121
-++VM122
-++VM123
-++VM126
-++VM127
-++VM129
-++VM130
-++VM132
-++VM133
-++VM135
-++VM136
-++VM138
-++VM139
-++VM140
-++VM141
-++VM17
-++VM18
-++VM19
-++VM20
-++VM21
-++VM22
-++VM23
-++VM24
-++VM25
-++VM26
-++VM27
-++VM28
+++VM74
+++VM75
+++VM76
 ++VM29
 ++VM30
-++VM39
-++VM40
+++GetCitiesFromCountry

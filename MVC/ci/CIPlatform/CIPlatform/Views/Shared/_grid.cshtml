@@ -6,7 +6,7 @@
 
 <div id="mission-grid" class="row">
     @foreach (var Item in Model.missions)
-    {             
+    {
         @*    Views_Shared__grid view of mision card*@
         <div class="col-lg-4 col-md-6 col-sm-12 mt-1 mission">
             <div class="card mt-2 shadow" style="position:relative;height:625px;overflow:hidden">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">@Item.Title</h5>
+                    <h5 style="height:51px" class="card-title">@Item.Title</h5>
 
                     <p class="card-text">@Item.ShortDescription</p>
                     <div style="justify-content:space-between;" class="d-flex ">
@@ -104,7 +104,7 @@
                             }
                         </div>
                     </div>
-                    <div CLASS="mt-3 mb-3 d-flex missiondate">
+                    <div CLASS="mt-4 mb-3 d-flex missiondate">
                         <div style="width:15%">
                             <hr>
                         </div>
@@ -131,26 +131,26 @@
 
                         @if (@Item.MissionType == "time")
                         {
-                            <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
+                            <div><img src="~/images/Seats-left.png" alt=""><span class="mx-2">@Item.SeatsLeft <br><span class="mx-4">seats left</span></span></div>
                             <div>
-                                <img style="height: 25px;" src="~/images/hours.png" alt=""><span>
+                                <img style="height: 25px;" src="~/images/hours.png" alt=""><span class="mx-2">
                                     @Item.EndDate.ToString().Substring(0,10)
-                                    <br>Deadline
+                                    <br> <span class="mx-5">Deadline</span>
                                 </span>
                             </div>
                         }
                         else
                         {
-                            <div><img src="~/images/Seats-left.png" alt=""><span>@Item.seats <br> seats left</span></div>
+                            <div><img src="~/images/Seats-left.png" alt=""><span class="mx-2">@Item.SeatsLeft <br> <span class="mx-4">seats left</span></span></div>
                             <div class="d-flex col-6" style="justify-content:space-around">
                                 <img src="~/images/mission.png" style="width:25px;height:25px">
                                 <div style="display:flex;flex-direction:column;justify-content:flex-start;width:80%;">
-                                    <div class="progress" style="width:60%;">
+                                    <div class="progress" style="width:100%;">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: @(@Item.total*100/@Item.goalvalue)%"
                                      aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                         </div>
-                                    </div><span style="padding-top: 4px;">@Item.total achieved</span> 
-                            </div>
+                                    </div><span style="padding-top: 4px;">@Item.total achieved</span>
+                                </div>
                             </div>
                         }
                     </div>
@@ -190,13 +190,33 @@
                 }
                 <div class="list-image-part-2 position-relative">
                     <img src="/@Item.MediaPath/@mediaNames[0].@Item.MediaType" id="list-img" alt="" />
+                    @if (@Item.EndDate < DateTime.Now)
+                    {
+                        <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-danger border border-light rounded-pill">
+                            <span class="badge " style="background-color:rgba(255, 0, 0,.1);">Closed</span>
+                        </span>
+                    }
+                    else if (@Item.statusofuser == "approved")
+                    {
+                        <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-success border border-light rounded-pill">
+                            <span class="badge " style="background-color:rgba(255, 0, 0,.1);">applied</span>
+                        </span>
+                    }
+
+                    else if (@Item.statusofuser == "pending")
+                    {
+                        <span style="background-color:rgba(255, 0, 0, 0.6);" class="position-absolute top-0 start-0  py-1 px-3  bg-warning border border-light rounded-pill">
+                            <span class="badge " style="background-color:rgba(255, 0, 0,.1);">pending</span>
+                        </span>
+                    }
+
                     <h5 class="bg-white rounded-5 p-2" id="list-card-theme-title">@Item.ThemeTitle</h5>
                     <div id="list-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2 ">
                         <div id="list-location-image" class="list-img-content p-2 rounded-5">
                             <img src="~/images/pin.png" alt="">
                             @Item.CityName
                         </div>
-                        <div class="d-flex flex-column align-items-end">
+                        <div class="d-flex flex-column align-items-end mt-5">
                             <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1 heart-btn">
                                 @if (@Item.favourite == 1)
                                 {
@@ -225,54 +245,121 @@
                 </div>
                 <div class="card-title-list mt-1">
                     <h3 class="card-title-list-text">@Item.Title</h3>
-                    <p class="card-text">@Item.ShortDescription</p>
+                    <p class="card-text">
+                        @Item.ShortDescription
+                    </p>
                     <div class="card-content mt-5" style="display: flex; flex-direction: row;justify-content: space-between;">
                         <div style="width:30%;">
                             <div style="justify-content: space-between;display: flex;">
                                 <span>
                                     @Item.OrganizationName
                                 </span>
-                                <div id="stars-rating" class="d-flex justify-content-center align-items-center position-relative z-1">
-                                    <input id="star-input-id" type="text" class="rating text-center d-none" data-size="sm" />
+                                <svg style="display:none;">
+                                    <defs>
+                                        <symbol id="fivestars">
+                                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                              fill="white" fill-rule="evenodd" />
+                                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                              fill="white" fill-rule="evenodd" transform="translate(24)" />
+                                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                              fill="white" fill-rule="evenodd" transform="translate(48)" />
+                                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                              fill="white" fill-rule="evenodd" transform="translate(72)" />
+                                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                              fill="white" fill-rule="evenodd" transform="translate(96)" />
+                                        </symbol>
+                                    </defs>
+                                </svg>
+                                <div class="mission-rating">
+                                    <!-- <div class="rating-bg" style="width: 90%;"></div> -->
+                                    @if (Item.Rating == null)
+                                    {
+                                        <progress class="rating-bg" value="0" max="5"></progress>
+                                        <svg>
+                                            <use xlink:href="#fivestars" />
+                                        </svg>
+                                    }
+                                    else
+                                    {
+                                        <progress class="rating-bg" value="@Item.Rating" max="5"></progress>
+                                        <svg>
+                                            <use xlink:href="#fivestars" />
+                                        </svg>
+                                    }
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div style="justify-content:flex-start;margin-right:2vw" class="d-flex pt-3">
-                                <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;
-                                       color: #F88634;width: 109%;height: 30px;display: flex;
-                                       align-items: center;justify-content: center;padding:5px;">
-                                    <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission",
-                                    new { missionId = @Item.MissionId })">   Apply</a>
-                                    <img src="~/images/right-arrow.png" alt="">
-                                </button>
+                            <div>
+                                <div style="justify-content:flex-start;" class="d-flex pt-3" style="width:80%">
+                                    @if (@Item.EndDate < DateTime.Now)
+                                    {
+                                        <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color:   #F88634; width:30%;height:30px;width:70%" id="" class="mt-3 ">
+                                            <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">View Details</a><img src="~/images/right-arrow.png" alt="">
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;width:70%" id="" class="mt-3 ">
+                                            <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
+                                        </button>
+                                    }
+                                </div>
                             </div>
+
+
+
+                        </div>
+                        <div style="justify-content:flex-end;display: flex;flex-direction: column;width: 60%;">
+                            <div>
+
+                                <div CLASS="d-flex missiondate">
+                                    <div style="width:15%">
+                                        <hr>
+                                    </div>
+                                    <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
+                                     class="d-flex">
+                                        From @Item.StartDate.ToString().Substring(0,10) untill @Item.EndDate.ToString().Substring(0,10)
+                                    </div>
+                                    <div style="width:15%">
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="width:80% ;top: 10px;" class="mt-3 mx-auto ">
+                                <div style="justify-content:space-between;" class="d-flex pt-2 ">
+                                    <div><img src="~/images/Seats-left.png" alt=""><span class="mx-2">@Item.SeatsLeft <br>  <span class="mx-3">seats left<span></span></span></div>
+
+                                    <div class="d-flex">
+                                        @if (@Item.MissionType == "time")
+                                        {
+                                            <img style="height: 25px;" src="~/images/hours.png" alt="">
+
+                                            <span class="mx-2">
+                                                @Item.EndDate.ToString().Substring(0,10) <br>
+                                                <span>Deadline</span>
+                                            </span>
+                                        }
+                                        else
+                                        {
+
+                                            <img src="~/images/mission.png" style="width:25px;height:25px">
+                                            <div class="d-flex flex-column mx-2">
+                                                <div class="progress" style="width:100%;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: @(@Item.total*100/@Item.goalvalue)%"
+                                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+
+                                                <span class="mt-2">@Item.total achieved</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div style="justify-content:flex-end;display: flex;flex-direction: column;width: 60%;">
-                        <div>
-                            <div CLASS="d-flex missiondate">
-                                <div style="width:15%">
-                                    <hr>
-                                </div>
-                                <div style="width:70% ;justify-content: center;border: 1px solid gray;border-radius: 18px;;"
-                                 class="d-flex">
-                                    From @Item.StartDate untill @Item.EndDate
-                                </div>
-                                <div style="width:15%">
-                                    <hr>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div style="width:80% ;top: 10px;">
-                            <div style="justify-content:space-between;" class="d-flex pt-2 ">
-                                <div><img src="~/images/Seats-left.png" alt=""><span>10 <br> 10 seats left</span></div>
-                                <div><img style="height: 25px;" src="~/images/hours.png" alt=""><span>09/01/2019 <br> Deadline</span> </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>

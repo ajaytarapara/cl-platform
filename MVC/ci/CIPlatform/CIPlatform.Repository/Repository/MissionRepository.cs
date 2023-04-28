@@ -36,14 +36,14 @@ namespace CIPlatform.Repository.Repository
                 favouriteMission.UserId = userid;
                 favouriteMission.CreatedAt = DateTime.Now;
                 _ciPlatformDbContext.FavouriteMissions.Add(favouriteMission);
-                _ciPlatformDbContext.SaveChangesAsync();
+                _ciPlatformDbContext.SaveChanges();
 
             }
             else
             {
                 FavouriteMission favouriteMissions = _ciPlatformDbContext.FavouriteMissions.FirstOrDefault(x => x.MissionId == missionid && x.UserId == userid);
                 _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMissions);
-                _ciPlatformDbContext.SaveChangesAsync();
+                _ciPlatformDbContext.SaveChanges();
             }
         }
 
@@ -69,7 +69,7 @@ namespace CIPlatform.Repository.Repository
             application.UserId = UserId;
             application.MissionId = missionid;
             application.AppliedAt = DateTime.Now;
-            application.ApprovalStatus = "Pending";
+            application.ApprovalStatus = "pending";
 
             bool isalreadyapplied = _ciPlatformDbContext.MissionApplications.Any(a => a.UserId == application.UserId);
 
@@ -79,7 +79,7 @@ namespace CIPlatform.Repository.Repository
                 missionApplication.UserId = UserId;
                 missionApplication.MissionId = missionid;
                 missionApplication.AppliedAt = DateTime.Now;
-                missionApplication.ApprovalStatus = "Pending";
+                missionApplication.ApprovalStatus = "pending";
                 _ciPlatformDbContext.Update(missionApplication);
 
             }

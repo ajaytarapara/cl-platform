@@ -54,7 +54,7 @@ var c =$.ajax({
         type: "GET",
         url: "/Home/GetThemes",
         data: "{}",
-        success: function (data) {
+    success: function (data) {
             var str = "";
             var themeDropDown = $("#themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
@@ -94,7 +94,7 @@ var c =$.ajax({
   });
 $.when(a, b, c, d, toggleGrid).done(function () {
     intializeChips();
-  
+    citySelectFromCountry();
 });
 
 //function loadgetgridview() {
@@ -242,7 +242,35 @@ $("#search-input").on("keyup", function (e) {
     }
 });
 
+function citySelectFromCountry() {
+    $("#countryDropDownList li a input:checkbox").on("change", function () {
+        console.log("click", selectedCountries);
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetCitiesFromCountry",
+            dataType:"json",
+            data: { country:selectedCountries},
+            success: function (data) {
+                console.log(data);
+                var str = "";
+                var cityDropDown = $("#cityDropDownList");
+                var obj = JSON.parse(data["data"]);
+                for (var j = 0; j < obj.length; j++) {
+                    str += '<li class="p-1"><a class="dropdown-item" href = "#"> <input type="checkbox" name="city" value="' + obj[j].Name+ '"/> ' + obj[j].Name+ '</a></li>';
+                }
 
+                cityDropDown.html(str);
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+    });
+}
 //==========================================================================================================================================================================================
 ///*listview using button*/
 //==========================================================================================================================================================================================

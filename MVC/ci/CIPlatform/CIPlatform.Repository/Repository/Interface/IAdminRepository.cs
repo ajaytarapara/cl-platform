@@ -96,5 +96,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public void UpdateMissionMedia(MissionMedium media);
         public MissionDocument GetMissionDocument(long missionId);
         public void UpdateMissionDocument(MissionDocument missionDocument);
+        public List<MissionSkill> missionSkills(long missionId);
+        public Skill GetSkillName(long skillId);
+        public void RemoveMissionSkill(long missionid);
+
     }
 }

@@ -202,6 +202,7 @@ namespace CIPlatform.Controllers
             invite.CreatedAt = DateTime.Now;
             invite.ToUserId = _storyRepository.GetInvitedUserid(cow_email);
             _storyRepository.AddInvitedUser(invite);
+            _notyf.Success("mail sended successfully", 3);
 
         }
 

@@ -8,7 +8,7 @@
             </button>
         </div>
         <div class="col-6  leftnav">
-            <button style="border: none; background: white;">Stories</button>
+            <a style="border: none; background: white;text-decoration:none;color:black;" href="@Url.Action("StoryListing", "Story")">Stories</a>
             <button style="border: none; background: white;" class="dropdown-toggle bg-light" type="button"
                     id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                 Policy
@@ -48,7 +48,8 @@
                 </li>
                 <li class="dropdownnavbarlinks">
                     <button class="dropdown-item" type="button">
-                        <a style="text-decoration:none;color:black;" href="@Url.Action("User_crud", "Admin")">Login AS Admin</a></button>
+                        <a style="text-decoration:none;color:black;" href="@Url.Action("User_crud", "Admin")">Login AS Admin</a>
+                    </button>
             </ul>
         </div>
     </div>
@@ -64,9 +65,9 @@
                     <img id="uimg" src="@Model.avatar" alt="" class="mx-auto d-flex mt-3" id="imgavatar">
                     <p style="text-align: center;" class="mt-2">@Model.firstname @Model.lastname</p>
                     <div style="display:flex;margin:auto" class="mt-2">
-@*                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
-                        <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
-                        <a href="" class="socialmedia" target="_blank"><img src="~/images/linkedin.png" /></a>*@
+                        @*                        <a href="" class="socialmedia"><img src="~/images/facebook.png" /></a>
+                            <a href="" class="socialmedia"><img src="~/images/twitter.png" /></a>
+                            <a href="" class="socialmedia" target="_blank"><img src="~/images/linkedin.png" /></a>*@
                     </div>
                     <button type="button" class="btn d-flex mx-auto mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Change Password</button>
                 </div>
@@ -165,6 +166,7 @@
                     <div class="col-md-6">
                         <label for="">LinkedIn</label>
                         <input asp-for="linkedinurl" class="form-control" placeholder="Enter linkedIn URL" type="text">
+                        <span asp-validation-for="linkedinurl" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
@@ -197,8 +199,8 @@
     </div>
 </form>
    @*----Pop-Up For AddSkills---*@
-<div class="popup-container ">
-    <div class="popup-content d-flex flex-column">
+<div class="popup-container m-auto">
+    <div class="popup-content d-flex flex-column mx-auto" style="margin-top:20vh">
         <div class="d-flex justify-content-between">
             <h5>Add your Skills</h5>
             <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>

@@ -107,17 +107,21 @@ namespace CIPlatform.Repository.Repository
                 favouriteMission.UserId = userid;
                 favouriteMission.CreatedAt = DateTime.Now;
                 _ciPlatformDbContext.FavouriteMissions.Add(favouriteMission);
-                _ciPlatformDbContext.SaveChangesAsync();
+                _ciPlatformDbContext.SaveChanges();
 
             }
             else
             {
                 FavouriteMission favouriteMission = _ciPlatformDbContext.FavouriteMissions.FirstOrDefault(x => x.MissionId == missionid && x.UserId == userid);
                 _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMission);
-                _ciPlatformDbContext.SaveChangesAsync();
+                _ciPlatformDbContext.SaveChanges();
             }
         }
-
+        List<City> IHomeRepository.GetCityFromCountry(string countryname)
+        {
+            List<City> citylist = _ciPlatformDbContext.Cities.Include(x => x.Country).Where(x => x.Country.Name == countryname).ToList();
+            return citylist;
+        }
 
 
     }

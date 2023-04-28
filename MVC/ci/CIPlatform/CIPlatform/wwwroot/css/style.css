@@ -1011,11 +1011,11 @@ footer {
 }
 
 .mission-rating progress.rating-bg::-webkit-progress-value {
-    background-color: yellow;
+    background-color: orange;
 }
 
         .mission-rating progress.rating-bg::-moz-progress-bar {
-            background-color: yellow;
+            background-color: orange;
         }
 
     .mission-rating svg {
@@ -1531,4 +1531,8 @@ footer {
 justify-content:flex-start !important;
 align-content:end !important;
 border-radius:10px;
+}
+
+.popup-container{
+    display:none;
 }

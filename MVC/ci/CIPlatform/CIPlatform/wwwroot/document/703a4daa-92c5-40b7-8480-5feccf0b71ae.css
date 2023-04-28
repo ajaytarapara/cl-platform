@@ -1,0 +1,529 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.leftnav {
+
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.rightnav {
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.leftheader {
+
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightheader {
+
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+}
+.rightheader>button{
+    width: 16%;
+}
+
+.leftheader>input {
+    width: 40%;
+    margin-left: 15px;
+}
+
+.checked {
+    color: orange;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: orange;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.img-content {
+    flex-direction: column;
+}
+
+.card-img-top {
+    position: relative;
+
+
+}
+
+.list-image-part {
+    width: 100%;
+}
+
+.list-content-part {
+    width: 70%;
+}
+
+.list-img {
+    height: 250px;
+    width: 100%;
+}
+
+.list-card-theme-title {
+    position: absolute;
+    top: 220px;
+    left: 33%;
+    font-weight: lighter;
+}
+
+#grid-card-image-content {
+    top: 0px;
+    right: 0px;
+    justify-content: space-between;
+}
+
+.list-img-content {
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+    max-width: max-content;
+
+
+}
+.card-title{
+    font-weight: bolder;
+    width: 100%;
+}
+
+#list-card-image-content {
+    top: 0px;
+    right: 0px;
+
+}
+
+#list-img {
+    height: 290px;
+    width: 100%;
+}
+
+#list-card-theme-title {
+    position: absolute;
+    top: 250px;
+    left: 30%;
+    font-weight: lighter;
+}
+
+#menubar {
+    position: absolute;
+    border: 1px solid black;
+    flex-direction: column;
+    height: 100vh;
+    background: white;
+    display: none;
+    z-index: 1;
+
+}
+
+#menubarimg {
+    position: absolute;
+    top: 10px;
+    left: 13%;
+    width: 40px;
+}
+
+.menuitem {
+    display: inline-block;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+#filterbutton {
+    display: none;
+}
+
+#filterbar {
+    position: absolute;
+    border: 1px solid black;
+    flex-direction: column;
+    height: 100vh;
+    background: white;
+    display: none;
+    z-index: 1;
+}
+
+.list-image-part-2 {
+    width: 30%;
+}
+.card-title-list{
+    width: 65%;
+}
+.card-title-list-text{
+    font-weight: bolder;
+}
+@media(max-width:2500px) {
+    #menubarimg {
+        display: none;
+    }
+
+
+}
+
+@media(max-width:962px) {
+    #list-card-theme-title {
+
+        left: 22%;
+
+    }
+
+}
+
+@media(max-width:766px) {
+    .rightheader {
+        border-top: 1px solid black;
+
+    }
+
+    .rightnav {
+        display: block;
+    }
+
+    #menubarimg {
+        display: inline-block;
+    }
+
+    .leftnav {
+        display: none !important;
+    }
+
+    #rightheader {
+        display: none !important;
+    }
+
+    #filterbutton {
+        display: flex;
+    }
+
+    .leftheader {
+        justify-content: space-evenly;
+    }
+
+    #list-card-theme-title {
+
+        left: 10%;
+
+    }
+
+}
+
+@media(max-width:572px) {
+    #menubarimg {
+        left: 0%;
+    }
+
+    .list-image-part-2 {
+        width: 100%;
+    }
+
+    #list-card-theme-title {
+
+        left: 29%;
+
+    }
+
+    .card-title-list {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+    }
+}
+
+.closebtn {
+
+    color: #888;
+    font-weight: bold;
+    float: right;
+
+    cursor: pointer;
+
+  }
+  
+  .closebtn:hover {
+    color: #000;
+  }
+ .chips{
+    border:1px solid black;
+ }
+/* =========================================================================================================== */
+/*volunteering mission.css */
+/* =========================================================================================================== */
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 6rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+#carouselExampleControls {
+    height: 120px;
+}
+
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
+
+}
+
+.tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    background-color: white;
+}
+
+.tab button:hover {
+    border-bottom: 2px solid black;
+
+}
+
+.tab button.active {
+    border-bottom: 2px solid black;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    overflow-y: scroll;
+    height: 730px;
+}
+
+.tabcontent h3 {
+    font-weight: normal;
+}
+
+.tabcontent::-webkit-scrollbar {
+    display: none;
+}
+
+.information-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-wrap: wrap;
+}
+
+/*vol -pagination*/
+
+
+.hidden {
+    display: none;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.pagination-number,.pagination-button{
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+    background: #fff;
+}
+
+.pagination-number.active {
+    color: #fff;
+    background: orange;
+}
+
+#paginated-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer {
+    text-align: center;
+    background-color: #FFDFB9;
+}
+
+.volunteer-list-img {
+    border: 1px solid;
+    border-radius: 70%;
+    height: 100px;
+    width: 100px;
+}
+@media(max-width:766px){
+    #vol-right-info{
+        margin-top: 20px;
+    }
+}
+
+
+/* =========================================================================================================== */
+/*story-listing.css */
+/* =========================================================================================================== */
+
+#story-list-top-img {
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
+    height: 250px;
+    background-size: 100vw 615px;
+    background-repeat: no-repeat;
+    background-position: 0px -180px;
+}
+
+
+
+
+
+.input-group-append {
+    cursor: pointer;
+}
+#cancelbtnsharestory{
+    border: 1px solid gray;
+    border-radius: 7px;
+    background: transparent;
+    padding: 10px;
+    color: black;
+    width: 100px;
+}
+#savebtnsharestory{
+    border: 1px solid orange;
+    border-radius: 7px;
+    background: transparent;
+    padding: 10px;
+    color: orange;
+    width: 100px;
+}
+#submitbtnsharestory {  border: 1px solid orange;
+border-radius: 7px;
+background: transparent;
+padding: 10px;
+color: orange;
+width: 100px;
+}
+
+
+
+/* useredit profile */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+
+/* 
+  ===============================================
+  privacy policy
+  ================================================== */
+
+ .privacy-links-sidebar
+ {
+    text-decoration: none;
+    color: black;
+    font-size: medium;
+ }

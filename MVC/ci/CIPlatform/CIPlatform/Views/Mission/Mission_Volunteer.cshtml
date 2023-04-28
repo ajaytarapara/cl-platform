@@ -262,25 +262,25 @@
                         style="display:flex;flex-direction: row;justify-content: space-between;width: 100%;flex-wrap: wrap;">
                         <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
                         border: 1px solid #E8E8E8;
-                        border-radius: 3px;width: 20%;">
+                        border-radius: 3px;width: 20%;" class="p-2">
                             <img src="~/images/pin1.png" alt="">
-                            <div><span>City</span><br><div id="missioncity">@Model.CityName</div></div>
+                            <div><span class="mt-1">City</span><br><div id="missioncity">@Model.CityName</div></div>
                         </div>
                         <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
                         border: 1px solid #E8E8E8;
-                        border-radius: 3px;width: 20%;">
+                        border-radius: 3px;width: 20%;" class="p-2">
                             <img src="~/images/web.png" alt="">
                             <div><span>Theme</span><br><div id="missiontheme">@Model.ThemeTitle</div></div>
                         </div>
                         <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
                         border: 1px solid #E8E8E8;
-                        border-radius: 3px;width: 20%;">
+                        border-radius: 3px;width: 20%;"class="p-2">
                             <img src="~/images/calender.png" alt="">
                             <div><span>Ongoing</span><br>Opportunity</div>
                         </div>
                         <div style="margin:15px;background: #FFFFFF 0% 0% no-repeat padding-box;
                         border: 1px solid #E8E8E8;
-                        border-radius: 3px;width: 20%;">
+                        border-radius: 3px;width: 20%;"class="p-2">
                             <img src="~/images/organization.png" alt="">
                             <div><span>organization</span><br>@Model.OrganizationName</div>
                         </div>
@@ -295,7 +295,7 @@
                          justify-content:center;align-items:center;height:35px;">View details
                          <img  src="~/images/right-arrow.png" alt=""></p>
                        }                                  
-                       else if(Model.statususer == "Pending")
+                       else if(Model.statususer == "pending")
                        {    
                          <input style="display:none" id="applymission"type="submit" value="@Model.MissionId"></input>
                          <button id="applybtn"><a id="applymission" style="text-decoration:none;color: #F88634;">Applied For Approval

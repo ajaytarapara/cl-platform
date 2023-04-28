@@ -28,7 +28,6 @@ namespace CIPlatform.Entities.ViewModels
         [MaxLength(255, ErrorMessage = "enter less than 100 character")]
         public string? profiletext { get; set; }
         [Required]
-        [MaxLength(400, ErrorMessage = "enter less than 100 character")]
         public string? whyivol { get; set; }
 
         public IEnumerable<City>? cities { get; set; }

@@ -41,14 +41,14 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<User> userPages;
             if (searchtext != null)
             {
-                userPages = _ciPlatformDbContext.Users.Where(page => page.DeletedAt == null && page.Status == true && page.DeletedAt==null).Where
+                userPages = _ciPlatformDbContext.Users.Where(page => page.DeletedAt == null && page.DeletedAt == null).Where
                     (x => x.FirstName.Contains(searchtext) || x.LastName.Contains
                  (searchtext) || x.Department.Contains(searchtext));
             }
             else
             {
                 userPages = _ciPlatformDbContext.Users.Where
-                    (page => page.DeletedAt == null && page.Status == true&& page.DeletedAt == null);
+                    (page => page.DeletedAt == null && page.DeletedAt == null);
 
             }
             var totalCounts = userPages.Count();
@@ -117,7 +117,7 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.DeleteCmsAdmin(long cmsId)
         {
             CmsPage cms = _ciPlatformDbContext.CmsPages.Where(CmsPages => CmsPages.CmsPageId == cmsId).FirstOrDefault();
-            cms.DeletedAt=DateTime.Now;
+            cms.DeletedAt = DateTime.Now;
             _ciPlatformDbContext.Update(cms);
             _ciPlatformDbContext.SaveChanges();
         }
@@ -279,7 +279,7 @@ namespace CIPlatform.Repository.Repository
             {
 
                 Banner = _ciPlatformDbContext.Banners.Where
-                    (Banner => Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).OrderBy(x=>x.SortOrder).ToList();
+                    (Banner => Banner.Text.Contains((searchText)) && Banner.DeletedAt == null).OrderBy(x => x.SortOrder).ToList();
             }
             else
             {
@@ -350,7 +350,7 @@ namespace CIPlatform.Repository.Repository
 
         int IAdminRepository.GetSkillvianame(string skill)
         {
-            Skill skill1= _ciPlatformDbContext.Skills.Where(u => u.SkillName == skill).FirstOrDefault();
+            Skill skill1 = _ciPlatformDbContext.Skills.Where(u => u.SkillName == skill).FirstOrDefault();
             return skill1.SkillId;
         }
         void IAdminRepository.AddMissionSkill(MissionSkill mSkill)
@@ -384,11 +384,11 @@ namespace CIPlatform.Repository.Repository
         }
         MissionMedium IAdminRepository.GetMissionMedium(long missionId)
         {
-            return _ciPlatformDbContext.MissionMedia.Where(x=>x.MissionId==missionId).FirstOrDefault();
+            return _ciPlatformDbContext.MissionMedia.Where(x => x.MissionId == missionId).FirstOrDefault();
         }
-        void IAdminRepository.EditMissionSkill(long skillId, long missionId,MissionSkill missionskill)
+        void IAdminRepository.EditMissionSkill(long skillId, long missionId, MissionSkill missionskill)
         {
-            MissionSkill a=_ciPlatformDbContext.MissionSkills.Where(x=>x.SkillId == skillId && x.MissionSkillId==missionId).FirstOrDefault();
+            MissionSkill a = _ciPlatformDbContext.MissionSkills.Where(x => x.SkillId == skillId && x.MissionSkillId == missionId).FirstOrDefault();
         }
         void IAdminRepository.UpdateMissionMedia(MissionMedium media)
         {
@@ -397,12 +397,29 @@ namespace CIPlatform.Repository.Repository
         }
         MissionDocument IAdminRepository.GetMissionDocument(long missionId)
         {
-            return _ciPlatformDbContext.MissionDocuments.Where(x=>x.MissionId==missionId).FirstOrDefault();
+            return _ciPlatformDbContext.MissionDocuments.Where(x => x.MissionId == missionId).FirstOrDefault();
         }
         void IAdminRepository.UpdateMissionDocument(MissionDocument missionDocument)
         {
             _ciPlatformDbContext.MissionDocuments.Update(missionDocument);
             _ciPlatformDbContext.SaveChanges();
+        }
+        List<MissionSkill> IAdminRepository.missionSkills(long missionId)
+        {
+            return _ciPlatformDbContext.MissionSkills.Where(x => x.MissionId == missionId).ToList();
+        }
+        Skill IAdminRepository.GetSkillName(long skillId)
+        {
+            return _ciPlatformDbContext.Skills.Where(Skill=>Skill.SkillId == skillId).FirstOrDefault(); 
+        }
+        void IAdminRepository.RemoveMissionSkill(long missionid)
+        {
+            List<MissionSkill> missionskill = _ciPlatformDbContext.MissionSkills.Where(x => x.MissionId == missionid).ToList();
+            foreach (MissionSkill skill in missionskill)
+            {
+                _ciPlatformDbContext.Remove(skill);
+                _ciPlatformDbContext.SaveChanges();
+            }
         }
         //=======================================================================================================================================
     }

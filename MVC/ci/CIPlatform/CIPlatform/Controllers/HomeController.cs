@@ -131,12 +131,26 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             long misid = Int64.Parse(missionid);
             _homeRepository.addToFavourites(misid, userObj.UserId, fav);
-            _notyf.Success("time sheet not upadeted successfully", 3);
             return RedirectToAction("Index");
         }
+        public IActionResult GetCitiesFromCountry(string country)
+        {
+            string[] countrynames = country.Split(",").SkipLast(1).ToArray();
+            IEnumerable<City> citylist = new List<City>();
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+            foreach (string countryname in countrynames)
+            {
+                List<City> tmplist = _homeRepository.GetCityFromCountry(countryname);
+                citylist = citylist.Concat(tmplist.AsEnumerable());
+            }
+            string gridview = System.Text.Json.JsonSerializer.Serialize(citylist, options);
 
-
-
+            return Json(new { data = gridview});
+        }
 
     }
 }

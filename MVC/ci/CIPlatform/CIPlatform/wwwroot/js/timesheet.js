@@ -32,6 +32,9 @@ $("#addtimesheet").on("click", function () {
             else if (data["status"] == 2) {
                 alert("date volunteer is not valid");
             }
+            else if (data["status"] == 3) {
+                alert("you have not applied at any mission");
+            }
             location.reload();
          
         },
@@ -73,6 +76,9 @@ $("#addgoaltimesheetbtn").on("click", function () {
             }
             else if (data["status"] == 2) {
                 alert("date volunteer is not valid");
+            }
+            else if (data["status"] == 3) {
+                alert("you have not applied at any mission");
             }
         },
         error: function (xhr, status, error) {

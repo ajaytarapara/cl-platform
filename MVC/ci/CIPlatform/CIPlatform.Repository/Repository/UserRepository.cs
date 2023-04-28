@@ -101,15 +101,15 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.SaveChanges();
             foreach (var skill in userSkill)
             {
-            _ciPlatformDbContext.UserSkills.Update(skill);
-            _ciPlatformDbContext.SaveChanges();
+                _ciPlatformDbContext.UserSkills.Update(skill);
+                _ciPlatformDbContext.SaveChanges();
 
             }
         }
 
         int IUserRepository.getskillid(string skill)
         {
-           int skillid=_ciPlatformDbContext.Skills.Where(u=>u.SkillName== skill).Select(u=>u.SkillId).FirstOrDefault();
+            int skillid = _ciPlatformDbContext.Skills.Where(u => u.SkillName == skill).Select(u => u.SkillId).FirstOrDefault();
             return skillid;
         }
 
@@ -149,7 +149,7 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Timesheet> IUserRepository.getTimesheets(long UserId)
         {
-            IEnumerable<Timesheet>timesheet= _ciPlatformDbContext.Timesheets.Include(x => x.Mission).Where(u=>u.UserId== UserId && u.Status=="approved");
+            IEnumerable<Timesheet> timesheet = _ciPlatformDbContext.Timesheets.Include(x => x.Mission).Where(u => u.UserId == UserId && u.Status == "approved");
             return timesheet;
         }
         Timesheet IUserRepository.GetTimesheet(long timesheetId)
@@ -158,7 +158,7 @@ namespace CIPlatform.Repository.Repository
         }
         IEnumerable<Mission> IUserRepository.getmissiontitle(long UserId)
         {
-            IEnumerable<Mission> titlesmission =_ciPlatformDbContext.MissionApplications.Where(u=>u.UserId==UserId && u.ApprovalStatus=="approved").Select(u=>u.Mission);
+            IEnumerable<Mission> titlesmission = _ciPlatformDbContext.MissionApplications.Where(u => u.UserId == UserId && u.ApprovalStatus == "approved").Select(u => u.Mission);
             return titlesmission;
         }
         void IUserRepository.addtimesheet(Timesheet timesheet)
@@ -185,15 +185,25 @@ namespace CIPlatform.Repository.Repository
         }
         List<Banner> IUserRepository.getbanner()
         {
-            return _ciPlatformDbContext.Banners.ToList();
+            return _ciPlatformDbContext.Banners.OrderBy(x => x.SortOrder).ToList();
         }
         Mission IUserRepository.GetMission(long MissionId)
         {
-            return _ciPlatformDbContext.Missions.Where(x=>x.MissionId==MissionId).FirstOrDefault();
+            return _ciPlatformDbContext.Missions.Where(x => x.MissionId == MissionId).FirstOrDefault();
         }
         List<UserSkill> IUserRepository.getUserSkill(long userid)
         {
-            return _ciPlatformDbContext.UserSkills.Include(x=>x.Skill).Where(x=>x.UserId==userid).ToList();
+            return _ciPlatformDbContext.UserSkills.Include(x => x.Skill).Where(x => x.UserId == userid).ToList();
         }
+        void IUserRepository.RemoveUserSkill(long userid)
+        {
+            List<UserSkill> userSkills = _ciPlatformDbContext.UserSkills.Where(x => x.UserId == userid).ToList();
+            foreach (UserSkill skill in userSkills)
+            {
+                _ciPlatformDbContext.UserSkills.Remove(skill);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
+
     }
 }

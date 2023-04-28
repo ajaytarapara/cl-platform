@@ -64,15 +64,13 @@ namespace CIPlatform.Controllers
         {
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
-
             _missionRepository.addToFavourites(missionid, userObj.UserId, fav);
-            _notyf.Success("Added to favoiurite list", 3);
 
         }
 
         public IActionResult addcomment()
         {
-            return View(Mission_Volunteer);
+            return View("Mission_Volunteer");
         }
 
         [HttpPost]
@@ -106,6 +104,7 @@ namespace CIPlatform.Controllers
             string subject = "your friend recommanded to you for mission";
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path,subject);
+            _notyf.Success("mail sended successfully", 3);
 
         }
 

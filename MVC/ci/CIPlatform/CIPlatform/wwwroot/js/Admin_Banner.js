@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadbannner();
 });
 var searchbannertext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#search_Banner_adminbtn").on("keyup", function (e) {
     e.preventDefault();

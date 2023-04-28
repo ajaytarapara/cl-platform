@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation" style="height:180vh">
+        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation">
             @Html.Partial("_Admin_dashboard")
         </div>
-        <div class="col-xl-10 col-lg-9">
+        <div class="col-xl-10 col-lg-9"style="height:100vh;overflow:auto">
             <div class="card row d-flex p-3" style="flex-direction: row;">
                 <div class="col-md-6 col-sm-5 p-2 d-flex"
                      style="font-size:18px;align-items: center;justify-content: space-around;"
@@ -147,7 +147,7 @@
                             </div>
                             <div class="py-2">
                                 <label for="" class="form-label">Mission Media</label>
-                                <input type="file" name="filename" id="admin-mission-media" class="form-control" multiple required>
+                                <input type="file" name="filename" id="admin-mission-media" class="form-control"  accept=".png" multiple required>
                                 <div class="border" id="preview-mission-media"></div>
                             </div>
                             <div class="py-2">
@@ -163,8 +163,8 @@
                         </div>
                 </form>
                 @*----Pop-Up For AddSkills---*@
-                <div class="popup-container ">
-                    <div class="popup-content d-flex flex-column">
+                <div class="popup-container">
+                    <div class="popup-content d-flex flex-column mx-auto"style="margin-top:20vh">
                         <div class="d-flex justify-content-between">
                             <h5>Add your Skills</h5>
                             <button class="close-popup-btn remove-skill"><i class="bi bi-x-lg"></i></button>

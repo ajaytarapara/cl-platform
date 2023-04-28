@@ -1,4 +1,5 @@
 ﻿
+using AspNetCoreHero.ToastNotification.Abstractions;
 using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository;
@@ -16,12 +17,14 @@ namespace CIPlatform.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserRepository _userRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment)
+        private readonly INotyfService _notyf;
+        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment, INotyfService notyf)
         {
             _adminrepository = adminRepository;
             _httpContextAccessor = httpContextAccessor;
             _webHostEnvironment = webHostEnvironment;
             _userRepository = userRepository;
+            _notyf = notyf;
         }
         public IActionResult Admin_login()
         {
@@ -118,7 +121,9 @@ namespace CIPlatform.Controllers
                     user.CreatedAt = DateTime.Now;
                     user.Department = model.Department;
                     user.PhoneNumber = model.PhoneNumber;
+                    user.Avatar = "/images/user1.png";
                     _adminrepository.AddUserAdmin(user);
+                    _notyf.Success("user added successfully", 3);
                 }
                 else
                 {
@@ -135,6 +140,25 @@ namespace CIPlatform.Controllers
         public void DeleteUser_crud(long userid)
         {
             _adminrepository.RemoveUserAdmin(userid);
+            _notyf.Success("user deleted successfully", 3);
+        }
+        public IActionResult editUser_crud(long UserId)
+        {
+
+            long userid = UserId;
+            User useredit = _adminrepository.UpdateUserAdminget(userid);
+            Admin_user_crudModel modal=new Admin_user_crudModel();
+            modal.FirstName = useredit.FirstName;
+            modal.LastName = useredit.LastName;
+            modal.Email = useredit.Email;
+            modal.PhoneNumber= useredit.PhoneNumber;
+            modal.EmplyoeeId = useredit.EmployeeId;
+            modal.Department = useredit.Department;
+            modal.Password=useredit.Password;
+  
+            return PartialView("_Edit_user_admin", modal);
+          
+
         }
 
         [HttpPost]
@@ -156,6 +180,7 @@ namespace CIPlatform.Controllers
                     useredit.UpdatedAt = DateTime.Now;
                     useredit.Department = Department;
                     useredit.PhoneNumber = PhoneNumber;
+                    _notyf.Success("user edited successfully", 3);
                     _adminrepository.UpdateneedUser(useredit);
                 }
                 else
@@ -169,7 +194,35 @@ namespace CIPlatform.Controllers
             }
             return RedirectToAction("User_crud", "Admin");
         }
+        //public IActionResult Admin_Edit_User(long UserId)
+        //{
 
+        //    string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+        //    Admin_user_crudModel modal = new Admin_user_crudModel();
+        //    if (adminSessionEmailId == null)
+        //    {
+        //        return RedirectToAction("Admin_Login", "Admin");
+        //    }
+        //    else
+        //    {
+        //        string adminemail = adminSessionEmailId;
+        //        User adminobj = _adminrepository.findadmin(adminemail);
+        //        modal.adminname = adminobj.FirstName + " " + adminobj.LastName;
+        //        modal.adminavatar = adminobj.Avatar;
+        //        long userid = UserId;
+        //        User useredit = _adminrepository.UpdateUserAdminget(userid);
+        //        modal.FirstName = useredit.FirstName;
+        //        modal.LastName = useredit.LastName;
+        //        modal.Email = useredit.Email;
+        //        modal.PhoneNumber = useredit.PhoneNumber;
+        //        modal.EmplyoeeId = useredit.EmployeeId;
+        //        modal.Department = useredit.Department;
+        //        modal.Password = useredit.Password;
+        //        return View(modal);
+
+        //    }
+
+        //}
 
         //=========================================================================================================================
         ////cms admin part crud
@@ -237,6 +290,7 @@ namespace CIPlatform.Controllers
                 CMS.Slug = cms_CrudModels.Slug;
                 CMS.CreatedAt = DateTime.Now;
                 _adminrepository.AddCmsAdmin(CMS);
+                _notyf.Success("cms added successfully", 3);
                 return RedirectToAction("Admin_add_cms", "Admin");
             }
 
@@ -255,6 +309,10 @@ namespace CIPlatform.Controllers
             admin_Cms_.adminname = adminobj.FirstName + " " + adminobj.LastName;
             admin_Cms_.adminavatar = adminobj.Avatar;
             admin_Cms_.CmsId = CmsId;
+            CmsPage cms = _adminrepository.GetCmsAdmin(CmsId);
+            admin_Cms_.Title= cms.Title;
+            admin_Cms_.Slug = cms.Slug;
+            admin_Cms_.Description= cms.Description;
             return View(admin_Cms_);
         }
 
@@ -280,6 +338,7 @@ namespace CIPlatform.Controllers
                 cms.Slug = cms_CrudModels.Slug;
                 cms.UpdatedAt = DateTime.Now;
                 _adminrepository.UpdateCmsAdmin(cms);
+                _notyf.Success("cms edited successfully", 3);
                 return RedirectToAction("Admin_edit_cms", "Admin");
             }
 
@@ -288,6 +347,7 @@ namespace CIPlatform.Controllers
         public void DeleteCms_Admin(long cmsId)
         {
             _adminrepository.DeleteCmsAdmin(cmsId);
+            _notyf.Success("cms deleted successfully", 3);
         }
         //=========================================================================================================================
         ////story admin part crud
@@ -325,6 +385,7 @@ namespace CIPlatform.Controllers
             int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
+            _notyf.Success("story approved successfully", 3);
             return PartialView("_Admin_Story_crud", storyLIST);
 
         }
@@ -339,6 +400,7 @@ namespace CIPlatform.Controllers
             int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
+            _notyf.Success("story rejected successfully", 3);
             return PartialView("_Admin_Story_crud", storyLIST);
         }
         //=========================================================================================================================
@@ -374,6 +436,7 @@ namespace CIPlatform.Controllers
             int pageSize = 2;
             string searchText = "";
             AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            _notyf.Success("application approved successfully", 3);
             return PartialView("_Admin_Mission_Application_crud", missionapplication);
 
         }
@@ -387,6 +450,7 @@ namespace CIPlatform.Controllers
             int pageSize = 2;
             string searchText = "";
             AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            _notyf.Success("application rejected successfully", 3);
             return PartialView("_Admin_Mission_Application_crud", missionapplication);
 
         }
@@ -451,6 +515,7 @@ namespace CIPlatform.Controllers
                 theme.Title = _Theme_CrudModels.themeTitle;
                 theme.CreatedAt = DateTime.Now;
                 _adminrepository.AddThemeAdmin(theme);
+                _notyf.Success("theme added successfully", 3);
                 return RedirectToAction("Admin_add_themes", "Admin");
             }
 
@@ -485,6 +550,7 @@ namespace CIPlatform.Controllers
             themes.UpdatedAt = DateTime.Now;
             themes.Title = _Theme_CrudModels.themeTitle;
             _adminrepository.EditThemeAdmin(themes);
+            _notyf.Success("theme edited successfully", 3);
             return View(_Theme_CrudModels);
         }
         [HttpPost]
@@ -497,6 +563,7 @@ namespace CIPlatform.Controllers
             int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<MissionTheme> missionthemes = _adminrepository.GetMissionThemeAdmin(searchText, pageNumber, pageSize);
+            _notyf.Success("theme deleted successfully", 3);
             return PartialView("_Admin_Mission_theme", missionthemes);
         }
 
@@ -549,6 +616,7 @@ namespace CIPlatform.Controllers
             skill.SkillName = SkillModels.SkillTitle;
             skill.CreatedAt = DateTime.Now;
             _adminrepository.AddSkillAdmin(skill);
+            _notyf.Success("skill added successfully", 3);
             return RedirectToAction("Admin_add_Skill", "Admin");
         }
         public IActionResult Admin_edit_skill(long skillId)
@@ -580,6 +648,7 @@ namespace CIPlatform.Controllers
             skill.SkillName = SkillModels.SkillTitle;
             skill.UpdatedAt = DateTime.Now;
             _adminrepository.EditSkill(skill);
+            _notyf.Success("skill edited successfully", 3);
             return RedirectToAction("Admin_skill");
         }
         [HttpPost]
@@ -588,6 +657,7 @@ namespace CIPlatform.Controllers
             Skill skill = _adminrepository.GetSkill(skillId);
             skill.DeletedAt = DateTime.Now;
             _adminrepository.DeleteSkill(skill);
+            _notyf.Success("skill deleted successfully", 3);
             return RedirectToAction("Admin_skill");
         }
         //=========================================================================================================================
@@ -654,6 +724,7 @@ namespace CIPlatform.Controllers
             banner1.CreatedAt = DateTime.Now;
             banner1.SortOrder = (int)banner.sortorder;
             _adminrepository.AddBannerAdmin(banner1);
+            _notyf.Success("banner added successfully", 3);
             return RedirectToAction("Admin_Add_Banner", "Admin");
         }
         public IActionResult Admin_Edit_Banner(long bannerId)
@@ -705,6 +776,7 @@ namespace CIPlatform.Controllers
             int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<Banner> banner = _adminrepository.GetBanner(searchText, pageNumber, pageSize);
+            _notyf.Success("banner edited successfully", 3);
             return RedirectToAction("Admin_Banner", banner);
         }
         [HttpPost]
@@ -713,6 +785,7 @@ namespace CIPlatform.Controllers
             Banner banner1 = _adminrepository.GetBanner(bannerId);
             banner1.DeletedAt = DateTime.Now;
             _adminrepository.DeleteBannerAdmin(banner1);
+            _notyf.Success("banner deleted successfully", 3);
             return RedirectToAction("Admin_Banner");
         }
         //=========================================================================================================================
@@ -772,6 +845,7 @@ namespace CIPlatform.Controllers
             mission.CityId = (long)missionModels.city;
             mission.ThemeId = (long)missionModels.missiontheme;
             long missionid = _adminrepository.AddMission(mission);
+            _notyf.Success("mission added successfully", 3);
             if (missionModels.missionskills != null)
             {
                 string[] skills = missionModels.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
@@ -818,10 +892,12 @@ namespace CIPlatform.Controllers
                     type = "png";
                     path = @"images/media";
                 }
-                media.MediaName = name;
+                int index = name.LastIndexOf(',');
+                media.MediaName = name.Substring(0, index);
                 media.MediaType = type;
                 media.MediaPath = path;
                 _adminrepository.AddMissionMedia(media);
+                _notyf.Success("mission media added successfully", 3);
 
             }
             if (documentfilename != null)
@@ -846,10 +922,13 @@ namespace CIPlatform.Controllers
                     docname += documentfilenames + ",";
                     doctype += extension + ",";
                 }
-                missionDocument.DocumentType = doctype;
+                int index = docname.LastIndexOf(',');
+                missionDocument.DocumentName = docname.Substring(0, index);
+                int indexs = doctype.LastIndexOf(',');
+                missionDocument.DocumentType = doctype.Substring(0, indexs);
                 missionDocument.DocumentPath = "document";
-                missionDocument.DocumentName = docname;
                 _adminrepository.AddMissionDocument(missionDocument);
+                _notyf.Success("mission document added successfully", 3);
             }
             return RedirectToAction("Admin_Add_Mission");
         }
@@ -890,12 +969,26 @@ namespace CIPlatform.Controllers
                 mission_crud.filetype = media.MediaType;
                 mission_crud.filepath = media.MediaPath;
             }
-            MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
-            if (missionDocument != null)
+            //MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
+            //if (missionDocument != null)
+            //{
+
+            //}
+           
+            List<MissionSkill> msskill= _adminrepository.missionSkills(missionId);
+            if(msskill.Count() !=0)
             {
-
+                string missionskillname = "";
+                foreach (MissionSkill skill in msskill)
+                {
+                    long skillId = skill.SkillId;
+                   Skill skill1= _adminrepository.GetSkillName(skillId);
+                    string skillname = skill1.SkillName;
+                    missionskillname += skillname + ",";
+                }
+                int index= missionskillname.LastIndexOf(',');
+                mission_crud.missionskills = missionskillname.Substring(0,index);
             }
-
             return View(mission_crud);
         }
         [HttpPost]
@@ -916,11 +1009,13 @@ namespace CIPlatform.Controllers
             mission.CountryId = (long)admin_Mission_.country;
             mission.CityId = (long)admin_Mission_.city;
             mission.ThemeId = (long)admin_Mission_.missiontheme;
+            _adminrepository.EditMission(mission);
             if (admin_Mission_.missionskills != null)
             {
+                _adminrepository.RemoveMissionSkill(missionId);
                 string[] skills = admin_Mission_.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
                 foreach (var skill in skills)
-                {
+                {                   
                     int SkillId = _adminrepository.GetSkillvianame(skill);
                     MissionSkill mSkill = new MissionSkill();
                     mSkill.SkillId = SkillId;
@@ -951,19 +1046,21 @@ namespace CIPlatform.Controllers
                     }
 
                     name += fileName + ",";
-                    type += "png";
+                    type = "png";
                     path = @"images/media";
                 }
-                media.MediaName = name;
+                int index = name.LastIndexOf(',');
+                media.MediaName = name.Substring(0, index);
                 media.MediaPath = path;
                 media.MediaType = type;
                 _adminrepository.UpdateMissionMedia(media);
             }
-            
-            MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
-            if (documentfilename.Count!= 0)
+
+  
+            if (documentfilename.Count !=0 )
             {
-           
+                MissionDocument missionDocument = new MissionDocument();
+                missionDocument.MissionId = missionId;
                 string doctype = "";
                 string docname = "";
                 foreach (var docfile in documentfilename)
@@ -982,14 +1079,14 @@ namespace CIPlatform.Controllers
                     docname += documentfilenames + ",";
                     doctype += extension + ",";
                 }
-                int index = doctype.LastIndexOf(',');
-                missionDocument.DocumentType = doctype.Substring(0,index);
-
+                int index = docname.LastIndexOf(',');
+                missionDocument.DocumentName = docname.Substring(0, index);
+                int indexs = doctype.LastIndexOf(',');
+                missionDocument.DocumentType = doctype.Substring(0, indexs);
                 missionDocument.DocumentPath = "document";
-                missionDocument.DocumentName = docname;
                 _adminrepository.UpdateMissionDocument(missionDocument);
             }
-           
+
             string searchText = "";
             int pageNumber = 1;
             int pageSize = 2;
@@ -1032,6 +1129,7 @@ namespace CIPlatform.Controllers
             Mission mission = _adminrepository.GetMission(missionId);
             mission.DeletedAt = DateTime.Now;
             _adminrepository.DeleteMission(mission);
+            _notyf.Success("mission deleted successfully", 3);
             return RedirectToAction("Admin_mission");
         }
     }

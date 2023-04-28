@@ -45,5 +45,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public Mission GetMission(long MissionId);
         public Timesheet GetTimesheet(long timesheetId);
         public List<UserSkill> getUserSkill(long userid);
+        public void RemoveUserSkill(long userid);
+
     }
 }

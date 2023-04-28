@@ -238,6 +238,8 @@ namespace CIPlatform.Controllers
             editProfile.profiletext = userObj.ProfileText;
             long userid=editProfile.userid;
             List<UserSkill> userSkills = _userRepository.getUserSkill(userid);
+            if(userSkills.Count() != 0)
+            { 
             string str = "";
             foreach(UserSkill skill in userSkills)
             {
@@ -245,6 +247,7 @@ namespace CIPlatform.Controllers
             }
             int index = str.LastIndexOf(',');
             editProfile.userskills = str.Substring(0, index);
+            }
             return View(editProfile);
         }
 
@@ -277,14 +280,20 @@ namespace CIPlatform.Controllers
             userObj.ProfileText = user.profiletext;
             userObj.Title = user.title;
             userObj.UpdatedAt = DateTime.Now;
+           
             List<UserSkill> userSkill = new List<UserSkill>();
             string[] skills = user.userskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
-            foreach (var skill in skills)
+            if (user.userskills != null)
+            {
+                long userid = userObj.UserId;
+                _userRepository.RemoveUserSkill(userid);
+                foreach (var skill in skills)
             {
                 UserSkill skill1 = new UserSkill();
                 skill1.SkillId = _userRepository.getskillid(skill);
                 skill1.UserId = userObj.UserId;
                 userSkill.Add(skill1);
+            }
             }
 
             _userRepository.edituserprofile(userObj, userSkill);
@@ -395,6 +404,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult addtimesheet(long MissionId, string DateVolunteered, string Notes, string hours, string minutes)
         {
+            if(MissionId!=  0) { 
             Timesheet timesheet = new Timesheet();
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -428,44 +438,57 @@ namespace CIPlatform.Controllers
                 ModelState.AddModelError("time", "time is required");
                 return Json(new { status = 0 });
             }
-
+            }
+            else
+            {
+                _notyf.Error("you have not applied at mission", 7);
+                ModelState.AddModelError("missionid", "you have not applied at mission");
+                return Json(new { status = 3 });
+            }
 
         }
 
         [HttpPost]
         public IActionResult addtimesheetgoal(long MissionId, string DateVolunteered, string Notes, string Action)
         {
-            Timesheet timesheet = new Timesheet();
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            User userObj = _userRepository.findUser(userSessionEmailId);
-            timesheet.UserId = userObj.UserId;
-            timesheet.MissionId = MissionId;
-            Mission mission = _userRepository.GetMission(MissionId);
-            timesheet.Notes = Notes;
-            if (Action != null && DateVolunteered != null)
+            if (MissionId != 0)
             {
-                timesheet.Action = int.Parse(Action);
-                timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
-                if (timesheet.DateVolunteered > mission.StartDate && timesheet.DateVolunteered <= mission.EndDate)
+                Timesheet timesheet = new Timesheet();
+                string userSessionEmailId = HttpContext.Session.GetString("useremail");
+                User userObj = _userRepository.findUser(userSessionEmailId);
+                timesheet.UserId = userObj.UserId;
+                timesheet.MissionId = MissionId;
+                Mission mission = _userRepository.GetMission(MissionId);
+                timesheet.Notes = Notes;
+                if (Action != null && DateVolunteered != null)
                 {
-                    timesheet.Status = "approved";
-                    _userRepository.addtimesheet(timesheet);
-                    _notyf.Success("time sheet deleted successfully", 3);
+                    timesheet.Action = int.Parse(Action);
+                    timesheet.DateVolunteered = DateTime.Parse(DateVolunteered);
+                    if (timesheet.DateVolunteered > mission.StartDate && timesheet.DateVolunteered <= mission.EndDate)
+                    {
+                        timesheet.Status = "approved";
+                        _userRepository.addtimesheet(timesheet);
+                        _notyf.Success("time sheet deleted successfully", 3);
 
-                    return Json(new { status = 1 });
+                        return Json(new { status = 1 });
+                    }
+                    else
+                    {
+                        return Json(new { status = 2 });
+                    }
                 }
                 else
                 {
-                    return Json(new { status = 2 });
+                    _notyf.Error("time sheet not added successfully", 3);
+                    ModelState.AddModelError("data", "data is not valid");
+                    return Json(new { status = 0 });
                 }
+
             }
             else
             {
-                _notyf.Error("time sheet not added successfully", 3);
-                ModelState.AddModelError("data", "data is not valid");
-                return Json(new { status = 0 });
+                return Json(new { status = 3 });
             }
-
         }
 
         [HttpPost]
@@ -587,5 +610,6 @@ namespace CIPlatform.Controllers
             privacy.avatar = userObj.Avatar;
             return View(privacy);
         }
+
     }
 }
