@@ -14,14 +14,6 @@
               <div class="mb-3">
                   <form action="recommendedtocoworker" method="Post">
                   <input name="Missionid" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <label for="exampleInputEmail1" class="form-label">Email address</label>
-                 <select class="form-select" aria-label="Default select example" id="receipient-email">
-                     @foreach (var item in Model.usersemails)
-                     {                     
-                        <option value="@item.Email">@item.Email</option>
-                     }
-                </select>
-                <button type="submit" class="btn btn-primary mt-2" id="btn-recommend" value="@Model.story.MissionId">Send Email</button>
                     <div style="width:100%;margin-top:10px;">
                             </form>                     
                                  <label>Search Email address</label>

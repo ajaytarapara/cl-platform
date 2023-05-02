@@ -60,8 +60,6 @@ namespace CIPlatform.Controllers
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
 
-
-
             return View(HomeModel);
 
 
@@ -111,7 +109,6 @@ namespace CIPlatform.Controllers
             return Json(new { data = gridview });
 
         }
-
         [HttpPost]
         public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber)
         {
@@ -120,7 +117,6 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             int uid = Convert.ToInt32(userObj.UserId);
             PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber, uid);
-
             return PartialView("_grid", pagination);
         }
 
@@ -135,21 +131,38 @@ namespace CIPlatform.Controllers
         }
         public IActionResult GetCitiesFromCountry(string country)
         {
-            string[] countrynames = country.Split(",").SkipLast(1).ToArray();
-            IEnumerable<City> citylist = new List<City>();
-            JsonSerializerOptions options = new()
+            if (country != null)
             {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                WriteIndented = true
-            };
-            foreach (string countryname in countrynames)
-            {
-                List<City> tmplist = _homeRepository.GetCityFromCountry(countryname);
-                citylist = citylist.Concat(tmplist.AsEnumerable());
-            }
-            string gridview = System.Text.Json.JsonSerializer.Serialize(citylist, options);
+                string[] countrynames = country.Split(",").SkipLast(1).ToArray();
+                IEnumerable<City> citylist = new List<City>();
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                    WriteIndented = true
+                };
+                foreach (string countryname in countrynames)
+                {
+                    List<City> tmplist = _homeRepository.GetCityFromCountry(countryname);
+                    citylist = citylist.Concat(tmplist.AsEnumerable());
+                }
+                string gridview = System.Text.Json.JsonSerializer.Serialize(citylist, options);
 
-            return Json(new { data = gridview});
+                return Json(new { data = gridview });
+            }
+            else
+            {
+                IEnumerable<City> citylist = new List<City>();
+                JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                    WriteIndented = true
+                };
+                List<City> tmplist = _homeRepository.GetCityFromCountry();
+                citylist = citylist.Concat(tmplist.AsEnumerable());
+                string gridview = System.Text.Json.JsonSerializer.Serialize(citylist, options);
+
+                return Json(new { data = gridview });
+            }
         }
 
     }

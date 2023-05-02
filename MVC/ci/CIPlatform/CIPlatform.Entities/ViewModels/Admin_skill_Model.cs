@@ -16,5 +16,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string? SkillTitle { get; set; }
         public long? SkillId { get; set; }
+        public int Status { get; set; }
     }
 }

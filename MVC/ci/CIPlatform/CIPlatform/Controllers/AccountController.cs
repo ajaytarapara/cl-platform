@@ -37,6 +37,7 @@ namespace CIPlatform.Controllers
         {
             LoginModel model = new LoginModel();
             model.Banner = _userRepository.getbanner();
+            ModelState.Clear();
             return View(model);
         }
         [HttpPost]
@@ -53,7 +54,7 @@ namespace CIPlatform.Controllers
             else
             {
                 User isValidUser = _userRepository.validateUser(emailId, password);
-                if (isValidUser == null)
+                if (isValidUser==null)
                 {
                     ModelState.AddModelError("Password", "Password does not match");
                 }
@@ -77,6 +78,17 @@ namespace CIPlatform.Controllers
 
                 HttpContext.Session.SetString("Token", token);
                 HttpContext.Session.SetString("useremail", emailId);
+                if (isValidUser.Status != true)
+                {
+                    _notyf.Error("YoUR ACCOUNT DEACTIVATED", 4);
+                    ModelState.AddModelError("Status", "YoUR ACCOUNT DEACTIVATED");
+                    obj.Banner = _userRepository.getbanner();
+                    return View(obj);
+                }
+                if (isValidUser.CityId == null)
+                {
+                    return RedirectToAction("EditProfile", "Account");
+                }
                 if (isValidUser.Role == "volunteer")
                 {
                     _notyf.Success("LoginSuccessFully", 3);
@@ -84,10 +96,10 @@ namespace CIPlatform.Controllers
                 }
                 if (isValidUser.Role == "admin")
                     return RedirectToAction("User_crud", "Admin");
-                //_notyf.Success("LoginSuccessFully", 3);
-                //return RedirectToAction("Index", "Home");
+
             }
-            return Login();
+            obj.Banner = _userRepository.getbanner();
+            return View(obj);
         }
         public IActionResult ForgotPassword()
         {
@@ -158,9 +170,11 @@ namespace CIPlatform.Controllers
                 user.Password = obj.Password;
                 user.Avatar = "/images/user1.png";
                 _userRepository.addUser(user);
+                ModelState.Clear();
                 return RedirectToAction("Login");
             }
-            return View();
+            obj.Banner = _userRepository.getbanner();
+            return View(obj);
         }
 
         public IActionResult NewPassword(string? token)
@@ -233,7 +247,7 @@ namespace CIPlatform.Controllers
             editProfile.title = userObj.Title;
             editProfile.whyivol = userObj.WhyIVolunteer;
             editProfile.employeeid = userObj.EmployeeId;
-            editProfile.linkedinurl = userObj.LinkedInUrl;
+           editProfile.linkedinurl = userObj.LinkedInUrl;
             editProfile.department = userObj.Department;
             editProfile.profiletext = userObj.ProfileText;
             long userid=editProfile.userid;
@@ -243,10 +257,10 @@ namespace CIPlatform.Controllers
             string str = "";
             foreach(UserSkill skill in userSkills)
             {
-                str += skill.Skill.SkillName + ",";
+                str += skill.Skill.SkillName + "\n";
+
             }
-            int index = str.LastIndexOf(',');
-            editProfile.userskills = str.Substring(0, index);
+                editProfile.userskills = str;
             }
             return View(editProfile);
         }
@@ -404,6 +418,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult addtimesheet(long MissionId, string DateVolunteered, string Notes, string hours, string minutes)
         {
+            if(ModelState.IsValid) { 
             if(MissionId!=  0) { 
             Timesheet timesheet = new Timesheet();
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -445,14 +460,16 @@ namespace CIPlatform.Controllers
                 ModelState.AddModelError("missionid", "you have not applied at mission");
                 return Json(new { status = 3 });
             }
-
+            }
+            return Json(new { status = 0 });
         }
 
         [HttpPost]
         public IActionResult addtimesheetgoal(long MissionId, string DateVolunteered, string Notes, string Action)
         {
-            if (MissionId != 0)
+            if (MissionId != 0 && ModelState.IsValid)
             {
+
                 Timesheet timesheet = new Timesheet();
                 string userSessionEmailId = HttpContext.Session.GetString("useremail");
                 User userObj = _userRepository.findUser(userSessionEmailId);
@@ -474,6 +491,8 @@ namespace CIPlatform.Controllers
                     }
                     else
                     {
+                        _notyf.Error("date volunteer in not valid pls correct", 3);
+                        ModelState.AddModelError("DateVolunteered", "date volunteer in not valid pls correct");
                         return Json(new { status = 2 });
                     }
                 }
@@ -523,7 +542,7 @@ namespace CIPlatform.Controllers
             model.missiontitleedit = mission.Title;
             model.MissionId = mission.MissionId;
             model.timesheetid = timesheet.TimesheetId;
-            return PartialView("_Timesheet_edit_timebase", model);
+            return Json(new {data=model});
         }
         [HttpPost]
         public IActionResult edittimesheet(VolunteeringTimesheetModel model)
@@ -548,6 +567,7 @@ namespace CIPlatform.Controllers
                 else
                 {
                     _notyf.Error("time is not valid", 3);
+                    
                 }
             }
             else
@@ -570,7 +590,7 @@ namespace CIPlatform.Controllers
             model.missiontitleedit = mission.Title;
             model.MissionId = mission.MissionId;
             model.timesheetid = timesheetid;
-            return PartialView("_Timesheet_edit_goal_based", model);
+            return Json(new { data = model });
         }
         [HttpPost]
         public IActionResult edittimesheetgoal(VolunteeringTimesheetModel model)

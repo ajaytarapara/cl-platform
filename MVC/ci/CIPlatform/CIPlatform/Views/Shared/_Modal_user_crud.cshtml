@@ -34,7 +34,7 @@
                         <div class="mb-3">
                             <label asp-for="Password" class="col-form-label">Password:</label>
                             <br />
-                            <input type="password" asp-for="Password"  class="w-100" id="password">
+                            <input type="password" asp-for="Password" class="w-100" id="password">
                             <span class="text-danger" asp-validation-for="Password"></span>
                         </div>
                         <div class="mb-3">
@@ -55,6 +55,11 @@
                             <input asp-for="Department" type="text" class="w-100" id="department">
                             <span class="text-danger" asp-validation-for="Department"></span>
                         </div>
+                        <label asp-for="Status" class="form-label py-2">Status</label>
+                        <select asp-for="Status" id="" class="form-select mb-2">
+                            <option value="true">Active</option>
+                            <option value="false">Deactivate</option>
+                        </select>
                     </div>
 
                 </div>

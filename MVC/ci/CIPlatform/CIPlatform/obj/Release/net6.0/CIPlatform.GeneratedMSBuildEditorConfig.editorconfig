@@ -1,0 +1,256 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CIPlatform
+build_property.RootNamespace = CIPlatform
+build_property.ProjectDir = D:\cl platform\MVC\ci\CIPlatform\CIPlatform\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\cl platform\MVC\ci\CIPlatform\CIPlatform
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/NewPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxOZXdQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/Privacy_policy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcml2YWN5X3BvbGljeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Account/VolunteeringTimesheet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWb2x1bnRlZXJpbmdUaW1lc2hlZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Add_Banner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fQWRkX0Jhbm5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_add_cms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fYWRkX2Ntcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Add_Mission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fQWRkX01pc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Add_Skill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fQWRkX1NraWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_add_themes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fYWRkX3RoZW1lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Banner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fQmFubmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Edit_Banner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRWRpdF9CYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_edit_cms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fZWRpdF9jbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Edit_Mission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRWRpdF9NaXNzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_edit_skill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fZWRpdF9za2lsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Edit_themes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRWRpdF90aGVtZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_Edit_User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRWRpdF9Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_mission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbWlzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_mission_application.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbWlzc2lvbl9hcHBsaWNhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_mission_theme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fbWlzc2lvbl90aGVtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_skill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fc2tpbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Admin_story.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/Cms_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ21zX2NydWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Admin/User_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcl9jcnVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Mission/Mission_Volunteer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxNaXNzaW9uX1ZvbHVudGVlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/Admin_Banner_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkbWluX0Jhbm5lcl9jcnVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/Admin_Mission_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFkbWluX01pc3Npb25fY3J1ZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_AccountCarousel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BY2NvdW50Q2Fyb3VzZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Cms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9DbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9kYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Mission_Application_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9NaXNzaW9uX0FwcGxpY2F0aW9uX2NydWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Mission_theme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9NaXNzaW9uX3RoZW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_skill_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9za2lsbF9jcnVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_Story_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9TdG9yeV9jcnVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Admin_user_crud_table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl91c2VyX2NydWRfdGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_CommentMission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21tZW50TWlzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Edit_user_admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FZGl0X3VzZXJfYWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_grid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9ncmlkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Modal_user_crud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Nb2RhbF91c2VyX2NydWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_NavbarUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXJVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_RecentVolunteer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SZWNlbnRWb2x1bnRlZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_ReleatedMission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SZWxlYXRlZE1pc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Storylist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdG9yeWxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_TimesheetModals.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UaW1lc2hlZXRNb2RhbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Timesheet_edit_goal_based.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UaW1lc2hlZXRfZWRpdF9nb2FsX2Jhc2VkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Timesheet_edit_timebase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UaW1lc2hlZXRfZWRpdF90aW1lYmFzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Story/Share_story.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU2hhcmVfc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Story/StoryListing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU3RvcnlMaXN0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Story/View_Story.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcVmlld19TdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cl platform/MVC/ci/CIPlatform/CIPlatform/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-4z7cv35szi

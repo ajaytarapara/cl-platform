@@ -42,14 +42,16 @@ namespace CIPlatform.Repository.Repository
             else
             {
                 FavouriteMission favouriteMissions = _ciPlatformDbContext.FavouriteMissions.FirstOrDefault(x => x.MissionId == missionid && x.UserId == userid);
+   
                 _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMissions);
                 _ciPlatformDbContext.SaveChanges();
+    
             }
         }
 
-        List<ReleatedMissionModel> IMissionRepository.GetReleatedMission(string missiontitle, string city, string country)
+        List<ReleatedMissionModel> IMissionRepository.GetReleatedMission(string missiontitle, string city, string country,int userid,long missionid)
         {
-            List<ReleatedMissionModel> mission1 = _ciPlatformDbContext.ReleatedMissions.FromSqlInterpolated($"exec sp_get_reletedMission_data @missionreleated={missiontitle}, @cityreleated={city}, @countryreleated ={country}").ToList();
+            List<ReleatedMissionModel> mission1 = _ciPlatformDbContext.ReleatedMissions.FromSqlInterpolated($"exec sp_get_releatedData @missionreleated={missiontitle}, @cityreleated={city}, @countryreleated ={country},@UserId={userid},@Missionid={missionid}").ToList();
             return mission1;
         }
        public void addcomment(long missionid, long userid ,string Commenttext)

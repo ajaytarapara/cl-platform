@@ -43,7 +43,6 @@ function loadusers() {
             $("#usertablelist").html(data);
             loadPagination();
             deleteUser();
-            editData();
         },
         failure: function (response) {
             alert("failure");
@@ -116,54 +115,55 @@ function deleteUser() {
 //edit user ajax in user crud admin
 //======================================================================================================
 
-function editData() {
-    $(".Editbtnusermodalopen").on("click", function () {
-        UserId = this.id;
-        console.log(UserId);
-        $.ajax({
-            type: "get",
-            url: '/Admin/editUser_crud',
-            dataType: "html",
-            data: { UserId: UserId },
-            success: function (data) {
-                $("#editusermodal").html();
-                $("#editusermodal").html(data);
-            },
-            error: function (xhr, status, error) {
-                // Handle error
-                console.log(error);
-            }
-        })
-    });
+//function editData() {
+//    $(".Editbtnusermodalopen").on("click", function () {
+//        UserId = this.id;
+//        console.log(UserId);
+//        $.ajax({
+//            type: "get",
+//            url: '/Admin/editUser_crud',
+//            dataType: "html",
+//            data: { UserId: UserId },
+//            success: function (data) {
+//                $("#editusermodal").html();
+//                $("#editusermodal").html(data);
+//            },
+//            error: function (xhr, status, error) {
+//                // Handle error
+//                console.log(error);
+//            }
+//        })
+//    });
+//}
+//}
+//    $(".editbtnuser").on("click", function () {
+//        Firstname = $("#firstnameedit").val();
+//        console.log(Firstname);
+//        LastName = $("#lastnamenameedit").val();
+//        console.log(LastName);
+//        Password = $("#passwordedit").val();
+//        Department = $("#departmentedit").val();
+//        console.log(Department);
+//        EmployeeId = $("#employeeidedit").val();
+//        console.log(EmployeeId);
+//        PhoneNumber = $("#phonenumberedit").val();
+//        console.log(PhoneNumber);
+//        Email = $("#emailedit").val();
+//        $.ajax({
+//            type: "POST",
+//            url: "/Admin/editUser_crud",
+//            data: { UserId: UserId, Firstname: Firstname, LastName: LastName, Password: Password, Department: Department, EmployeeId: EmployeeId, PhoneNumber: PhoneNumber, Email: Email },
+//            success: function (data) {
+//                loadusers();
+//            },
+//            failure: function (response) {
+//                alert("failure");
+//            },
+//            error: function (response) {
+//                alert("Something went Worng");
+//            }
 
-    $(".editbtnuser").on("click", function () {
-        Firstname = $("#firstnameedit").val();
-        console.log(Firstname);
-        LastName = $("#lastnamenameedit").val();
-        console.log(LastName);
-        Password = $("#passwordedit").val();
-        Department = $("#departmentedit").val();
-        console.log(Department);
-        EmployeeId = $("#employeeidedit").val();
-        console.log(EmployeeId);
-        PhoneNumber = $("#phonenumberedit").val();
-        console.log(PhoneNumber);
-        Email = $("#emailedit").val();
-        $.ajax({
-            type: "POST",
-            url: "/Admin/editUser_crud",
-            data: { UserId: UserId, Firstname: Firstname, LastName: LastName, Password: Password, Department: Department, EmployeeId: EmployeeId, PhoneNumber: PhoneNumber, Email: Email },
-            success: function (data) {
-                loadusers();
-            },
-            failure: function (response) {
-                alert("failure");
-            },
-            error: function (response) {
-                alert("Something went Worng");
-            }
+//        });
 
-        });
-
-    });
-};
+//    });
+//}

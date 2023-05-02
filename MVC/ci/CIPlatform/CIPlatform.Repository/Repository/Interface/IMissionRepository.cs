@@ -16,7 +16,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addRatingStars(int userId, int missionId, int ratingStars);
         public MissionModel Getmission(string missionid,long userid);
 
-        public List<ReleatedMissionModel> GetReleatedMission(string missiontitle,string city,string country);
+        public List<ReleatedMissionModel> GetReleatedMission(string missiontitle,string city,string country,int userid,long missionid);
         public void ApplyApplication(long UserId, long missionid);
         public List<MissionApplication> GetRecentVolunteer(long missionid);
 

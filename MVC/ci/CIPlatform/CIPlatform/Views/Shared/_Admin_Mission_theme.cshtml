@@ -6,7 +6,6 @@
                                 box-shadow: 0px 2px 3px #0000000F;">
             <tr>
                 <th>Theme Title</th>
-                <th>Theme Id</th>
                 <th>Status</th>
                 <th>Created at</th>
                 <th>Action</th>
@@ -20,8 +19,15 @@
                 {
                     <tr>
                         <td>@item.Title</td>
-                        <td>@item.MissionThemeId</td>
-                        <td>@item.Status</td>
+                         @if (item.Status == 1)
+                        {
+                            <td style="color: green;">active</td>
+                        }
+                        else
+                        {
+                            <td style="color: red;">Deactivate</td>
+
+                        }
                         <td>
                             @item.CreatedAt.ToString().Substring(0,10)
                         </td>

@@ -1,9 +1,43 @@
 ﻿@model CIPlatform.Entities.ViewModels.PaginationMission
 @*<h1>@Model.missions.Count()</h1>*@
 
-<h1 id="missioncount">@Model.missionCount</h1>
 
+<div class="container mt-3">
+    <div class="row d-flex">
+        <div class="col-6 d-flex">
+            <h1 id="missioncount" style="font-weight:500">Explore @Model.missionCount Mission</h1>
+        </div>
+        <div style="justify-content:flex-end;" class="col-6 d-flex">
+            <button class="dropdown-toggle p-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="margin: 10px;border:1px solid gray;background:none;width:100px">
+                Sort by
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id="sort">
 
+                <li class="p-1">
+                    <a class="dropdown-item" name="highestseats" id="" />highestseats</a>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="lowestseats" id="" />lowestseats</a>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="sortbydate" id="" />Newest</a>
+                </li>
+                </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="lowestseats" id="" />Oldest</a>
+                </li>
+            </ul>
+            <button id="grid-view-btn" style="margin: 10px;background:none;width:45px;border:none">
+                <img src="~/images/grid.png" alt="">
+                <link rel="" href="">
+            </button>
+            <button id="list-view-btn" style="margin: 10px;background:none;width:45px;border:none"><img src="~/images/list.png" alt=""></button>
+
+        </div>
+
+    </div>
+</div>
 <div id="mission-grid" class="row">
     @foreach (var Item in Model.missions)
     {
@@ -43,19 +77,23 @@
                             @Item.CityName
                         </div>
                         <div class="d-flex flex-column align-items-end">
-                            <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1">
+                           
                                 @*           <button id ="heartbtn"><img src="~/images/heart.png" alt=""></button>*@
 
                                 @if (@Item.favourite == 1)
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none" class="Icon mx-auto" alt="" /></button>
+                                      <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1" style="background:red">
+                                    <button class="btnaddtofav list-img-content  rounded-5 m-1 img-fluid border-none" onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none" class="Icon mx-auto" alt="" /></button>
+                                     </div>
                                 }
                                 else
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
+                                    <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1">
+                                    <button class="btnaddtofav list-img-content  rounded-5 m-1 img-fluid" onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
+                                      </div>
 
                                 }
-                            </div>
+                           
                             <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
                                 <img src="~/images/user.png" alt="">
                             </div>
@@ -159,14 +197,18 @@
                     <div style="justify-content: center;" class="d-flex pt-2" id="apply">
                         @if (@Item.EndDate < DateTime.Now)
                         {
-                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color:   #F88634; width:30%;height:30px;" id="">
-                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">View Details</a><img src="~/images/right-arrow.png" alt="">
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;
+                             color:   #F88634; width:30%;height:30px;" id="">
+                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", 
+                                new { missionId = @Item.MissionId })">View Details</a><img src="~/images/right-arrow.png" alt="">
                             </button>
                         }
                         else
                         {
-                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;color: #F88634; width:30%;height:30px;" id="">
-                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
+                            <button style="background: #FFFFFF 0% 0% no-repeat padding-box; border: 2px solid #F88634; border-radius: 24px;
+                            color: #F88634; width:30%;height:30px;" id="">
+                                <a style="text-decoration:none;color: #F88634;" href="@Url.Action("Mission_Volunteer", "Mission", 
+                                new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
                             </button>
                         }
                     </div>
@@ -217,11 +259,11 @@
                             @Item.CityName
                         </div>
                         <div class="d-flex flex-column align-items-end mt-5">
-                            <div id="list-img-heart" class="list-img-content p-2 rounded-5 m-1 heart-btn">
+                            <div id="list-img-heart" class="list-img-content rounded-5 m-1 heart-btn">
                                 @if (@Item.favourite == 1)
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 1)" id="heartbtn"
-                                    value="@Item.MissionId">
+                                    <button class="btnaddtofav p-2" onclick="addtofavi(this, 1)" id="heartbtn"
+                                    value="@Item.MissionId" style="width:100%;background:red;border-radius:25px">
                                         <img src="/images/heart.png"
                                      style="height:20px;width:20px; background-color:red;border:none;border-radius:5px;"
                                      class="Icon mx-auto" alt="" />
@@ -229,13 +271,15 @@
                                 }
                                 else
                                 {
-                                    <button class="btnaddtofav " onclick="addtofavi(this, 0)" id="heartbtn"
-                                    value="@Item.MissionId">
+                                    <button class="btnaddtofav p-2" onclick="addtofavi(this, 0)" id="heartbtn"
+                                    value="@Item.MissionId"style="width:100%">
                                         <img src="/images/heart1.png"
                                      style="height:20px;width:20px; color:red ;border:none"
                                      class="Icon mx-auto" alt="" />
                                     </button>
                                 }
+                                
+
                             </div>
                             <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
                                 <img src="~/images/user.png" alt="">

@@ -122,6 +122,7 @@ namespace CIPlatform.Controllers
                     user.Department = model.Department;
                     user.PhoneNumber = model.PhoneNumber;
                     user.Avatar = "/images/user1.png";
+                    user.Status =Boolean.Parse(model.Status);
                     _adminrepository.AddUserAdmin(user);
                     _notyf.Success("user added successfully", 3);
                 }
@@ -194,36 +195,56 @@ namespace CIPlatform.Controllers
             }
             return RedirectToAction("User_crud", "Admin");
         }
-        //public IActionResult Admin_Edit_User(long UserId)
-        //{
+        public IActionResult Admin_Edit_User(long UserId)
+        {
 
-        //    string adminSessionEmailId = HttpContext.Session.GetString("useremail");
-        //    Admin_user_crudModel modal = new Admin_user_crudModel();
-        //    if (adminSessionEmailId == null)
-        //    {
-        //        return RedirectToAction("Admin_Login", "Admin");
-        //    }
-        //    else
-        //    {
-        //        string adminemail = adminSessionEmailId;
-        //        User adminobj = _adminrepository.findadmin(adminemail);
-        //        modal.adminname = adminobj.FirstName + " " + adminobj.LastName;
-        //        modal.adminavatar = adminobj.Avatar;
-        //        long userid = UserId;
-        //        User useredit = _adminrepository.UpdateUserAdminget(userid);
-        //        modal.FirstName = useredit.FirstName;
-        //        modal.LastName = useredit.LastName;
-        //        modal.Email = useredit.Email;
-        //        modal.PhoneNumber = useredit.PhoneNumber;
-        //        modal.EmplyoeeId = useredit.EmployeeId;
-        //        modal.Department = useredit.Department;
-        //        modal.Password = useredit.Password;
-        //        return View(modal);
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+            Admin_user_crudModel modal = new Admin_user_crudModel();
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            else
+            {
+                string adminemail = adminSessionEmailId;
+                User adminobj = _adminrepository.findadmin(adminemail);
+                modal.adminname = adminobj.FirstName + " " + adminobj.LastName;
+                modal.adminavatar = adminobj.Avatar;
+                User useredit = _adminrepository.UpdateUserAdminget(UserId);
+                modal.FirstName = useredit.FirstName;
+                modal.LastName = useredit.LastName;
+                modal.Email = useredit.Email;
+                modal.PhoneNumber = useredit.PhoneNumber;
+                modal.EmplyoeeId = useredit.EmployeeId;
+                modal.Department = useredit.Department;
+                modal.Password = useredit.Password;
+                modal.profiletext = useredit.ProfileText;
+                modal.whyivol = useredit.WhyIVolunteer;
+                modal.UserId = useredit.UserId;
+                modal.Status = useredit.Status.ToString();
+                return View(modal);
 
-        //    }
+            }
 
-        //}
+        }
+        [HttpPost]
+        public IActionResult Admin_Edit_User(Admin_user_crudModel modal)
+        {
+            long UserId=(long)modal.UserId;
+            User useredit = _adminrepository.UpdateUserAdminget(UserId);
+            useredit.FirstName=modal.FirstName;
+            useredit.LastName=modal.LastName;
+            useredit.ProfileText = modal.profiletext;
+            useredit.Password = modal.Password;
+            useredit.PhoneNumber= modal.PhoneNumber;
+            useredit.WhyIVolunteer = modal.whyivol;
+            useredit.UpdatedAt = DateTime.Now;
+            useredit.Status = Boolean.Parse(modal.Status);
+            _adminrepository.UpdateneedUser(useredit);
+            _notyf.Success("user edited successfully", 3);
+            return RedirectToAction("User_crud", "Admin");
 
+        }
         //=========================================================================================================================
         ////cms admin part crud
         //===========================================================================================================================
@@ -514,6 +535,7 @@ namespace CIPlatform.Controllers
                 MissionTheme theme = new MissionTheme();
                 theme.Title = _Theme_CrudModels.themeTitle;
                 theme.CreatedAt = DateTime.Now;
+                theme.Status =(byte) _Theme_CrudModels.Status;
                 _adminrepository.AddThemeAdmin(theme);
                 _notyf.Success("theme added successfully", 3);
                 return RedirectToAction("Admin_add_themes", "Admin");
@@ -538,6 +560,7 @@ namespace CIPlatform.Controllers
                 _Theme_CrudModels.themeId = themeId;
                 MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
                 _Theme_CrudModels.themeTitle = themes.Title;
+                _Theme_CrudModels.Status = themes.Status;
             }
             return View(_Theme_CrudModels);
 
@@ -549,9 +572,14 @@ namespace CIPlatform.Controllers
             MissionTheme themes = _adminrepository.GetThemeAdmin(themeId);
             themes.UpdatedAt = DateTime.Now;
             themes.Title = _Theme_CrudModels.themeTitle;
+            themes.Status = (byte)_Theme_CrudModels.Status;
             _adminrepository.EditThemeAdmin(themes);
             _notyf.Success("theme edited successfully", 3);
-            return View(_Theme_CrudModels);
+            string searchText = "";
+            int pageNumber = 1;
+            int pageSize = 2;
+            AdminPageList<MissionTheme> missionthemes = _adminrepository.GetMissionThemeAdmin(searchText, pageNumber, pageSize);
+            return RedirectToAction("Admin_mission_theme", missionthemes);
         }
         [HttpPost]
         public IActionResult Admin_Delete_themes(long themeId)
@@ -615,6 +643,7 @@ namespace CIPlatform.Controllers
             Skill skill = new Skill();
             skill.SkillName = SkillModels.SkillTitle;
             skill.CreatedAt = DateTime.Now;
+            skill.Status = (byte)SkillModels.Status;
             _adminrepository.AddSkillAdmin(skill);
             _notyf.Success("skill added successfully", 3);
             return RedirectToAction("Admin_add_Skill", "Admin");
@@ -636,6 +665,7 @@ namespace CIPlatform.Controllers
                 SkillModels.adminavatar = "./images/user1.png";
                 SkillModels.SkillId = skillId;
                 Skill skills = _adminrepository.GetSkill(skillId);
+                SkillModels.Status= skills.Status;
                 SkillModels.SkillTitle = skills.SkillName;
             }
             return View(SkillModels);
@@ -647,6 +677,7 @@ namespace CIPlatform.Controllers
             Skill skill = _adminrepository.GetSkill(skillId);
             skill.SkillName = SkillModels.SkillTitle;
             skill.UpdatedAt = DateTime.Now;
+            skill.Status = (byte)SkillModels.Status;
             _adminrepository.EditSkill(skill);
             _notyf.Success("skill edited successfully", 3);
             return RedirectToAction("Admin_skill");
@@ -900,7 +931,7 @@ namespace CIPlatform.Controllers
                 _notyf.Success("mission media added successfully", 3);
 
             }
-            if (documentfilename != null)
+            if (documentfilename.Count != 0)
             {
                 MissionDocument missionDocument =new MissionDocument();
                 missionDocument.MissionId = missionid;
@@ -984,10 +1015,9 @@ namespace CIPlatform.Controllers
                     long skillId = skill.SkillId;
                    Skill skill1= _adminrepository.GetSkillName(skillId);
                     string skillname = skill1.SkillName;
-                    missionskillname += skillname + ",";
+                    missionskillname += skill.Skill.SkillName + "\n";
                 }
-                int index= missionskillname.LastIndexOf(',');
-                mission_crud.missionskills = missionskillname.Substring(0,index);
+                mission_crud.missionskills = missionskillname;
             }
             return View(mission_crud);
         }

@@ -1,1 +1,104 @@
-﻿
+﻿@model CIPlatform.Entities.ViewModels.Admin_user_crudModel
+<link rel="stylesheet" href="~/Admin/css/admin.css" asp-append-version="true" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation">
+            @Html.Partial("_Admin_dashboard")
+        </div>
+        <div class="col-xl-10 col-lg-9" style="height:100vh;overflow:auto">
+            <div class="card row d-flex p-3" style="flex-direction: row;">
+                <div class="col-md-6 col-sm-5 p-2 d-flex"
+                     style="font-size:18px;align-items: center;justify-content: space-around;"
+                     id="admin-page-right-nav">
+                    <span style="font-size:30px;cursor:pointer" onclick="adminpage_openNav()"
+                          class="d-lg-none d-flex" style="position:absolute;display: inline-flex;">&#9776;</span>
+                    Thursday,November 3 2022,10:06 AM
+                </div>
+                <div class="col-md-3 col-sm-1">
+                </div>
+                <div class="col-md-3 col-sm-5 d-flex p-2" id="admin-page-left-nav">
+                    <img class="img-fluid" src="@Model.adminavatar" style="border-radius: 50%;height:40px;">
+                    <button value=""
+                            style="border: none; background: white;margin-left: 10px;height: 30px;"
+                            class="dropdown-toggle bg-light user-btn" type="button" id="dropdownMenu2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @Model.adminname
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        @*         <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            EditProfile", "Account" )">Edit profile</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action(" logout", "Account"
+                            )">Logout</a></button></li>
+                            <li class="dropdownnavbarlinks"><button class="dropdown-item" type="button"><a
+                            style="text-decoration:none;color:black;" href="@Url.Action("
+                            VolunteeringTimesheet", "Account" )">VolunteeringTimesheet</a>
+                            </button></li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Edit User</h4>
+                    </div>
+                    <form action="Admin_Edit_User" method="post">
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <input type="hidden" asp-for="UserId">
+                                    <label for="" class="form-label">FirstName</label>
+                                    <input type="text" class="form-control" asp-for="FirstName">
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">LastName</label>
+                                    <input type="text" class="form-control" asp-for="LastName">
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">PhoneNumber</label>
+                                <input type="number" maxlength="10" class="form-control" ASP-FOR="PhoneNumber">
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Email</label>
+                                <input type="email" class="form-control" ASP-FOR="Email">
+                            </div>
+                            @*                            <div class="py-2">
+                                <label for="" class="form-label">Password</label>
+                                <input type="password" class="form-control" ASP-FOR="Password">
+                                </div>*@
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">EmplyoeeId</label>
+                                    <input type="number" maxlength="10" class="form-control" ASP-FOR="EmplyoeeId">
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Department</label>
+                                    <input type="text" class="form-control" ASP-FOR="Department">
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">profile text</label>
+                                <textarea class="form-control" id="default" rows="5" asp-for="profiletext"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Why I volunteer</label>
+                                <textarea class="form-control" id="default" rows="5" asp-for="whyivol"></textarea>
+                            </div>
+                            <label asp-for="Status" class="form-label py-2">Status</label>
+                            <select asp-for="Status" id="" class="form-select mb-2">
+                                <option value="true">Active</option>
+                                <option value="false">Deactivate</option>
+                            </select>
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2" style="border-radius:10px"><a style="text-decoration:none;color:black" href="@Url.Action("User_crud","Admin")">Cancel</a></button>
+                            <input style="border:1px solid orange;color:orange;border-radius:10px" type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

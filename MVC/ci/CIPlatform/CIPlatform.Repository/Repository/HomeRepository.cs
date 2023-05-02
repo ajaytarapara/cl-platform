@@ -122,7 +122,11 @@ namespace CIPlatform.Repository.Repository
             List<City> citylist = _ciPlatformDbContext.Cities.Include(x => x.Country).Where(x => x.Country.Name == countryname).ToList();
             return citylist;
         }
-
+        List<City> IHomeRepository.GetCityFromCountry()
+        {
+            List<City> citylist = _ciPlatformDbContext.Cities.Include(x => x.Country).ToList();
+            return citylist;
+        }
 
     }
 }

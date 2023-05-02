@@ -16,5 +16,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string? themeTitle { get; set; }
         public long? themeId { get; set; }
+        public int? Status { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model CIPlatform.Entities.ViewModels.HomeModel
 <div class="container">
-    <div class="row">
+    <div class="row pb-0 mt-2">
         <div id="menubarimg" class="d-md-none">
             <button onclick="menubartoggle()">
                 <img src="~/images/list.png"
@@ -43,11 +43,6 @@
                 <li class="dropdownnavbarlinks">
                     <button class="dropdown-item" type="button">
                         <a style="text-decoration:none;color:black;" href="@Url.Action("VolunteeringTimesheet", "Account")">VolunteeringTimesheet</a>
-                    </button>
-                </li>
-                <li class="dropdownnavbarlinks">
-                    <button class="dropdown-item" type="button">
-                        <a style="text-decoration:none;color:black;" href="@Url.Action("User_crud", "Admin")">Login AS Admin</a>
                     </button>
                 </li>
             </ul>

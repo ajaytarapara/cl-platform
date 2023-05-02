@@ -148,11 +148,12 @@ var missiontitle = $('#missiontheme').text();
 var city = $('#missioncity').text();
 console.log(city);
 var country = "";
+var missionidrel=$('#applymission').val();
 function releatedmission() {
     $.ajax({
         type: "get",
         url: "/Mission/GetReleatedMission",
-        data: { missiontitle: missiontitle, city:city,country: country},
+        data: { missiontitle: missiontitle, city: city, country: country, missionid: missionidrel},
         success: function (data) {
             var html = "";
             //console.log(data);
@@ -330,3 +331,18 @@ function RecentVolunteer(missionid) {
 };
 
 
+function addtofavireleted(abc, flag) {
+    var val = $(abc).val();
+    $.ajax({
+        type: "POST",
+        url: '/Mission/addToFavouritesReletead',
+        data: { missionid: val.toString(), fav: flag },
+        success: function (data) {
+            releatedmission();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    })
+};

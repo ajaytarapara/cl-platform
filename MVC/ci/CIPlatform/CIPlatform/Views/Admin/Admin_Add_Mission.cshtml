@@ -396,18 +396,20 @@
       });
 
 
-      var names = "";
-      $(".user-edit-save-btn").on("click", function (e) {
-          e.preventDefault();
-          $(".user-edit-selected-skill").empty();
-          $(".selected-skills .skill-list li").each(function () {
-              var skillName = $(this).text().trim();
-              names += skillName+"\n";
-              /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
-              $("#skilltext").text(names);
-          });
-          $(".popup-container").hide();
-      });
+        var names = "";
+        $(".user-edit-save-btn").on("click", function (e) {
+            e.preventDefault();
+            $(".user-edit-selected-skill").empty();
+            names="";
+            $(".selected-skills .skill-list li").each(function () {
+                var skillName = $(this).text().trim();
+                names += skillName+"\n";
+                /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
+            });
+            $("#skilltext").text("");
+            $("#skilltext").text(names);
+            $(".popup-container").hide();
+        });
     });
 </script>
 

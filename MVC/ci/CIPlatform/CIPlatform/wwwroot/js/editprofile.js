@@ -176,7 +176,6 @@ $(document).ready(function () {
 
     $(".add-skill").on("click", function (e) {
         e.preventDefault();
-        $("#skilltext").text("");
         var selectedSkill = $(".available-skills .skill-list li.selected");
         if (selectedSkill.length > 0) {
             selectedSkill.appendTo($(".selected-skills .skill-list"));
@@ -195,15 +194,16 @@ $(document).ready(function () {
 
    
     var names = "";
-    $(".user-edit-save-btn").on("click", function () {
-        $("#skilltext").text("");
+    $(".user-edit-save-btn").on("click", function (e) {
+        e.preventDefault();
         $(".user-edit-selected-skill").empty();
+        names = "";
         $(".selected-skills .skill-list li").each(function () {
             var skillName = $(this).text().trim();
-            names += skillName+"\n";
+            names += skillName + "\n";
             /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
-            $("#skilltext").text(names);
         });
+        $("#skilltext").text(names);
         $(".popup-container").hide();
     });
   });

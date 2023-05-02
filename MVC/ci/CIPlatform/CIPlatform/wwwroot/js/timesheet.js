@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    editModalTime();
 });
 
 var MissionId = $("#missionidgetdiv").val();
@@ -22,20 +23,19 @@ $("#addtimesheet").on("click", function () {
 
         success: function (data) {
             if (data["status"] == 1) {
-                alert("your time type time sheet addded  successfully");
                 location.reload();
             }
-            else if (data["status"] == 0)
-            {
-                alert("time is required");
-            }
-            else if (data["status"] == 2) {
-                alert("date volunteer is not valid");
-            }
-            else if (data["status"] == 3) {
-                alert("you have not applied at any mission");
-            }
-            location.reload();
+            //else if (data["status"] == 0)
+            //{
+            //    alert("time is required");
+            //}
+            //else if (data["status"] == 2) {
+            //    alert("date volunteer is not valid");
+            //}
+            //else if (data["status"] == 3) {
+            //    alert("you have not applied at any mission");
+            //}
+            /*location.reload();*/
          
         },
         error: function (xhr, status, error) {
@@ -69,16 +69,17 @@ $("#addgoaltimesheetbtn").on("click", function () {
             if (data["status"] == 1)
             {
                 alert("your goal time sheet addded  successfully");
+                location.reload();
             }
             else if (data["status"] == 0)
             {
                 alert("data is not valid");
             }
-            else if (data["status"] == 2) {
-                alert("date volunteer is not valid");
-            }
+            //else if (data["status"] == 2) {
+            //    alert("date volunteer is not valid");
+            //}
             else if (data["status"] == 3) {
-                alert("you have not applied at any mission");
+                alert("youR DETAIL IS NOT VALID");
             }
         },
         error: function (xhr, status, error) {
@@ -143,46 +144,37 @@ var datevole = $("#getdatediv-edit").val();
 var houre = $("#gethourdiv-edit").val();
 var minutese = $("#getminitediv-edit").val();
 var msge = $("#getmsgdiv-edit").val();
-var timesheetidse ="";
-$(".editmodalopentime").on("click", function (e) {
+var timesheetidse = "";
+var flags = 1;
+function editModalTime() {
+
+$(".editmodalopentime").click( function (e) {
     e.preventDefault();
     timesheetidse = this.id;
     $.ajax({
         type: "Get",
         url: '/Account/edittimesheet',
-        dataType: "html",
         data: { timesheetid: timesheetidse },
         success: function (data) {
-            $("#timesheetedit").html(data);
+            console.log(data);
+            $("#missionidgetdiv-edit").val(data["data"].missionId);
+            console.log(data["data"].dateVolunteered.slice(0, 10));
+            $("#getdatediv-edit").val(data["data"].dateVolunteered.slice(0,10));
+            $("#gethourdiv-edit").val(data["data"].hours);
+            $("#getminitediv-edit").val(data["data"].minutes);
+            $("#getmsgdiv-edit").val(data["data"].notes);
+            $("#missiontitletimesheetedit").val(data["data"].missionId);
+            $("#timesheetidtimebased").val(data["data"].timesheetid);
         },
         error: function (xhr, status, error) {
             // Handle error
             console.log(error);
         }
     })
-
+   
 });
-//$("#edittimesheet").on("click", function (e) {
-//    e.preventDefault();
-//     Missionide = $("#missionidgetdiv-edit").val();
-//     datevole = $("#getdatediv-edit").val();
-//     houre = $("#gethourdiv-edit").val();
-//     minutese = $("#getminitediv-edit").val();
-//     msge = $("#getmsgdiv-edit").val();
-//   $.ajax({
-//        type: "POST",
-//        url: '/Account/edittimesheet',
-//        data: { timesheetid: timesheetidse, MissionId: Missionide, DateVolunteered: datevole, hours: houre, minutes: minutese, Notes: msge },
-//       success: function (data) {
-            
-//        },
-//        error: function (xhr, status, error) {
-//            // Handle error
-//            console.log(error);
-//       }
-//    })
+}
 
-//});
 
 
 var MissionIdseg = "";
@@ -196,10 +188,16 @@ $(".editmodalopengoal").on("click", function (e) {
     $.ajax({
         type: "Get",
         url: '/Account/edittimesheetgoal',
-        dataType: "html",
         data: { timesheetid: timesheetidseg },
         success: function (data) {
-            $("#timesheeteditgoal").html(data);
+            console.log(data);
+            $("#getmissionid-goaledit").val(data["data"].missionId);
+            $("#actiongoalgetdiv-edit").val(data["data"].action);
+            $("#msggoalgetdiv-edit").val(data["data"].notes);
+            $("#dategoalgetdiv-edit").val(data["data"].dateVolunteered.slice(0, 10));
+            $("#getmissionid-goaledit").val(data["data"].missionId);
+            $("#timesheetidgoalbased").val(data["data"].timesheetid);
+
         },
         error: function (xhr, status, error) {
             // Handle error

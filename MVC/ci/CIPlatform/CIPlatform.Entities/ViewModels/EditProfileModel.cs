@@ -37,7 +37,6 @@ namespace CIPlatform.Entities.ViewModels
         public long? cityofuser { get; set; }
         [Required]
         public long? countrofuser { get; set; }
-        [Required]
         public string? linkedinurl { get; set; }
         [Required]
         public string? userskills { get; set; }

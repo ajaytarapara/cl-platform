@@ -32,5 +32,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addToFavourites(long missionid, long userid, int fav);
         public User getuser(string email);
         public List<City> GetCityFromCountry(string countryname);
+        public List<City> GetCityFromCountry();
     }
 }

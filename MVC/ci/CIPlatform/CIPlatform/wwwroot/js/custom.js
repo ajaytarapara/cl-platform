@@ -148,6 +148,13 @@ function loadgetgrid(paging) {
            griddata.html(data);
            toggleListGrid();
            loadPagination();
+           var missiontext = $("#missioncount").text()
+
+           console.log(missiontext);
+           $('#sort li a').on('click', function () {
+               sorting = $(this).text();
+               loadgetgrid();
+           });
         },
         failure: function (response) {
             alert("failure");
@@ -186,6 +193,35 @@ function intializeChips() {
                 $(".no-filter-text").show();
                 $(".close-chips").hide();
             });
+            selectedCountries = "";
+            $.each($("#countryDropDownList li a input:checkbox:checked"), function () {
+                $(this).prop("checked", false);
+            });
+            //========================================================================================================================================================================================
+            //        //city filters
+            //========================================================================================================================================================================================
+            selectedCities = "";
+            $.each($("#cityDropDownList li a input:checkbox:checked"), function () {
+                
+                $(this).prop("checked", false);
+            });
+            //        ==========================================================================================================================================================================================
+            ////            //theme filters
+            ////==================================================================================================================================================================================
+            selectedThemes = "";
+            $.each($("#themeDropDownList li a input:checkbox:checked"), function () {
+                $(this).prop("checked", false);
+            });
+            //==========================================================================================================================================================================================
+            //            //skill filters
+            //==================================================================================================================================================================================
+            selectedSkills = "";
+            $.each($("#skillDropDownList li a input:checkbox:checked"), function () {
+                $(this).prop("checked", false);
+            });
+
+            loadgetgrid();
+
         });
 
 
@@ -222,7 +258,7 @@ function intializeChips() {
         });
 
         loadgetgrid();
-      
+
     });
 
 
@@ -258,14 +294,39 @@ function citySelectFromCountry() {
                 for (var j = 0; j < obj.length; j++) {
                     str += '<li class="p-1"><a class="dropdown-item" href = "#"> <input type="checkbox" name="city" value="' + obj[j].Name+ '"/> ' + obj[j].Name+ '</a></li>';
                 }
-
                 cityDropDown.html(str);
+
+                $(".rightheader li a").on("click", function (e) {
+                    $(".home-chips .chips").append(
+                        '<div class="chip">' +
+                        $(this).text() +
+                        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+                    );
+                    $(".close-chips").show();
+                    $(".no-filter-text").hide();
+                    $(".close-chips").show();
+                    $(".close-chips").click(function () {
+                        $(".chip").each(function () {
+                            $(this).hide();
+                            $(".no-filter-text").show();
+                            $(".close-chips").hide();
+                        });
+                    });
+                    $.each($("#cityDropDownList li a input:checkbox:checked"), function () {
+                        selectedCities += $(this).val() + ",";
+                    });
+                    loadgetgrid();
+
+                });
+
+               
+
             },
             failure: function (response) {
                 alert("failure");
             },
             error: function (response) {
-                alert("Something went Worng");
+                 alert("Something went Worng");
             }
 
         });
@@ -341,10 +402,7 @@ function toggleListGrid() {
 //==========================================================================================================================================================================================
 ////*sorting mission*/
 //==========================================================================================================================================================================================
-$('#sort li a').on('click', function () {
-    sorting = $(this).text();
-    loadgetgrid();
-});
+
 
 //===================================================================================================================================================================================
 //favourite missions

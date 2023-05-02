@@ -15,6 +15,7 @@ namespace CIPlatform.Entities.ViewModels
 
         [Key]
         public long MissionId { get; set; }
+        public byte? UserRating { get; set; }
         public string? Title { get; set; }
         public string? ShortDescription { get; set; }
         public DateTime? StartDate { get; set; }

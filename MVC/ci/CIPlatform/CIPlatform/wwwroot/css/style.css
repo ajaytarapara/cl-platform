@@ -7,6 +7,9 @@
     margin: 0px;
     padding: 0px;
 }
+body{
+    opacity:.95
+}
 
 
 #maincarousel > .row {
@@ -587,6 +590,7 @@
 
 #heartbtn {
     background: none;
+    border:none;
 }
 
 @media(max-width:2500px) {

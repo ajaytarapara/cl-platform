@@ -52,11 +52,18 @@ namespace CIPlatform.Controllers
             }
         }
 
-        public IActionResult GetReleatedMission(string missiontitle, string city, string country)
+        public IActionResult GetReleatedMission(string missiontitle, string city, string country,long missionid)
         {
-            MissionModel missionModel = new MissionModel();
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+                User userObj = _userRepository.findUser(userSessionEmailId);
+                int userid = (int)userObj.UserId;
+                MissionModel missionModel = new MissionModel();
             missionModel.Title = missiontitle;
-            List<ReleatedMissionModel> releatedMissions = _missionRepository.GetReleatedMission(missiontitle, city, country);
+            List<ReleatedMissionModel> releatedMissions = _missionRepository.GetReleatedMission(missiontitle, city, country,userid, missionid);
             return PartialView("_ReleatedMission", releatedMissions);
         }
         [HttpPost]
@@ -124,7 +131,7 @@ namespace CIPlatform.Controllers
 
             var findUserRating = _ciPlatformDbContext.MissionRatings.Where(x => x.UserId == user.UserId && x.MissionId == missionid).FirstOrDefault();
 
-            if (findUserRating != null)
+            if(findUserRating != null)
             {
                 findUserRating.UserId = user.UserId;
                 findUserRating.MissionId = (long)missionid;
@@ -150,6 +157,15 @@ namespace CIPlatform.Controllers
         {
             List<MissionApplication> recentvol=_missionRepository.GetRecentVolunteer(missionid);
             return PartialView("_RecentVolunteer", recentvol);
+        }
+
+        [HttpPost]
+        public void addToFavouritesReletead(String missionid, int fav)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            long misid = Int64.Parse(missionid);
+            _homeRepository.addToFavourites(misid, userObj.UserId, fav);
         }
     }
 }

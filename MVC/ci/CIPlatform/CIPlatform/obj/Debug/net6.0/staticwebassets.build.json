@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9IiDQjXf/hJoJct+cAnAauluK8vCcUR72MQX9b5TUd8=",
+  "Hash": "+QZBkmp88RzuBxka9xQJqI4i2voPQ8vTt/Dz71fHZAg=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -2210,6 +2210,23 @@
       "OriginalItemSpec": "wwwroot\\document\\6d6f7eeb-6106-4a9c-9ceb-7d6a0c0bfc25.png"
     },
     {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\document\\6fc79f85-b102-4967-b9a5-4364bd984837.svg",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "document/6fc79f85-b102-4967-b9a5-4364bd984837.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\document\\6fc79f85-b102-4967-b9a5-4364bd984837.svg"
+    },
+    {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\document\\703a4daa-92c5-40b7-8480-5feccf0b71ae.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2941,6 +2958,23 @@
       "OriginalItemSpec": "wwwroot\\images\\avatars\\5d9d86cf-ac94-4a51-9b8f-dce91ac80d79.png"
     },
     {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\avatars\\7b551361-a8da-460b-9bcf-387cbae454ed.ico",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/avatars/7b551361-a8da-460b-9bcf-387cbae454ed.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatars\\7b551361-a8da-460b-9bcf-387cbae454ed.ico"
+    },
+    {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\avatars\\93598dca-b799-453f-8537-9f618674c038.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -3177,6 +3211,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Banner\\1620ec58-d3c2-4e49-81bb-99c732bb51f8.png"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\Banner\\23fcecd6-9c4c-4c86-8a27-aaba7a12bdb4.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/Banner/23fcecd6-9c4c-4c86-8a27-aaba7a12bdb4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Banner\\23fcecd6-9c4c-4c86-8a27-aaba7a12bdb4.png"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\Banner\\4e39817a-f8db-48e9-82bd-514998af5416.png",
@@ -4437,6 +4488,23 @@
       "OriginalItemSpec": "wwwroot\\images\\media\\2198f629-773a-4b08-ba37-681598ee1250.svg"
     },
     {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\31d5b1a0-d04b-4a53-adb1-a93c7eaea7e3.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/media/31d5b1a0-d04b-4a53-adb1-a93c7eaea7e3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\media\\31d5b1a0-d04b-4a53-adb1-a93c7eaea7e3.png"
+    },
+    {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\3286a56d-aeca-41ff-a131-3581049b27c2.ico",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -4571,6 +4639,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\media\\6721b489-4874-4b10-a104-12340e3f8fc3.png"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\6a583b3c-4b42-4058-ba13-abd6aefcdbdb.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/media/6a583b3c-4b42-4058-ba13-abd6aefcdbdb.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\media\\6a583b3c-4b42-4058-ba13-abd6aefcdbdb.png"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\7c61ef5e-4375-439c-a0f2-89201675af02.svg",
@@ -4826,6 +4911,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\media\\cd75c1aa-5b27-4048-af1b-9042e96f249f.png"
+    },
+    {
+      "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\d619b79a-51a2-4db8-94b3-e12555de54bd.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/media/d619b79a-51a2-4db8-94b3-e12555de54bd.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\media\\d619b79a-51a2-4db8-94b3-e12555de54bd.png"
     },
     {
       "Identity": "D:\\cl platform\\MVC\\ci\\CIPlatform\\CIPlatform\\wwwroot\\images\\media\\d78bdafe-38e5-404a-9da3-789cbd165288.png",
