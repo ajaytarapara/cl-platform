@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadcms();
 });
 var searchcmstext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#admin-cms-search-bar").on("keyup", function (e) {
     e.preventDefault();

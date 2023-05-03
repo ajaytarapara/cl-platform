@@ -20,6 +20,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? Description { get; set; }
         [Required]
         public string? Slug { get; set; }
-        public bool? Status { get; set; }
+        public int? Status { get; set; }
     }
 }

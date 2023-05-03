@@ -62,8 +62,8 @@
                         </div>
                         <div class="py-2">
                             <label asp-for="missiontype" class="form-label">Type</label>
-                            <select class="form-select" asp-for="missiontype">
-                                <option value="time">time</option>
+                            <select class="form-select" asp-for="missiontype" id="missiontypevalue">
+                                <option id="timetypemissionbtn" value="time">time</option>
                                 <option value="goal">goal</option>
                             </select>
                         </div>
@@ -78,7 +78,7 @@
                                 <input asp-for="enddate" type="date" class="form-control">
                             </div>
                         </div>
-                        <div class="py-2 d-flex">
+                        <div class="py-2" id="goalmissionvaluesdiv">
                             <div class="w-50 me-1">
                                 <label asp-for="goalvalue" class="form-label">Goal Value</label>
                                 <input asp-for="goalvalue" type="number" class="form-control">
@@ -411,6 +411,25 @@
             $(".popup-container").hide();
         });
     });
+
+
+
+    
+$("#missiontypevalue").on("change", function () {   
+    var typeofmission="";
+     typeofmission=$(this).val();;
+    console.log(typeofmission);
+    if(typeofmission=="time")
+    {
+      console.log($("#goalmissionvaluesdiv"));
+        document.getElementById("goalmissionvaluesdiv").style.display="none !important";
+        $("#goalmissionvaluesdiv").css("display","none");
+    }
+    else{
+   $("#goalmissionvaluesdiv").css("display","flex");
+    }
+    
+});
 </script>
 
   }

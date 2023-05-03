@@ -3,9 +3,10 @@
 //////======================================================================================================
 $(document).ready(function () {
     loadmission();
+
 });
 var searchmissiontext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#search_Mission_adminbtn").on("keyup", function (e) {
     e.preventDefault();
@@ -102,4 +103,5 @@ function deleteMission() {
 
     });
 }
+
 

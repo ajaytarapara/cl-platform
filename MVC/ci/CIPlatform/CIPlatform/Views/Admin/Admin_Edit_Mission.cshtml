@@ -62,7 +62,7 @@
                         </div>
                         <div class="py-2">
                             <label asp-for="missiontype" class="form-label">Type</label>
-                            <select class="form-select" asp-for="missiontype">
+                            <select id="missiontypevalue" class="form-select" asp-for="missiontype">
                                 <option value="time">time</option>
                                 <option value="goal">goal</option>
                             </select>
@@ -78,7 +78,7 @@
                                 <input asp-for="enddate" type="date" class="form-control">
                             </div>
                         </div>
-                        <div class="py-2 d-flex">
+                        <div class="py-2" id="goalmissionvaluesdiv">
                             <div class="w-50 me-1">
                                 <label asp-for="goalvalue" class="form-label">Goal Value</label>
                                 <input asp-for="goalvalue" type="number" class="form-control">
@@ -216,224 +216,241 @@
 </div>
 @section Javascript{
 <script>
-             $(document).ready(function () {
-                 getcountry();
-                 getcity();
-                 getskill();
-                 gettheme();
-            });
-            //====================================================
-            //data of add page
-            //====================================================
-
-            function getcountry() {
-                $.ajax({
-                    type: "GET",
-                    url: "/Admin/GetCountries",
-                    data: "{}",
-                    success: function (data) {
-
-                        var str = "";
-                        //console.log(data);
-                        var releatedmission = $("#countrydropdown");
-                        for (var i = 0; i < data["data"].length; i++) {
-                            str += '<option value=' + data["data"][i].countryId
-                                + '>' + data["data"][i].name + '</option>';
-                        }
-                        releatedmission.append(str);
-
-                    },
-                    failure: function (response) {
-                        alert("failure");
-                    },
-                    error: function (response) {
-                        alert("Something went Worng");
-                    }
-
+                 $(document).ready(function () {
+                     getcountry();
+                     getcity();
+                     getskill();
+                     gettheme();
                 });
-            }
+                //====================================================
+                //data of add page
+                //====================================================
 
-            function getcity() {
-                $.ajax({
-                    type: "get",
-                    url: "/Admin/GetCities",
-                    data: "{}",
-                    success: function (data) {
-                        var str = "";
-                        //console.log(data);
-                        var releatedmission = $("#citydropdown");
-                        for (i = 0; i < data["data"].length; i++) {
+                function getcountry() {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Admin/GetCountries",
+                        data: "{}",
+                        success: function (data) {
 
-                            str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+                            var str = "";
+                            //console.log(data);
+                            var releatedmission = $("#countrydropdown");
+                            for (var i = 0; i < data["data"].length; i++) {
+                                str += '<option value=' + data["data"][i].countryId
+                                    + '>' + data["data"][i].name + '</option>';
+                            }
+                            releatedmission.append(str);
+
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("Something went Worng");
                         }
 
-                        releatedmission.append(str);
-                    },
-                    failure: function (response) {
-                        alert("failure");
-                    },
-                    error: function (response) {
-                        alert("Something went Worng");
-                    }
+                    });
+                }
 
-                });
-            }
+                function getcity() {
+                    $.ajax({
+                        type: "get",
+                        url: "/Admin/GetCities",
+                        data: "{}",
+                        success: function (data) {
+                            var str = "";
+                            //console.log(data);
+                            var releatedmission = $("#citydropdown");
+                            for (i = 0; i < data["data"].length; i++) {
 
+                                str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+                            }
 
-            $("#countrydropdown").on("change", function () {
-                var countryid = $("#countrydropdown").val();
-                console.log(countryid);
-                $.ajax({
-                    type: "Post",
-                    url: "/Admin/GetCities",
-                    data: { countryid: countryid },
-                    success: function (data) {
-                        var str = "";
-                        //console.log(data);
-                        var releatedmission = $("#citydropdown");
-                        for (i = 0; i < data["data"].length; i++) {
-
-                            str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
-                        }
-                        $("#citydropdown").text("");
-                        releatedmission.append(str);
-                    },
-                    failure: function (response) {
-                        alert("failure");
-                    },
-                    error: function (response) {
-                        alert("Something went Worng");
-                    }
-
-                });
-            });
-                function gettheme() {
-                $.ajax({
-                    type: "get",
-                    url: "/Admin/GetMissionTheme",
-                    data: "{}",
-                    success: function (data) {
-                        console.log(data);
-                        var str = "";
-                        //console.log(data);
-                        var releatedmission = $("#themedropdown");
-                        for (i = 0; i < data["data"].length; i++) {
-
-                            str += '<option value=' + data["data"][i].missionThemeId + '>' + data["data"][i].title + '</option>';
+                            releatedmission.append(str);
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("Something went Worng");
                         }
 
-                        releatedmission.append(str);
-                    },
-                    failure: function (response) {
-                        alert("failure");
-                    },
-                    error: function (response) {
-                        alert("Something went Worng");
-                    }
+                    });
+                }
 
+
+                $("#countrydropdown").on("change", function () {
+                    var countryid = $("#countrydropdown").val();
+                    console.log(countryid);
+                    $.ajax({
+                        type: "Post",
+                        url: "/Admin/GetCities",
+                        data: { countryid: countryid },
+                        success: function (data) {
+                            var str = "";
+                            //console.log(data);
+                            var releatedmission = $("#citydropdown");
+                            for (i = 0; i < data["data"].length; i++) {
+
+                                str += '<option value=' + data["data"][i].cityId + '>' + data["data"][i].name + '</option>';
+                            }
+                            $("#citydropdown").text("");
+                            releatedmission.append(str);
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("Something went Worng");
+                        }
+
+                    });
                 });
-            }
-            function getskill() {
-           $.ajax({
-          type: "GET",
-          url: "/Account/GetSkills",
-          data: "{}",
-          success: function (data) {
-              console.log(data);
-              var str = "";
-              //console.log(data);
-              var releatedmission = $("#skilllistinmodal");
-              var secondList = $("#secondList");
-              var skillValues = $("#skilltext").text().split(",");
-              var str2 = "";
-              for (i = 0; i < data["data"].length; i++) {
+                    function gettheme() {
+                    $.ajax({
+                        type: "get",
+                        url: "/Admin/GetMissionTheme",
+                        data: "{}",
+                        success: function (data) {
+                            console.log(data);
+                            var str = "";
+                            //console.log(data);
+                            var releatedmission = $("#themedropdown");
+                            for (i = 0; i < data["data"].length; i++) {
 
-                  if (!skillValues.includes(data["data"][i].skillName)) {
-                      str += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+                                str += '<option value=' + data["data"][i].missionThemeId + '>' + data["data"][i].title + '</option>';
+                            }
+
+                            releatedmission.append(str);
+                        },
+                        failure: function (response) {
+                            alert("failure");
+                        },
+                        error: function (response) {
+                            alert("Something went Worng");
+                        }
+
+                    });
+                }
+                function getskill() {
+               $.ajax({
+              type: "GET",
+              url: "/Account/GetSkills",
+              data: "{}",
+              success: function (data) {
+                  console.log(data);
+                  var str = "";
+                  //console.log(data);
+                  var releatedmission = $("#skilllistinmodal");
+                  var secondList = $("#secondList");
+                  var skillValues = $("#skilltext").text().split(",");
+                  var str2 = "";
+                  for (i = 0; i < data["data"].length; i++) {
+
+                      if (!skillValues.includes(data["data"][i].skillName)) {
+                          str += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+                      }
+                      else {
+                          str2 += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
+
+                      }
+
                   }
-                  else {
-                      str2 += '<li data-skill="' + data["data"][i].skillName + '" value="' + data["data"][i].skillId + '">' + data["data"][i].skillName + '</li>';
 
-                  }
-
+                  secondList.html(str2);
+                  releatedmission.html(str);
+                  $(".popup-container .skill-list li").on("click", function () {
+                      console.log("clicked");
+                      $(this).toggleClass("selected");
+                  });
+              },
+              failure: function (response) {
+                  alert("failure");
+              },
+              error: function (response) {
+                  alert("Something went Worng");
               }
 
-              secondList.html(str2);
-              releatedmission.html(str);
-              $(".popup-container .skill-list li").on("click", function () {
-                  console.log("clicked");
-                  $(this).toggleClass("selected");
-              });
-          },
-          failure: function (response) {
-              alert("failure");
-          },
-          error: function (response) {
-              alert("Something went Worng");
-          }
+          });
+        }
 
-      });
-    }
-
-        //=====================================================================
+            //=====================================================================
 
 
 
 
-        $(document).ready(function () {
-        $(".popup-container").hide();
-        $(".user-edit-add-skill-btn").on("click", function (event) {
-            event.preventDefault();
-            $(".popup-container").show();
-        });
-
-        $(".user-edit-close-btn").on("click", function () {
+            $(document).ready(function () {
             $(".popup-container").hide();
-        });
-
-        $(".closebtnpopup").on("click", function () {
-            $(".popup-container").hide();
-        });
-
-
-        $(".close-popup-btn").click(function () {
-            $(".popup-container").fadeOut();
-        });
-
-        $(".add-skill").on("click", function (e) {
-            e.preventDefault();
-            var selectedSkill = $(".available-skills .skill-list li.selected");
-            if (selectedSkill.length > 0) {
-                selectedSkill.appendTo($(".selected-skills .skill-list"));
-                selectedSkill.removeClass("selected");
-            }
-        });
-
-        $(".remove-skill").on("click", function (e) {
-            e.preventDefault();
-            var selectedSkill = $(".selected-skills .skill-list li.selected");
-            if (selectedSkill.length > 0) {
-                selectedSkill.appendTo($(".available-skills .skill-list"));
-                selectedSkill.removeClass("selected");
-            }
-        });
-
-
-        var names = "";
-        $(".user-edit-save-btn").on("click", function (e) {
-            e.preventDefault();
-            $(".user-edit-selected-skill").empty();
-            names="";
-            $(".selected-skills .skill-list li").each(function () {
-                var skillName = $(this).text().trim();
-                names += skillName+"\n";
-                /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
+            $(".user-edit-add-skill-btn").on("click", function (event) {
+                event.preventDefault();
+                $(".popup-container").show();
             });
-            $("#skilltext").text("");
-            $("#skilltext").text(names);
-            $(".popup-container").hide();
-        });
-      });
+
+            $(".user-edit-close-btn").on("click", function () {
+                $(".popup-container").hide();
+            });
+
+            $(".closebtnpopup").on("click", function () {
+                $(".popup-container").hide();
+            });
+
+
+            $(".close-popup-btn").click(function () {
+                $(".popup-container").fadeOut();
+            });
+
+            $(".add-skill").on("click", function (e) {
+                e.preventDefault();
+                var selectedSkill = $(".available-skills .skill-list li.selected");
+                if (selectedSkill.length > 0) {
+                    selectedSkill.appendTo($(".selected-skills .skill-list"));
+                    selectedSkill.removeClass("selected");
+                }
+            });
+
+            $(".remove-skill").on("click", function (e) {
+                e.preventDefault();
+                var selectedSkill = $(".selected-skills .skill-list li.selected");
+                if (selectedSkill.length > 0) {
+                    selectedSkill.appendTo($(".available-skills .skill-list"));
+                    selectedSkill.removeClass("selected");
+                }
+            });
+
+
+            var names = "";
+            $(".user-edit-save-btn").on("click", function (e) {
+                e.preventDefault();
+                $(".user-edit-selected-skill").empty();
+                names="";
+                $(".selected-skills .skill-list li").each(function () {
+                    var skillName = $(this).text().trim();
+                    names += skillName+"\n";
+                    /* $("<p>").text(skillName).appendTo($("#skilltext"));*/
+                });
+                $("#skilltext").text("");
+                $("#skilltext").text(names);
+                $(".popup-container").hide();
+            });
+          });
+
+
+          $("#missiontypevalue").on("change", function () {
+        var typeofmission="";
+         typeofmission=$(this).val();;
+        console.log(typeofmission);
+        if(typeofmission=="time")
+        {
+          console.log($("#goalmissionvaluesdiv"));
+            document.getElementById("goalmissionvaluesdiv").style.display="none !important";
+            $("#goalmissionvaluesdiv").css("display","none");
+        }
+        else{
+       $("#goalmissionvaluesdiv").css("display","flex");
+        }
+
+    });
 </script>
 
   }

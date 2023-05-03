@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadskill();
 });
 var searchskilltext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#search_skill_adminbtn").on("keyup", function (e) {
     e.preventDefault();

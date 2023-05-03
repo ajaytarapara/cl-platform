@@ -89,15 +89,15 @@
         <div class="row mt-3">
             <div class="storydropdown" id="description">
                 My Story
-                <input  asp-for="Description" class="form-control" type="text" placeholder="Enter story description"
+                <input asp-for="Description" class="form-control" type="text" placeholder="Enter story description"
                        aria-label="default input example" id="myTextarea" style="height: 150px;" required>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
-@*        <div class="storydropdown mt-3">
+        @*        <div class="storydropdown mt-3">
             Enter Video URL
             <input class="form-control" type="text" placeholder="Enter your url" aria-label="default input example">
-        </div>*@
+            </div>*@
         <div class="row">
             <div class="storydropdown">
             </div>
@@ -105,8 +105,9 @@
         <div class="row">
             <div class="input-div">
                 <p>Drag & drop photos here or <strong>Browse</strong></p>
-              
+
             </div>
+            <input type="file" class="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
             <div id="share-story-content-upload-photos" class="pt-3">
                 <label for="">
                     Upload your photos
@@ -114,7 +115,7 @@
                 <div id="dropSection" class="w-100 d-flex flex-column align-items-center justify-content-center">
                     <span class="fs-1 fw-lighter">+</span>
                     <span class="fs-5 fw-lighter">Drag and drop pictures here</span>
-                      <input type="file" class="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+
                 </div>
                 <div id="uploadedFiles" class="p-2 d-flex flex-wrap">
                 </div>
@@ -133,7 +134,7 @@
                 <div style=" display: inline-block;">
                     <button id="pbtn" style="border: 1px solid orange;border-radius: 7px;background:
                       transparent;padding: 10px;color: orange;width: 100px;">
-                        <a id="Previewbtnsharestory">Preview</a>
+                        <a id="Previewbtnsharestory" style="text-decoration:none;color:orange">Preview</a>
                     </button>
                     <button class="savebutton" id="savebtnsharestory" type="submit">save</button>
                     <button class="savebutton" id="submitbtnsharestory">submit</button>

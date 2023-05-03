@@ -97,6 +97,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Savestory(long userid,long MissionId,string Title,DateTime PublishedAt,string Description,string StoryMedia)
         {
+            if (ModelState.IsValid) {
             if (StoryMedia != null && PublishedAt!=null&& Description!=null&&Title !=null)
             {
                 ShareStoryModel storymodel = new ShareStoryModel();
@@ -122,7 +123,13 @@ namespace CIPlatform.Controllers
                 _notyf.Error("pls fill all field of this page", 5);
                 ModelState.AddModelError("add", "pls correct enter data");
                 return Json(new { status = 1 });
-            }           
+            }
+            }
+            else
+            {
+                _notyf.Error("pls fill all field of this page", 5);
+                return Json(new {status=3});
+            }
         }
 
         public IActionResult Upload(List<IFormFile> postedFiles)

@@ -27,6 +27,9 @@
                 <li class="p-1">
                     <a class="dropdown-item" name="lowestseats" id="" />Oldest</a>
                 </li>
+                <li class="p-1">
+                    <a class="dropdown-item" name="lowestseats" id="" />My favorites</a>
+                </li>
             </ul>
             <button id="grid-view-btn" style="margin: 10px;background:none;width:45px;border:none">
                 <img src="~/images/grid.png" alt="">
@@ -77,23 +80,23 @@
                             @Item.CityName
                         </div>
                         <div class="d-flex flex-column align-items-end">
-                           
-                                @*           <button id ="heartbtn"><img src="~/images/heart.png" alt=""></button>*@
 
-                                @if (@Item.favourite == 1)
-                                {
-                                      <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1" style="background:red">
+                            @*           <button id ="heartbtn"><img src="~/images/heart.png" alt=""></button>*@
+
+                            @if (@Item.favourite == 1)
+                            {
+                                <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1" style="background:red">
                                     <button class="btnaddtofav list-img-content  rounded-5 m-1 img-fluid border-none" onclick="addtofavi(this, 1)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart.png" style="height:20px;width:20px; background-color:red;border:none" class="Icon mx-auto" alt="" /></button>
-                                     </div>
-                                }
-                                else
-                                {
-                                    <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1">
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="list-img-heart" class="list-img-content p-1 rounded-5 m-1">
                                     <button class="btnaddtofav list-img-content  rounded-5 m-1 img-fluid" onclick="addtofavi(this, 0)" id="heartbtn" value="@Item.MissionId"><img src="/images/heart1.png" style="height:20px;width:20px; color:red ;border:none" class="Icon mx-auto" alt="" /></button>
-                                      </div>
+                                </div>
 
-                                }
-                           
+                            }
+
                             <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
                                 <img src="~/images/user.png" alt="">
                             </div>
@@ -199,7 +202,7 @@
                         {
                             <button style=" border: 2px solid #F88634; border-radius: 24px;
                             width:30%;height:43px;" class="gridbuttonhome">
-                                <a class="linkapply" style="text-decoration:none;" href="@Url.Action("Mission_Volunteer", "Mission", 
+                                <a class="linkapply" style="text-decoration:none;" href="@Url.Action("Mission_Volunteer", "Mission",
                                 new { missionId = @Item.MissionId })">View Details</a><img src="~/images/right-arrow.png" alt="">
                             </button>
                         }
@@ -207,7 +210,7 @@
                         {
                             <button style=" border: 2px solid #F88634; border-radius: 24px;
                             width:30%;height:43px;" class="gridbuttonhome">
-                                <a class="linkapply" style="text-decoration:none;" href="@Url.Action("Mission_Volunteer", "Mission", 
+                                <a class="linkapply" style="text-decoration:none;" href="@Url.Action("Mission_Volunteer", "Mission",
                                 new { missionId = @Item.MissionId })">Apply</a><img src="~/images/right-arrow.png" alt="">
                             </button>
                         }
@@ -272,13 +275,13 @@
                                 else
                                 {
                                     <button class="btnaddtofav p-2" onclick="addtofavi(this, 0)" id="heartbtn"
-                                    value="@Item.MissionId"style="width:100%">
+                                    value="@Item.MissionId" style="width:100%">
                                         <img src="/images/heart1.png"
                                      style="height:20px;width:20px; color:red ;border:none"
                                      class="Icon mx-auto" alt="" />
                                     </button>
                                 }
-                                
+
 
                             </div>
                             <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">

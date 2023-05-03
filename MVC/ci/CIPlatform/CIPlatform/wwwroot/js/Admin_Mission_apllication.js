@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadmissionapplication();
 });
 var searchapplicationtext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#searchapplicationadmin").on("keyup", function (e) {
     e.preventDefault();

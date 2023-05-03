@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadmissiontheme();
 });
 var search_mission_themetext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#search_mission_theme_adminbtn").on("keyup", function (e) {
     e.preventDefault();

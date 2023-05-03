@@ -11,7 +11,7 @@ var Department = "";
 var EmployeeId = "";
 var PhoneNumber = "";
 var Email = "";
-var pageSize = 4;
+var pageSize = 3;
 var pageNumber = 1;
 //=====================================================================================================
 //search ajax in user crud admin

@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 });
 
-
 /*submit story*/
 selectedmissionid = "";
 Description = "";
@@ -62,10 +61,18 @@ $("#savebtnsharestory").on("click", function (e) {
         url: "/Story/Savestory",
         data: { userid: UserId, MissionId: selectedmissionid, Title: Title, PublishedAt: PublishedAt, Description: Description, StoryMedia: storyFileNames },
         success: function (data) {
-            alert("story updated succesfully");
+            if (data["status"] == 3) {
+                alert("pls fill data");
+            }
+            else
+            {
             var storyId = data["storyId"];
             console.log(storyId);
-            $("#Previewbtnsharestory").attr('href', '/Story/View_Story?storyId=' + storyId)
+                $("#Previewbtnsharestory").attr('href', '/Story/View_Story?storyId=' + storyId);
+                $("#pbtn").css("display", "inline-block");
+            }
+           
+            
         },
         failure: function (response) {
             alert("failure");

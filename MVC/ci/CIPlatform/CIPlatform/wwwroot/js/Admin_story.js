@@ -5,7 +5,7 @@ $(document).ready(function () {
     loadstory();
 });
 var searchstorytext = "";
-var pageSize = 2;
+var pageSize = 3;
 var pageNumber = 1;
 $("#searchstoryadmin").on("keyup", function (e) {
     e.preventDefault();

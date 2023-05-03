@@ -1175,7 +1175,7 @@ footer {
     left: -3%;
     right: 0;
     background-color: black;
-    opacity: 0.4;
+    opacity: 0.6;
     overflow: hidden;
     width: 106%;
     height: 100%;
@@ -1259,13 +1259,14 @@ footer {
     display: none;
 }
 
-#pbtn {
+#pbtn{
     border: 1px solid orange;
     border-radius: 7px;
     background: transparent;
     padding: 10px;
     color: orange;
     width: 100px;
+    display:none;
 }
 /*====================================================================*/
 /*USER EDIT PROFILE*/

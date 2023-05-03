@@ -24,7 +24,7 @@
                         <td>
                             @item.Title
                         </td>
-                        @if (item.Status == true)
+                        @if (item.Status == 1)
                         {
                             <td style="color: green;">active</td>
                         }
@@ -59,7 +59,7 @@
     </table>
 </div>
 @{
-    int pageSize = 2;
+    int pageSize = 3;
     double pageCount = Math.Ceiling((Model.TotalCount * 1.0) / (pageSize * 1.0));
 }
 <div class="pe-0 pe-sm-5 d-flex justify-content-end align-items-center mt-4">

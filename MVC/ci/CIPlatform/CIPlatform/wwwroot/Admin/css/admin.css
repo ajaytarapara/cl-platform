@@ -157,3 +157,6 @@ Admin add cms
 .admin-add-cms-heading {
     background: #F8F9FC 0% 0% no-repeat padding-box;
 }
+#goalmissionvaluesdiv{
+    display:none;
+}
