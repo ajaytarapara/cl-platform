@@ -1540,3 +1540,23 @@ border-radius:10px;
 .popup-container{
     display:none;
 }
+
+.gridbuttonhome:hover {
+    background-color: orange;
+    color:white;
+}
+.gridbuttonhome:hover >a {
+    background-color: orange;
+    color: white;
+}
+
+.gridbuttonhome {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    color: #F88634;
+}
+.linkapply{
+    color:orange;
+}
+.linkapply:hover {
+    color: white;
+}

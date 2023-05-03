@@ -166,12 +166,14 @@ $(document).ready(function () {
 
     $(".closebtnpopup").on("click", function () {
         $(".popup-container").hide();
+        $("#skilltext").text(names);
     });
 
 
     $(".close-popup-btn").click(function (e) {
         e.preventDefault();
         $(".popup-container").fadeOut();
+        $("#skilltext").text(names);
     });
 
     $(".add-skill").on("click", function (e) {

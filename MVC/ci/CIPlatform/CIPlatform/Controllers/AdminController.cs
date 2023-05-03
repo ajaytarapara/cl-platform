@@ -310,6 +310,7 @@ namespace CIPlatform.Controllers
                 CMS.Description = cms_CrudModels.Description;
                 CMS.Slug = cms_CrudModels.Slug;
                 CMS.CreatedAt = DateTime.Now;
+                CMS.Status= cms_CrudModels.Status;
                 _adminrepository.AddCmsAdmin(CMS);
                 _notyf.Success("cms added successfully", 3);
                 return RedirectToAction("Admin_add_cms", "Admin");
@@ -333,7 +334,9 @@ namespace CIPlatform.Controllers
             CmsPage cms = _adminrepository.GetCmsAdmin(CmsId);
             admin_Cms_.Title= cms.Title;
             admin_Cms_.Slug = cms.Slug;
-            admin_Cms_.Description= cms.Description;
+            admin_Cms_.Description = cms.Description;
+            admin_Cms_.CmsId = (int?)cms.CmsPageId;
+            admin_Cms_.Status = cms.Status;
             return View(admin_Cms_);
         }
 
@@ -358,9 +361,10 @@ namespace CIPlatform.Controllers
                 cms.Description = cms_CrudModels.Description;
                 cms.Slug = cms_CrudModels.Slug;
                 cms.UpdatedAt = DateTime.Now;
+                cms.Status=cms_CrudModels.Status;
                 _adminrepository.UpdateCmsAdmin(cms);
                 _notyf.Success("cms edited successfully", 3);
-                return RedirectToAction("Admin_edit_cms", "Admin");
+                return RedirectToAction("Cms_crud", "Admin");
             }
 
         }

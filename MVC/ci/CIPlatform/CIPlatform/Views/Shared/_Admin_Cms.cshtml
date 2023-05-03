@@ -1,5 +1,5 @@
 ﻿@using CIPlatform.Entities.DataModels
-@model CIPlatform.Entities.ViewModels.AdminPageList<CmsPage> 
+@model CIPlatform.Entities.ViewModels.AdminPageList<CmsPage>
 
 <div class="table-responsive">
     <table class="table" style="border:1px solid rgb(197, 195, 195);">
@@ -24,7 +24,15 @@
                         <td>
                             @item.Title
                         </td>
-                        <td style="color: green;">@item.Status</td>
+                        @if (item.Status == true)
+                        {
+                            <td style="color: green;">active</td>
+                        }
+                        else
+                        {
+                            <td style="color: red;">Deactivate</td>
+
+                        }
                         <td>
                             <a href="@Url.Action("Admin_edit_cms","Admin",new { CmsId = @item.CmsPageId })">
                                 <svg style="color:orange;width: 20px;height: 20px;"
@@ -52,7 +60,7 @@
 </div>
 @{
     int pageSize = 2;
-    double pageCount = Math.Ceiling((Model.TotalCount * 1.0) / (pageSize*1.0));
+    double pageCount = Math.Ceiling((Model.TotalCount * 1.0) / (pageSize * 1.0));
 }
 <div class="pe-0 pe-sm-5 d-flex justify-content-end align-items-center mt-4">
     <div id="pages-@pageCount" class="Pagination Pagination-total" style="display:flex">

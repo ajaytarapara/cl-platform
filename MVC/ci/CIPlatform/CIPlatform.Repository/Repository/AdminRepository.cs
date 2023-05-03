@@ -87,13 +87,13 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<CmsPage> CmsPages;
             if (searchText != null)
             {
-                CmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true).Where
+                CmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).Where
                     (x => x.Title.Contains(searchText)).ToList();
             }
             else
             {
                 CmsPages = _ciPlatformDbContext.CmsPages.Where
-                    (page => page.DeletedAt == null && page.Status == true);
+                    (page => page.DeletedAt == null);
             }
             var totalCounts = CmsPages.Count();
             var records = CmsPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();

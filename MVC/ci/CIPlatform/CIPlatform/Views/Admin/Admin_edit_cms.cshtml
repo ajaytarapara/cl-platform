@@ -5,7 +5,7 @@
         <div class="col-xl-2 col-lg-3  d-lg-flex flex-column" id="admin-page-navigation">
             @Html.Partial("_Admin_dashboard")
         </div>
-        <div class="col-xl-10 col-lg-9"style="height:100vh;overflow:auto">
+        <div class="col-xl-10 col-lg-9" style="height:100vh;overflow:auto">
             <div class="card row d-flex p-3" style="flex-direction: row;">
                 <div class="col-md-6 col-sm-5 p-2 d-flex"
                      style="font-size:18px;align-items: center;justify-content: space-around;"
@@ -60,16 +60,11 @@
                         <label asp-for="Slug" class="mt-2">Slug</label><br>
                         <input asp-for="Slug" class="mt-2 p-1 " type="text" style="width:100%;">
                         <span class="text-danger" asp-validation-for="Slug"></span>
-                        <label for="" class="mt-2">Status</label>
-                        <div class="dropdown mt-2 d-flex mb-5">
-                            <select style="width:100%;background-color: transparent;color: black;padding: 5px;">
-                                class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <option>Weekly</option>
-                                <option>Daily</option>
-                                <option>Monthly</option>
-                            </select>
-                        </div>
+                        <label asp-for="Status" class="form-label py-2 ">Status</label>
+                        <select asp-for="Status" id="" class="form-select mb-2">
+                            <option value="1">Active</option>
+                            <option value="0">Deactivate</option>
+                        </select>
                     </div>
                 </div>
                 <div style="display:flex;justify-content:flex-end" class="container-fluid pb-3 mt-3">
