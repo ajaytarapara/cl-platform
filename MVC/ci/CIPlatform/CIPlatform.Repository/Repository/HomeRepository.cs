@@ -79,13 +79,13 @@ namespace CIPlatform.Repository.Repository
         {
             return (IEnumerable<string>)_ciPlatformDbContext.Missions.Select(x =>x.EndDate).ToList();
         }
-        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber,int uid)
+        public PaginationMission gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber,int uid,string explore)
         {
             // make explicit SQL Parameter
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             var output1 = new SqlParameter("@missionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             PaginationMission pagination = new PaginationMission();
-            List<GridModel> test = _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill},@searchtext={searchText},@sorting={sorting}, @pageNumber = {pageNumber}, @TotalCount = {output} out,@missionCount={output1} out,@UserId = {uid}").ToList();
+            List<GridModel> test = _ciPlatformDbContext.GridModel.FromSqlInterpolated($"exec sp_get_gridview_data  @countryNames={country},@cityNames={city},@themeNames={theme},@skillNames={skill},@searchtext={searchText},@sorting={sorting}, @pageNumber = {pageNumber}, @TotalCount = {output} out,@missionCount={output1} out,@UserId = {uid},@Exploreby={explore}").ToList();
             pagination.missions = test;
             pagination.pageSize = 6;
             pagination.pageCount = long.Parse(output.Value.ToString());

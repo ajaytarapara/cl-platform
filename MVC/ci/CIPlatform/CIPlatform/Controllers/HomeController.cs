@@ -110,13 +110,13 @@ namespace CIPlatform.Controllers
 
         }
         [HttpPost]
-        public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber)
+        public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber,string explore)
         {
             // make explicit SQL Parameter
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             int uid = Convert.ToInt32(userObj.UserId);
-            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber, uid);
+            PaginationMission pagination = _homeRepository.gridSP(country, city, theme, skill, searchText, sorting, pageNumber, uid, explore);
             return PartialView("_grid", pagination);
         }
 

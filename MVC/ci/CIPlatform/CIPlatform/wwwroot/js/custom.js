@@ -130,6 +130,7 @@ var selectedThemes = "";
 var selectedSkills = "";
 var searchText = "";
 var sorting = "";
+var explore = "";
 function loadgetgrid(paging) {
     if (!paging)
         paging = 1;
@@ -137,7 +138,7 @@ function loadgetgrid(paging) {
     $.ajax({
         type: "POST",
         url: "/Home/gridSP",
-        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText, sorting: sorting, pageNumber: paging },
+        data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText, sorting: sorting, pageNumber: paging, explore: explore },
        success: function (data)
         {
             var html = "";
@@ -153,6 +154,12 @@ function loadgetgrid(paging) {
            console.log(missiontext);
            $('#sort li a').on('click', function () {
                sorting = $(this).text();
+               console.log(sorting);
+               loadgetgrid();
+           });
+           $('#explore li a').on('click', function () {
+               explore = $(this).text();
+               console.log(explore);
                loadgetgrid();
            });
         },
