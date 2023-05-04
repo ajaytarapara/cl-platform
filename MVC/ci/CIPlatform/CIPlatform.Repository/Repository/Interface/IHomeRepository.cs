@@ -33,5 +33,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public User getuser(string email);
         public List<City> GetCityFromCountry(string countryname);
         public List<City> GetCityFromCountry();
+
+        public List<Notification> GetNotificationforUser(long userid);
     }
 }

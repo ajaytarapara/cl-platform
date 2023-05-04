@@ -42,8 +42,8 @@ namespace CIPlatform.Repository.Repository.Interface
         //==========================
         public AdminPageList<Story> GetStoryAdmin(string searchText, int pageNumber, int pageSize);
         public Story GetstoryForApprove(long storyId);
-        public void ApproveStory(Story story);
-        public void DeleteStory(Story story);
+        public void ApproveStory(Story story, long fromuserid);
+        public void DeleteStory(Story story, long fromuserid);
         //========================
         //Admin Application crud
         //==========================
@@ -99,6 +99,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<MissionSkill> missionSkills(long missionId);
         public Skill GetSkillName(long skillId);
         public void RemoveMissionSkill(long missionid);
-
+        public void GiveNotificationToUser(Notification notification);
     }
 }

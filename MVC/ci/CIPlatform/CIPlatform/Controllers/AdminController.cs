@@ -404,7 +404,16 @@ namespace CIPlatform.Controllers
         {
             Story story = _adminrepository.GetstoryForApprove(storyId);
             story.Status = "approved";
-            _adminrepository.ApproveStory(story);
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            User adminobj = _adminrepository.findadmin(adminemail);
+            int fromuserid = (int)adminobj.UserId;
+            _adminrepository.ApproveStory(story, fromuserid);
             Admin_story_crud story_Crud = new Admin_story_crud();
             string searchText = "";
             int pageNumber = 1;
@@ -420,7 +429,16 @@ namespace CIPlatform.Controllers
             Story story = _adminrepository.GetstoryForApprove(storyId);
             story.Status = "rejected";
             story.DeletedAt = DateTime.Now;
-            _adminrepository.DeleteStory(story);
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+
+            if (adminSessionEmailId == null)
+            {
+                return RedirectToAction("Admin_Login", "Admin");
+            }
+            string adminemail = adminSessionEmailId;
+            User adminobj = _adminrepository.findadmin(adminemail);
+            int fromuserid = (int)adminobj.UserId;
+            _adminrepository.DeleteStory(story, fromuserid);
             string searchText = "";
             int pageNumber = 1;
             int pageSize = 2;
@@ -1166,5 +1184,6 @@ namespace CIPlatform.Controllers
             _notyf.Success("mission deleted successfully", 3);
             return RedirectToAction("Admin_mission");
         }
+
     }
 }

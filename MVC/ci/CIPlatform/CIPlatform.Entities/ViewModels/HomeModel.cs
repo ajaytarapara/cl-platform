@@ -35,6 +35,7 @@ namespace CIPlatform.Entities.ViewModels
         public string Mediatype { get; set; }
         public string themetitle { get; set; }
         public string? seatsleft { get; set; }
+
     }
 
 }

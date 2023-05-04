@@ -128,5 +128,13 @@ namespace CIPlatform.Repository.Repository
             return citylist;
         }
 
+        //===============================================================================================================
+        //Notification 
+        //================================================================================================================
+
+        List<Notification> IHomeRepository.GetNotificationforUser(long userid)
+        {
+            return _ciPlatformDbContext.Notifications.Where(x=>x.ToUserId == userid).ToList();
+        }
     }
 }

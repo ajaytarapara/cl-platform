@@ -165,5 +165,26 @@ namespace CIPlatform.Controllers
             }
         }
 
+        //==============================================================================
+        //notification
+        //===============================================================================
+        public IActionResult GetNotification()
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            var notificationList = _homeRepository.GetNotificationforUser(userid).ToList();
+            return Json(new { data = notificationList });
+        }
+
+        //public IActionResult GetNotificationCount()
+        //{
+        //    string userSession = HttpContext.Session.GetString("useremail");
+        //    User userObj = _homeRepository.getuser(userSession);
+        //    int userid = Convert.ToInt32(userObj.UserId);
+        //    var notificationList = _homeRepository.GetNotificationforUser(userid).ToList();
+        //    var notyficationcount=notificationList.Count();
+        //    return Json(new {data = notyficationcount});
+        //}
     }
 }

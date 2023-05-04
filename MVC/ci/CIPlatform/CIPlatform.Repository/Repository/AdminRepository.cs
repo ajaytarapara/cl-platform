@@ -148,14 +148,30 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Stories.Where(story => story.StoryId == storyId).FirstOrDefault();
         }
-        void IAdminRepository.ApproveStory(Story story)
+        void IAdminRepository.ApproveStory(Story story, long fromuserid)
         {
             _ciPlatformDbContext.Stories.Update(story);
             _ciPlatformDbContext.SaveChanges();
+            Notification notification = new Notification();
+            notification.NotificationType = "story approval";
+            notification.ToUserId = (int?)story.UserId;
+            notification.FromId = (int?)fromuserid;
+            notification.CreatedAt = DateTime.Now;
+            notification.NotificationText = "your story has approved <a href='/Story/View_Story?storyid=" + story.StoryId + "'/>" + story.Title + "</a>";
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
         }
-        void IAdminRepository.DeleteStory(Story story)
+        void IAdminRepository.DeleteStory(Story story,long fromuserid)
         {
             _ciPlatformDbContext.Stories.Update(story);
+            _ciPlatformDbContext.SaveChanges();
+            Notification notification = new Notification();
+            notification.NotificationType = "story rejected";
+            notification.ToUserId = (int?)story.UserId;
+            notification.FromId = (int?)fromuserid;
+            notification.CreatedAt= DateTime.Now;
+            notification.NotificationText = "your story has rejected " + story.Title;
+            _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
         }
         //=============================
@@ -421,6 +437,15 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.SaveChanges();
             }
         }
-        //=======================================================================================================================================
+        ////=======================================================================================================================================
+        //Notification
+        //================================================================================================================================
+        void IAdminRepository.GiveNotificationToUser(Notification notification)
+        {
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
     }
+
 }
