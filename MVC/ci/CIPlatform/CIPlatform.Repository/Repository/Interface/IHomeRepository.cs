@@ -35,5 +35,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<City> GetCityFromCountry();
 
         public List<Notification> GetNotificationforUser(long userid);
+
+        public void ClearNotification(long userid);
     }
 }

@@ -111,6 +111,8 @@ namespace CIPlatform.Controllers
             string subject = "your friend recommanded to you for mission";
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path,subject);
+            MissionInvite missionInvite = new MissionInvite();
+            missionInvite.FromUserId= userObj.UserId;
             _notyf.Success("mail sended successfully", 3);
 
         }

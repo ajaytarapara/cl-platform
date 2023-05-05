@@ -207,7 +207,8 @@ namespace CIPlatform.Controllers
             invite.FromUserId = userObj.UserId;
             invite.StoryId = storyId;
             invite.CreatedAt = DateTime.Now;
-            invite.ToUserId = _storyRepository.GetInvitedUserid(cow_email);
+            long fromuserid=userObj.UserId;
+            invite.ToUserId = _storyRepository.GetInvitedUserid(cow_email,fromuserid);
             _storyRepository.AddInvitedUser(invite);
             _notyf.Success("mail sended successfully", 3);
 

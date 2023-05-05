@@ -81,9 +81,17 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Add(invite);
             _ciPlatformDbContext.SaveChanges();
         }
-        long IStoryRepository.GetInvitedUserid(string cow_email)
+        long IStoryRepository.GetInvitedUserid(string cow_email,long fromuserid)
         {
-            User user= _ciPlatformDbContext.Users.Where(x=>x.Email== cow_email).FirstOrDefault();
+            User user= _ciPlatformDbContext.Users.Where(x=>x.Email== cow_email).FirstOrDefault();  
+            Notification notification= new Notification();
+            notification.CreatedAt= DateTime.Now;
+            notification.NotificationText = user.FirstName+user.LastName+"\n"+"Recommanded co-worker from story";
+            notification.ToUserId= (int?)user.UserId;
+            notification.FromId= (int?)fromuserid;
+            notification.NotificationType= "Recommanded co-worker from story";
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
             return user.UserId;
         }
 

@@ -136,5 +136,14 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Notifications.Where(x=>x.ToUserId == userid).ToList();
         }
+        void IHomeRepository.ClearNotification(long userid)
+        {
+            List<Notification> usernotificationlist=_ciPlatformDbContext.Notifications.Where(x=>x.ToUserId==userid).ToList();
+            foreach (var notification in usernotificationlist)
+            {
+                _ciPlatformDbContext.Remove(notification);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
     }
 }

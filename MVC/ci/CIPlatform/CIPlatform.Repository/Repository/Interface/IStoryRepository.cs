@@ -25,7 +25,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public void AddInvitedUser(StoryInvite invite);
 
-        public long GetInvitedUserid(string cow_email);
+        public long GetInvitedUserid(string cow_email,long fromuserid);
 
         public void AddStoryViews(Story story);
 

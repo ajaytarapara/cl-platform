@@ -186,5 +186,13 @@ namespace CIPlatform.Controllers
         //    var notyficationcount=notificationList.Count();
         //    return Json(new {data = notyficationcount});
         //}
+        [HttpPost]
+        public void clearnotification()
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            _homeRepository.ClearNotification(userid);
+        }
     }
 }

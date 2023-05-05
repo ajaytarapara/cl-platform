@@ -163,7 +163,7 @@ function intializeChips() {
             '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
         );
         $(".close-chips").show();
-        $(".no-filter-text").hue();
+        $(".no-filter-text").hide();
         $(".close-chips").show();
         $(".close-chips").click(function () {
             $(".chip").each(function () {
@@ -381,9 +381,16 @@ $("#notification-button").on("click", function () {
         dataType: "json",
         data: "",
         success: function (data) {
-            var notificationdivRecently = $(".notificationdivRecently");
-            notificationdivRecently.empty();
-            var str = '<li id="notification-header-li" class="p-2 d-flex justify-content-between align-items-center"><button class="bg-white border-0" data - bs - toggle="modal" data - bs - target="#navigation-setting-modal" ><img src="/images/settings.png" /></button ><span>Notification</span><button class="bg-white border-0">Clear All</button></li >';
+            var notificationdivRecently = $("#notification-dropdown");
+            const list = document.getElementById("notification-dropdown");
+            var childCount = list.childElementCount;
+            for (var i = 1; i < childCount; i++) {
+                console.log(list);
+                if (list.hasChildNodes()) {
+                    list.removeChild(list.children[1]);
+                }
+            }
+            var str = '';
             var str2 = "";
             var notificationdata = "";
              notificationdata = data["data"];
@@ -406,6 +413,26 @@ $("#notification-button").on("click", function () {
             notificationdivRecently.append(str);
             notificationdivRecently.append(str2);
 
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+});
+
+$("#clearnotificationbutton").on("click", function () {
+    console.log("ckiufjsakf");
+
+    $.ajax({
+        type: "post",
+        url: "/Home/clearnotification",
+        data: "",
+        success: function (data) {
+            $("#notification-button").trigger("click");
         },
         failure: function (response) {
             alert("failure");
