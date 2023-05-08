@@ -124,7 +124,33 @@ namespace CIPlatform.Repository.Repository
            MissionApplication missionApplicationstatus = _ciPlatformDbContext.MissionApplications.Include(x => x.User).Where(x => x.UserId == UserId && x.MissionId == MissionId).FirstOrDefault();
             return missionApplicationstatus;
         }
-
-
+        long IMissionRepository.GetInvitedUserid(string cow_email, long fromuserid, long missionId)
+        {
+            User user = _ciPlatformDbContext.Users.Where(x => x.Email == cow_email).FirstOrDefault();
+            if(user != null)
+            {
+                Notification notification = new Notification();
+                notification.NotificationType = "recommanded from mission";
+                notification.ToUserId = (int?)fromuserid;
+                notification.ToUserId = (int?)user.UserId;
+                notification.CreatedAt = DateTime.Now;
+                notification.Status = "notseen";
+                notification.NotificationText = "<a href='/Mission/Mission_Volunteer?missionId=" + missionId + "'/>" + " you can see mission " + "</a>";
+                _ciPlatformDbContext.Add(notification);
+                _ciPlatformDbContext.SaveChanges();
+                long userid = user.UserId;
+                return userid;
+            }
+            else
+            {
+                return 0;
+            }
+      
+        }
+        void IMissionRepository.AddinvitedMissionUser(MissionInvite missionInvite)
+        {
+            _ciPlatformDbContext.Add(missionInvite);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

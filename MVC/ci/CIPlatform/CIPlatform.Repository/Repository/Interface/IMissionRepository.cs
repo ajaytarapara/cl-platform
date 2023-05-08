@@ -21,5 +21,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<MissionApplication> GetRecentVolunteer(long missionid);
 
         public MissionApplication GetAppliedBtnForUser(long UserId,long MissionId);
+        public long GetInvitedUserid(string cow_email,long fromuserid,long missionId);
+        public void AddinvitedMissionUser(MissionInvite missionInvite);
     }
 }

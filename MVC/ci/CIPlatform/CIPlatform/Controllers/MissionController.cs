@@ -110,10 +110,21 @@ namespace CIPlatform.Controllers
             string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + Missionid.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Apply to Mission </a>";
             string subject = "your friend recommanded to you for mission";
             MailHelper mailHelper = new MailHelper(configuration);
-            ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path,subject);
             MissionInvite missionInvite = new MissionInvite();
             missionInvite.FromUserId= userObj.UserId;
-            _notyf.Success("mail sended successfully", 3);
+            long fromuserid=missionInvite.FromUserId;
+            missionInvite.ToUserId= _missionRepository.GetInvitedUserid(cow_email, fromuserid, Missionid);
+            missionInvite.MissionId = Missionid;
+            missionInvite.CreatedAt = DateTime.Now;
+            if (missionInvite.ToUserId != 0) {
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path, subject);
+                _missionRepository.AddinvitedMissionUser(missionInvite);
+                _notyf.Success("mail sended successfully", 3);
+            }
+            else
+            {
+                _notyf.Error("emailid is not any user have");
+            }
 
         }
 

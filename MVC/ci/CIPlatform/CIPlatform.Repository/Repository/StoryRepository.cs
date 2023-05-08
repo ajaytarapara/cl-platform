@@ -81,7 +81,7 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Add(invite);
             _ciPlatformDbContext.SaveChanges();
         }
-        long IStoryRepository.GetInvitedUserid(string cow_email,long fromuserid)
+        long IStoryRepository.GetInvitedUserid(string cow_email,long fromuserid,long storyid)
         {
             User user= _ciPlatformDbContext.Users.Where(x=>x.Email== cow_email).FirstOrDefault();  
             Notification notification= new Notification();
@@ -90,6 +90,7 @@ namespace CIPlatform.Repository.Repository
             notification.ToUserId= (int?)user.UserId;
             notification.FromId= (int?)fromuserid;
             notification.NotificationType= "Recommanded co-worker from story";
+            notification.NotificationText =  "<a href='/Story/View_Story?storyid=" + storyid + "'/>" +" you can see their story" + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
             return user.UserId;
