@@ -899,6 +899,7 @@ namespace CIPlatform.Controllers
             mission.ThemeId = (long)missionModels.missiontheme;
             long missionid = _adminrepository.AddMission(mission);
             _notyf.Success("mission added successfully", 3);
+            List<MissionSkill> missionSkillsList=new List<MissionSkill>();
             if (missionModels.missionskills != null)
             {
                 string[] skills = missionModels.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
@@ -909,8 +910,9 @@ namespace CIPlatform.Controllers
                     mSkill.SkillId = SkillId;
                     mSkill.MissionId = missionid;
                     _adminrepository.AddMissionSkill(mSkill);
-
+                    missionSkillsList.Add(mSkill);
                 }
+
             }
             if (missionModels.missiontype == "goal")
             {
@@ -950,6 +952,8 @@ namespace CIPlatform.Controllers
                 media.MediaType = type;
                 media.MediaPath = path;
                 _adminrepository.AddMissionMedia(media);
+
+
                 _notyf.Success("mission media added successfully", 3);
 
             }
@@ -982,6 +986,14 @@ namespace CIPlatform.Controllers
                 missionDocument.DocumentPath = "document";
                 _adminrepository.AddMissionDocument(missionDocument);
                 _notyf.Success("mission document added successfully", 3);
+            }
+            List<User> users = _adminrepository.GetUserWithSkillAvailability(missionSkillsList);
+            if(users != null)
+            {
+                foreach(User user in users)
+                {
+                    _adminrepository.GiveMissionNotification(user,missionid);
+                }
             }
             return RedirectToAction("Admin_Add_Mission");
         }

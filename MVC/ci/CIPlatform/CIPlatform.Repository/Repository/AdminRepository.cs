@@ -334,11 +334,11 @@ namespace CIPlatform.Repository.Repository
             {
 
                 Missions = _ciPlatformDbContext.Missions.Where
-                    (Missions => Missions.Title.Contains((searchText)) && Missions.DeletedAt == null).ToList();
+                    (Missions => Missions.Title.Contains((searchText)) && Missions.DeletedAt == null && Missions.Status == true).ToList();
             }
             else
             {
-                Missions = _ciPlatformDbContext.Missions.Where(Missions => Missions.DeletedAt == null).ToList();
+                Missions = _ciPlatformDbContext.Missions.Where(Missions => Missions.DeletedAt == null && Missions.Status == true).ToList();
             }
             var totalCounts = Missions.Count();
             var records = Missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -444,6 +444,30 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
+        }
+
+        List<User> IAdminRepository.GetUserWithSkillAvailability(List<MissionSkill> missionSkillslist)
+        {
+            List<User> users = new List<User>();
+            foreach (MissionSkill skill in missionSkillslist)
+            {
+                List<User> userWithSkill = _ciPlatformDbContext.Users.Include(user => user.UserSkills).Where(users => users.UserSkills.Any(usersk => usersk.SkillId == skill.SkillId)).ToList();
+                users = users.Union(userWithSkill).ToList();
+            }
+            return users;
+        }
+        void IAdminRepository.GiveMissionNotification(User user,long missionid)
+        {
+            Notification notification1=new Notification();
+            notification1.NotificationType = "New MISSION ADDED";
+            notification1.ToUserId = (int?)user.UserId;
+            notification1.CreatedAt = DateTime.Now;
+            notification1.FromId = 1;
+            notification1.NotificationText = "NEW MISSION added"+ "<a href='/Mission/Mission_Volunteer?missionId=" + missionid + "'/>" + " you can see mission " + "</a>"; ;
+            notification1.Status = "NOTSEEN";
+            _ciPlatformDbContext.Add(notification1);
+            _ciPlatformDbContext.SaveChanges();
+
         }
 
     }
