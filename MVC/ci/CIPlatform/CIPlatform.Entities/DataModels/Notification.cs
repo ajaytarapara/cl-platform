@@ -18,4 +18,6 @@ public partial class Notification
     public DateTime? CreatedAt { get; set; }
 
     public string? Status { get; set; }
+
+    public string? Avatar { get; set; }
 }

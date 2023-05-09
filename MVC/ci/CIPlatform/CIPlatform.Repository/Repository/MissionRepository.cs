@@ -135,6 +135,7 @@ namespace CIPlatform.Repository.Repository
                 notification.ToUserId = (int?)user.UserId;
                 notification.CreatedAt = DateTime.Now;
                 notification.Status = "notseen";
+                notification.Avatar=user.Avatar;
                 notification.NotificationText = "<a href='/Mission/Mission_Volunteer?missionId=" + missionId + "'/>" + " you can see mission " + "</a>";
                 _ciPlatformDbContext.Add(notification);
                 _ciPlatformDbContext.SaveChanges();

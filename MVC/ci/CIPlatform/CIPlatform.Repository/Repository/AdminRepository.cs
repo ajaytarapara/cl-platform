@@ -157,6 +157,8 @@ namespace CIPlatform.Repository.Repository
             notification.ToUserId = (int?)story.UserId;
             notification.FromId = (int?)fromuserid;
             notification.CreatedAt = DateTime.Now;
+            notification.Avatar = "/images/right.png";
+            notification.Status = "notseen";
             notification.NotificationText = "your story has approved <a href='/Story/View_Story?storyid=" + story.StoryId + "'/>" + story.Title + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
@@ -170,6 +172,8 @@ namespace CIPlatform.Repository.Repository
             notification.ToUserId = (int?)story.UserId;
             notification.FromId = (int?)fromuserid;
             notification.CreatedAt= DateTime.Now;
+            notification.Status = "notseen";
+            notification.Avatar = "/images/cancel.png";
             notification.NotificationText = "your story has rejected " + story.Title;
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();

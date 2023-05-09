@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     loadgetgrid();
     notificationcount();
+    getnotification();
 });
 var a = $.ajax({
     type: "GET",
@@ -373,7 +374,7 @@ function addtofavi(abc, flag) {
 //===============================================================================================
 //Notification
 //===============================================================================================
-
+function getnotification() {
 $("#notification-button").on("click", function () {
     $.ajax({
         type: "Get",
@@ -402,26 +403,26 @@ $("#notification-button").on("click", function () {
                 yesterdayDate.setDate(yesterdayDate.getDate() - 1);
                 var notificationDate = new Date(notificationdata[j].createdAt.slice(0, 10));
                 if (yesterdayDate < notificationDate) {
-                    str += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
+                    str += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:43px;width:45px;border-radius:85px" src="' + notificationdata[j].avatar+ '"/><span class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
                     if (notificationdata[j].status !="seen") {
 
                         str += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '" checked/></li>';
                     }
                     else {
-                        str += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '"/></li>';
+                        str += '<input style="accent-color:gray" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '" onclick="return false" checked/></li>';
 
                     }
 
                 }
                 else
                 {
-                    str2 += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span  class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
+                    str2 += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="' + notificationdata[j].avatar + '"/><span  class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
                     if (notificationdata[j].status != "seen") {
 
                         str2 += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'" checked/></li>';
                     }
                     else {
-                        str2 += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'"/></li>';
+                        str2 += '<input style="accent-color:gray" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'" onclick="return false" checked/></li>';
 
                     }
 
@@ -441,7 +442,7 @@ $("#notification-button").on("click", function () {
 
     });
 });
-
+}
 $("#clearnotificationbutton").on("click", function () {
     console.log("ckiufjsakf");
 
@@ -493,7 +494,11 @@ $(".notificationstatus").on("change", function () {
         data: { notyid: notificationid},
         success: function (data) {
             $("#totalnotification").empty();
+            $("#notification-button").trigger("click");
+            $("#notification-button").trigger("click");
+            getnotification();
             notificationcount();
+           
         },
         failure: function (response) {
             alert("failure");
