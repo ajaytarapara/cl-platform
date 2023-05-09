@@ -177,15 +177,15 @@ namespace CIPlatform.Controllers
             return Json(new { data = notificationList });
         }
 
-        //public IActionResult GetNotificationCount()
-        //{
-        //    string userSession = HttpContext.Session.GetString("useremail");
-        //    User userObj = _homeRepository.getuser(userSession);
-        //    int userid = Convert.ToInt32(userObj.UserId);
-        //    var notificationList = _homeRepository.GetNotificationforUser(userid).ToList();
-        //    var notyficationcount=notificationList.Count();
-        //    return Json(new {data = notyficationcount});
-        //}
+        public IActionResult GetNotificationCount()
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            var notificationList = _homeRepository.GetNotificationforUserCount(userid).ToList();
+            var notyficationcount = notificationList.Count();
+            return Json(new { data = notyficationcount });
+        }
         [HttpPost]
         public void clearnotification()
         {
@@ -193,6 +193,14 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
             _homeRepository.ClearNotification(userid);
+        }
+        [HttpPost]
+        public void changenotificationstatus(long notyid)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            _homeRepository.UpdateNotificationStatus(notyid);
         }
     }
 }

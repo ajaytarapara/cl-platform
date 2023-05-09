@@ -145,5 +145,16 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.SaveChanges();
             }
         }
+        List<Notification> IHomeRepository.GetNotificationforUserCount(long userid)
+        {
+            return _ciPlatformDbContext.Notifications.Where(x => x.ToUserId == userid && x.Status=="notseen".ToLower()).ToList();
+        }
+        void IHomeRepository.UpdateNotificationStatus(long notificationid)
+        {
+            Notification notification=_ciPlatformDbContext.Notifications.Where(x => x.NotificationId == notificationid).FirstOrDefault();
+            notification.Status = "seen";
+            _ciPlatformDbContext.Update(notification);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

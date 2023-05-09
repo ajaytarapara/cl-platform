@@ -6,7 +6,7 @@
 $(document).ready(function () {
 
     loadgetgrid();
-
+    notificationcount();
 });
 var a = $.ajax({
     type: "GET",
@@ -393,7 +393,8 @@ $("#notification-button").on("click", function () {
             var str = '';
             var str2 = "";
             var notificationdata = "";
-             notificationdata = data["data"];
+            notificationdata = data["data"];
+            console.log(notificationdata);
             for (var j = 0; j < notificationdata.length; j++)
 
             {
@@ -401,18 +402,35 @@ $("#notification-button").on("click", function () {
                 yesterdayDate.setDate(yesterdayDate.getDate() - 1);
                 var notificationDate = new Date(notificationdata[j].createdAt.slice(0, 10));
                 if (yesterdayDate < notificationDate) {
-                    str += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div><input style="accent-color:orange"class="notification-status" type= "checkbox" id="' + notificationdata[j].notificationId + '" checked/></li>';
+                    str += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
+                    if (notificationdata[j].status !="seen") {
+
+                        str += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '" checked/></li>';
+                    }
+                    else {
+                        str += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '"/></li>';
+
+                    }
+
                 }
                 else
                 {
-                    str2 += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span  class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div><input style="accent-color:orange"class="notification-status" type= "checkbox" id="' + notificationdata[j].notificationId + '" checked/></li>';
+                    str2 += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="/images/add.png"/><span  class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
+                    if (notificationdata[j].status != "seen") {
+
+                        str2 += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'" checked/></li>';
+                    }
+                    else {
+                        str2 += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'"/></li>';
+
+                    }
 
                 }
             }
             str += '<li style="background-color:lightgray" class="p-2 border border-1"><span> Older</span ></li >'
             notificationdivRecently.append(str);
             notificationdivRecently.append(str2);
-
+            statusofnotification();
         },
         failure: function (response) {
             alert("failure");
@@ -444,3 +462,46 @@ $("#clearnotificationbutton").on("click", function () {
     });
 });
 
+function notificationcount() {
+    $.ajax({
+        type: "post",
+        url: "/Home/GetNotificationCount",
+        data: "",
+        success: function (data) {
+            var count = "";
+            var countdiv = $("#totalnotification");
+            count=data["data"];
+            countdiv.append(count);
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+function statusofnotification() {
+$(".notificationstatus").on("change", function () {
+    var notificationid = "";
+    notificationid=this.id;
+    console.log(notificationid);
+    $.ajax({
+        type: "post",
+        url: "/Home/changenotificationstatus",
+        data: { notyid: notificationid},
+        success: function (data) {
+            $("#totalnotification").empty();
+            notificationcount();
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+});
+}
