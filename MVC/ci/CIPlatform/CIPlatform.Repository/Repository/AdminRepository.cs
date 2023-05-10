@@ -153,7 +153,7 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Stories.Update(story);
             _ciPlatformDbContext.SaveChanges();
             Notification notification = new Notification();
-            notification.NotificationType = "story approval";
+            notification.NotificationType = "StoryApproval";
             notification.ToUserId = (int?)story.UserId;
             notification.FromId = (int?)fromuserid;
             notification.CreatedAt = DateTime.Now;
@@ -168,7 +168,7 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Stories.Update(story);
             _ciPlatformDbContext.SaveChanges();
             Notification notification = new Notification();
-            notification.NotificationType = "story rejected";
+            notification.NotificationType = "StoryApproval";
             notification.ToUserId = (int?)story.UserId;
             notification.FromId = (int?)fromuserid;
             notification.CreatedAt= DateTime.Now;
@@ -209,7 +209,7 @@ namespace CIPlatform.Repository.Repository
         {
             Notification notification = new Notification();
             notification.NotificationText = "your appli.approved <a href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "'/>" + " mission " + "</a>"; ;
-            notification.NotificationType = "Application approval";
+            notification.NotificationType = "MissionApplicationApproval";
             notification.CreatedAt = DateTime.Now;
             notification.ToUserId = (int?)application.UserId;
             notification.FromId = (int?)fromuserid;
@@ -224,7 +224,7 @@ namespace CIPlatform.Repository.Repository
         {
             Notification notification = new Notification();
             notification.NotificationText ="your appli. rejected <a href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "'/>" + " mission " + "</a>"; ;
-            notification.NotificationType = "Application approval";
+            notification.NotificationType = "MissionApplicationApproval";
             notification.CreatedAt = DateTime.Now;
             notification.ToUserId= (int?)application.UserId;
             notification.FromId = (int?)fromuserid;
@@ -483,12 +483,12 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.GiveMissionNotification(User user,long missionid)
         {
             Notification notification1=new Notification();
-            notification1.NotificationType = "New MISSION ADDED";
+            notification1.NotificationType = "MissionAdded";
             notification1.ToUserId = (int?)user.UserId;
             notification1.CreatedAt = DateTime.Now;
             notification1.FromId = 1;
-            notification1.NotificationText = "NEW MISSION added"+ "<a href='/Mission/Mission_Volunteer?missionId=" + missionid + "'/>" + " you can see mission " + "</a>"; ;
-            notification1.Status = "NOTSEEN";
+            notification1.NotificationText = "New Mission Added"+ "<a href='/Mission/Mission_Volunteer?missionId=" + missionid + "'/>" + " you can see mission " + "</a>"; ;
+            notification1.Status = "Notseen";
             _ciPlatformDbContext.Add(notification1);
             _ciPlatformDbContext.SaveChanges();
 

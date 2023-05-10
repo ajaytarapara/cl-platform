@@ -8,6 +8,7 @@ $(document).ready(function () {
     loadgetgrid();
     notificationcount();
     getnotification();
+    getnotificationsetting();
 });
 var a = $.ajax({
     type: "GET",
@@ -61,7 +62,6 @@ var c = $.ajax({
             str += '<li class="p-1"><a class="dropdown-item" href = "#"> <input type="checkbox" name="theme" value="' + data["data"][j].title + '"/> ' + data["data"][j].title + '</a></li>';
         }
         themeDropDown.append(str);
-        console.log(data);
     },
     failure: function (response) {
         alert("failure");
@@ -107,14 +107,12 @@ var explore = "";
 function loadgetgrid(paging) {
     if (!paging)
         paging = 1;
-    console.log(sorting);
     $.ajax({
         type: "POST",
         url: "/Home/gridSP",
         data: { country: selectedCountries, city: selectedCities, theme: selectedThemes, skill: selectedSkills, searchtext: searchText, sorting: sorting, pageNumber: paging, explore: explore },
         success: function (data) {
             var html = "";
-            //console.log(data);
             var griddata = $("#grid");
 
             griddata.html("");
@@ -122,16 +120,12 @@ function loadgetgrid(paging) {
             toggleListGrid();
             loadPagination();
             var missiontext = $("#missioncount").text()
-
-            console.log(missiontext);
             $('#sort li a').on('click', function () {
                 sorting = $(this).text();
-                console.log(sorting);
                 loadgetgrid();
             });
             $('#explore li a').on('click', function () {
                 explore = $(this).text();
-                console.log(explore);
                 loadgetgrid();
             });
         },
@@ -147,10 +141,8 @@ function loadgetgrid(paging) {
 function loadPagination() {
     var paging = "";
     $("#pagination li a").on("click", function (e) {
-        console.log("in page");
         e.preventDefault();
         paging = $(this).text();
-        console.log(paging);
         loadgetgrid(paging);
     })
 }
@@ -259,14 +251,12 @@ $("#search-input").on("keyup", function (e) {
 
 function citySelectFromCountry() {
     $("#countryDropDownList li a input:checkbox").on("change", function () {
-        console.log("click", selectedCountries);
         $.ajax({
             type: "GET",
             url: "/Home/GetCitiesFromCountry",
             dataType: "json",
             data: { country: selectedCountries },
             success: function (data) {
-                console.log(data);
                 var str = "";
                 var cityDropDown = $("#cityDropDownList");
                 var obj = JSON.parse(data["data"]);
@@ -374,19 +364,22 @@ function addtofavi(abc, flag) {
 //===============================================================================================
 //Notification
 //===============================================================================================
+var SlectedList = new Array();
+
 function getnotification() {
-$("#notification-button").on("click", function () {
+    SlectedList = new Array();
+    $("input.notification-setting-check:checked").each(function () {
+        SlectedList.push(this.id);
+    });
     $.ajax({
-        type: "Get",
+        type: "post",
         url: "/Home/GetNotification",
-        dataType: "json",
-        data: "",
+        data: { nSetting: SlectedList },
         success: function (data) {
             var notificationdivRecently = $("#notification-dropdown");
             const list = document.getElementById("notification-dropdown");
             var childCount = list.childElementCount;
             for (var i = 1; i < childCount; i++) {
-                console.log(list);
                 if (list.hasChildNodes()) {
                     list.removeChild(list.children[1]);
                 }
@@ -395,7 +388,6 @@ $("#notification-button").on("click", function () {
             var str2 = "";
             var notificationdata = "";
             notificationdata = data["data"];
-            console.log(notificationdata);
             for (var j = 0; j < notificationdata.length; j++)
 
             {
@@ -431,6 +423,11 @@ $("#notification-button").on("click", function () {
             str += '<li style="background-color:lightgray" class="p-2 border border-1"><span> Older</span ></li >'
             notificationdivRecently.append(str);
             notificationdivRecently.append(str2);
+            var county = "";
+            $("#totalnotification").empty();
+            var countdiv = $("#totalnotification");
+            county = data["data"].length;
+            countdiv.append(county);
             statusofnotification();
         },
         failure: function (response) {
@@ -440,17 +437,17 @@ $("#notification-button").on("click", function () {
             alert("Something went Worng");
         }
 
-    });
 });
 }
 $("#clearnotificationbutton").on("click", function () {
-    console.log("ckiufjsakf");
 
     $.ajax({
         type: "post",
         url: "/Home/clearnotification",
         data: "",
         success: function (data) {
+            notificationcount();
+            getnotification();
             $("#notification-button").trigger("click");
         },
         failure: function (response) {
@@ -459,7 +456,7 @@ $("#clearnotificationbutton").on("click", function () {
         error: function (response) {
             alert("Something went Worng");
         }
-
+       
     });
 });
 
@@ -470,9 +467,11 @@ function notificationcount() {
         data: "",
         success: function (data) {
             var count = "";
+            $("#totalnotification").empty();
             var countdiv = $("#totalnotification");
             count=data["data"];
             countdiv.append(count);
+          
         },
         failure: function (response) {
             alert("failure");
@@ -487,7 +486,6 @@ function statusofnotification() {
 $(".notificationstatus").on("change", function () {
     var notificationid = "";
     notificationid=this.id;
-    console.log(notificationid);
     $.ajax({
         type: "post",
         url: "/Home/changenotificationstatus",
@@ -510,3 +508,53 @@ $(".notificationstatus").on("change", function () {
     });
 });
 }
+
+function getnotificationsetting() {
+    $.ajax({
+        type: "get",
+        url: "/Home/NotificationSetting",
+        data: "",
+        success: function (data) {
+            var notyset = "";
+            notyset = data["data"];
+            console.log(notyset)
+            $("#RecommendedMission")[0].checked = notyset.recommandedFromMission;
+            $("#StoryApproval")[0].checked = notyset.storyApproval;
+            $("#MissionAdded")[0].checked = notyset.newMissionAdded;
+            $("#RecommendedStory")[0].checked = notyset.recommandedFromStory;
+            $("#MissionApplicationApproval")[0].checked = notyset.applicationApproval;
+            getnotification();
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+
+$("#save-notification-btn").on("click", function () {
+    var notificationsettingsvalue = new Array();
+    $(".notification-setting-check").each(function () {
+        notificationsettingsvalue.push(this.checked);
+       
+    });
+        $.ajax({
+            type: "post",
+            url: "/Home/NotificationSetting",
+            data: { notificationsetting: notificationsettingsvalue },
+            success: function (data) {
+            },
+            failure: function (response) {
+                alert("failure");
+            },
+            error: function (response) {
+                alert("Something went Worng");
+            }
+
+        });
+    getnotification();
+ 
+});

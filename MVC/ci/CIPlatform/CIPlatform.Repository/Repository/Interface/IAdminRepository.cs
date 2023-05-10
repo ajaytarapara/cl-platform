@@ -22,7 +22,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public AdminPageList<User> GetUsers(string searchtext, int pageNumber, int pageSize);
         public void AddUserAdmin(User user);
         public void RemoveUserAdmin(long userid);
-        public User UpdateUserAdminget(long userid);                                                          
+        public User UpdateUserAdminget(long userid);
         public void UpdateneedUser(User useredit);
         //========================
         //Admin cms crud
@@ -97,6 +97,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public void GiveNotificationToUser(Notification notification);
         public List<User> GetUserWithSkillAvailability(List<MissionSkill> missionSkillslist);
         public void GiveMissionNotification(User user,long missionid);
-       
+        
     }
 }

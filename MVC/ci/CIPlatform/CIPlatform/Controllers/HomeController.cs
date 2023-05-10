@@ -168,12 +168,12 @@ namespace CIPlatform.Controllers
         //==============================================================================
         //notification
         //===============================================================================
-        public IActionResult GetNotification()
+        public IActionResult GetNotification(string[] nSetting)
         {
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
-            var notificationList = _homeRepository.GetNotificationforUser(userid).ToList();
+            var notificationList = _homeRepository.GetNotificationforUser(userid,nSetting).ToList();
             return Json(new { data = notificationList });
         }
 
@@ -201,6 +201,29 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
             _homeRepository.UpdateNotificationStatus(notyid);
+        }
+        public IActionResult NotificationSetting()
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(userid);
+
+            return Json(new { data = notificationSetting });
+        }
+        [HttpPost]
+        public void NotificationSetting(string[] notificationsetting)
+        {
+            string userSession = HttpContext.Session.GetString("useremail");
+            User userObj = _homeRepository.getuser(userSession);
+            int userid = Convert.ToInt32(userObj.UserId);
+            NotificationSetting notificationSetting=_homeRepository.GetNotificationSetting(userid);
+            notificationSetting.RecommandedFromMission = Boolean.Parse(notificationsetting[0]);
+            notificationSetting.StoryApproval = Boolean.Parse(notificationsetting[1]);
+            notificationSetting.NewMissionAdded= Boolean.Parse(notificationsetting[2]);
+            notificationSetting.RecommandedFromStory = Boolean.Parse(notificationsetting[3]);
+            notificationSetting.ApplicationApproval = Boolean.Parse(notificationsetting[4]);
+            _homeRepository.AddNotificationSetting(userid,notificationSetting);
         }
     }
 }

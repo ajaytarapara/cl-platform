@@ -130,7 +130,7 @@ namespace CIPlatform.Repository.Repository
             if(user != null)
             {
                 Notification notification = new Notification();
-                notification.NotificationType = "recommanded from mission";
+                notification.NotificationType = "RecommendedMission";
                 notification.ToUserId = (int?)fromuserid;
                 notification.ToUserId = (int?)user.UserId;
                 notification.CreatedAt = DateTime.Now;

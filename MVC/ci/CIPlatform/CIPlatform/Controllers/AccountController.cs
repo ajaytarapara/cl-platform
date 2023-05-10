@@ -630,6 +630,5 @@ namespace CIPlatform.Controllers
             privacy.avatar = userObj.Avatar;
             return View(privacy);
         }
-
     }
 }

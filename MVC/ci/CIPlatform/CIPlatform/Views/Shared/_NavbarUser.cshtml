@@ -88,3 +88,47 @@
     </div>
 </div>
 
+<!-- Modal -->
+    <div class="modal fade" id="navigation-setting-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin: 5vh 0vw 0vh 52vw;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Notification Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p style="background-color:lightgray" class="w-100 p-1">Get notification for</p>
+                    <div class="d-flex justify-content-between">
+                        <span>Recommended Mission</span>
+                        <input class="notification-setting-check" type="checkbox" id="RecommendedMission"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>My Stories</span>
+                        <input class="notification-setting-check" type="checkbox" id="StoryApproval" />
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>New missions</span>
+                        <input class="notification-setting-check" type="checkbox" id="MissionAdded" />
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Recommended story</span>
+                        <input class="notification-setting-check" type="checkbox" id="RecommendedStory" />
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Mission application</span>
+                        <input class="notification-setting-check" type="checkbox" id="MissionApplicationApproval" />
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Receive Notification by email</span>
+                        <input class="notification-setting-check" type="checkbox" id="receive-email-notification" />
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button id="save-notification-btn" style="border: 1px solid orange;color: orange;border-radius: 10px;" 
+                    class="me-1 orange-btn bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Save</button>
+                    <button type="submit" style="border: 1px solid black;color: black;border-radius: 10px;" 
+                    class="ms-1 bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>

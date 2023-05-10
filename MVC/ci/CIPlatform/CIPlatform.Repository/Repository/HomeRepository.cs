@@ -132,9 +132,13 @@ namespace CIPlatform.Repository.Repository
         //Notification 
         //================================================================================================================
 
-        List<Notification> IHomeRepository.GetNotificationforUser(long userid)
+        List<Notification> IHomeRepository.GetNotificationforUser(long userid, string[] nSetting)
         {
-            return _ciPlatformDbContext.Notifications.Where(x=>x.ToUserId == userid).ToList();
+            if(nSetting.Length == 0)
+            {
+            return _ciPlatformDbContext.Notifications.Where(noti=>noti.ToUserId == userid).ToList();
+            }
+            return _ciPlatformDbContext.Notifications.Where(noti=>noti.ToUserId == userid  && nSetting.Contains(noti.NotificationType)).ToList();
         }
         void IHomeRepository.ClearNotification(long userid)
         {
@@ -155,6 +159,35 @@ namespace CIPlatform.Repository.Repository
             notification.Status = "seen";
             _ciPlatformDbContext.Update(notification);
             _ciPlatformDbContext.SaveChanges();
+        }
+
+
+        //==============================================================================
+        //notification setting 
+        //==============================================================================
+        void IHomeRepository.AddNotificationSetting(long userid, NotificationSetting notificationSetting)
+        {
+            if(notificationSetting == null) 
+            {
+            notificationSetting.UserId = (int)userid;
+            notificationSetting.ApplicationApproval = true;
+            notificationSetting.StoryApproval = true;
+            notificationSetting.RecommandedFromStory= true;
+            notificationSetting.RecommandedFromMission= true;
+            notificationSetting.NewMissionAdded= true;
+            _ciPlatformDbContext.Add(notificationSetting);
+            _ciPlatformDbContext.SaveChanges();
+            }
+            else
+            {
+                _ciPlatformDbContext.Update(notificationSetting);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
+        NotificationSetting IHomeRepository.GetNotificationSetting(long userid)
+        {
+
+            return _ciPlatformDbContext.NotificationSettings.Where(x=>x.UserId == userid).FirstOrDefault();
         }
     }
 }

@@ -91,7 +91,7 @@ namespace CIPlatform.Repository.Repository
             notification.FromId= (int?)fromuserid;
             notification.Avatar=user.Avatar;
             notification.Status = "notseen";
-            notification.NotificationType= "Recommanded co-worker from story";
+            notification.NotificationType= "RecommendedStory";
             notification.NotificationText =  "<a href='/Story/View_Story?storyid=" + storyid + "'/>" +" you can see their story" + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();

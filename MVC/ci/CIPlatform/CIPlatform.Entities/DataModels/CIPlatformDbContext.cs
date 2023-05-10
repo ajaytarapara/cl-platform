@@ -50,6 +50,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
+    public virtual DbSet<NotificationSetting> NotificationSettings { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<Skill> Skills { get; set; }
@@ -71,6 +73,7 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<MissionModel> MissionModels { get; set; }
     public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
     public virtual DbSet<StoryModel> Storylist { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");
 
@@ -608,6 +611,21 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnName("Notification_Type");
             entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.ToUserId).HasColumnName("To_User_Id");
+        });
+
+        modelBuilder.Entity<NotificationSetting>(entity =>
+        {
+            entity.HasKey(e => e.NotificationSettingId).HasName("PK_Notification_Setting_1");
+
+            entity.ToTable("Notification_Setting");
+
+            entity.Property(e => e.NotificationSettingId).HasColumnName("notification_setting_id");
+            entity.Property(e => e.ApplicationApproval).HasColumnName("Application_Approval");
+            entity.Property(e => e.NewMissionAdded).HasColumnName("New Mission Added");
+            entity.Property(e => e.RecommandedFromMission).HasColumnName("Recommanded from mission");
+            entity.Property(e => e.RecommandedFromStory).HasColumnName("Recommanded from story");
+            entity.Property(e => e.StoryApproval).HasColumnName("Story_Approval");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
         });
 
         modelBuilder.Entity<PasswordReset>(entity =>

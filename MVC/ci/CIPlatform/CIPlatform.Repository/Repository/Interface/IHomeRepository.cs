@@ -34,10 +34,12 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<City> GetCityFromCountry(string countryname);
         public List<City> GetCityFromCountry();
 
-        public List<Notification> GetNotificationforUser(long userid);
+        public List<Notification> GetNotificationforUser(long userid, string[] nSetting);
 
         public void ClearNotification(long userid);
         public List<Notification> GetNotificationforUserCount(long userid);
         public void UpdateNotificationStatus(long notificationid);
+        public void AddNotificationSetting(long userid, NotificationSetting notificationSetting);
+        public NotificationSetting GetNotificationSetting(long userid);
     }
 }
