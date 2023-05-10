@@ -472,9 +472,13 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult ApproveAdmin_mission_application(long missionAppId)
         {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+            string adminemail = adminSessionEmailId;
+            User adminobj = _adminrepository.findadmin(adminemail);
+            long fromuserid = adminobj.UserId;
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "approved";
-            _adminrepository.ApproveApplication(application);
+            _adminrepository.ApproveApplication(application,fromuserid);
             int pageNumber = 1;
             int pageSize = 2;
             string searchText = "";
@@ -486,9 +490,13 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult DeleteAdmin_mission_application(long missionAppId)
         {
+            string adminSessionEmailId = HttpContext.Session.GetString("useremail");
+            string adminemail = adminSessionEmailId;
+            User adminobj = _adminrepository.findadmin(adminemail);
+            long fromuserid = adminobj.UserId;
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "rejected";
-            _adminrepository.DeleteApplication(application);
+            _adminrepository.DeleteApplication(application,fromuserid);
             int pageNumber = 1;
             int pageSize = 2;
             string searchText = "";

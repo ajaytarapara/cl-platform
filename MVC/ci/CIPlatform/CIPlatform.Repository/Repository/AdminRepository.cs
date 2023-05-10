@@ -174,7 +174,7 @@ namespace CIPlatform.Repository.Repository
             notification.CreatedAt= DateTime.Now;
             notification.Status = "notseen";
             notification.Avatar = "/images/cancel.png";
-            notification.NotificationText = "your story has rejected " + story.Title;
+            notification.NotificationText = "your story has rejected <a href='/Story/View_Story?storyid=" + story.StoryId + "'/>" + story.Title + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
         }
@@ -205,13 +205,33 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.MissionApplications.Where
                 (application => application.MissionApplicationId == missionAppId).FirstOrDefault();
         }
-        void IAdminRepository.ApproveApplication(MissionApplication application)
+        void IAdminRepository.ApproveApplication(MissionApplication application,long fromuserid)
         {
+            Notification notification = new Notification();
+            notification.NotificationText = "your appli.approved <a href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "'/>" + " mission " + "</a>"; ;
+            notification.NotificationType = "Application approval";
+            notification.CreatedAt = DateTime.Now;
+            notification.ToUserId = (int?)application.UserId;
+            notification.FromId = (int?)fromuserid;
+            notification.Avatar = "/images/right.png";
+            notification.Status = "notseen";
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
             _ciPlatformDbContext.Update(application);
             _ciPlatformDbContext.SaveChanges();
         }
-        void IAdminRepository.DeleteApplication(MissionApplication application)
+        void IAdminRepository.DeleteApplication(MissionApplication application,long fromuserid)
         {
+            Notification notification = new Notification();
+            notification.NotificationText ="your appli. rejected <a href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "'/>" + " mission " + "</a>"; ;
+            notification.NotificationType = "Application approval";
+            notification.CreatedAt = DateTime.Now;
+            notification.ToUserId= (int?)application.UserId;
+            notification.FromId = (int?)fromuserid;
+            notification.Avatar= "/images/cancel.png";
+            notification.Status = "notseen";
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
             _ciPlatformDbContext.Update(application);
             _ciPlatformDbContext.SaveChanges();
         }

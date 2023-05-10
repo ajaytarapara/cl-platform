@@ -44,8 +44,8 @@ namespace CIPlatform.Repository.Repository.Interface
         //=========================
         public AdminPageList<MissionApplication> GetMissionApplicationAdmin(string searchText, int pageNumber, int pageSize);
         public MissionApplication GetApplicationForApprove(long missionAppId);
-        public void ApproveApplication(MissionApplication application);
-        public void DeleteApplication(MissionApplication application);
+        public void ApproveApplication(MissionApplication application,long fromuserid);
+        public void DeleteApplication(MissionApplication application,long fromuserid);
         //========================
         //Admin mission theme crud
         //==========================
