@@ -1,7 +1,5 @@
 ﻿
 $(document).ready(function () {
-
-    /*    loadgetgridview();*/
     console.log("hello");
     storylist();
 

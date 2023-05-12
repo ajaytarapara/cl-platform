@@ -69,6 +69,7 @@ $("#savebtnsharestory").on("click", function (e) {
             var storyId = data["storyId"];
             console.log(storyId);
                 $("#Previewbtnsharestory").attr('href', '/Story/View_Story?storyId=' + storyId);
+                $("#Previewbtnsharestory").attr('target', '_blank');
                 $("#pbtn").css("display", "inline-block");
             }
            

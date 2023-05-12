@@ -967,7 +967,7 @@ namespace CIPlatform.Controllers
             }
             if (documentfilename.Count != 0)
             {
-                MissionDocument missionDocument =new MissionDocument();
+                MissionDocument missionDocument = new MissionDocument();
                 missionDocument.MissionId = missionid;
                 string doctype = "";
                 string docname = "";

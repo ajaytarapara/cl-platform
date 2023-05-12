@@ -97,6 +97,5 @@ namespace CIPlatform.Repository.Repository.Interface
         public void GiveNotificationToUser(Notification notification);
         public List<User> GetUserWithSkillAvailability(List<MissionSkill> missionSkillslist);
         public void GiveMissionNotification(User user,long missionid);
-        
     }
 }

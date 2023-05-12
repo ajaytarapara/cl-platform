@@ -159,7 +159,7 @@ namespace CIPlatform.Repository.Repository
             notification.CreatedAt = DateTime.Now;
             notification.Avatar = "/images/right.png";
             notification.Status = "notseen";
-            notification.NotificationText = "your story has approved <a href='/Story/View_Story?storyid=" + story.StoryId + "'/>" + story.Title + "</a>";
+            notification.NotificationText = "your story has approved <a href='/Story/View_Story?storyid=" + story.StoryId + "'' target='_blank'/>" + story.Title + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
         }
@@ -208,7 +208,7 @@ namespace CIPlatform.Repository.Repository
         void IAdminRepository.ApproveApplication(MissionApplication application,long fromuserid)
         {
             Notification notification = new Notification();
-            notification.NotificationText = "your appli.approved <a href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "'/>" + " mission " + "</a>"; ;
+            notification.NotificationText = "your appli.approved <a  href='/Mission/Mission_Volunteer?missionId=" + application.MissionId + "' target='_blank'/>" + " mission " + "</a>"; ;
             notification.NotificationType = "MissionApplicationApproval";
             notification.CreatedAt = DateTime.Now;
             notification.ToUserId = (int?)application.UserId;

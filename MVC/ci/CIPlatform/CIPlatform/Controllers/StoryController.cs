@@ -113,7 +113,8 @@ namespace CIPlatform.Controllers
                 StoryMedium storyMedium = new StoryMedium();
                 storyMedium.StoryId = storyId;
                 storyMedium.Type = ".png";
-                storyMedium.Path = StoryMedia;
+                int index = StoryMedia.LastIndexOf(',');
+                storyMedium.Path = StoryMedia.Substring(0, index);
                 _storyRepository.AddStoryMedia(storyMedium);
                 _notyf.Warning("your story requested for approval", 5);
                 return Json(new { storyId = storyId });

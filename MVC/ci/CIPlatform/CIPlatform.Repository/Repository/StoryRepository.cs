@@ -22,7 +22,6 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext = cIPlatformDbContext;
         }
-
         IEnumerable<City> IStoryRepository.getCities()
         {
             return _ciPlatformDbContext.Cities;
@@ -43,7 +42,6 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.MissionThemes;
         }
-
         public PaginationMission Storydata(int pageNumber)
         {
 
@@ -92,12 +90,11 @@ namespace CIPlatform.Repository.Repository
             notification.Avatar=user.Avatar;
             notification.Status = "notseen";
             notification.NotificationType= "RecommendedStory";
-            notification.NotificationText =  "<a href='/Story/View_Story?storyid=" + storyid + "'/>" +" you can see their story" + "</a>";
+            notification.NotificationText ="<a href='/Story/View_Story?storyid=" + storyid + "'' target='_blank'/>" + " you can see their story" + "</a>";
             _ciPlatformDbContext.Add(notification);
             _ciPlatformDbContext.SaveChanges();
             return user.UserId;
         }
-
         void IStoryRepository.AddStoryViews(Story story)
         {
             _ciPlatformDbContext.Update(story);

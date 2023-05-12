@@ -59,11 +59,19 @@ namespace CIPlatform.Controllers
 
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
-
+            long userid=userObj.UserId;
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(userid);
+            if(notificationSetting == null) { 
+            NotificationSetting notificationSettings = new NotificationSetting();
+            notificationSettings.UserId = (int)userid;
+            notificationSettings.ApplicationApproval = true;
+            notificationSettings.NewMissionAdded = true;
+            notificationSettings.RecommandedFromMission = true;
+            notificationSettings.RecommandedFromStory = true;
+            notificationSettings.StoryApproval = true;
+            _homeRepository.AddNotificationSetting(userid, notificationSettings);
+            }
             return View(HomeModel);
-
-
-
         }
 
         public IActionResult GetCountries()
@@ -218,12 +226,27 @@ namespace CIPlatform.Controllers
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
             NotificationSetting notificationSetting=_homeRepository.GetNotificationSetting(userid);
+            if (notificationSetting != null)
+            { 
             notificationSetting.RecommandedFromMission = Boolean.Parse(notificationsetting[0]);
             notificationSetting.StoryApproval = Boolean.Parse(notificationsetting[1]);
             notificationSetting.NewMissionAdded= Boolean.Parse(notificationsetting[2]);
             notificationSetting.RecommandedFromStory = Boolean.Parse(notificationsetting[3]);
             notificationSetting.ApplicationApproval = Boolean.Parse(notificationsetting[4]);
             _homeRepository.AddNotificationSetting(userid,notificationSetting);
+            }
+            else
+            {
+                NotificationSetting notificationSettings = new NotificationSetting();
+                notificationSettings.UserId= userid;
+                notificationSettings.ApplicationApproval = true;
+                notificationSettings.NewMissionAdded = true;
+                notificationSettings.RecommandedFromMission = true;
+                notificationSettings.RecommandedFromStory= true;
+                notificationSettings.StoryApproval = true;
+                _homeRepository.AddNotificationSetting(userid ,notificationSettings);
+
+            }
         }
     }
 }
