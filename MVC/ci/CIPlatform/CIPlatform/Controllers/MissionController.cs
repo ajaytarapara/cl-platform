@@ -120,6 +120,15 @@ namespace CIPlatform.Controllers
                 ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessage + path, subject);
                 _missionRepository.AddinvitedMissionUser(missionInvite);
                 _notyf.Success("mail sended successfully", 3);
+                long touserid=missionInvite.ToUserId;
+                NotificationSetting notificationSetting= _homeRepository.GetNotificationSetting(touserid);
+                if (notificationSetting.Receiveemailnotification == true) 
+                {
+                    string welcomeMessagenoty = "notification for recommanded mission </br>";
+                    string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + Missionid.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Apply to Mission </a>";
+                    string subjectnoty = "notification to you for recommanded mission";
+                    ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+                }
             }
             else
             {

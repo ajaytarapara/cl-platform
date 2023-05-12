@@ -73,7 +73,6 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<MissionModel> MissionModels { get; set; }
     public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
     public virtual DbSet<StoryModel> Storylist { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");
 
@@ -603,9 +602,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("Created_At");
             entity.Property(e => e.FromId).HasColumnName("From_Id");
-            entity.Property(e => e.NotificationText)
-                .HasMaxLength(100)
-                .HasColumnName("Notification_Text");
+            entity.Property(e => e.NotificationText).HasColumnName("Notification_Text");
             entity.Property(e => e.NotificationType)
                 .HasMaxLength(50)
                 .HasColumnName("Notification_Type");

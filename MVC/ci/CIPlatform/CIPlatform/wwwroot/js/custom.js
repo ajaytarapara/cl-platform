@@ -517,6 +517,7 @@ function getnotificationsetting() {
             $("#NewMissionAdded")[0].checked = notyset.newMissionAdded;
             $("#RecommendedStory")[0].checked = notyset.recommandedFromStory;
             $("#MissionApplicationApproval")[0].checked = notyset.applicationApproval;
+            $("#Receiveemailnotification")[0].checked = notyset.receiveemailnotification;
             getnotification();
         },
         failure: function (response) {

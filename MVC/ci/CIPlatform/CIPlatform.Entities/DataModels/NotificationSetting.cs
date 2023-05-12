@@ -18,4 +18,6 @@ public partial class NotificationSetting
     public bool? NewMissionAdded { get; set; }
 
     public int NotificationSettingId { get; set; }
+
+    public bool? Receiveemailnotification { get; set; }
 }

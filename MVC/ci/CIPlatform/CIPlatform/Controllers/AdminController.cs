@@ -2,6 +2,7 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
+using CIPlatform.Helpers;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -18,13 +19,17 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly INotyfService _notyf;
-        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment, INotyfService notyf)
+        private readonly IHomeRepository _homeRepository;
+        private readonly IConfiguration configuration;
+        public AdminController(IAdminRepository adminRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment, INotyfService notyf, IHomeRepository homeRepository, IConfiguration _configuration)
         {
             _adminrepository = adminRepository;
             _httpContextAccessor = httpContextAccessor;
             _webHostEnvironment = webHostEnvironment;
             _userRepository = userRepository;
             _notyf = notyf;
+            _homeRepository = homeRepository;
+            configuration = _configuration;
         }
         public IActionResult Admin_login()
         {
@@ -89,7 +94,7 @@ namespace CIPlatform.Controllers
                 string adminemail = adminSessionEmailId;
                 User adminobj = _adminrepository.findadmin(adminemail);
                 Admin_user_crudModel.adminname = adminobj.FirstName + " " + adminobj.LastName;
-                Admin_user_crudModel.adminavatar =adminobj.Avatar;
+                Admin_user_crudModel.adminavatar = adminobj.Avatar;
 
             }
 
@@ -122,7 +127,7 @@ namespace CIPlatform.Controllers
                     user.Department = model.Department;
                     user.PhoneNumber = model.PhoneNumber;
                     user.Avatar = "/images/user1.png";
-                    user.Status =Boolean.Parse(model.Status);
+                    user.Status = Boolean.Parse(model.Status);
                     _adminrepository.AddUserAdmin(user);
                     _notyf.Success("user added successfully", 3);
                 }
@@ -148,17 +153,17 @@ namespace CIPlatform.Controllers
 
             long userid = UserId;
             User useredit = _adminrepository.UpdateUserAdminget(userid);
-            Admin_user_crudModel modal=new Admin_user_crudModel();
+            Admin_user_crudModel modal = new Admin_user_crudModel();
             modal.FirstName = useredit.FirstName;
             modal.LastName = useredit.LastName;
             modal.Email = useredit.Email;
-            modal.PhoneNumber= useredit.PhoneNumber;
+            modal.PhoneNumber = useredit.PhoneNumber;
             modal.EmplyoeeId = useredit.EmployeeId;
             modal.Department = useredit.Department;
-            modal.Password=useredit.Password;
-  
+            modal.Password = useredit.Password;
+
             return PartialView("_Edit_user_admin", modal);
-          
+
 
         }
 
@@ -230,13 +235,13 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Admin_Edit_User(Admin_user_crudModel modal)
         {
-            long UserId=(long)modal.UserId;
+            long UserId = (long)modal.UserId;
             User useredit = _adminrepository.UpdateUserAdminget(UserId);
-            useredit.FirstName=modal.FirstName;
-            useredit.LastName=modal.LastName;
+            useredit.FirstName = modal.FirstName;
+            useredit.LastName = modal.LastName;
             useredit.ProfileText = modal.profiletext;
             useredit.Password = modal.Password;
-            useredit.PhoneNumber= modal.PhoneNumber;
+            useredit.PhoneNumber = modal.PhoneNumber;
             useredit.WhyIVolunteer = modal.whyivol;
             useredit.UpdatedAt = DateTime.Now;
             useredit.Status = Boolean.Parse(modal.Status);
@@ -310,7 +315,7 @@ namespace CIPlatform.Controllers
                 CMS.Description = cms_CrudModels.Description;
                 CMS.Slug = cms_CrudModels.Slug;
                 CMS.CreatedAt = DateTime.Now;
-                CMS.Status= cms_CrudModels.Status;
+                CMS.Status = cms_CrudModels.Status;
                 _adminrepository.AddCmsAdmin(CMS);
                 _notyf.Success("cms added successfully", 3);
                 return RedirectToAction("Admin_add_cms", "Admin");
@@ -332,7 +337,7 @@ namespace CIPlatform.Controllers
             admin_Cms_.adminavatar = adminobj.Avatar;
             admin_Cms_.CmsId = CmsId;
             CmsPage cms = _adminrepository.GetCmsAdmin(CmsId);
-            admin_Cms_.Title= cms.Title;
+            admin_Cms_.Title = cms.Title;
             admin_Cms_.Slug = cms.Slug;
             admin_Cms_.Description = cms.Description;
             admin_Cms_.CmsId = (int?)cms.CmsPageId;
@@ -361,7 +366,7 @@ namespace CIPlatform.Controllers
                 cms.Description = cms_CrudModels.Description;
                 cms.Slug = cms_CrudModels.Slug;
                 cms.UpdatedAt = DateTime.Now;
-                cms.Status=cms_CrudModels.Status;
+                cms.Status = cms_CrudModels.Status;
                 _adminrepository.UpdateCmsAdmin(cms);
                 _notyf.Success("cms edited successfully", 3);
                 return RedirectToAction("Cms_crud", "Admin");
@@ -413,13 +418,27 @@ namespace CIPlatform.Controllers
             string adminemail = adminSessionEmailId;
             User adminobj = _adminrepository.findadmin(adminemail);
             int fromuserid = (int)adminobj.UserId;
+            long touserid = (long)story.UserId;
             _adminrepository.ApproveStory(story, fromuserid);
+            _notyf.Success("story approved successfully", 3);
             Admin_story_crud story_Crud = new Admin_story_crud();
             string searchText = "";
             int pageNumber = 1;
             int pageSize = 2;
             AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
-            _notyf.Success("story approved successfully", 3);
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+            if (notificationSetting.Receiveemailnotification == true)
+            {
+                MailHelper mailHelper = new MailHelper(configuration);
+                string welcomeMessagenoty = "notification story approved </br>";
+                string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Story/View_Story?storyid=" + story.StoryId + " \"  style=\"font-weight:500;color:blue;\" > approved story </a>";
+                string subjectnoty = "notification to you for story approvals";
+                long userid = (long)story.UserId;
+                User user = _adminrepository.Getuserfromuserid(userid);
+                string cow_email = user.Email;
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+            }
+
             return PartialView("_Admin_Story_crud", storyLIST);
 
         }
@@ -444,6 +463,20 @@ namespace CIPlatform.Controllers
             int pageSize = 2;
             AdminPageList<Story> storyLIST = _adminrepository.GetStoryAdmin(searchText, pageNumber, pageSize);
             _notyf.Success("story rejected successfully", 3);
+            long touserid = (long)story.UserId;
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+            if (notificationSetting.Receiveemailnotification == true)
+            {
+                MailHelper mailHelper = new MailHelper(configuration);
+                string welcomeMessagenoty = "notification story rejected </br>";
+                string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Story/View_Story?storyid=" + story.StoryId + " \"  style=\"font-weight:500;color:blue;\" > rejected story </a>";
+                string subjectnoty = "notification to you for story approvals";
+                long userid = (long)story.UserId;
+                User user = _adminrepository.Getuserfromuserid(userid);
+                string cow_email = user.Email;
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+            }
+
             return PartialView("_Admin_Story_crud", storyLIST);
         }
         //=========================================================================================================================
@@ -458,7 +491,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("Admin_Login", "Admin");
             }
             string adminemail = adminSessionEmailId;
-           User adminobj = _adminrepository.findadmin(adminemail);
+            User adminobj = _adminrepository.findadmin(adminemail);
             mission_Application.adminname = adminobj.FirstName + " " + adminobj.LastName;
             mission_Application.adminavatar = adminobj.Avatar;
             return View(mission_Application);
@@ -478,12 +511,25 @@ namespace CIPlatform.Controllers
             long fromuserid = adminobj.UserId;
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "approved";
-            _adminrepository.ApproveApplication(application,fromuserid);
+            _adminrepository.ApproveApplication(application, fromuserid);
             int pageNumber = 1;
             int pageSize = 2;
             string searchText = "";
             AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
             _notyf.Success("application approved successfully", 3);
+            long touserid = (long)application.UserId;
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+            if (notificationSetting.Receiveemailnotification == true)
+            {
+                MailHelper mailHelper = new MailHelper(configuration);
+                string welcomeMessagenoty = "notification application approval </br>";
+                string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + application.MissionId + " \"  style=\"font-weight:500;color:blue;\" > approved mission </a>";
+                string subjectnoty = "notification to you for application approvals";
+                long userid = (long)application.UserId;
+                User user = _adminrepository.Getuserfromuserid(userid);
+                string cow_email = user.Email;
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+            }
             return PartialView("_Admin_Mission_Application_crud", missionapplication);
 
         }
@@ -496,11 +542,24 @@ namespace CIPlatform.Controllers
             long fromuserid = adminobj.UserId;
             MissionApplication application = _adminrepository.GetApplicationForApprove(missionAppId);
             application.ApprovalStatus = "rejected";
-            _adminrepository.DeleteApplication(application,fromuserid);
+            _adminrepository.DeleteApplication(application, fromuserid);
             int pageNumber = 1;
             int pageSize = 2;
             string searchText = "";
             AdminPageList<MissionApplication> missionapplication = _adminrepository.GetMissionApplicationAdmin(searchText, pageNumber, pageSize);
+            long touserid = (long)application.UserId;
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+            if (notificationSetting.Receiveemailnotification == true)
+            {
+                MailHelper mailHelper = new MailHelper(configuration);
+                string welcomeMessagenoty = "notification application rejected </br>";
+                string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + application.MissionId + " \"  style=\"font-weight:500;color:blue;\" > approved mission </a>";
+                string subjectnoty = "notification to you for application approvals";
+                long userid = (long)application.UserId;
+                User user = _adminrepository.Getuserfromuserid(userid);
+                string cow_email = user.Email;
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+            }
             _notyf.Success("application rejected successfully", 3);
             return PartialView("_Admin_Mission_Application_crud", missionapplication);
 
@@ -559,13 +618,13 @@ namespace CIPlatform.Controllers
             else
             {
                 string adminemail = adminSessionEmailId;
-               User adminobj = _adminrepository.findadmin(adminemail);
+                User adminobj = _adminrepository.findadmin(adminemail);
                 _Theme_CrudModels.adminname = adminobj.FirstName + " " + adminobj.LastName;
                 _Theme_CrudModels.adminavatar = "./images/user1.png";
                 MissionTheme theme = new MissionTheme();
                 theme.Title = _Theme_CrudModels.themeTitle;
                 theme.CreatedAt = DateTime.Now;
-                theme.Status =(byte) _Theme_CrudModels.Status;
+                theme.Status = (byte)_Theme_CrudModels.Status;
                 _adminrepository.AddThemeAdmin(theme);
                 _notyf.Success("theme added successfully", 3);
                 return RedirectToAction("Admin_add_themes", "Admin");
@@ -695,7 +754,7 @@ namespace CIPlatform.Controllers
                 SkillModels.adminavatar = "./images/user1.png";
                 SkillModels.SkillId = skillId;
                 Skill skills = _adminrepository.GetSkill(skillId);
-                SkillModels.Status= skills.Status;
+                SkillModels.Status = skills.Status;
                 SkillModels.SkillTitle = skills.SkillName;
             }
             return View(SkillModels);
@@ -889,7 +948,7 @@ namespace CIPlatform.Controllers
             return View(mission_crud);
         }
         [HttpPost]
-        public IActionResult Admin_Add_Mission(Admin_Mission_crudModel missionModels, List<IFormFile>? filename,List<IFormFile>? documentfilename)
+        public IActionResult Admin_Add_Mission(Admin_Mission_crudModel missionModels, List<IFormFile>? filename, List<IFormFile>? documentfilename)
         {
             Mission mission = new Mission();
             mission.Title = missionModels.missiontitle;
@@ -907,7 +966,7 @@ namespace CIPlatform.Controllers
             mission.ThemeId = (long)missionModels.missiontheme;
             long missionid = _adminrepository.AddMission(mission);
             _notyf.Success("mission added successfully", 3);
-            List<MissionSkill> missionSkillsList=new List<MissionSkill>();
+            List<MissionSkill> missionSkillsList = new List<MissionSkill>();
             if (missionModels.missionskills != null)
             {
                 string[] skills = missionModels.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
@@ -996,11 +1055,38 @@ namespace CIPlatform.Controllers
                 _notyf.Success("mission document added successfully", 3);
             }
             List<User> users = _adminrepository.GetUserWithSkillAvailability(missionSkillsList);
-            if(users != null)
+            if (users != null)
             {
-                foreach(User user in users)
+                foreach (User user in users)
                 {
-                    _adminrepository.GiveMissionNotification(user,missionid);
+                    _adminrepository.GiveMissionNotification(user, missionid);
+                    long touserid = user.UserId;
+                    NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+                    if (notificationSetting == null)
+                    {
+                        NotificationSetting notificationSettings = new NotificationSetting();
+                        notificationSettings.UserId = (int)user.UserId;
+                        notificationSettings.ApplicationApproval = true;
+                        notificationSettings.NewMissionAdded = true;
+                        notificationSettings.RecommandedFromMission = true;
+                        notificationSettings.RecommandedFromStory = true;
+                        notificationSettings.StoryApproval = true;
+                        notificationSettings.Receiveemailnotification = true;
+                        long userid = user.UserId;
+                        _homeRepository.AddNotificationSetting(userid, notificationSettings);
+                    }
+                    NotificationSetting notificationSettingnoty = _homeRepository.GetNotificationSetting(touserid);
+                    if (notificationSettingnoty.Receiveemailnotification == true)
+                    {
+                        MailHelper mailHelper = new MailHelper(configuration);
+                        string welcomeMessagenoty = "new mission added </br>";
+                        string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + missionid + " \"  style=\"font-weight:500;color:blue;\" > new mission </a>";
+                        string subjectnoty = "notificatification to you new mission added";
+                        long userid = user.UserId;
+                        User userS = _adminrepository.Getuserfromuserid(userid);
+                        string cow_email = userS.Email;
+                        ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+                    }
                 }
             }
             return RedirectToAction("Admin_Add_Mission");
@@ -1047,15 +1133,15 @@ namespace CIPlatform.Controllers
             //{
 
             //}
-           
-            List<MissionSkill> msskill= _adminrepository.missionSkills(missionId);
-            if(msskill.Count() !=0)
+
+            List<MissionSkill> msskill = _adminrepository.missionSkills(missionId);
+            if (msskill.Count() != 0)
             {
                 string missionskillname = "";
                 foreach (MissionSkill skill in msskill)
                 {
                     long skillId = skill.SkillId;
-                   Skill skill1= _adminrepository.GetSkillName(skillId);
+                    Skill skill1 = _adminrepository.GetSkillName(skillId);
                     string skillname = skill1.SkillName;
                     missionskillname += skill.Skill.SkillName + "\n";
                 }
@@ -1087,7 +1173,7 @@ namespace CIPlatform.Controllers
                 _adminrepository.RemoveMissionSkill(missionId);
                 string[] skills = admin_Mission_.missionskills.Replace("\r", "").Split("\n").SkipLast(1).ToArray();
                 foreach (var skill in skills)
-                {                   
+                {
                     int SkillId = _adminrepository.GetSkillvianame(skill);
                     MissionSkill mSkill = new MissionSkill();
                     mSkill.SkillId = SkillId;
@@ -1098,7 +1184,7 @@ namespace CIPlatform.Controllers
             }
             MissionMedium media = _adminrepository.GetMissionMedium(missionId);
             if (filename.Count != 0)
-            {             
+            {
                 media.UpdatedAt = DateTime.Now;
                 long MissionId = (long)admin_Mission_.missionid;
                 string name = "";
@@ -1128,8 +1214,8 @@ namespace CIPlatform.Controllers
                 _adminrepository.UpdateMissionMedia(media);
             }
 
-  
-            if (documentfilename.Count !=0 )
+
+            if (documentfilename.Count != 0)
             {
                 MissionDocument missionDocument = new MissionDocument();
                 missionDocument.MissionId = missionId;

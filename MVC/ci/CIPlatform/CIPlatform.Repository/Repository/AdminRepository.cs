@@ -493,7 +493,10 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.SaveChanges();
 
         }
-
+         User IAdminRepository.Getuserfromuserid(long userid)
+        {
+            return _ciPlatformDbContext.Users.Where(x=>x.UserId == userid).FirstOrDefault();
+        }
     }
 
 }

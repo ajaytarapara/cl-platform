@@ -212,6 +212,15 @@ namespace CIPlatform.Controllers
             invite.ToUserId = _storyRepository.GetInvitedUserid(cow_email,fromuserid, storyId);
             _storyRepository.AddInvitedUser(invite);
             _notyf.Success("mail sended successfully", 3);
+            long touserid = invite.ToUserId;
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(touserid);
+            if (notificationSetting.Receiveemailnotification == true)
+            {
+                string welcomeMessagenoty = "notification for recommanded story </br>";
+                string pathnoty = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?id=" + Missionid.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Apply to Mission </a>";
+                string subjectnoty = "notification to you for recommanded story";
+                ViewBag.sendMail = mailHelper.Send(cow_email, welcomeMessagenoty + pathnoty, subjectnoty);
+            }
 
         }
 

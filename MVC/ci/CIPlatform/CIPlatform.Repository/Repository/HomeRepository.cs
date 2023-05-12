@@ -171,6 +171,7 @@ namespace CIPlatform.Repository.Repository
             notificationSetting.RecommandedFromStory= true;
             notificationSetting.RecommandedFromMission= true;
             notificationSetting.NewMissionAdded= true;
+            notificationSetting.Receiveemailnotification= true;
             _ciPlatformDbContext.Add(notificationSetting);
             _ciPlatformDbContext.SaveChanges();
             }

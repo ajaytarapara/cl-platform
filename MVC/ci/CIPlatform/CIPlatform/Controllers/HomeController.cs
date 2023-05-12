@@ -59,17 +59,19 @@ namespace CIPlatform.Controllers
 
             IEnumerable<string> missiondiscription = _homeRepository.GetMissionDiscription();
             HomeModel.missiondiscription = missiondiscription;
-            long userid=userObj.UserId;
+            long userid = userObj.UserId;
             NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(userid);
-            if(notificationSetting == null) { 
-            NotificationSetting notificationSettings = new NotificationSetting();
-            notificationSettings.UserId = (int)userid;
-            notificationSettings.ApplicationApproval = true;
-            notificationSettings.NewMissionAdded = true;
-            notificationSettings.RecommandedFromMission = true;
-            notificationSettings.RecommandedFromStory = true;
-            notificationSettings.StoryApproval = true;
-            _homeRepository.AddNotificationSetting(userid, notificationSettings);
+            if (notificationSetting == null)
+            {
+                NotificationSetting notificationSettings = new NotificationSetting();
+                notificationSettings.UserId = (int)userid;
+                notificationSettings.ApplicationApproval = true;
+                notificationSettings.NewMissionAdded = true;
+                notificationSettings.RecommandedFromMission = true;
+                notificationSettings.RecommandedFromStory = true;
+                notificationSettings.StoryApproval = true;
+                notificationSetting.Receiveemailnotification = true;
+                _homeRepository.AddNotificationSetting(userid, notificationSettings);
             }
             return View(HomeModel);
         }
@@ -118,7 +120,7 @@ namespace CIPlatform.Controllers
 
         }
         [HttpPost]
-        public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber,string explore)
+        public IActionResult gridSP(string country, string city, string theme, string skill, string searchText, string sorting, int pageNumber, string explore)
         {
             // make explicit SQL Parameter
             string userSession = HttpContext.Session.GetString("useremail");
@@ -181,7 +183,7 @@ namespace CIPlatform.Controllers
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
-            var notificationList = _homeRepository.GetNotificationforUser(userid,nSetting).ToList();
+            var notificationList = _homeRepository.GetNotificationforUser(userid, nSetting).ToList();
             return Json(new { data = notificationList });
         }
 
@@ -225,26 +227,28 @@ namespace CIPlatform.Controllers
             string userSession = HttpContext.Session.GetString("useremail");
             User userObj = _homeRepository.getuser(userSession);
             int userid = Convert.ToInt32(userObj.UserId);
-            NotificationSetting notificationSetting=_homeRepository.GetNotificationSetting(userid);
+            NotificationSetting notificationSetting = _homeRepository.GetNotificationSetting(userid);
             if (notificationSetting != null)
-            { 
-            notificationSetting.RecommandedFromMission = Boolean.Parse(notificationsetting[0]);
-            notificationSetting.StoryApproval = Boolean.Parse(notificationsetting[1]);
-            notificationSetting.NewMissionAdded= Boolean.Parse(notificationsetting[2]);
-            notificationSetting.RecommandedFromStory = Boolean.Parse(notificationsetting[3]);
-            notificationSetting.ApplicationApproval = Boolean.Parse(notificationsetting[4]);
-            _homeRepository.AddNotificationSetting(userid,notificationSetting);
+            {
+                notificationSetting.RecommandedFromMission = Boolean.Parse(notificationsetting[0]);
+                notificationSetting.StoryApproval = Boolean.Parse(notificationsetting[1]);
+                notificationSetting.NewMissionAdded = Boolean.Parse(notificationsetting[2]);
+                notificationSetting.RecommandedFromStory = Boolean.Parse(notificationsetting[3]);
+                notificationSetting.ApplicationApproval = Boolean.Parse(notificationsetting[4]);
+                notificationSetting.Receiveemailnotification = Boolean.Parse(notificationsetting[5]);
+                _homeRepository.AddNotificationSetting(userid, notificationSetting);
             }
             else
             {
                 NotificationSetting notificationSettings = new NotificationSetting();
-                notificationSettings.UserId= userid;
+                notificationSettings.UserId = userid;
                 notificationSettings.ApplicationApproval = true;
                 notificationSettings.NewMissionAdded = true;
                 notificationSettings.RecommandedFromMission = true;
-                notificationSettings.RecommandedFromStory= true;
+                notificationSettings.RecommandedFromStory = true;
                 notificationSettings.StoryApproval = true;
-                _homeRepository.AddNotificationSetting(userid ,notificationSettings);
+                notificationSetting.Receiveemailnotification = true;
+                _homeRepository.AddNotificationSetting(userid, notificationSettings);
 
             }
         }
