@@ -1128,11 +1128,6 @@ namespace CIPlatform.Controllers
                 mission_crud.filetype = media.MediaType;
                 mission_crud.filepath = media.MediaPath;
             }
-            //MissionDocument missionDocument = _adminrepository.GetMissionDocument(missionId);
-            //if (missionDocument != null)
-            //{
-
-            //}
 
             List<MissionSkill> msskill = _adminrepository.missionSkills(missionId);
             if (msskill.Count() != 0)

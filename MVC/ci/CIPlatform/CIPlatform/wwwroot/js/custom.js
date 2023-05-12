@@ -4,7 +4,6 @@
 //===========================================================================================
 $(document).ready(function () {
     loadgetgrid();
-    notificationcount();
     getnotification();
     getnotificationsetting();
 });
@@ -373,6 +372,7 @@ function getnotification() {
             var notificationdivRecently = $("#notification-dropdown");
             const list = document.getElementById("notification-dropdown");
             var childCount = list.childElementCount;
+
             for (var i = 1; i < childCount; i++) {
                 if (list.hasChildNodes()) {
                     list.removeChild(list.children[1]);
@@ -382,6 +382,7 @@ function getnotification() {
             var str2 = "";
             var notificationdata = "";
             notificationdata = data["data"];
+            var count = 0;
             for (var j = 0; j < notificationdata.length; j++)
 
             {
@@ -393,6 +394,7 @@ function getnotification() {
                     if (notificationdata[j].status !="seen") {
 
                         str += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '" checked/></li>';
+                        count++;
                     }
                     else {
                         str += '<input style="accent-color:gray" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId + '" onclick="return false" checked/></li>';
@@ -404,7 +406,7 @@ function getnotification() {
                 {
                     str2 += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center"><div><img style="height:30px;width:30px" src="' + notificationdata[j].avatar + '"/><span  class="mx-3">' + notificationdata[j].notificationType + '</span><br><span class="mx-5">' + notificationdata[j].notificationText + '</span></div>';
                     if (notificationdata[j].status != "seen") {
-
+                        count++;
                         str2 += '<input style="accent-color:orange" class="notificationstatus" type="checkbox" id="' + notificationdata[j].notificationId +'" checked/></li>';
                     }
                     else {
@@ -413,16 +415,18 @@ function getnotification() {
                     }
 
                 }
+                   
             }
+            $("#totalnotification").empty();
+            var countdiv = $("#totalnotification");
+            countdiv.append("" + count);
+
             str += '<li style="background-color:lightgray" class="p-2 border border-1"><span> Older</span ></li >'
             notificationdivRecently.append(str);
             notificationdivRecently.append(str2);
-            var county = "";
-            $("#totalnotification").empty();
-            var countdiv = $("#totalnotification");
-            county = data["data"].length;
-            countdiv.append(county);
             statusofnotification();
+            
+
         },
         failure: function (response) {
             alert("failure");
@@ -440,7 +444,6 @@ $("#clearnotificationbutton").on("click", function () {
         url: "/Home/clearnotification",
         data: "",
         success: function (data) {
-            notificationcount();
             getnotification();
             $("#notification-button").trigger("click");
         },
@@ -454,28 +457,6 @@ $("#clearnotificationbutton").on("click", function () {
     });
 });
 
-function notificationcount() {
-    $.ajax({
-        type: "post",
-        url: "/Home/GetNotificationCount",
-        data: "",
-        success: function (data) {
-            var count = "";
-            $("#totalnotification").empty();
-            var countdiv = $("#totalnotification");
-            count=data["data"];
-            countdiv.append(count);
-          
-        },
-        failure: function (response) {
-            alert("failure");
-        },
-        error: function (response) {
-            alert("Something went Worng");
-        }
-
-    });
-}
 function statusofnotification() {
 $(".notificationstatus").on("change", function () {
     var notificationid = "";
@@ -488,9 +469,7 @@ $(".notificationstatus").on("change", function () {
             $("#totalnotification").empty();
             $("#notification-button").trigger("click");
             $("#notification-button").trigger("click");
-            getnotification();
-            notificationcount();
-           
+            getnotification();      
         },
         failure: function (response) {
             alert("failure");
