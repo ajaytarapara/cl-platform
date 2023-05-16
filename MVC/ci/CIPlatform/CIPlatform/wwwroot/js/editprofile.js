@@ -150,8 +150,6 @@ $(document).ready(function () {
     });    
 });
 
-
-
 $(document).ready(function () {
     $(".popup-container").hide();
     $(".user-edit-add-skill-btn").on("click", function (event) {

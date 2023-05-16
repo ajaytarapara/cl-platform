@@ -21,17 +21,15 @@
     width: 80%;
     padding: 4px;
     margin-top: 10px;
-   align-items:center;
+    align-items:center;
 }
 
 .admin-page-button-nav:hover {
     border: none;
     background-color: white;
     display: flex;
-    color: orange;
-    box-shadow: whitesmoke;
+    color: orange ;
     border-radius: 5px;
-
 }
 
 #admin-page-left-nav {
@@ -41,7 +39,9 @@
 .admin-page-btn-img-nav {
     margin-right: .3vw;
 }
-
+.admin-page-button-nav > a {
+    color:white;
+}
 .admin-page-button-nav>a:hover {
     color: orange;
 }
@@ -62,13 +62,12 @@
     color: orange;
 }
 .link-dash-admin{
-    color: white;
     display:flex;
     width:100%;
     justify-content:flex-start;
 }
-.link-dash-admin:hover{
-    color:orange;
+.admin-page-button-nav:hover {
+    color: orange;
 }
 
 @media(max-width:570px) {

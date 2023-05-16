@@ -73,6 +73,8 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<MissionModel> MissionModels { get; set; }
     public virtual DbSet<ReleatedMissionModel> ReleatedMissions { get; set; }
     public virtual DbSet<StoryModel> Storylist { get; set; }
+
+    public virtual DbSet<Notification> Notificationsp { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:CIPlatform");
 

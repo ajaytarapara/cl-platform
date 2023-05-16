@@ -96,7 +96,6 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills = _homeRepository.getSkills();
             return Json(new { data = missionSkills });
         }
-
         public IActionResult GetMissionThemeTitle()
         {
             IEnumerable<string> missiontitle = _homeRepository.GetMissionThemestitle();

@@ -247,7 +247,7 @@ namespace CIPlatform.Controllers
             editProfile.title = userObj.Title;
             editProfile.whyivol = userObj.WhyIVolunteer;
             editProfile.employeeid = userObj.EmployeeId;
-           editProfile.linkedinurl = userObj.LinkedInUrl;
+            editProfile.linkedinurl = userObj.LinkedInUrl;
             editProfile.department = userObj.Department;
             editProfile.profiletext = userObj.ProfileText;
             long userid=editProfile.userid;

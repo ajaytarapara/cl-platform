@@ -134,7 +134,16 @@ namespace CIPlatform.Repository.Repository
 
         List<Notification> IHomeRepository.GetNotificationforUser(long userid, string[] nSetting)
         {
-            return _ciPlatformDbContext.Notifications.Where(noti=>noti.ToUserId == userid  && nSetting.Contains(noti.NotificationType)).ToList();
+            string? SETTING ="";
+            if (nSetting.Length != 0)
+            {
+              SETTING = nSetting.Aggregate((a, b) => Convert.ToString(a) + "," + Convert.ToString(b));
+            }
+            else
+            {
+               SETTING= "";
+            }
+            return _ciPlatformDbContext.Notificationsp.FromSqlInterpolated($"exec sp_get_Notification @userid={userid},@notificationsetting={SETTING}").ToList();
         }
         void IHomeRepository.ClearNotification(long userid)
         {
